@@ -1,0 +1,397 @@
+/* FixLens – Ultra minimal black & white UI */
+
+
+
+:root {
+
+  --bg: #000000;
+
+  --surface: #111111;
+
+  --border: #333333;
+
+  --text: #ffffff;
+
+  --muted: #a8a8a8;
+
+  --radius-pill: 999px;
+
+  --radius-lg: 18px;
+
+}
+
+
+
+*,
+
+*::before,
+
+*::after {
+
+  box-sizing: border-box;
+
+  margin: 0;
+
+  padding: 0;
+
+}
+
+
+
+html,
+
+body {
+
+  height: 100%;
+
+}
+
+
+
+body {
+
+  background-color: var(--bg);
+
+  color: var(--text);
+
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+
+}
+
+
+
+.page {
+
+  min-height: 100vh;
+
+  padding: 24px 18px 32px;
+
+  display: flex;
+
+  flex-direction: column;
+
+}
+
+
+
+/* Top logo */
+
+
+
+.top {
+
+  max-width: 420px;
+
+  margin: 0 auto 32px;
+
+}
+
+
+
+.logo-row {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+}
+
+
+
+.logo {
+
+  width: 40px;
+
+  height: 40px;
+
+  object-fit: contain;
+
+}
+
+
+
+.brand {
+
+  font-size: 1.2rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.04em;
+
+}
+
+
+
+/* Hero */
+
+
+
+.hero {
+
+  max-width: 420px;
+
+  width: 100%;
+
+  margin: 0 auto;
+
+}
+
+
+
+.title {
+
+  font-size: clamp(2.3rem, 8vw, 3.1rem);
+
+  line-height: 1.05;
+
+  margin-bottom: 18px;
+
+}
+
+
+
+.subtitle {
+
+  font-size: 0.95rem;
+
+  color: var(--muted);
+
+  line-height: 1.5;
+
+  margin-bottom: 22px;
+
+}
+
+
+
+.cta-col {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+
+  margin-bottom: 18px;
+
+}
+
+
+
+/* Buttons */
+
+
+
+.btn {
+
+  border: 1px solid transparent;
+
+  border-radius: var(--radius-pill);
+
+  padding: 13px 20px;
+
+  font-size: 0.95rem;
+
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: all 0.18s ease-out;
+
+}
+
+
+
+.btn-primary {
+
+  background-color: #ffffff;
+
+  color: #000000;
+
+}
+
+
+
+.btn-primary:hover {
+
+  filter: brightness(1.05);
+
+  transform: translateY(-1px);
+
+}
+
+
+
+.btn-ghost {
+
+  background-color: transparent;
+
+  color: var(--text);
+
+  border-color: var(--border);
+
+}
+
+
+
+.btn-ghost:hover {
+
+  background-color: #111111;
+
+}
+
+
+
+/* Input + mic */
+
+
+
+.input-row {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 6px;
+
+}
+
+
+
+.issue-input {
+
+  flex: 1;
+
+  background-color: #050505;
+
+  color: var(--text);
+
+  border-radius: var(--radius-lg);
+
+  border: 1px solid var(--border);
+
+  padding: 12px 14px;
+
+  font-size: 0.9rem;
+
+  outline: none;
+
+}
+
+
+
+.issue-input::placeholder {
+
+  color: #666666;
+
+}
+
+
+
+.mic-btn {
+
+  flex-shrink: 0;
+
+  width: 44px;
+
+  height: 44px;
+
+  border-radius: 50%;
+
+  border: 1px solid var(--border);
+
+  background-color: #050505;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 1.1rem;
+
+  cursor: pointer;
+
+  transition: all 0.18s ease-out;
+
+}
+
+
+
+.mic-btn:hover {
+
+  background-color: #111111;
+
+  border-color: #555555;
+
+}
+
+
+
+.hint {
+
+  margin-top: 8px;
+
+  font-size: 0.8rem;
+
+  color: var(--muted);
+
+}
+
+
+
+/* Footer */
+
+
+
+.footer {
+
+  margin-top: auto;
+
+  max-width: 420px;
+
+  width: 100%;
+
+  margin-inline: auto;
+
+  padding-top: 16px;
+
+  border-top: 1px solid var(--border);
+
+  text-align: center;
+
+  font-size: 0.78rem;
+
+  color: var(--muted);
+
+}
+
+
+
+/* Medium+ screens: center vertically a bit more */
+
+
+
+@media (min-width: 768px) {
+
+  .page {
+
+    justify-content: center;
+
+  }
+
+
+
+  .top {
+
+    margin-bottom: 40px;
+
+  }
+
+}
