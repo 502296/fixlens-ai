@@ -26,11 +26,11 @@ export default async function handler(req, res) {
 
 
 
-  const { imageDataUrl, description } = req.body || {};
+  const { imageUrl, description } = req.body || {};
 
 
 
-  if (!description && !imageDataUrl) {
+  if (!description && !imageUrl) {
 
     res
 
@@ -59,8 +59,6 @@ export default async function handler(req, res) {
 
 
   try {
-
-    // 🔹 Helper to call one model with a strong, domain-specific prompt
 
     async function callModel(model, modeLabel) {
 
@@ -128,33 +126,35 @@ MODE: ${modeLabel}
 
 
 
+      const content = [{ type: "input_text", text: basePrompt }];
+
+
+
+      if (imageUrl) {
+
+        content.push({
+
+          type: "input_image",
+
+          image_url: imageUrl, // الآن URL حقيقي من Vercel Blob
+
+        });
+
+      }
+
+
+
       const input = [
 
         {
 
           role: "user",
 
-          content: [{ type: "input_text", text: basePrompt }],
+          content,
 
         },
 
       ];
-
-
-
-      if (imageDataUrl) {
-
-        // Send the photo as a data URL (data:image/jpeg;base64,...)
-
-        input[0].content.push({
-
-          type: "input_image",
-
-          image_url: imageDataUrl,
-
-        });
-
-      }
 
 
 
@@ -168,15 +168,11 @@ MODE: ${modeLabel}
 
 
 
-      // unified text output from Responses API
-
       return response.output_text;
 
     }
 
 
-
-    // 🟢 Hybrid: one fast impression + one deep structured diagnosis (in parallel)
 
     const [fastText, deepText] = await Promise.all([
 
