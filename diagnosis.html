@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>FixLens – Start Diagnosis</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+
+  <div class="page">
+
+    <!-- Header -->
+
+    <header class="header">
+
+      <div class="logo-row">
+
+        <div class="logo-mark">◎</div>
+
+        <a href="index.html" class="logo-text" style="text-decoration:none; color:inherit;">
+
+          FixLens
+
+        </a>
+
+      </div>
+
+      <nav class="nav">
+
+        <a href="index.html#how">How it works</a>
+
+        <a href="index.html#use-cases">Use cases</a>
+
+        <a href="index.html#demo">Demo</a>
+
+      </nav>
+
+    </header>
+
+
+
+    <!-- Main -->
+
+    <main class="main">
+
+      <!-- Simple + cinematic layout -->
+
+      <section class="diag-hero">
+
+        <div class="diag-left">
+
+          <h1>Start a new diagnosis.</h1>
+
+          <p class="diag-sub">
+
+            Upload a photo and briefly describe the problem.
+
+            FixLens Brain will analyze both and return a clear, step-by-step diagnosis.
+
+          </p>
+
+
+
+          <!-- Upload block -->
+
+          <div id="upload" class="diag-card diag-upload-card">
+
+            <p class="diag-label">1. Upload a photo</p>
+
+
+
+            <label class="upload-dropzone" for="photoInput">
+
+              <div class="upload-icon">⬆︎</div>
+
+              <div class="upload-text">
+
+                <strong>Drop a photo here</strong>
+
+                <span>or tap to browse from your device.</span>
+
+              </div>
+
+              <input type="file" id="photoInput" accept="image/*" hidden />
+
+            </label>
+
+
+
+            <div class="upload-preview" id="photoPreview" hidden>
+
+              <img id="previewImage" alt="Uploaded photo preview" />
+
+            </div>
+
+          </div>
+
+
+
+          <!-- Problem description -->
+
+          <div class="diag-card">
+
+            <p class="diag-label">2. Describe what’s happening</p>
+
+            <textarea
+
+              id="problemInput"
+
+              rows="3"
+
+              class="diag-textarea"
+
+              placeholder='Example: “My car makes a squeaking noise at low speed, mostly when I brake.”'
+
+            ></textarea>
+
+          </div>
+
+
+
+          <!-- Run button -->
+
+          <button id="runButton" class="btn btn-primary diag-run-btn">
+
+            Run diagnosis
+
+          </button>
+
+
+
+          <p class="diag-note">
+
+            Voice mode is coming soon — you’ll be able to just talk and let FixLens listen.
+
+          </p>
+
+        </div>
+
+
+
+        <!-- Right side: cinematic process + result -->
+
+        <div class="diag-right">
+
+          <div class="diag-process-card">
+
+            <p class="diag-label">Live analysis</p>
+
+            <ul class="diag-steps" id="diagSteps">
+
+              <li class="active">Waiting to start…</li>
+
+              <li>Analyzing image and text…</li>
+
+              <li>Matching with known patterns…</li>
+
+              <li>Preparing diagnosis and next steps…</li>
+
+            </ul>
+
+          </div>
+
+
+
+          <div class="diag-result-card">
+
+            <p class="diag-label">FixLens Brain</p>
+
+            <div id="resultPlaceholder" class="diag-result-placeholder">
+
+              No diagnosis yet. Submit a photo and description to see results here.
+
+            </div>
+
+            <div id="resultContent" class="diag-result-content" hidden>
+
+              <p class="diag-result-title">Possible issue</p>
+
+              <p id="resultMain" class="diag-result-main"></p>
+
+
+
+              <p class="diag-result-subtitle">Suggested next steps</p>
+
+              <ul id="resultSteps" class="diag-result-list"></ul>
+
+
+
+              <p class="diag-result-footnote">
+
+                This is an AI-generated suggestion. For safety-critical issues,
+
+                always consult a certified technician.
+
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+
+  <script>
+
+    const photoInput = document.getElementById("photoInput");
+
+    const photoPreview = document.getElementById("photoPreview");
+
+    const previewImage = document.getElementById("previewImage");
+
+    const runButton = document.getElementById("runButton");
+
+    const diagSteps = document.getElementById("diagSteps").querySelectorAll("li");
+
+    const resultPlaceholder = document.getElementById("resultPlaceholder");
+
+    const resultContent = document.getElementById("resultContent");
+
+    const resultMain = document.getElementById("resultMain");
+
+    const resultSteps = document.getElementById("resultSteps");
+
+    const problemInput = document.getElementById("problemInput");
+
+
+
+    // Preview image when selected
+
+    photoInput.addEventListener("change", (e) => {
+
+      const file = e.target.files[0];
+
+      if (!file) return;
+
+      const reader = new FileReader();
+
+      reader.onload = (ev) => {
+
+        previewImage.src = ev.target.result;
+
+        photoPreview.hidden = false;
+
+      };
+
+      reader.readAsDataURL(file);
+
+    });
+
+
+
+    // Helper to simulate step-by-step animation
+
+    function runFakeAnalysis() {
+
+      // reset steps UI
+
+      diagSteps.forEach((li) => li.classList.remove("active", "done"));
+
+      diagSteps[0].textContent = "Starting diagnosis…";
+
+      diagSteps[0].classList.add("active");
+
+
+
+      resultPlaceholder.hidden = false;
+
+      resultContent.hidden = true;
+
+      resultPlaceholder.textContent = "Analyzing your photo and description…";
+
+
+
+      let stepIndex = 0;
+
+
+
+      const stepMessages = [
+
+        "Analyzing image details… lights, textures, and visible parts.",
+
+        "Understanding your description and matching it with known issues.",
+
+        "Evaluating risk level and possible causes.",
+
+        "Preparing a clear explanation and next steps for you."
+
+      ];
+
+
+
+      const interval = setInterval(() => {
+
+        if (stepIndex > 0) {
+
+          diagSteps[stepIndex - 1].classList.remove("active");
+
+          diagSteps[stepIndex - 1].classList.add("done");
+
+        }
+
+
+
+        if (stepIndex < diagSteps.length) {
+
+          diagSteps[stepIndex].classList.add("active");
+
+          diagSteps[stepIndex].textContent = stepMessages[stepIndex];
+
+          stepIndex++;
+
+        } else {
+
+          clearInterval(interval);
+
+          showFakeResult();
+
+        }
+
+      }, 900);
+
+    }
+
+
+
+    function showFakeResult() {
+
+      // هنا لاحقاً نستبدل المحتوى بنتيجة الذكاء الصناعي الحقيقية من الـ API
+
+      const userText = problemInput.value.trim();
+
+
+
+      resultPlaceholder.hidden = true;
+
+      resultContent.hidden = false;
+
+
+
+      if (userText.toLowerCase().includes("brake")) {
+
+        resultMain.textContent =
+
+          "The pattern you described suggests worn brake pads or a glazed brake surface. It doesn’t look like an immediate emergency, but it should be checked soon.";
+
+        resultSteps.innerHTML = "";
+
+        ["Schedule a brake inspection within the next 1–2 weeks.",
+
+         "Avoid sudden hard braking whenever possible.",
+
+         "If you feel vibration in the pedal or hear grinding, treat it as urgent."
+
+        ].forEach((step) => {
+
+          const li = document.createElement("li");
+
+          li.textContent = step;
+
+          resultSteps.appendChild(li);
+
+        });
+
+      } else if (userText.toLowerCase().includes("washer") || userText.toLowerCase().includes("washing machine")) {
+
+        resultMain.textContent =
+
+          "It looks like your washing machine may have an unbalanced load or a worn bearing. The noise and shaking often come from the drum not sitting evenly.";
+
+        resultSteps.innerHTML = "";
+
+        [
+
+          "Run a small test load and see if the noise is reduced.",
+
+          "Make sure the machine is level on the floor.",
+
+          "If the noise gets louder over time, schedule a service visit."
+
+        ].forEach((step) => {
+
+          const li = document.createElement("li");
+
+          li.textContent = step;
+
+          resultSteps.appendChild(li);
+
+        });
+
+      } else {
+
+        resultMain.textContent =
+
+          "Based on your description, FixLens Brain has identified a likely mechanical or electrical issue. The exact cause will depend on noise, vibration, and where the problem appears.";
+
+        resultSteps.innerHTML = "";
+
+        [
+
+          "Document when the issue happens (cold start, low speed, under load, etc.).",
+
+          "Avoid pushing the system hard until you know the root cause.",
+
+          "If you notice burning smells, smoke, or warning lights, stop using it and seek help immediately."
+
+        ].forEach((step) => {
+
+          const li = document.createElement("li");
+
+          li.textContent = step;
+
+          resultSteps.appendChild(li);
+
+        });
+
+      }
+
+    }
+
+
+
+    runButton.addEventListener("click", () => {
+
+      if (!photoInput.files[0] && !problemInput.value.trim()) {
+
+        alert("Please upload a photo or describe the problem first.");
+
+        return;
+
+      }
+
+      runFakeAnalysis();
+
+    });
+
+  </script>
+
+</body>
+
+</html>
