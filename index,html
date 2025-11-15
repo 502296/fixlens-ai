@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>FixLens – Fix problems with AI</title>
+
+
+
+  <!-- CSS -->
+
+  <link rel="stylesheet" href="style.css" />
+
+
+
+  <!-- Font -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+
+    rel="stylesheet"
+
+  >
+
+</head>
+
+<body>
+
+  <div class="page">
+
+    <!-- Top logo -->
+
+    <header class="top">
+
+      <div class="logo-row">
+
+        <img src="images/fixlens-logo.png" alt="FixLens logo" class="logo">
+
+        <span class="brand">FixLens</span>
+
+      </div>
+
+    </header>
+
+
+
+    <!-- Hero -->
+
+    <main class="hero">
+
+      <h1 class="title">Fix problems<br>with AI.</h1>
+
+
+
+      <p class="subtitle">
+
+        Describe the issue or upload a photo —<br>
+
+        <strong>FixLens Brain</strong> will guide you step by step.
+
+      </p>
+
+
+
+      <!-- Buttons -->
+
+      <div class="cta-col">
+
+        <button class="btn btn-primary">Start Diagnosis</button>
+
+        <button class="btn btn-ghost">Upload a photo</button>
+
+      </div>
+
+
+
+      <!-- Text input + mic -->
+
+      <div class="input-row">
+
+        <input
+
+          type="text"
+
+          class="issue-input"
+
+          placeholder="Type your problem here… e.g. “My car engine shakes when I stop”"
+
+        >
+
+        <button class="mic-btn" aria-label="Record with microphone">
+
+          🎙
+
+        </button>
+
+      </div>
+
+
+
+      <p class="hint">
+
+        Soon you’ll be able to speak instead of typing – FixLens Brain will listen.
+
+      </p>
+
+    </main>
+
+
+
+    <!-- Footer -->
+
+    <footer class="footer">
+
+      <p>© <span id="year"></span> FixLens.ai – All rights reserved.</p>
+
+    </footer>
+
+  </div>
+
+
+
+  <script>
+
+    // تحديث السنة تلقائيًا في الفوتر
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+  </script>
+
+</body>
+
+</html>
