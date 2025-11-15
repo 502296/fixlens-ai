@@ -8,29 +8,9 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>FixLens – Fix problems with AI</title>
-
-
-
-  <!-- CSS -->
+  <title>FixLens – AI Diagnosis for Real-World Problems</title>
 
   <link rel="stylesheet" href="style.css" />
-
-
-
-  <!-- Font -->
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-
-    rel="stylesheet"
-
-  >
 
 </head>
 
@@ -38,81 +18,325 @@
 
   <div class="page">
 
-    <!-- Top logo -->
+    <!-- Header -->
 
-    <header class="top">
+    <header class="header">
 
       <div class="logo-row">
 
-        <img src="images/fixlens-logo.png" alt="FixLens logo" class="logo">
+        <div class="logo-mark">◎</div>
 
-        <span class="brand">FixLens</span>
+        <span class="logo-text">FixLens</span>
 
       </div>
+
+      <nav class="nav">
+
+        <a href="#how">How it works</a>
+
+        <a href="#use-cases">Use cases</a>
+
+        <a href="#demo">Demo</a>
+
+        <button class="nav-cta">Get early access</button>
+
+      </nav>
 
     </header>
 
 
 
-    <!-- Hero -->
+    <!-- Main -->
 
-    <main class="hero">
+    <main class="main">
 
-      <h1 class="title">Fix problems<br>with AI.</h1>
+      <!-- Hero -->
 
+      <section class="hero">
 
+        <div class="hero-left">
 
-      <p class="subtitle">
+          <div class="pill">AI diagnostic assistant</div>
 
-        Describe the issue or upload a photo —<br>
+          <h1>Fix problems in the real world with AI.</h1>
 
-        <strong>FixLens Brain</strong> will guide you step by step.
+          <p class="hero-sub">
 
-      </p>
+            Describe the issue or upload a photo — 
 
+            <span class="highlight">FixLens Brain</span> analyzes engines, appliances,
 
+            and electronics, then guides you step by step.
 
-      <!-- Buttons -->
-
-      <div class="cta-col">
-
-        <button class="btn btn-primary">Start Diagnosis</button>
-
-        <button class="btn btn-ghost">Upload a photo</button>
-
-      </div>
+          </p>
 
 
 
-      <!-- Text input + mic -->
+          <div class="hero-actions">
 
-      <div class="input-row">
+            <button class="btn btn-primary">Start diagnosis</button>
 
-        <input
+            <button class="btn btn-ghost">Upload a photo</button>
 
-          type="text"
-
-          class="issue-input"
-
-          placeholder="Type your problem here… e.g. “My car engine shakes when I stop”"
-
-        >
-
-        <button class="mic-btn" aria-label="Record with microphone">
-
-          🎙
-
-        </button>
-
-      </div>
+          </div>
 
 
 
-      <p class="hint">
+          <div class="input-row">
 
-        Soon you’ll be able to speak instead of typing – FixLens Brain will listen.
+            <input
 
-      </p>
+              type="text"
+
+              placeholder='Type your problem… e.g. “My car engine shakes when I stop.”'
+
+            />
+
+            <button class="mic-btn" aria-label="Voice input">
+
+              🎙
+
+            </button>
+
+          </div>
+
+          <p class="hero-note">
+
+            Soon you’ll be able to speak instead of typing — FixLens Brain will listen.
+
+          </p>
+
+        </div>
+
+
+
+        <div class="hero-right">
+
+          <div class="phone-frame">
+
+            <div class="status-bar">
+
+              <span class="dot"></span>
+
+              <span class="dot"></span>
+
+              <span class="dot"></span>
+
+            </div>
+
+            <div class="phone-body">
+
+              <p class="phone-label">Live diagnosis</p>
+
+              <div class="photo-placeholder">
+
+                <span>Upload photo</span>
+
+              </div>
+
+              <div class="diagnosis-card">
+
+                <p class="card-title">Possible issue</p>
+
+                <p class="card-main">
+
+                  Front brake pads are worn out. You may also hear a grinding sound when stopping.
+
+                </p>
+
+                <p class="card-steps-title">Suggested next steps</p>
+
+                <ul class="card-list">
+
+                  <li>Schedule an inspection within the next 7 days.</li>
+
+                  <li>Avoid sudden hard braking when possible.</li>
+
+                  <li>We’ll help you estimate repair cost in your area.</li>
+
+                </ul>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- Use cases -->
+
+      <section id="use-cases" class="section">
+
+        <div class="section-header">
+
+          <h2>What FixLens can understand today.</h2>
+
+          <p>
+
+            Built for noisy, imperfect, real-world photos — garages, kitchens, and workshops.
+
+          </p>
+
+        </div>
+
+        <div class="cards-grid">
+
+          <article class="card">
+
+            <h3>Cars & vehicles</h3>
+
+            <p>
+
+              Capture a photo of your dashboard, engine, or unusual wear.
+
+              FixLens suggests likely issues before you visit a mechanic.
+
+            </p>
+
+          </article>
+
+          <article class="card">
+
+            <h3>Home appliances</h3>
+
+            <p>
+
+              Ovens, washers, fridges, AC units. Upload a photo of an error code or damaged part.
+
+            </p>
+
+          </article>
+
+          <article class="card">
+
+            <h3>Electronics & tools</h3>
+
+            <p>
+
+              From power tools to audio gear. FixLens reads lights, indicators, and visible damage.
+
+            </p>
+
+          </article>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- How it works -->
+
+      <section id="how" class="section">
+
+        <div class="section-header">
+
+          <h2>How FixLens Brain works.</h2>
+
+          <p>Under the hood, multiple models collaborate to understand your problem.</p>
+
+        </div>
+
+        <div class="steps">
+
+          <div class="step">
+
+            <div class="step-number">1</div>
+
+            <h3>See what you see</h3>
+
+            <p>
+
+              Vision models decode your photo — warning lights, parts, textures, and context.
+
+            </p>
+
+          </div>
+
+          <div class="step">
+
+            <div class="step-number">2</div>
+
+            <h3>Reason like a technician</h3>
+
+            <p>
+
+              A reasoning layer compares patterns with thousands of known issues and repair paths.
+
+            </p>
+
+          </div>
+
+          <div class="step">
+
+            <div class="step-number">3</div>
+
+            <h3>Guide you step by step</h3>
+
+            <p>
+
+              You get a clear explanation, risk level, and recommended next steps — in plain language.
+
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- Demo -->
+
+      <section id="demo" class="section demo-section">
+
+        <div class="section-header">
+
+          <h2>Try a sample diagnosis.</h2>
+
+          <p>No signup yet — just see how FixLens Brain talks.</p>
+
+        </div>
+
+        <div class="demo-card">
+
+          <div class="demo-left">
+
+            <p class="demo-label">Sample input</p>
+
+            <p class="demo-input">
+
+              “My car makes a squeaking noise at low speed, mostly when I brake.”
+
+            </p>
+
+          </div>
+
+          <div class="demo-right">
+
+            <p class="demo-label">FixLens Brain</p>
+
+            <p class="demo-output">
+
+              This often points to worn brake pads or a glazed brake surface. It’s usually not
+
+              an emergency, but you should schedule a brake inspection within the next 1–2 weeks.
+
+              If the sound becomes louder or you feel vibration in the pedal, treat it as urgent.
+
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
 
     </main>
 
@@ -122,21 +346,27 @@
 
     <footer class="footer">
 
-      <p>© <span id="year"></span> FixLens.ai – All rights reserved.</p>
+      <div class="footer-left">
+
+        <span class="footer-logo">FixLens</span>
+
+        <span class="footer-copy">© 2025 FixLens.ai — All rights reserved.</span>
+
+      </div>
+
+      <div class="footer-links">
+
+        <a href="#">Privacy</a>
+
+        <a href="#">Terms</a>
+
+        <a href="#">Contact</a>
+
+      </div>
 
     </footer>
 
   </div>
-
-
-
-  <script>
-
-    // تحديث السنة تلقائيًا في الفوتر
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-  </script>
 
 </body>
 
