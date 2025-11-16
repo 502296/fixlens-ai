@@ -1,4 +1,4 @@
-/* BASE */
+/* ===== BASE ===== */
 
 body {
 
@@ -22,7 +22,7 @@ body {
 
 
 
-/* TOP HEADER */
+/* ===== TOP HEADER ===== */
 
 .top-header {
 
@@ -42,7 +42,7 @@ body {
 
 
 
-/* CAPSULE + LENS LOGO */
+/* ===== CAPSULE + LENS LOGO ===== */
 
 .lens-logo {
 
@@ -64,17 +64,19 @@ body {
 
 
 
+/* حجم العدسة */
+
 .lens-svg {
 
-  width: 70px;
+  width: 90px;
 
-  height: 70px;
+  height: 90px;
 
 }
 
 
 
-/* ONLY INNER LENS ROTATES */
+/* الجزء الداخلي فقط يدور */
 
 .inner-rotor {
 
@@ -82,7 +84,7 @@ body {
 
   transform-origin: 50% 50%;
 
-  transform-box: fill-box; /* مهم للـ desktop */
+  transform-box: fill-box;
 
 }
 
@@ -90,9 +92,17 @@ body {
 
 @keyframes rotateLens {
 
-  from { transform: rotate(0deg); }
+  from {
 
-  to   { transform: rotate(360deg); }
+    transform: rotate(0deg);
+
+  }
+
+  to {
+
+    transform: rotate(360deg);
+
+  }
 
 }
 
@@ -110,7 +120,7 @@ body {
 
 
 
-/* HERO */
+/* ===== HERO ===== */
 
 .hero {
 
@@ -150,7 +160,7 @@ body {
 
 
 
-/* BUTTONS */
+/* ===== BUTTONS ===== */
 
 .btn-row {
 
@@ -234,7 +244,7 @@ body {
 
 
 
-/* SPEAK BUTTON */
+/* ===== SPEAK BUTTON ===== */
 
 .btn.speak {
 
@@ -250,7 +260,7 @@ body {
 
 
 
-/* MOBILE LAYOUT */
+/* ===== MOBILE ===== */
 
 @media (max-width: 640px) {
 
