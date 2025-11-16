@@ -32,17 +32,29 @@ body {
 
 
 
-/* CAPSULE LOGO (BIGGER + NATURAL COLORS + CLEAR ANIMATION) */
+/* just centers the capsule */
 
 .wordmark {
 
-  display: inline-flex;
+  display: flex;
+
+  justify-content: center;
+
+}
+
+
+
+/* CAPSULE + LENS LOGO */
+
+.lens-logo {
+
+  display: flex;
 
   align-items: center;
 
   gap: 14px;
 
-  padding: 10px 24px;
+  padding: 12px 28px;
 
   border-radius: 999px;
 
@@ -54,107 +66,35 @@ body {
 
 
 
-/* animated lens container */
+.lens-svg {
 
-.logo-icon {
+  width: 64px;
 
-  width: 36px;
-
-  height: 36px;
-
-  border-radius: 999px;
-
-  padding: 3px;
-
-  background: conic-gradient(
-
-    from 0deg,
-
-    #22c55e,
-
-    #0ea5e9,
-
-    #6366f1,
-
-    #22c55e
-
-  );
-
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  animation: lens-spin 10s linear infinite;
+  height: 64px;
 
 }
 
 
 
-/* inner glass circle */
+/* spinning ring with numbers */
 
-.logo-ring {
+.ring {
 
-  width: 26px;
+  animation: rotateLens 12s linear infinite;
 
-  height: 26px;
+  transform-origin: 50% 50%;
 
-  border-radius: 999px;
-
-  background: radial-gradient(
-
-    circle at 30% 30%,
-
-    rgba(255, 255, 255, 0.85) 0%,
-
-    #0b1120 40%,
-
-    #020617 70%
-
-  );
-
-  box-shadow:
-
-    0 0 0 1px rgba(15, 23, 42, 0.9),
-
-    0 0 18px rgba(56, 189, 248, 0.8);
-
-  position: relative;
+  transform-box: fill-box; /* مهم للـ Safari / desktop */
 
 }
 
 
 
-/* tiny core in the middle */
+@keyframes rotateLens {
 
-.logo-core {
+  from { transform: rotate(0deg); }
 
-  position: absolute;
-
-  inset: 50%;
-
-  transform: translate(-50%, -50%);
-
-  width: 6px;
-
-  height: 6px;
-
-  border-radius: 999px;
-
-  background: #e5f2ff;
-
-}
-
-
-
-/* slow, majestic spin */
-
-@keyframes lens-spin {
-
-  0%   { transform: rotate(0deg); }
-
-  100% { transform: rotate(360deg); }
+  to   { transform: rotate(360deg); }
 
 }
 
@@ -162,11 +102,11 @@ body {
 
 .logo-name {
 
-  font-size: 22px;
+  font-size: 26px;
 
-  font-weight: 650;
+  font-weight: 600;
 
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
 
 }
 
@@ -331,71 +271,5 @@ body {
     width: 230px;
 
   }
-
-  /* --- Lens Logo Container --- */
-
-.lens-logo {
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 14px;
-
-  padding: 12px 26px;
-
-  background: rgba(0,0,0,0.35);
-
-  border-radius: 50px;
-
-  box-shadow: 0 0 30px rgba(0,0,0,0.4);
-
-}
-
-
-
-.lens-svg {
-
-  width: 60px;
-
-  height: 60px;
-
-}
-
-
-
-/* Slow elegant rotation */
-
-.ring {
-
-  animation: rotateLens 12s linear infinite;
-
-  transform-origin: 100px 100px;
-
-}
-
-
-
-@keyframes rotateLens {
-
-  from { transform: rotate(0deg); }
-
-  to { transform: rotate(360deg); }
-
-}
-
-
-
-.logo-name {
-
-  font-size: 30px;
-
-  font-weight: 600;
-
-  color: #ffffff;
-
-  letter-spacing: 1px;
-
-}
 
 }
