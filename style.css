@@ -332,4 +332,70 @@ body {
 
   }
 
+  /* --- Lens Logo Container --- */
+
+.lens-logo {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 12px 26px;
+
+  background: rgba(0,0,0,0.35);
+
+  border-radius: 50px;
+
+  box-shadow: 0 0 30px rgba(0,0,0,0.4);
+
+}
+
+
+
+.lens-svg {
+
+  width: 60px;
+
+  height: 60px;
+
+}
+
+
+
+/* Slow elegant rotation */
+
+.ring {
+
+  animation: rotateLens 12s linear infinite;
+
+  transform-origin: 100px 100px;
+
+}
+
+
+
+@keyframes rotateLens {
+
+  from { transform: rotate(0deg); }
+
+  to { transform: rotate(360deg); }
+
+}
+
+
+
+.logo-name {
+
+  font-size: 30px;
+
+  font-weight: 600;
+
+  color: #ffffff;
+
+  letter-spacing: 1px;
+
+}
+
 }
