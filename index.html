@@ -1,79 +1,429 @@
-<!DOCTYPE html>
+/* ========= RESET بسيط ========= */
 
-<html lang="en">
+*,
 
-<head>
+*::before,
 
-  <meta charset="UTF-8" />
+*::after {
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  box-sizing: border-box;
 
-  <title>FixLens – AI Diagnostics</title>
+  margin: 0;
 
-  <link rel="stylesheet" href="style.css" />
+  padding: 0;
 
-</head>
-
-
-
-<body>
+}
 
 
 
-  <!-- TOP WORDMARK -->
+html,
 
-  <header class="top-header">
+body {
 
-    <div class="wordmark">
+  height: 100%;
 
-      <span class="logo-lens">
-
-        <span class="lens-inner"></span>
-
-      </span>
-
-      <span class="logo-name">FixLens</span>
-
-    </div>
-
-  </header>
+}
 
 
 
-  <!-- HERO -->
+body {
 
-  <main class="hero">
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
 
-    <h1 class="hero-title">Fix problems in the real world with AI.</h1>
+    "Segoe UI", sans-serif;
 
+  background: radial-gradient(circle at top, #0f172a 0, #020617 55%, #000 100%);
 
+  color: #e5e7eb;
 
-    <p class="hero-subtitle">
-
-      Point your camera at the issue or describe it in your own words.
-
-      FixLens analyzes engines, appliances, electronics, and more — then guides you step by step.
-
-    </p>
+}
 
 
 
-    <div class="btn-row">
+/* ========= LAYOUT عام ========= */
 
-      <button class="btn primary">Describe with text</button>
+.top-header {
 
-      <button class="btn">Upload a photo</button>
+  padding: 32px 20px 8px;
 
-    </div>
+  display: flex;
 
+  justify-content: center;
 
-
-    <button class="btn speak">🎤 Speak</button>
-
-  </main>
+}
 
 
 
-</body>
+.hero {
 
-</html>
+  max-width: 640px;
+
+  margin: 0 auto;
+
+  padding: 24px 20px 56px;
+
+  text-align: center;
+
+}
+
+
+
+/* ========= LOGO PILL ========= */
+
+
+
+.logo-pill {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 20px;
+
+  padding: 18px 32px;
+
+  border-radius: 999px;
+
+  background: radial-gradient(circle at top left, #111827 0, #020617 60%);
+
+  box-shadow:
+
+    0 18px 40px rgba(0, 0, 0, 0.75),
+
+    0 0 0 1px rgba(15, 23, 42, 0.9);
+
+}
+
+
+
+.lens-wrap {
+
+  width: 82px;
+
+  height: 82px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+}
+
+
+
+/* SVG sizing */
+
+.lens-svg {
+
+  width: 82px;
+
+  height: 82px;
+
+  display: block;
+
+}
+
+
+
+/* Outer ring & inner parts */
+
+.lens-ring {
+
+  fill: #020617;
+
+  stroke: #020617;
+
+  stroke-width: 4;
+
+}
+
+
+
+/* inner rotating group */
+
+.lens-inner-rotating {
+
+  transform-origin: 50% 50%;
+
+  transform-box: fill-box;
+
+  animation: lens-spin 18s linear infinite;
+
+}
+
+
+
+/* subtle vignette for depth */
+
+.lens-inner-vignette {
+
+  fill: radial-gradient(circle at 30% 25%, #000 0, #020617 30%, #000 100%);
+
+  fill: rgba(0, 0, 0, 0.35);
+
+}
+
+
+
+/* highlight dot */
+
+.lens-highlight {
+
+  fill: #f9fafb;
+
+  opacity: 0.9;
+
+}
+
+
+
+/* circular text around outer edge */
+
+.lens-text {
+
+  font-size: 8px;
+
+  letter-spacing: 0.18em;
+
+  fill: #e5e7eb;
+
+  text-transform: uppercase;
+
+}
+
+
+
+/* LOGO WORD */
+
+.logo-word {
+
+  font-size: 24px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.08em;
+
+  color: #f9fafb;
+
+}
+
+
+
+/* ========= HERO TEXT ========= */
+
+
+
+.hero-title {
+
+  font-size: clamp(28px, 5vw, 36px);
+
+  line-height: 1.2;
+
+  font-weight: 700;
+
+  margin-top: 36px;
+
+  margin-bottom: 16px;
+
+}
+
+
+
+.hero-subtitle {
+
+  font-size: 16px;
+
+  line-height: 1.6;
+
+  color: #9ca3af;
+
+  margin-bottom: 32px;
+
+}
+
+
+
+/* ========= BUTTONS ========= */
+
+
+
+.btn-row {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 14px;
+
+  margin-bottom: 18px;
+
+}
+
+
+
+.btn {
+
+  border: none;
+
+  border-radius: 999px;
+
+  padding: 14px 24px;
+
+  font-size: 16px;
+
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+
+    transform 0.15s ease,
+
+    box-shadow 0.15s ease,
+
+    background 0.15s ease,
+
+    color 0.15s ease;
+
+}
+
+
+
+/* primary blue button */
+
+.btn.primary {
+
+  background: linear-gradient(90deg, #2563eb, #6366f1);
+
+  color: #f9fafb;
+
+  box-shadow:
+
+    0 0 30px rgba(79, 70, 229, 0.65),
+
+    0 14px 30px rgba(15, 23, 42, 0.75);
+
+}
+
+
+
+.btn.primary:hover {
+
+  transform: translateY(-1px);
+
+  box-shadow:
+
+    0 0 36px rgba(79, 70, 229, 0.9),
+
+    0 18px 36px rgba(15, 23, 42, 0.8);
+
+}
+
+
+
+.btn.primary:active {
+
+  transform: translateY(0);
+
+  box-shadow:
+
+    0 0 20px rgba(79, 70, 229, 0.7),
+
+    0 10px 24px rgba(15, 23, 42, 0.8);
+
+}
+
+
+
+/* secondary button */
+
+.btn:not(.primary):not(.speak) {
+
+  background: #020617;
+
+  color: #e5e7eb;
+
+  box-shadow:
+
+    0 0 0 1px rgba(31, 41, 55, 0.9),
+
+    0 10px 26px rgba(0, 0, 0, 0.85);
+
+}
+
+
+
+.btn:not(.primary):not(.speak):hover {
+
+  background: #020817;
+
+}
+
+
+
+/* speak button */
+
+.btn.speak {
+
+  margin-top: 10px;
+
+  background: #020617;
+
+  color: #e5e7eb;
+
+  box-shadow:
+
+    0 0 0 1px rgba(31, 41, 55, 0.9),
+
+    0 10px 26px rgba(0, 0, 0, 0.85);
+
+}
+
+
+
+/* ========= ANIMATIONS ========= */
+
+
+
+@keyframes lens-spin {
+
+  from {
+
+    transform: rotate(0deg);
+
+  }
+
+  to {
+
+    transform: rotate(360deg);
+
+  }
+
+}
+
+
+
+/* ========= RESPONSIVE ========= */
+
+
+
+@media (min-width: 640px) {
+
+  .btn-row {
+
+    flex-direction: row;
+
+    justify-content: center;
+
+  }
+
+
+
+  .btn {
+
+    min-width: 220px;
+
+  }
+
+}
