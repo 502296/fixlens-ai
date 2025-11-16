@@ -719,4 +719,68 @@ body {
 
 }
 
+  /* Elegant centered logo */
+
+.logo-wrapper {
+
+  width: 100%;
+
+  display: flex;
+
+  justify-content: center;
+
+  margin-top: 50px;
+
+  margin-bottom: 20px;
+
+}
+
+
+
+.logo-img {
+
+  width: 140px;
+
+  height: 140px;
+
+  object-fit: contain;
+
+  border-radius: 22px;
+
+  background: #000; 
+
+  padding: 18px;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+
+  transition: transform 0.25s ease;
+
+}
+
+
+
+/* Small hover animation for elegance */
+
+.logo-img:hover {
+
+  transform: scale(1.05);
+
+}
+
+
+
+/* Bigger on mobile screens */
+
+@media (max-width: 768px) {
+
+  .logo-img {
+
+    width: 155px;
+
+    height: 155px;
+
+  }
+
+}
+
 }
