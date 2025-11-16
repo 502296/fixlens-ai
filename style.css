@@ -1,4 +1,32 @@
-/* ---------- RESET ---------- */
+/* Base layout */
+
+:root {
+
+  --bg: #050816;
+
+  --card: #0b1220;
+
+  --accent: #4f46e5;
+
+  --accent-soft: rgba(79, 70, 229, 0.4);
+
+  --text-main: #f9fafb;
+
+  --text-muted: #9ca3af;
+
+  --btn-dark: #111827;
+
+  --btn-border: #1f2937;
+
+  --radius-xl: 999px;
+
+  --shadow-soft: 0 18px 60px rgba(0, 0, 0, 0.7);
+
+  --shadow-glow: 0 0 40px rgba(79, 70, 229, 0.65);
+
+}
+
+
 
 *,
 
@@ -8,10 +36,6 @@
 
   box-sizing: border-box;
 
-  margin: 0;
-
-  padding: 0;
-
 }
 
 
@@ -20,57 +44,33 @@ html,
 
 body {
 
-  height: 100%;
+  margin: 0;
 
-}
-
-
-
-body {
+  padding: 0;
 
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
 
     "Segoe UI", sans-serif;
 
-  background: radial-gradient(circle at top, #050b18 0, #020617 45%, #000 100%);
+  background: radial-gradient(circle at top, #020617 0, #020617 40%, #020314 100%);
 
-  color: #e5ecff;
-
-  -webkit-font-smoothing: antialiased;
+  color: var(--text-main);
 
 }
 
 
 
-/* ---------- LAYOUT ---------- */
-
-
-
-body {
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  padding: 32px 16px 40px;
-
-}
+/* Top header capsule */
 
 
 
 .top-header {
 
-  width: 100%;
-
-  max-width: 960px;
+  padding: 32px 16px 12px;
 
   display: flex;
 
   justify-content: center;
-
-  margin-bottom: 32px;
 
 }
 
@@ -82,47 +82,33 @@ body {
 
   align-items: center;
 
-  gap: 16px;
+  gap: 20px;
 
-  padding: 16px 32px 16px 20px;
+  padding: 16px 32px;
+
+  background: radial-gradient(circle at 20% 0, #111827 0, #020617 55%, #020617 100%);
 
   border-radius: 999px;
 
-  background: rgba(8, 15, 35, 0.96);
+  box-shadow: var(--shadow-soft);
 
-  box-shadow:
-
-    0 22px 40px rgba(0, 0, 0, 0.75),
-
-    0 0 0 1px rgba(148, 163, 184, 0.16);
-
-  backdrop-filter: blur(24px);
+  border: 1px solid rgba(148, 163, 184, 0.08);
 
 }
 
 
 
-.hero {
-
-  width: 100%;
-
-  max-width: 960px;
-
-  text-align: center;
-
-}
+/* Lens badge */
 
 
 
-/* ---------- LOGO LENS ---------- */
+.lens-badge {
 
+  width: 70px;
 
+  height: 70px;
 
-.logo-lens {
-
-  width: 74px;
-
-  height: 74px;
+  position: relative;
 
   display: flex;
 
@@ -134,59 +120,113 @@ body {
 
 
 
-.lens-ring {
+.lens-outer {
 
-  position: relative;
+  width: 64px;
 
-  width: 74px;
-
-  height: 74px;
+  height: 64px;
 
   border-radius: 50%;
 
-  background: radial-gradient(circle at 30% 20%, #1f2937, #020617 68%, #000 100%);
+  position: relative;
+
+  background: radial-gradient(circle at 30% 20%, #111827 0, #020617 40%, #000 100%);
 
   box-shadow:
 
     0 0 0 1px rgba(15, 23, 42, 0.9),
 
-    0 6px 16px rgba(0, 0, 0, 0.9),
+    0 0 0 6px rgba(15, 23, 42, 0.9),
 
-    0 0 18px rgba(37, 99, 235, 0.25);
+    0 14px 25px rgba(0, 0, 0, 0.85);
 
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
+  overflow: hidden;
 
 }
 
 
 
-/* Outer engraved numbers ring */
+/* Outer ring (blue) */
 
-.lens-markings {
+
+
+.lens-ring {
 
   position: absolute;
 
-  inset: 6%;
+  inset: 9px;
 
   border-radius: 50%;
 
-  border: 1px solid rgba(248, 250, 252, 0.18);
+  border: 3px solid #2563eb;
 
-  pointer-events: none;
+  box-shadow:
 
-  animation: markings-spin 36s linear infinite;
+    0 0 15px rgba(37, 99, 235, 0.75),
 
-  transform-origin: center center;
+    inset 0 0 6px rgba(15, 23, 42, 0.9);
 
 }
 
 
 
-.lens-markings span {
+/* Inner glass */
+
+
+
+.lens-inner {
+
+  position: absolute;
+
+  inset: 15px;
+
+  border-radius: 50%;
+
+  background:
+
+    radial-gradient(circle at 30% 25%, #1e293b 0, #020617 50%, #000 100%);
+
+  box-shadow:
+
+    inset 0 10px 16px rgba(148, 163, 184, 0.15),
+
+    inset 0 -8px 12px rgba(15, 23, 42, 0.9);
+
+}
+
+
+
+/* Soft glow on glass */
+
+
+
+.lens-glow {
+
+  position: absolute;
+
+  width: 16px;
+
+  height: 16px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(circle, #f9fafb 0, rgba(249, 250, 251, 0.1) 70%, transparent 100%);
+
+  top: 20%;
+
+  left: 38%;
+
+  filter: blur(0.3px);
+
+}
+
+
+
+/* Static text labels (no animation) */
+
+
+
+.lens-label {
 
   position: absolute;
 
@@ -194,119 +234,37 @@ body {
 
   transform: translateX(-50%);
 
-  font-size: clamp(7px, 1.5vw, 9px);
+  color: #e5e7eb;
+
+  font-size: 7px;
 
   font-weight: 500;
 
-  text-transform: uppercase;
-
-  color: rgba(241, 245, 249, 0.9);
-
   letter-spacing: 0.18em;
+
+  text-transform: uppercase;
 
   white-space: nowrap;
 
-}
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.9);
 
-
-
-.lens-markings .mark-top {
-
-  top: 7%;
+  pointer-events: none;
 
 }
 
 
 
-.lens-markings .mark-bottom {
+.lens-label-top {
 
-  bottom: 7%;
-
-  transform: translateX(-50%) rotate(180deg);
+  top: 4px;
 
 }
 
 
 
-/* inner glass + iris */
+.lens-label-bottom {
 
-.lens-inner {
-
-  position: relative;
-
-  width: 54px;
-
-  height: 54px;
-
-  border-radius: 50%;
-
-  overflow: hidden;
-
-  background: radial-gradient(circle at 30% 20%, #1f2937, #020617 80%);
-
-  box-shadow:
-
-    inset 0 0 16px rgba(15, 23, 42, 0.85),
-
-    0 0 0 1px rgba(15, 23, 42, 0.9);
-
-}
-
-
-
-.lens-iris {
-
-  position: absolute;
-
-  inset: -20%;
-
-  background: conic-gradient(
-
-    from 180deg,
-
-    #020617 0deg,
-
-    #111827 60deg,
-
-    #020617 120deg,
-
-    #111827 180deg,
-
-    #020617 240deg,
-
-    #111827 300deg,
-
-    #020617 360deg
-
-  );
-
-  opacity: 0.8;
-
-  animation: iris-spin 22s linear infinite;
-
-}
-
-
-
-.lens-highlight {
-
-  position: absolute;
-
-  width: 20px;
-
-  height: 20px;
-
-  border-radius: 50%;
-
-  background: radial-gradient(circle at 30% 30%, #ffffff, rgba(255, 255, 255, 0));
-
-  top: 20%;
-
-  left: 28%;
-
-  opacity: 0.9;
-
-  filter: blur(0.5px);
+  bottom: 4px;
 
 }
 
@@ -314,9 +272,11 @@ body {
 
 /* Logo text */
 
+
+
 .logo-name {
 
-  font-size: 20px;
+  font-size: 24px;
 
   font-weight: 600;
 
@@ -328,21 +288,31 @@ body {
 
 
 
-/* ---------- HERO TYPOGRAPHY ---------- */
+/* Hero */
+
+
+
+.hero {
+
+  max-width: 720px;
+
+  margin: 32px auto 64px;
+
+  padding: 0 16px 80px;
+
+  text-align: center;
+
+}
 
 
 
 .hero-title {
 
-  font-size: clamp(28px, 5.4vw, 40px);
+  font-size: clamp(32px, 5vw, 40px);
 
-  line-height: 1.1;
+  line-height: 1.15;
 
-  font-weight: 700;
-
-  margin-bottom: 16px;
-
-  color: #f9fafb;
+  margin: 24px 0 16px;
 
 }
 
@@ -350,21 +320,21 @@ body {
 
 .hero-subtitle {
 
-  max-width: 600px;
+  margin: 0 auto 32px;
 
-  margin: 0 auto 28px;
+  max-width: 620px;
 
-  font-size: 15px;
+  font-size: 16px;
 
   line-height: 1.6;
 
-  color: #cbd5f5;
+  color: var(--text-muted);
 
 }
 
 
 
-/* ---------- BUTTONS ---------- */
+/* Buttons */
 
 
 
@@ -372,15 +342,13 @@ body {
 
   display: flex;
 
-  flex-direction: column;
+  flex-wrap: wrap;
+
+  justify-content: center;
 
   gap: 12px;
 
-  align-items: stretch;
-
-  max-width: 420px;
-
-  margin: 0 auto 16px;
+  margin-bottom: 16px;
 
 }
 
@@ -388,11 +356,17 @@ body {
 
 .btn {
 
-  border: none;
+  min-width: 220px;
+
+  padding: 14px 24px;
 
   border-radius: 999px;
 
-  padding: 14px 22px;
+  border: 1px solid var(--btn-border);
+
+  background: linear-gradient(to bottom, #020617, #020617);
+
+  color: var(--text-main);
 
   font-size: 16px;
 
@@ -400,27 +374,17 @@ body {
 
   cursor: pointer;
 
-  background: rgba(15, 23, 42, 0.9);
-
-  color: #e5ecff;
-
-  box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.35);
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
 
   transition:
 
-    background 0.2s ease,
+    transform 160ms ease-out,
 
-    box-shadow 0.2s ease,
+    box-shadow 160ms ease-out,
 
-    transform 0.1s ease,
+    background 160ms ease-out,
 
-    color 0.2s ease;
+    border-color 160ms ease-out;
 
 }
 
@@ -428,29 +392,11 @@ body {
 
 .btn.primary {
 
-  background: linear-gradient(90deg, #2563eb, #6366f1);
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
 
-  color: #f9fafb;
+  border-color: rgba(129, 140, 248, 0.7);
 
-  box-shadow:
-
-    0 14px 35px rgba(37, 99, 235, 0.45),
-
-    0 0 0 1px rgba(129, 140, 248, 0.4);
-
-}
-
-
-
-.btn.primary:hover {
-
-  box-shadow:
-
-    0 18px 45px rgba(37, 99, 235, 0.6),
-
-    0 0 0 1px rgba(191, 219, 254, 0.8);
-
-  transform: translateY(-1px);
+  box-shadow: 0 0 40px rgba(79, 70, 229, 0.5);
 
 }
 
@@ -458,117 +404,115 @@ body {
 
 .btn:hover {
 
-  background: rgba(15, 23, 42, 1);
+  transform: translateY(-1px);
+
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.8);
 
 }
 
 
 
-.btn:active {
+.btn.primary:hover {
 
-  transform: translateY(1px) scale(0.99);
-
-  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.7);
+  box-shadow: 0 18px 45px rgba(79, 70, 229, 0.75);
 
 }
 
 
-
-/* Speak button */
 
 .btn.speak {
 
-  margin: 6px auto 0;
+  margin-top: 4px;
 
-  max-width: 260px;
+  background: radial-gradient(circle at 10% 0, #020617 0, #020617 50%, #020617 100%);
 
-  background: radial-gradient(circle at 20% 0, #1e293b, #020617 70%);
-
-  box-shadow:
-
-    0 14px 30px rgba(15, 23, 42, 0.9),
-
-    0 0 0 1px rgba(148, 163, 184, 0.45);
+  min-width: 190px;
 
 }
 
 
 
-/* ---------- ANIMATIONS ---------- */
+/* Responsive */
 
 
 
-@keyframes iris-spin {
+@media (max-width: 600px) {
 
-  from {
+  .wordmark {
 
-    transform: rotate(0deg);
+    padding-inline: 20px;
 
-  }
-
-  to {
-
-    transform: rotate(360deg);
-
-  }
-
-}
-
-
-
-@keyframes markings-spin {
-
-  from {
-
-    transform: rotate(0deg);
-
-  }
-
-  to {
-
-    transform: rotate(360deg);
-
-  }
-
-}
-
-
-
-/* ---------- RESPONSIVE ---------- */
-
-
-
-@media (min-width: 640px) {
-
-  body {
-
-    padding-top: 40px;
+    gap: 14px;
 
   }
 
 
 
-  .hero-title {
+  .logo-name {
 
-    margin-top: 12px;
-
-  }
-
-
-
-  .btn-row {
-
-    flex-direction: row;
-
-    justify-content: center;
+    font-size: 20px;
 
   }
 
 
 
-  .btn-row .btn {
+  .lens-badge {
 
-    min-width: 190px;
+    width: 60px;
+
+    height: 60px;
+
+  }
+
+
+
+  .lens-outer {
+
+    width: 54px;
+
+    height: 54px;
+
+  }
+
+
+
+  .lens-ring {
+
+    inset: 8px;
+
+  }
+
+
+
+  .lens-inner {
+
+    inset: 14px;
+
+  }
+
+
+
+  .lens-label {
+
+    font-size: 6px;
+
+    letter-spacing: 0.16em;
+
+  }
+
+
+
+  .hero {
+
+    padding-bottom: 64px;
+
+  }
+
+
+
+  .btn {
+
+    min-width: 100%;
 
   }
 
