@@ -18,13 +18,25 @@
 
   <div class="page">
 
-    <!-- Header -->
 
-    <header class="header">
+
+    <!-- Top Bar -->
+
+    <header class="top-bar">
 
       <div class="logo-row">
 
-        <div class="logo-mark">◎</div>
+        <!-- عدّل مسار اللوغو هنا حسب ملفك -->
+
+        <img
+
+          src="images/fixlens-logo.svg"
+
+          alt="FixLens logo"
+
+          class="logo-img"
+
+        />
 
         <span class="logo-text">FixLens</span>
 
@@ -34,13 +46,7 @@
 
         <a href="#how">How it works</a>
 
-        <a href="#use-cases">Use cases</a>
-
-        <a href="#demo">Demo</a>
-
-        <!-- ممكن لاحقاً نخليها تفتح فورم حقيقي أو صفحة signup -->
-
-        <button class="nav-cta" type="button">Get early access</button>
+        <a href="#what">What it can fix</a>
 
       </nav>
 
@@ -48,123 +54,135 @@
 
 
 
-    <!-- Main -->
+    <!-- Main Content -->
 
     <main class="main">
+
+
 
       <!-- Hero -->
 
       <section class="hero">
 
-        <div class="hero-left">
+        <h1>Fix problems in the real world with AI.</h1>
 
-          <div class="pill">AI diagnostic assistant</div>
+        <p>
 
-          <h1>Fix problems in the real world with AI.</h1>
+          Describe the issue or upload a photo — FixLens Brain analyzes engines,
 
-          <p class="hero-sub">
+          appliances, and electronics, then guides you step by step.
 
-            Describe the issue or upload a photo —
+        </p>
 
-            <span class="highlight">FixLens Brain</span> analyzes engines, appliances,
-
-            and electronics, then guides you step by step.
-
-          </p>
+      </section>
 
 
 
-          <div class="hero-actions">
+      <!-- Chat Shell -->
 
-            <!-- زر يفتح صفحة التشخيص الفعلية -->
+      <section class="chat-shell">
 
-            <a href="diagnosis.html" class="btn btn-primary">Start diagnosis</a>
+        <div class="chat-panel" id="chat">
 
-            <a href="diagnosis.html#upload" class="btn btn-ghost">Upload a photo</a>
+          <!-- Example welcome message -->
+
+          <div class="bubble bubble-ai">
+
+            <div class="bubble-label">FixLens Brain</div>
+
+            <p>
+
+              Hi, I’m your diagnostic assistant. Describe what’s happening or
+
+              upload a photo of the problem. You can write in English or
+
+              العربية — I’ll reply in the same language.
+
+            </p>
+
+          </div>
+
+
+
+          <div class="bubble bubble-user">
+
+            <div class="bubble-label">You</div>
+
+            <p>My car makes a squeaking noise at low speed when I brake.</p>
 
           </div>
 
 
 
-          <div class="input-row">
+          <div class="bubble bubble-ai">
 
-            <input
+            <div class="bubble-label">FixLens Brain</div>
 
-              type="text"
+            <p>
 
-              placeholder='Type your problem… e.g. “My car engine shakes when I stop.”'
+              This often points to worn brake pads. I’ll help you estimate risk
 
-            />
+              level and the next steps after you share a real photo or more
 
-            <button class="mic-btn" aria-label="Voice input">
+              details.
 
-              🎙
-
-            </button>
+            </p>
 
           </div>
-
-          <p class="hero-note">
-
-            Soon you’ll be able to speak instead of typing — FixLens Brain will listen.
-
-          </p>
 
         </div>
 
 
 
-        <div class="hero-right">
+        <!-- Analysis strip (loader) -->
 
-          <div class="phone-frame">
+        <div class="analysis-strip" id="analysisStrip" hidden>
 
-            <div class="status-bar">
+          <div class="spinner"></div>
 
-              <span class="dot"></span>
+          <div class="analysis-text">
 
-              <span class="dot"></span>
+            <span class="analysis-main">Analyzing your photo and description…</span>
 
-              <span class="dot"></span>
+            <span class="analysis-sub" id="analysisStep">
 
-            </div>
+              Checking similar real-world issues…
 
-            <div class="phone-body">
-
-              <p class="phone-label">Live diagnosis</p>
-
-              <div class="photo-placeholder">
-
-                <span>Upload photo</span>
-
-              </div>
-
-              <div class="diagnosis-card">
-
-                <p class="card-title">Possible issue</p>
-
-                <p class="card-main">
-
-                  Front brake pads are worn out. You may also hear a grinding sound when stopping.
-
-                </p>
-
-                <p class="card-steps-title">Suggested next steps</p>
-
-                <ul class="card-list">
-
-                  <li>Schedule an inspection within the next 7 days.</li>
-
-                  <li>Avoid sudden hard braking when possible.</li>
-
-                  <li>We’ll help you estimate repair cost in your area.</li>
-
-                </ul>
-
-              </div>
-
-            </div>
+            </span>
 
           </div>
+
+        </div>
+
+
+
+        <!-- Input row -->
+
+        <div class="chat-input-row">
+
+          <label class="upload-btn">
+
+            <input type="file" id="photoInput" accept="image/*" />
+
+            <span>📷 Upload photo</span>
+
+          </label>
+
+
+
+          <textarea
+
+            id="userInput"
+
+            rows="1"
+
+            placeholder="اكتب مشكلتك هنا أو بالإنجليزي…"
+
+          ></textarea>
+
+
+
+          <button id="sendBtn">Send</button>
 
         </div>
 
@@ -172,31 +190,21 @@
 
 
 
-      <!-- Use cases -->
+      <!-- Info sections -->
 
-      <section id="use-cases" class="section">
+      <section class="info-grid" id="what">
 
-        <div class="section-header">
+        <h2>What FixLens can understand today</h2>
 
-          <h2>What FixLens can understand today.</h2>
+        <div class="info-cards">
 
-          <p>
-
-            Built for noisy, imperfect, real-world photos — garages, kitchens, and workshops.
-
-          </p>
-
-        </div>
-
-        <div class="cards-grid">
-
-          <article class="card">
+          <article class="info-card">
 
             <h3>Cars & vehicles</h3>
 
             <p>
 
-              Capture a photo of your dashboard, engine, or unusual wear.
+              Capture a photo of your dashboard, engine, leaks, or unusual wear.
 
               FixLens suggests likely issues before you visit a mechanic.
 
@@ -204,25 +212,33 @@
 
           </article>
 
-          <article class="card">
+
+
+          <article class="info-card">
 
             <h3>Home appliances</h3>
 
             <p>
 
-              Ovens, washers, fridges, AC units. Upload a photo of an error code or damaged part.
+              Ovens, washers, fridges, AC units. Upload a photo of error codes
+
+              or damaged parts for quick guidance.
 
             </p>
 
           </article>
 
-          <article class="card">
+
+
+          <article class="info-card">
 
             <h3>Electronics & tools</h3>
 
             <p>
 
-              From power tools to audio gear. FixLens reads lights, indicators, and visible damage.
+              From power tools to audio gear, FixLens reads lights, textures,
+
+              and visible damage to help you decide what to do next.
 
             </p>
 
@@ -234,111 +250,43 @@
 
 
 
-      <!-- How it works -->
+      <section class="info-steps" id="how">
 
-      <section id="how" class="section">
+        <h2>How FixLens Brain works</h2>
 
-        <div class="section-header">
+        <ol>
 
-          <h2>How FixLens Brain works.</h2>
+          <li>
 
-          <p>Under the hood, multiple models collaborate to understand your problem.</p>
+            <strong>See what you see.</strong>
 
-        </div>
+            Vision models decode your photo — leaks, lights, textures, and
 
-        <div class="steps">
+            context.
 
-          <div class="step">
+          </li>
 
-            <div class="step-number">1</div>
+          <li>
 
-            <h3>See what you see</h3>
+            <strong>Reason like a technician.</strong>
 
-            <p>
+            A reasoning layer compares patterns with thousands of known issues
 
-              Vision models decode your photo — warning lights, parts, textures, and context.
+            and repair paths.
 
-            </p>
+          </li>
 
-          </div>
+          <li>
 
-          <div class="step">
+            <strong>Guide you step by step.</strong>
 
-            <div class="step-number">2</div>
+            You get clear explanation, risk level, and recommended next steps —
 
-            <h3>Reason like a technician</h3>
+            in plain language.
 
-            <p>
+          </li>
 
-              A reasoning layer compares patterns with thousands of known issues and repair paths.
-
-            </p>
-
-          </div>
-
-          <div class="step">
-
-            <div class="step-number">3</div>
-
-            <h3>Guide you step by step</h3>
-
-            <p>
-
-              You get a clear explanation, risk level, and recommended next steps — in plain language.
-
-            </p>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-
-      <!-- Demo -->
-
-      <section id="demo" class="section demo-section">
-
-        <div class="section-header">
-
-          <h2>Try a sample diagnosis.</h2>
-
-          <p>No signup yet — just see how FixLens Brain talks.</p>
-
-        </div>
-
-        <div class="demo-card">
-
-          <div class="demo-left">
-
-            <p class="demo-label">Sample input</p>
-
-            <p class="demo-input">
-
-              “My car makes a squeaking noise at low speed, mostly when I brake.”
-
-            </p>
-
-          </div>
-
-          <div class="demo-right">
-
-            <p class="demo-label">FixLens Brain</p>
-
-            <p class="demo-output">
-
-              This often points to worn brake pads or a glazed brake surface. It’s usually not
-
-              an emergency, but you should schedule a brake inspection within the next 1–2 weeks.
-
-              If the sound becomes louder or you feel vibration in the pedal, treat it as urgent.
-
-            </p>
-
-          </div>
-
-        </div>
+        </ol>
 
       </section>
 
@@ -350,13 +298,7 @@
 
     <footer class="footer">
 
-      <div class="footer-left">
-
-        <span class="footer-logo">FixLens</span>
-
-        <span class="footer-copy">© 2025 FixLens.ai — All rights reserved.</span>
-
-      </div>
+      <span>FixLens © 2025 FixLens.ai — All rights reserved.</span>
 
       <div class="footer-links">
 
@@ -371,6 +313,236 @@
     </footer>
 
   </div>
+
+
+
+  <script>
+
+    // Simple chat front-end logic
+
+    const chatEl = document.getElementById('chat');
+
+    const userInputEl = document.getElementById('userInput');
+
+    const photoInputEl = document.getElementById('photoInput');
+
+    const sendBtnEl = document.getElementById('sendBtn');
+
+    const analysisStripEl = document.getElementById('analysisStrip');
+
+    const analysisStepEl = document.getElementById('analysisStep');
+
+
+
+    const analysisMessages = [
+
+      'Checking similar real-world cases…',
+
+      'Evaluating risk level and urgency…',
+
+      'Estimating likely repair paths…',
+
+      'Preparing a clear explanation for you…'
+
+    ];
+
+
+
+    let analysisTimer = null;
+
+    let analysisIndex = 0;
+
+
+
+    function startAnalysisAnimation() {
+
+      analysisStripEl.hidden = false;
+
+      analysisIndex = 0;
+
+      analysisStepEl.textContent = analysisMessages[analysisIndex];
+
+
+
+      if (analysisTimer) clearInterval(analysisTimer);
+
+      analysisTimer = setInterval(() => {
+
+        analysisIndex = (analysisIndex + 1) % analysisMessages.length;
+
+        analysisStepEl.textContent = analysisMessages[analysisIndex];
+
+      }, 1800);
+
+    }
+
+
+
+    function stopAnalysisAnimation() {
+
+      analysisStripEl.hidden = true;
+
+      if (analysisTimer) clearInterval(analysisTimer);
+
+      analysisTimer = null;
+
+    }
+
+
+
+    function appendBubble(text, role = 'user') {
+
+      if (!text) return;
+
+      const bubble = document.createElement('div');
+
+      bubble.className = 'bubble ' + (role === 'user' ? 'bubble-user' : 'bubble-ai');
+
+
+
+      const label = document.createElement('div');
+
+      label.className = 'bubble-label';
+
+      label.textContent = role === 'user' ? 'You' : 'FixLens Brain';
+
+
+
+      const p = document.createElement('p');
+
+      p.textContent = text;
+
+
+
+      bubble.appendChild(label);
+
+      bubble.appendChild(p);
+
+      chatEl.appendChild(bubble);
+
+      chatEl.scrollTop = chatEl.scrollHeight;
+
+    }
+
+
+
+    async function sendMessage() {
+
+      const text = userInputEl.value.trim();
+
+      const file = photoInputEl.files[0];
+
+
+
+      if (!text && !file) {
+
+        return;
+
+      }
+
+
+
+      appendBubble(text || '[Photo only]', 'user');
+
+      userInputEl.value = '';
+
+
+
+      startAnalysisAnimation();
+
+
+
+      try {
+
+        const formData = new FormData();
+
+        if (text) formData.append('description', text);
+
+        if (file) formData.append('photo', file);
+
+
+
+        // عدّل مسار ال API هنا إذا احتجت
+
+        const response = await fetch('/api/fixlens', {
+
+          method: 'POST',
+
+          body: formData
+
+        });
+
+
+
+        let replyText = '';
+
+
+
+        if (response.ok) {
+
+          const data = await response.json();
+
+          // نتوقع أن ال API يرجع { answer: "..." }
+
+          replyText = data.answer || 'I analyzed your issue and prepared some next steps for you.';
+
+        } else {
+
+          replyText =
+
+            'I had trouble contacting the server. Please try again in a moment or check your connection.';
+
+        }
+
+
+
+        stopAnalysisAnimation();
+
+        appendBubble(replyText, 'ai');
+
+      } catch (err) {
+
+        console.error(err);
+
+        stopAnalysisAnimation();
+
+        appendBubble(
+
+          'Something went wrong while analyzing the problem. Please try again shortly.',
+
+          'ai'
+
+        );
+
+      } finally {
+
+        // Reset file input after send
+
+        photoInputEl.value = '';
+
+      }
+
+    }
+
+
+
+    sendBtnEl.addEventListener('click', sendMessage);
+
+
+
+    userInputEl.addEventListener('keydown', (event) => {
+
+      if (event.key === 'Enter' && !event.shiftKey) {
+
+        event.preventDefault();
+
+        sendMessage();
+
+      }
+
+    });
+
+  </script>
 
 </body>
 
