@@ -18,17 +18,23 @@
 
 <body>
 
-
-
   <!-- HEADER -->
 
   <header class="header">
 
     <div class="header-left">
 
-      <img src="images/fixlens-logo.jpg" alt="FixLens logo" class="logo-img" />
+      <!-- Logo image ONLY (includes the name inside the JPG) -->
 
-      <span class="logo-title">FixLens</span>
+      <img
+
+        src="images/fixlens-logo.jpg"
+
+        alt="FixLens logo"
+
+        class="logo-img"
+
+      />
 
     </div>
 
@@ -46,7 +52,7 @@
 
 
 
-  <!-- MAIN HERO -->
+  <!-- HERO -->
 
   <section class="hero">
 
@@ -54,25 +60,35 @@
 
     <p class="subtitle">
 
-      Describe the issue or upload a photo — FixLens Brain analyzes engines,
+      Point your camera at the problem or describe it in your own words.
 
-      appliances, and electronics, then guides you step by step.
+      FixLens Brain analyzes engines, appliances, and electronics, then guides you step by step.
 
     </p>
 
 
 
-    <!-- MAIN ACTION BUTTONS -->
+    <!-- THREE MAIN ACTIONS -->
 
     <div class="main-buttons">
 
-      <button class="action-btn" onclick="startDiagnosis()">Start diagnosis</button>
+      <button class="action-btn primary" onclick="startDiagnosis()">
 
-      <button class="action-btn" onclick="uploadPhoto()">Upload photo</button>
+        Describe with text
 
-      <button class="action-btn mic-btn">
+      </button>
 
-        <span class="mic-icon">🎤</span> Speak
+      <button class="action-btn" onclick="uploadPhoto()">
+
+        Upload a photo
+
+      </button>
+
+      <button class="action-btn ghost">
+
+        <span class="mic-icon">🎤</span>
+
+        Speak (coming soon)
 
       </button>
 
@@ -82,7 +98,7 @@
 
 
 
-  <!-- CHAT BOX -->
+  <!-- CHAT AREA -->
 
   <section class="chat-box">
 
@@ -98,7 +114,7 @@
 
         type="text"
 
-        placeholder="Describe your issue…"
+        placeholder="Describe your issue in any language…"
 
         autocomplete="off"
 
@@ -114,17 +130,35 @@
 
   <!-- HOW IT WORKS -->
 
-  <section id="how" class="section">
+  <section id="how" class="section how-section">
 
     <h2>How FixLens Brain works</h2>
 
     <ol>
 
-      <li><strong>See what you see.</strong> Vision models decode your photo — leaks, lights, textures, and context.</li>
+      <li>
 
-      <li><strong>Reason like a technician.</strong> A reasoning layer compares patterns with thousands of known issues.</li>
+        <strong>See.</strong> It interprets your text (and photo, if you add one)
 
-      <li><strong>Guide you step by step.</strong> You get a clear explanation, risk level, and next steps.</li>
+        — leaks, lights, textures, sounds, and context.
+
+      </li>
+
+      <li>
+
+        <strong>Reason.</strong> It compares patterns with thousands of
+
+        real-world cases and repair paths.
+
+      </li>
+
+      <li>
+
+        <strong>Guide.</strong> It explains likely causes, risk level,
+
+        and safe next steps in plain language.
+
+      </li>
 
     </ol>
 
@@ -134,41 +168,65 @@
 
   <!-- WHAT IT CAN FIX -->
 
-  <section id="what" class="section">
+  <section id="what" class="section what-section">
 
     <h2>What FixLens can understand today</h2>
 
+    <p class="what-subtitle">
+
+      Built for noisy, imperfect, real-world problems — from garages and driveways to kitchens and workshops.
+
+    </p>
 
 
-    <div class="card-list">
 
-      <div class="card">
+    <div class="what-grid">
+
+      <article class="what-card">
 
         <h3>Cars & vehicles</h3>
 
-        <p>Engine leaks, dashboard lights, noises, wear… Upload a photo before you visit a mechanic.</p>
+        <p>
 
-      </div>
+          Engine leaks, dashboard lights, unusual noises, vibrations, tire issues, worn brakes,
+
+          and more — before you visit a mechanic.
+
+        </p>
+
+      </article>
 
 
 
-      <div class="card">
+      <article class="what-card">
 
         <h3>Home appliances</h3>
 
-        <p>Washers, fridges, AC units, ovens, error codes, damaged parts.</p>
+        <p>
 
-      </div>
+          Washers, dryers, fridges, ovens, AC units, and heaters — error codes, strange
+
+          sounds, leaks, or parts that don’t look right.
+
+        </p>
+
+      </article>
 
 
 
-      <div class="card">
+      <article class="what-card">
 
         <h3>Electronics & tools</h3>
 
-        <p>Power tools, wiring issues, indicators, lights, sound problems.</p>
+        <p>
 
-      </div>
+          Power tools, audio gear, small electronics, indicator lights, wiring problems,
+
+          and visible damage on cables or connectors.
+
+        </p>
+
+      </article>
 
     </div>
 
@@ -177,6 +235,28 @@
 
 
   <script src="script.js"></script>
+
+
+
+  <script>
+
+    // Simple helpers for the top buttons:
+
+    function startDiagnosis() {
+
+      document.getElementById("user-input").focus();
+
+    }
+
+
+
+    function uploadPhoto() {
+
+      alert("Photo upload support is coming soon. For now, describe what you see and FixLens will guide you.");
+
+    }
+
+  </script>
 
 </body>
 
