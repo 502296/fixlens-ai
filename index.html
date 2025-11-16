@@ -8,511 +8,175 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>FixLens – AI Diagnosis for Real-World Problems</title>
+  <title>FixLens – AI Diagnostics</title>
 
   <link rel="stylesheet" href="style.css" />
 
 </head>
 
+
+
 <body>
 
-  <div class="page">
+
+
+  <!-- HEADER -->
+
+  <header class="header">
+
+    <div class="header-left">
+
+      <img src="images/fixlens-logo.jpg" alt="FixLens logo" class="logo-img" />
+
+      <span class="logo-title">FixLens</span>
+
+    </div>
 
 
 
-    <!-- Top Bar -->
+    <nav class="nav">
 
-    <header class="top-bar">
+      <a href="#how">How it works</a>
 
-      <div class="logo-row">
+      <a href="#what">What it can fix</a>
 
-        <!-- غيّر مسار اللوغو حسب ملفك -->
+    </nav>
 
-        <img
+  </header>
 
-          src="images/fixlens-logo.svg"
 
-          alt="FixLens logo"
 
-          class="logo-img"
+  <!-- MAIN HERO -->
 
-        />
+  <section class="hero">
 
-        <span class="logo-text">FixLens</span>
+    <h1>Fix problems in the real world with AI.</h1>
+
+    <p class="subtitle">
+
+      Describe the issue or upload a photo — FixLens Brain analyzes engines,
+
+      appliances, and electronics, then guides you step by step.
+
+    </p>
+
+
+
+    <!-- MAIN ACTION BUTTONS -->
+
+    <div class="main-buttons">
+
+      <button class="action-btn" onclick="startDiagnosis()">Start diagnosis</button>
+
+      <button class="action-btn" onclick="uploadPhoto()">Upload photo</button>
+
+      <button class="action-btn mic-btn">
+
+        <span class="mic-icon">🎤</span> Speak
+
+      </button>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- CHAT BOX -->
+
+  <section class="chat-box">
+
+    <div id="chat-container"></div>
+
+
+
+    <div class="input-row">
+
+      <input
+
+        id="user-input"
+
+        type="text"
+
+        placeholder="Describe your issue…"
+
+        autocomplete="off"
+
+      />
+
+      <button class="send-btn" onclick="sendMessage()">Send</button>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- HOW IT WORKS -->
+
+  <section id="how" class="section">
+
+    <h2>How FixLens Brain works</h2>
+
+    <ol>
+
+      <li><strong>See what you see.</strong> Vision models decode your photo — leaks, lights, textures, and context.</li>
+
+      <li><strong>Reason like a technician.</strong> A reasoning layer compares patterns with thousands of known issues.</li>
+
+      <li><strong>Guide you step by step.</strong> You get a clear explanation, risk level, and next steps.</li>
+
+    </ol>
+
+  </section>
+
+
+
+  <!-- WHAT IT CAN FIX -->
+
+  <section id="what" class="section">
+
+    <h2>What FixLens can understand today</h2>
+
+
+
+    <div class="card-list">
+
+      <div class="card">
+
+        <h3>Cars & vehicles</h3>
+
+        <p>Engine leaks, dashboard lights, noises, wear… Upload a photo before you visit a mechanic.</p>
 
       </div>
 
-      <nav class="nav">
 
-        <a href="#how">How it works</a>
 
-      </nav>
+      <div class="card">
 
-    </header>
+        <h3>Home appliances</h3>
 
-
-
-    <!-- Main -->
-
-    <main class="main">
-
-      <!-- Hero -->
-
-      <section class="hero">
-
-        <h1>Fix problems in the real world with AI.</h1>
-
-        <p>
-
-          Point your camera at the problem or describe it in your own words.
-
-          FixLens Brain analyzes engines, appliances, and electronics, then
-
-          guides you step by step.
-
-        </p>
-
-      </section>
-
-
-
-      <!-- Chat Shell -->
-
-      <section class="chat-shell">
-
-        <!-- Quick actions -->
-
-        <div class="quick-actions">
-
-          <button class="qa-btn qa-primary" id="qaText">
-
-            Start with text
-
-          </button>
-
-          <button class="qa-btn" id="qaPhoto">
-
-            Start with photo
-
-          </button>
-
-          <button class="qa-btn qa-ghost" id="qaVoice" type="button">
-
-            <span class="qa-mic-icon">🎤</span>
-
-            Voice (soon)
-
-          </button>
-
-        </div>
-
-
-
-        <!-- Chat panel -->
-
-        <div class="chat-panel" id="chat">
-
-          <div class="bubble bubble-ai">
-
-            <div class="bubble-label">FixLens Brain</div>
-
-            <p>
-
-              Hi, I’m your diagnostic assistant. Describe what’s happening
-
-              or upload a photo of the problem. You can write in any
-
-              language — I’ll reply in the same one.
-
-            </p>
-
-          </div>
-
-        </div>
-
-
-
-        <!-- Analysis strip -->
-
-        <div class="analysis-strip" id="analysisStrip" hidden>
-
-          <div class="spinner"></div>
-
-          <div class="analysis-text">
-
-            <span class="analysis-main">
-
-              Analyzing your problem…
-
-            </span>
-
-            <span class="analysis-sub" id="analysisStep">
-
-              Checking similar real-world issues…
-
-            </span>
-
-          </div>
-
-        </div>
-
-
-
-        <!-- Input row -->
-
-        <div class="chat-input-row">
-
-          <!-- ملف الصورة مخفي، نتحكم به من الأزرار -->
-
-          <input type="file" id="photoInput" accept="image/*" hidden />
-
-
-
-          <textarea
-
-            id="userInput"
-
-            rows="1"
-
-            placeholder="Type your problem in any language…"
-
-          ></textarea>
-
-
-
-          <button id="sendBtn">Send</button>
-
-        </div>
-
-
-
-        <!-- Small hint -->
-
-        <p class="hint">
-
-          FixLens can help with cars & vehicles, home appliances, and everyday electronics.
-
-        </p>
-
-      </section>
-
-
-
-      <!-- How it works (short, not crowded) -->
-
-      <section class="info-steps" id="how">
-
-        <h2>How FixLens Brain works</h2>
-
-        <ol>
-
-          <li><strong>See.</strong> It interprets your text and any uploaded photo.</li>
-
-          <li><strong>Reason.</strong> It compares patterns with thousands of real-world cases.</li>
-
-          <li><strong>Guide.</strong> It explains likely causes and suggests safe next steps.</li>
-
-        </ol>
-
-      </section>
-
-    </main>
-
-
-
-    <!-- Footer -->
-
-    <footer class="footer">
-
-      <span>FixLens © 2025 FixLens.ai — All rights reserved.</span>
-
-      <div class="footer-links">
-
-        <a href="#">Privacy</a>
-
-        <a href="#">Terms</a>
-
-        <a href="#">Contact</a>
+        <p>Washers, fridges, AC units, ovens, error codes, damaged parts.</p>
 
       </div>
 
-    </footer>
 
-  </div>
 
+      <div class="card">
 
+        <h3>Electronics & tools</h3>
 
-  <script>
+        <p>Power tools, wiring issues, indicators, lights, sound problems.</p>
 
-    const chatEl = document.getElementById('chat');
+      </div>
 
-    const userInputEl = document.getElementById('userInput');
+    </div>
 
-    const sendBtnEl = document.getElementById('sendBtn');
+  </section>
 
-    const photoInputEl = document.getElementById('photoInput');
 
-    const analysisStripEl = document.getElementById('analysisStrip');
 
-    const analysisStepEl = document.getElementById('analysisStep');
-
-
-
-    const qaTextBtn = document.getElementById('qaText');
-
-    const qaPhotoBtn = document.getElementById('qaPhoto');
-
-    const qaVoiceBtn = document.getElementById('qaVoice');
-
-
-
-    const analysisMessages = [
-
-      'Checking similar real-world cases…',
-
-      'Evaluating risk level and urgency…',
-
-      'Estimating likely repair paths…',
-
-      'Preparing a clear explanation for you…'
-
-    ];
-
-
-
-    let analysisTimer = null;
-
-    let analysisIndex = 0;
-
-
-
-    function startAnalysisAnimation() {
-
-      analysisStripEl.hidden = false;
-
-      analysisIndex = 0;
-
-      analysisStepEl.textContent = analysisMessages[analysisIndex];
-
-
-
-      if (analysisTimer) clearInterval(analysisTimer);
-
-      analysisTimer = setInterval(() => {
-
-        analysisIndex = (analysisIndex + 1) % analysisMessages.length;
-
-        analysisStepEl.textContent = analysisMessages[analysisIndex];
-
-      }, 1800);
-
-    }
-
-
-
-    function stopAnalysisAnimation() {
-
-      analysisStripEl.hidden = true;
-
-      if (analysisTimer) clearInterval(analysisTimer);
-
-      analysisTimer = null;
-
-    }
-
-
-
-    function appendBubble(text, role = 'user') {
-
-      if (!text) return;
-
-      const bubble = document.createElement('div');
-
-      bubble.className = 'bubble ' + (role === 'user' ? 'bubble-user' : 'bubble-ai');
-
-
-
-      const label = document.createElement('div');
-
-      label.className = 'bubble-label';
-
-      label.textContent = role === 'user' ? 'You' : 'FixLens Brain';
-
-
-
-      const p = document.createElement('p');
-
-      p.textContent = text;
-
-
-
-      bubble.appendChild(label);
-
-      bubble.appendChild(p);
-
-      chatEl.appendChild(bubble);
-
-      chatEl.scrollTop = chatEl.scrollHeight;
-
-    }
-
-
-
-    async function sendMessage() {
-
-      const text = userInputEl.value.trim();
-
-      const file = photoInputEl.files[0];
-
-
-
-      if (!text && !file) return;
-
-
-
-      // Show user message
-
-      appendBubble(text || '[Photo only]', 'user');
-
-      userInputEl.value = '';
-
-
-
-      startAnalysisAnimation();
-
-
-
-      try {
-
-        const payload = {
-
-          description: text,
-
-          // حالياً نرسل فقط معلومة أن هناك صورة، بدون رفعها فعلياً
-
-          hasPhoto: !!file
-
-        };
-
-
-
-        const response = await fetch('/api/fixlens', {
-
-          method: 'POST',
-
-          headers: {
-
-            'Content-Type': 'application/json'
-
-          },
-
-          body: JSON.stringify(payload)
-
-        });
-
-
-
-        let replyText = '';
-
-
-
-        if (response.ok) {
-
-          const data = await response.json();
-
-          replyText =
-
-            data.answer ||
-
-            'I analyzed your issue and prepared some next steps for you.';
-
-        } else {
-
-          replyText =
-
-            'I had trouble contacting the server. Please try again in a moment.';
-
-        }
-
-
-
-        stopAnalysisAnimation();
-
-        appendBubble(replyText, 'ai');
-
-      } catch (err) {
-
-        console.error(err);
-
-        stopAnalysisAnimation();
-
-        appendBubble(
-
-          'Something went wrong while analyzing the problem. Please try again shortly.',
-
-          'ai'
-
-        );
-
-      } finally {
-
-        photoInputEl.value = '';
-
-      }
-
-    }
-
-
-
-    // Quick actions
-
-    qaTextBtn.addEventListener('click', () => {
-
-      userInputEl.focus();
-
-    });
-
-
-
-    qaPhotoBtn.addEventListener('click', () => {
-
-      photoInputEl.click();
-
-    });
-
-
-
-    qaVoiceBtn.addEventListener('click', () => {
-
-      appendBubble(
-
-        'Voice input is coming soon. For now, describe the issue in text and I will help you.',
-
-        'ai'
-
-      );
-
-    });
-
-
-
-    sendBtnEl.addEventListener('click', sendMessage);
-
-
-
-    userInputEl.addEventListener('keydown', (event) => {
-
-      if (event.key === 'Enter' && !event.shiftKey) {
-
-        event.preventDefault();
-
-        sendMessage();
-
-      }
-
-    });
-
-  </script>
+  <script src="script.js"></script>
 
 </body>
 
