@@ -2,6 +2,8 @@
 
 <html lang="en">
 
+
+
 <head>
 
   <meta charset="UTF-8" />
@@ -26,15 +28,91 @@
 
     <div class="wordmark">
 
-      <span class="logo-icon">
 
-        <span class="logo-ring"></span>
 
-        <span class="logo-core"></span>
+      <!-- NEW PRO LENS LOGO -->
 
-      </span>
+      <div class="lens-logo">
 
-      <span class="logo-name">FixLens</span>
+        <svg class="lens-svg" viewBox="0 0 200 200">
+
+
+
+          <!-- Outer rotating ring with numbers -->
+
+          <g class="ring">
+
+            <circle cx="100" cy="100" r="90" stroke="#1e1e1e" stroke-width="18" fill="none"/>
+
+            <text x="50%" y="32%" text-anchor="middle" fill="#888" font-size="12" font-family="Arial">
+
+              24–70mm
+
+            </text>
+
+            <text x="50%" y="48%" text-anchor="middle" fill="#888" font-size="10" font-family="Arial">
+
+              1:2.8 G MASTER
+
+            </text>
+
+          </g>
+
+
+
+          <!-- Blue glow ring -->
+
+          <circle cx="100" cy="100" r="60" stroke="url(#bluegrad)" stroke-width="14" fill="none" />
+
+
+
+          <!-- Inner lens core -->
+
+          <defs>
+
+            <radialGradient id="glass" cx="50%" cy="50%" r="50%">
+
+              <stop offset="0%" stop-color="#0a0a0a"/>
+
+              <stop offset="60%" stop-color="#0d0d0d"/>
+
+              <stop offset="100%" stop-color="#000"/>
+
+            </radialGradient>
+
+
+
+            <radialGradient id="bluegrad">
+
+              <stop offset="0%" stop-color="#42a5ff"/>
+
+              <stop offset="100%" stop-color="#0070ff"/>
+
+            </radialGradient>
+
+          </defs>
+
+
+
+          <circle cx="100" cy="100" r="40" fill="url(#glass)"/>
+
+
+
+          <!-- highlight -->
+
+          <circle cx="120" cy="85" r="7" fill="rgba(255,255,255,0.85)"/>
+
+
+
+        </svg>
+
+
+
+        <span class="logo-name">FixLens</span>
+
+      </div>
+
+
 
     </div>
 
@@ -46,7 +124,11 @@
 
   <main class="hero">
 
+
+
     <h1 class="hero-title">Fix problems in the real world with AI.</h1>
+
+
 
     <p class="hero-subtitle">
 
@@ -70,16 +152,16 @@
 
 
 
-    <button class="btn speak">
+    <button class="btn speak">🎤 Speak</button>
 
-      🎤 Speak
 
-    </button>
 
   </main>
 
 
 
 </body>
+
+
 
 </html>
