@@ -46,13 +46,13 @@ body {
 
 
 
-/* LENS CONTAINER */
+/* Lens size (slightly smaller now) */
 
 .lens-wrapper {
 
-  width: 130px;
+  width: 110px;
 
-  height: 130px;
+  height: 110px;
 
   position: relative;
 
@@ -60,9 +60,9 @@ body {
 
 
 
-/* OUTER TEXT RING */
+/* OUTER RING */
 
-.lens-text {
+.outer-ring {
 
   position: absolute;
 
@@ -70,57 +70,43 @@ body {
 
   border-radius: 50%;
 
-  border: 6px solid #1c1f27;
+  background: radial-gradient(circle, #2b2f39, #111 70%, #000);
 
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-
-  font-size: 11px;
-
-  color: #9ca3af;
-
-  font-weight: 400;
-
-  text-transform: uppercase;
-
-  letter-spacing: 2px;
-
-  padding: 12px;
-
-  text-align: center;
-
-  flex-direction: column;
-
-  pointer-events: none;
+  border: 5px solid #1a1d24;
 
 }
 
 
 
-/* Rotate each text line around the ring */
+/* MIDDLE BLUE RING */
 
-.lens-text span {
-
-  transform-origin: center;
-
-}
-
-
-
-/* INNER ROTATION */
-
-.inner-rotor {
+.mid-ring {
 
   position: absolute;
 
-  inset: 20px;
+  inset: 18px;
 
   border-radius: 50%;
 
-  background: radial-gradient(#000, #111 60%, #000);
+  border: 6px solid #2f66ff;
+
+  box-shadow: 0 0 18px rgba(50, 90, 255, 0.5);
+
+}
+
+
+
+/* INNER LENS */
+
+.inner-lens {
+
+  position: absolute;
+
+  inset: 30px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(#0a0a0a, #000 70%);
 
   display: flex;
 
@@ -128,33 +114,25 @@ body {
 
   align-items: center;
 
-  animation: spin 6s linear infinite;
-
 }
 
 
 
-/* Deep camera core */
+/* Small reflection spot */
 
-.lens-core {
+.glow-spot {
 
-  width: 45%;
+  width: 16px;
 
-  height: 45%;
+  height: 16px;
 
   border-radius: 50%;
 
-  background: radial-gradient(circle at 30% 30%, #1d1f25, #000);
+  background: rgba(255,255,255,0.8);
 
-}
+  margin-top: -10px;
 
-
-
-@keyframes spin {
-
-  0% { transform: rotate(0deg); }
-
-  100% { transform: rotate(360deg); }
+  margin-left: -10px;
 
 }
 
@@ -172,7 +150,7 @@ body {
 
 
 
-/* HERO SECTION */
+/* HERO */
 
 .hero {
 
@@ -249,8 +227,6 @@ body {
 }
 
 
-
-/* Speak button */
 
 .btn.speak {
 
