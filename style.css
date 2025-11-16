@@ -1,4 +1,34 @@
-/* ========= RESET بسيط ========= */
+:root {
+
+  --bg: #020513;
+
+  --card: #050814;
+
+  --pill: #070c1c;
+
+  --text-main: #ffffff;
+
+  --text-muted: #a5b0d0;
+
+  --accent: #4c6bff;
+
+  --accent-soft: #8394ff;
+
+  --button-dark: #101622;
+
+  --radius-pill: 999px;
+
+  --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.65);
+
+  --font: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+
+    "Segoe UI", sans-serif;
+
+}
+
+
+
+/* RESET بسيط */
 
 *,
 
@@ -16,93 +46,87 @@
 
 
 
-html,
-
 body {
 
-  height: 100%;
+  min-height: 100vh;
+
+  background: radial-gradient(circle at 0% 0%, #081633, #020311 55%, #000109);
+
+  color: var(--text-main);
+
+  font-family: var(--font);
+
+  -webkit-font-smoothing: antialiased;
 
 }
 
 
 
-body {
+.page {
 
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+  min-height: 100vh;
 
-    "Segoe UI", sans-serif;
+  max-width: 720px;
 
-  background: radial-gradient(circle at top, #0f172a 0, #020617 55%, #000 100%);
+  margin: 0 auto;
 
-  color: #e5e7eb;
+  padding: 32px 20px 40px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: stretch;
 
 }
 
 
 
-/* ========= LAYOUT عام ========= */
+/* WORDMARK / CAPSULE */
+
+
 
 .top-header {
-
-  padding: 32px 20px 8px;
 
   display: flex;
 
   justify-content: center;
 
-}
-
-
-
-.hero {
-
-  max-width: 640px;
-
-  margin: 0 auto;
-
-  padding: 24px 20px 56px;
-
-  text-align: center;
+  margin-bottom: 40px;
 
 }
 
 
 
-/* ========= LOGO PILL ========= */
-
-
-
-.logo-pill {
+.wordmark {
 
   display: inline-flex;
 
   align-items: center;
 
-  gap: 20px;
+  gap: 14px;
 
-  padding: 18px 32px;
+  padding: 14px 32px 14px 18px;
 
-  border-radius: 999px;
+  background: radial-gradient(circle at 10% 0%, #121b33, #050814 70%);
 
-  background: radial-gradient(circle at top left, #111827 0, #020617 60%);
+  border-radius: var(--radius-pill);
 
-  box-shadow:
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.65);
 
-    0 18px 40px rgba(0, 0, 0, 0.75),
-
-    0 0 0 1px rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(149, 167, 255, 0.12);
 
 }
 
 
 
-.lens-wrap {
+.lens-logo {
 
-  width: 82px;
+  width: 72px;
 
-  height: 82px;
+  height: 72px;
 
-  display: flex;
+  display: inline-flex;
 
   align-items: center;
 
@@ -112,13 +136,11 @@ body {
 
 
 
-/* SVG sizing */
-
 .lens-svg {
 
-  width: 82px;
+  width: 72px;
 
-  height: 82px;
+  height: 72px;
 
   display: block;
 
@@ -126,67 +148,17 @@ body {
 
 
 
-/* Outer ring & inner parts */
-
-.lens-ring {
-
-  fill: #020617;
-
-  stroke: #020617;
-
-  stroke-width: 4;
-
-}
-
-
-
-/* inner rotating group */
-
-.lens-inner-rotating {
-
-  transform-origin: 50% 50%;
-
-  transform-box: fill-box;
-
-  animation: lens-spin 18s linear infinite;
-
-}
-
-
-
-/* subtle vignette for depth */
-
-.lens-inner-vignette {
-
-  fill: radial-gradient(circle at 30% 25%, #000 0, #020617 30%, #000 100%);
-
-  fill: rgba(0, 0, 0, 0.35);
-
-}
-
-
-
-/* highlight dot */
-
-.lens-highlight {
-
-  fill: #f9fafb;
-
-  opacity: 0.9;
-
-}
-
-
-
-/* circular text around outer edge */
+/* نص الدائرة */
 
 .lens-text {
 
-  font-size: 8px;
+  fill: rgba(198, 210, 255, 0.9);
 
-  letter-spacing: 0.18em;
+  font-size: 9px;
 
-  fill: #e5e7eb;
+  font-family: "SF Pro Text", system-ui, -apple-system, BlinkMacSystemFont,
+
+    "Segoe UI", sans-serif;
 
   text-transform: uppercase;
 
@@ -194,195 +166,15 @@ body {
 
 
 
-/* LOGO WORD */
+/* دوران داخل العدسة فقط – السرعة هنا 14 ثانية */
 
-.logo-word {
+.lens-inner-rotating {
 
-  font-size: 24px;
+  transform-origin: 100px 100px;
 
-  font-weight: 600;
-
-  letter-spacing: 0.08em;
-
-  color: #f9fafb;
+  animation: lens-spin 14s linear infinite;
 
 }
-
-
-
-/* ========= HERO TEXT ========= */
-
-
-
-.hero-title {
-
-  font-size: clamp(28px, 5vw, 36px);
-
-  line-height: 1.2;
-
-  font-weight: 700;
-
-  margin-top: 36px;
-
-  margin-bottom: 16px;
-
-}
-
-
-
-.hero-subtitle {
-
-  font-size: 16px;
-
-  line-height: 1.6;
-
-  color: #9ca3af;
-
-  margin-bottom: 32px;
-
-}
-
-
-
-/* ========= BUTTONS ========= */
-
-
-
-.btn-row {
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 14px;
-
-  margin-bottom: 18px;
-
-}
-
-
-
-.btn {
-
-  border: none;
-
-  border-radius: 999px;
-
-  padding: 14px 24px;
-
-  font-size: 16px;
-
-  font-weight: 500;
-
-  cursor: pointer;
-
-  transition:
-
-    transform 0.15s ease,
-
-    box-shadow 0.15s ease,
-
-    background 0.15s ease,
-
-    color 0.15s ease;
-
-}
-
-
-
-/* primary blue button */
-
-.btn.primary {
-
-  background: linear-gradient(90deg, #2563eb, #6366f1);
-
-  color: #f9fafb;
-
-  box-shadow:
-
-    0 0 30px rgba(79, 70, 229, 0.65),
-
-    0 14px 30px rgba(15, 23, 42, 0.75);
-
-}
-
-
-
-.btn.primary:hover {
-
-  transform: translateY(-1px);
-
-  box-shadow:
-
-    0 0 36px rgba(79, 70, 229, 0.9),
-
-    0 18px 36px rgba(15, 23, 42, 0.8);
-
-}
-
-
-
-.btn.primary:active {
-
-  transform: translateY(0);
-
-  box-shadow:
-
-    0 0 20px rgba(79, 70, 229, 0.7),
-
-    0 10px 24px rgba(15, 23, 42, 0.8);
-
-}
-
-
-
-/* secondary button */
-
-.btn:not(.primary):not(.speak) {
-
-  background: #020617;
-
-  color: #e5e7eb;
-
-  box-shadow:
-
-    0 0 0 1px rgba(31, 41, 55, 0.9),
-
-    0 10px 26px rgba(0, 0, 0, 0.85);
-
-}
-
-
-
-.btn:not(.primary):not(.speak):hover {
-
-  background: #020817;
-
-}
-
-
-
-/* speak button */
-
-.btn.speak {
-
-  margin-top: 10px;
-
-  background: #020617;
-
-  color: #e5e7eb;
-
-  box-shadow:
-
-    0 0 0 1px rgba(31, 41, 55, 0.9),
-
-    0 10px 26px rgba(0, 0, 0, 0.85);
-
-}
-
-
-
-/* ========= ANIMATIONS ========= */
 
 
 
@@ -404,11 +196,221 @@ body {
 
 
 
-/* ========= RESPONSIVE ========= */
+.logo-name {
+
+  font-size: 24px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.08em;
+
+  color: #f7f7ff;
+
+}
+
+
+
+/* HERO TEXT */
+
+
+
+.hero {
+
+  text-align: center;
+
+  margin-top: 28px;
+
+}
+
+
+
+.hero-title {
+
+  font-size: 32px;
+
+  line-height: 1.1;
+
+  font-weight: 700;
+
+  margin-bottom: 16px;
+
+}
+
+
+
+.hero-subtitle {
+
+  font-size: 15px;
+
+  line-height: 1.6;
+
+  color: var(--text-muted);
+
+  max-width: 520px;
+
+  margin: 0 auto 32px;
+
+}
+
+
+
+/* BUTTONS */
+
+
+
+.btn-row {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+
+  align-items: stretch;
+
+  margin-bottom: 20px;
+
+}
+
+
+
+.btn {
+
+  border: none;
+
+  border-radius: 999px;
+
+  padding: 14px 22px;
+
+  font-size: 16px;
+
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: transform 0.14s ease, box-shadow 0.14s ease,
+
+    background 0.14s ease, opacity 0.14s ease;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+
+}
+
+
+
+/* زر أساسي */
+
+.btn.primary {
+
+  background: linear-gradient(90deg, #4c6bff, #9c7bff);
+
+  color: #fdfdff;
+
+}
+
+
+
+.btn.primary:hover {
+
+  transform: translateY(-1px);
+
+  box-shadow: 0 16px 40px rgba(76, 107, 255, 0.6);
+
+}
+
+
+
+/* زر ثانوي */
+
+.btn:not(.primary):not(.speak) {
+
+  background: #101624;
+
+  color: var(--text-main);
+
+}
+
+
+
+.btn:not(.primary):not(.speak):hover {
+
+  background: #111a2b;
+
+}
+
+
+
+/* زر Speak */
+
+.btn.speak {
+
+  margin: 6px auto 0;
+
+  padding-inline: 40px;
+
+  background: #050814;
+
+  color: #fdfdff;
+
+  border: 1px solid rgba(149, 167, 255, 0.18);
+
+}
+
+
+
+.btn.speak:hover {
+
+  background: #070b18;
+
+}
+
+
+
+/* RESPONSIVE */
 
 
 
 @media (min-width: 640px) {
+
+  .page {
+
+    padding-top: 40px;
+
+  }
+
+
+
+  .wordmark {
+
+    padding-inline: 22px 34px;
+
+  }
+
+
+
+  .hero {
+
+    margin-top: 34px;
+
+  }
+
+
+
+  .hero-title {
+
+    font-size: 38px;
+
+  }
+
+
+
+  .hero-subtitle {
+
+    font-size: 16px;
+
+  }
+
+
 
   .btn-row {
 
@@ -422,7 +424,7 @@ body {
 
   .btn {
 
-    min-width: 220px;
+    min-width: 210px;
 
   }
 
