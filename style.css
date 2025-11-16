@@ -621,5 +621,56 @@ body {
     margin-top: 28px;
 
   }
+  /* ---------- MOBILE HEADER FIX ---------- */
+
+@media (max-width: 800px) {
+
+  
+
+  .header {
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 20px 0 10px;
+
+    border-bottom: none;
+
+  }
+
+
+
+  .header-left {
+
+    justify-content: center;
+
+    width: 100%;
+
+  }
+
+
+
+  .logo-img {
+
+    width: 90px !important;
+
+    height: 90px !important;
+
+    border-radius: 18px;
+
+    margin: 0 auto;
+
+  }
+
+
+
+  .nav {
+
+    display: none; /* hide nav on mobile */
+
+  }
+
+}
 
 }
