@@ -673,4 +673,50 @@ body {
 
 }
 
+  /* --- FIX BIG MOBILE LOGO WIDTH --- */
+
+.logo-img {
+
+  width: 160px !important;     /* increase width */
+
+  height: 160px !important;    /* increase height */
+
+  border-radius: 28px;
+
+  object-fit: cover;
+
+  display: block;
+
+  margin: 0 auto;
+
+}
+
+
+
+/* Make logo container full-width */
+
+.header-left {
+
+  width: 100% !important;
+
+  display: flex;
+
+  justify-content: center;
+
+}
+
+
+
+@media (max-width: 800px) {
+
+  .logo-img {
+
+    width: 180px !important;
+
+    height: 180px !important;
+
+  }
+
+}
+
 }
