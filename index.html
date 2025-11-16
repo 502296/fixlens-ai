@@ -18,129 +18,167 @@
 
 <body>
 
-  <!-- TOP WORDMARK (LENS + NAME) -->
-
-  <header class="top-header">
-
-    <div class="logo-pill">
-
-      <div class="lens-wrap">
-
-        <!-- SVG LENS WITH OUTER TEXT RING -->
-
-        <svg viewBox="0 0 200 200" class="lens-svg" aria-hidden="true">
-
-          <defs>
-
-            <!-- inner glass glow -->
-
-            <radialGradient id="lensGlow" cx="50%" cy="35%" r="65%">
-
-              <stop offset="0%" stop-color="#4f7dff" />
-
-              <stop offset="45%" stop-color="#2740b8" />
-
-              <stop offset="100%" stop-color="#050816" />
-
-            </radialGradient>
-
-          </defs>
+  <div class="page">
 
 
 
-          <!-- outer dark ring -->
+    <!-- TOP WORDMARK (CAPSULE + LENS LOGO) -->
 
-          <circle cx="100" cy="100" r="82" class="lens-ring"></circle>
+    <header class="top-header">
+
+      <div class="wordmark">
+
+        <div class="lens-logo">
+
+          <svg class="lens-svg" viewBox="0 0 200 200" aria-hidden="true">
+
+            <defs>
+
+              <!-- التدرج الأزرق داخل العدسة -->
+
+              <radialGradient id="lensInnerGradient" cx="50%" cy="35%" r="70%">
+
+                <stop offset="0%" stop-color="#9fb8ff"/>
+
+                <stop offset="40%" stop-color="#4b6bff"/>
+
+                <stop offset="100%" stop-color="#0b1020"/>
+
+              </radialGradient>
+
+              <!-- ظل خفيف حول العدسة -->
+
+              <radialGradient id="lensGlow" cx="50%" cy="50%" r="70%">
+
+                <stop offset="0%" stop-color="rgba(76,107,255,0.8)"/>
+
+                <stop offset="100%" stop-color="rgba(76,107,255,0)"/>
+
+              </radialGradient>
 
 
 
-          <!-- rotating inner glass -->
+              <!-- مسار نص دائري كامل -->
 
-          <g class="lens-inner-rotating">
+              <path id="lensTextPath"
 
-            <circle cx="100" cy="100" r="60" fill="url(#lensGlow)"></circle>
+                    d="M100,20
 
-            <!-- subtle inner shadow -->
+                       a80,80 0 1,1 0,160
 
-            <circle cx="100" cy="100" r="60" class="lens-inner-vignette"></circle>
+                       a80,80 0 1,1 0,-160" />
 
-            <!-- highlight dot -->
-
-            <circle cx="82" cy="82" r="6" class="lens-highlight"></circle>
-
-          </g>
+            </defs>
 
 
 
-          <!-- circular path for outer text (fixed, not rotating) -->
+            <!-- هالة زرقاء خفيفة -->
 
-          <circle id="lensTextPath" cx="100" cy="100" r="91" fill="none"></circle>
+            <circle cx="100" cy="100" r="90" fill="url(#lensGlow)" opacity="0.5" />
 
 
 
-          <!-- white thin text around the lens -->
+            <!-- الإطار الخارجي الداكن -->
 
-          <text class="lens-text">
+            <circle cx="100" cy="100" r="70" fill="#050813" />
 
-            <textPath href="#lensTextPath" startOffset="50%">
+            <circle cx="100" cy="100" r="62" fill="#050813" stroke="#101622" stroke-width="3" />
 
-              12–40mm 1:2.8 • Ø62mm • ZOOM LENS • FIXLENS OPTICS •
 
-            </textPath>
 
-          </text>
+            <!-- النص الثابت حول العدسة -->
 
-        </svg>
+            <text class="lens-text">
+
+              <textPath
+
+                xlink:href="#lensTextPath"
+
+                startOffset="50%"
+
+                textLength="502"
+
+                lengthAdjust="spacing">
+
+                12–40 mm 1:2.8 • Ø 62 mm • ZOOM LENS • FIXLENS OPTIC •
+
+              </textPath>
+
+            </text>
+
+
+
+            <!-- الجزء الذي يدور من الداخل فقط -->
+
+            <g class="lens-inner-rotating">
+
+              <!-- الحلقة الداكنة الداخلية -->
+
+              <circle cx="100" cy="100" r="48" fill="#050813" />
+
+              <!-- القرص الأزرق المتدرج -->
+
+              <circle cx="100" cy="100" r="40" fill="url(#lensInnerGradient)" />
+
+              <!-- لمعة صغيرة -->
+
+              <circle cx="118" cy="82" r="6" fill="#ffffff" opacity="0.9" />
+
+            </g>
+
+          </svg>
+
+        </div>
+
+
+
+        <span class="logo-name">FixLens</span>
+
+      </div>
+
+    </header>
+
+
+
+    <!-- HERO TEXT -->
+
+    <main class="hero">
+
+      <h1 class="hero-title">Fix problems in the real world with AI.</h1>
+
+      <p class="hero-subtitle">
+
+        Point your camera at the issue or describe it in your own words.
+
+        FixLens analyzes engines, appliances, electronics, and more — then guides you step by step.
+
+      </p>
+
+
+
+      <!-- ACTION BUTTONS -->
+
+      <div class="btn-row">
+
+        <button class="btn primary">Describe with text</button>
+
+        <button class="btn">Upload a photo</button>
 
       </div>
 
 
 
-      <span class="logo-word">FixLens</span>
+      <button class="btn speak">
 
-    </div>
+        🎤 Speak
 
-  </header>
+      </button>
 
-
-
-  <!-- HERO CONTENT -->
-
-  <main class="hero">
-
-    <h1 class="hero-title">Fix problems in the real world with AI.</h1>
+    </main>
 
 
 
-    <p class="hero-subtitle">
-
-      Point your camera at the issue or describe it in your own words.
-
-      FixLens analyzes engines, appliances, electronics, and more —
-
-      then guides you step by step.
-
-    </p>
-
-
-
-    <div class="btn-row">
-
-      <button class="btn primary">Describe with text</button>
-
-      <button class="btn">Upload a photo</button>
-
-    </div>
-
-
-
-    <button class="btn speak">
-
-      🎤 Speak
-
-    </button>
-
-  </main>
+  </div>
 
 </body>
 
