@@ -1,30 +1,4 @@
-/* Base layout */
-
-:root {
-
-  --bg: #050816;
-
-  --card: #0b1220;
-
-  --accent: #4f46e5;
-
-  --accent-soft: rgba(79, 70, 229, 0.4);
-
-  --text-main: #f9fafb;
-
-  --text-muted: #9ca3af;
-
-  --btn-dark: #111827;
-
-  --btn-border: #1f2937;
-
-  --radius-xl: 999px;
-
-  --shadow-soft: 0 18px 60px rgba(0, 0, 0, 0.7);
-
-  --shadow-glow: 0 0 40px rgba(79, 70, 229, 0.65);
-
-}
+/* === RESET & BASE === */
 
 
 
@@ -48,31 +22,65 @@ body {
 
   padding: 0;
 
+}
+
+
+
+body {
+
+  min-height: 100vh;
+
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
 
     "Segoe UI", sans-serif;
 
-  background: radial-gradient(circle at top, #020617 0, #020617 40%, #020314 100%);
+  color: #e5e7eb;
 
-  color: var(--text-main);
+  background: radial-gradient(circle at top, #020617 0%, #020617 45%, #020617 100%);
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
 
 }
 
 
 
-/* Top header capsule */
+/* === LAYOUT WRAPPERS === */
 
 
 
 .top-header {
 
-  padding: 32px 16px 12px;
+  width: 100%;
 
   display: flex;
 
   justify-content: center;
 
+  margin-top: 40px;
+
 }
+
+
+
+.hero {
+
+  width: 100%;
+
+  max-width: 480px;
+
+  padding: 32px 20px 64px;
+
+  text-align: center;
+
+}
+
+
+
+/* === WORDMARK CAPSULE === */
 
 
 
@@ -82,33 +90,39 @@ body {
 
   align-items: center;
 
-  gap: 20px;
+  gap: 18px;
 
-  padding: 16px 32px;
-
-  background: radial-gradient(circle at 20% 0, #111827 0, #020617 55%, #020617 100%);
+  padding: 14px 28px;
 
   border-radius: 999px;
 
-  box-shadow: var(--shadow-soft);
+  background: radial-gradient(circle at top, #0b1220, #020617 80%);
 
-  border: 1px solid rgba(148, 163, 184, 0.08);
+  box-shadow:
+
+    0 18px 40px rgba(0, 0, 0, 0.85),
+
+    0 0 0 1px rgba(15, 23, 42, 0.8),
+
+    inset 0 1px 0 rgba(148, 163, 184, 0.16);
 
 }
 
 
 
-/* Lens badge */
+/* === LENS BADGE (OUTER RING + TEXT FIXED) === */
 
 
 
-.lens-badge {
-
-  width: 70px;
-
-  height: 70px;
+.logo-lens {
 
   position: relative;
+
+  width: 76px;
+
+  height: 76px;
+
+  border-radius: 50%;
 
   display: flex;
 
@@ -116,137 +130,45 @@ body {
 
   justify-content: center;
 
-}
-
-
-
-.lens-outer {
-
-  width: 64px;
-
-  height: 64px;
-
-  border-radius: 50%;
-
-  position: relative;
-
-  background: radial-gradient(circle at 30% 20%, #111827 0, #020617 40%, #000 100%);
+  background: radial-gradient(circle at 30% 25%, #111827 0%, #020617 55%, #000 100%);
 
   box-shadow:
 
     0 0 0 1px rgba(15, 23, 42, 0.9),
 
-    0 0 0 6px rgba(15, 23, 42, 0.9),
+    0 0 18px rgba(15, 23, 42, 0.95),
 
-    0 14px 25px rgba(0, 0, 0, 0.85);
-
-  overflow: hidden;
+    inset 0 0 20px rgba(0, 0, 0, 0.85);
 
 }
 
 
 
-/* Outer ring (blue) */
+/* النص المنقوش – ثابت لا يتحرك */
 
+.logo-lens::before {
 
-
-.lens-ring {
-
-  position: absolute;
-
-  inset: 9px;
-
-  border-radius: 50%;
-
-  border: 3px solid #2563eb;
-
-  box-shadow:
-
-    0 0 15px rgba(37, 99, 235, 0.75),
-
-    inset 0 0 6px rgba(15, 23, 42, 0.9);
-
-}
-
-
-
-/* Inner glass */
-
-
-
-.lens-inner {
+  content: "12–40 mm 1:2.8 • Ø 62 mm • ZOOM LENS";
 
   position: absolute;
 
-  inset: 15px;
-
-  border-radius: 50%;
-
-  background:
-
-    radial-gradient(circle at 30% 25%, #1e293b 0, #020617 50%, #000 100%);
-
-  box-shadow:
-
-    inset 0 10px 16px rgba(148, 163, 184, 0.15),
-
-    inset 0 -8px 12px rgba(15, 23, 42, 0.9);
-
-}
-
-
-
-/* Soft glow on glass */
-
-
-
-.lens-glow {
-
-  position: absolute;
-
-  width: 16px;
-
-  height: 16px;
-
-  border-radius: 50%;
-
-  background: radial-gradient(circle, #f9fafb 0, rgba(249, 250, 251, 0.1) 70%, transparent 100%);
-
-  top: 20%;
-
-  left: 38%;
-
-  filter: blur(0.3px);
-
-}
-
-
-
-/* Static text labels (no animation) */
-
-
-
-.lens-label {
-
-  position: absolute;
+  top: -12px;
 
   left: 50%;
 
   transform: translateX(-50%);
 
-  color: #e5e7eb;
+  font-size: 9px;
 
-  font-size: 7px;
+  letter-spacing: 0.12em;
 
-  font-weight: 500;
+  color: rgba(209, 213, 219, 0.78);
 
-  letter-spacing: 0.18em;
+  font-weight: 400;
 
   text-transform: uppercase;
 
   white-space: nowrap;
-
-  text-shadow: 0 0 4px rgba(0, 0, 0, 0.9);
 
   pointer-events: none;
 
@@ -254,65 +176,187 @@ body {
 
 
 
-.lens-label-top {
+/* الحلقة المعدنية الخارجية – ثابتة */
 
-  top: 4px;
+.logo-lens::after {
+
+  content: "";
+
+  position: absolute;
+
+  inset: -8px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(148, 163, 184, 0.45);
+
+  box-shadow:
+
+    0 0 18px rgba(37, 99, 235, 0.35),
+
+    inset 0 0 10px rgba(15, 23, 42, 0.9);
 
 }
 
 
 
-.lens-label-bottom {
+/* === INNER LENS – تدور بهدوء === */
 
-  bottom: 4px;
+
+
+.lens-inner {
+
+  width: 52px;
+
+  height: 52px;
+
+  border-radius: 50%;
+
+  background:
+
+    radial-gradient(circle at 30% 25%, #4b9cff 0%, #020617 40%, #000 70%) no-repeat,
+
+    conic-gradient(
+
+      from 220deg,
+
+      #020617 0deg,
+
+      #020617 40deg,
+
+      #030712 80deg,
+
+      #020617 120deg,
+
+      #020617 160deg,
+
+      #030712 200deg,
+
+      #020617 240deg,
+
+      #020617 280deg,
+
+      #030712 320deg,
+
+      #020617 360deg
+
+    );
+
+  box-shadow:
+
+    inset 0 0 16px rgba(0, 0, 0, 0.9),
+
+    0 0 8px rgba(15, 23, 42, 0.9);
+
+  position: relative;
+
+
+
+  /* دوران داخلي ناعم */
+
+  animation: lens-spin 18s linear infinite;
+
+  will-change: transform;
 
 }
 
 
 
-/* Logo text */
+/* highlight dot */
+
+.lens-inner::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 11px;
+
+  height: 11px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(circle at 30% 30%, #f9fafb 0%, #9ca3af 60%, transparent 100%);
+
+  top: 18%;
+
+  left: 26%;
+
+  box-shadow: 0 0 12px rgba(248, 250, 252, 0.45);
+
+}
+
+
+
+/* inner core shadow */
+
+.lens-inner::after {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 18%;
+
+  border-radius: 50%;
+
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.9), transparent 70%);
+
+}
+
+
+
+/* حركة الدوران */
+
+@keyframes lens-spin {
+
+  from {
+
+    transform: rotate(0deg);
+
+  }
+
+  to {
+
+    transform: rotate(360deg);
+
+  }
+
+}
+
+
+
+/* === LOGO TEXT === */
 
 
 
 .logo-name {
 
-  font-size: 24px;
+  font-size: 22px;
 
-  font-weight: 600;
+  font-weight: 500;
 
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
 
-  color: #f9fafb;
-
-}
-
-
-
-/* Hero */
-
-
-
-.hero {
-
-  max-width: 720px;
-
-  margin: 32px auto 64px;
-
-  padding: 0 16px 80px;
-
-  text-align: center;
+  color: #e5e7eb;
 
 }
+
+
+
+/* === HERO TEXT === */
 
 
 
 .hero-title {
 
-  font-size: clamp(32px, 5vw, 40px);
+  margin: 40px 0 16px;
+
+  font-size: 32px;
 
   line-height: 1.15;
 
-  margin: 24px 0 16px;
+  font-weight: 700;
 
 }
 
@@ -320,21 +364,19 @@ body {
 
 .hero-subtitle {
 
-  margin: 0 auto 32px;
+  margin: 0 0 32px;
 
-  max-width: 620px;
-
-  font-size: 16px;
+  font-size: 15px;
 
   line-height: 1.6;
 
-  color: var(--text-muted);
+  color: #9ca3af;
 
 }
 
 
 
-/* Buttons */
+/* === BUTTONS === */
 
 
 
@@ -342,13 +384,11 @@ body {
 
   display: flex;
 
-  flex-wrap: wrap;
+  flex-direction: column;
 
-  justify-content: center;
+  gap: 14px;
 
-  gap: 12px;
-
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 
 }
 
@@ -356,35 +396,39 @@ body {
 
 .btn {
 
-  min-width: 220px;
-
-  padding: 14px 24px;
+  width: 100%;
 
   border-radius: 999px;
 
-  border: 1px solid var(--btn-border);
-
-  background: linear-gradient(to bottom, #020617, #020617);
-
-  color: var(--text-main);
+  padding: 14px 20px;
 
   font-size: 16px;
 
-  font-weight: 500;
+  border: none;
+
+  outline: none;
 
   cursor: pointer;
 
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  background: #020617;
+
+  color: #e5e7eb;
+
+  box-shadow:
+
+    0 0 0 1px rgba(31, 41, 55, 0.9),
+
+    0 10px 26px rgba(15, 23, 42, 0.9);
 
   transition:
 
-    transform 160ms ease-out,
+    transform 0.12s ease-out,
 
-    box-shadow 160ms ease-out,
+    box-shadow 0.12s ease-out,
 
-    background 160ms ease-out,
+    background 0.12s ease-out,
 
-    border-color 160ms ease-out;
+    color 0.12s ease-out;
 
 }
 
@@ -392,11 +436,13 @@ body {
 
 .btn.primary {
 
-  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  background: linear-gradient(90deg, #2563eb, #6366f1);
 
-  border-color: rgba(129, 140, 248, 0.7);
+  box-shadow:
 
-  box-shadow: 0 0 40px rgba(79, 70, 229, 0.5);
+    0 0 0 1px rgba(37, 99, 235, 0.2),
+
+    0 12px 30px rgba(37, 99, 235, 0.8);
 
 }
 
@@ -406,7 +452,11 @@ body {
 
   transform: translateY(-1px);
 
-  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.8);
+  box-shadow:
+
+    0 0 0 1px rgba(148, 163, 184, 0.5),
+
+    0 14px 34px rgba(15, 23, 42, 0.95);
 
 }
 
@@ -414,105 +464,93 @@ body {
 
 .btn.primary:hover {
 
-  box-shadow: 0 18px 45px rgba(79, 70, 229, 0.75);
+  box-shadow:
+
+    0 0 0 1px rgba(191, 219, 254, 0.7),
+
+    0 14px 34px rgba(37, 99, 235, 0.95);
 
 }
+
+
+
+/* Speak button */
 
 
 
 .btn.speak {
 
-  margin-top: 4px;
+  width: 60%;
 
-  background: radial-gradient(circle at 10% 0, #020617 0, #020617 50%, #020617 100%);
+  margin: 6px auto 0;
 
-  min-width: 190px;
+  background: radial-gradient(circle at top, #020617, #020617 60%, #000 100%);
+
+  box-shadow:
+
+    0 0 0 1px rgba(31, 41, 55, 0.9),
+
+    0 10px 26px rgba(15, 23, 42, 0.9);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
 
 }
 
 
 
-/* Responsive */
+.btn.speak:hover {
+
+  box-shadow:
+
+    0 0 0 1px rgba(148, 163, 184, 0.6),
+
+    0 14px 34px rgba(15, 23, 42, 1);
+
+}
 
 
 
-@media (max-width: 600px) {
-
-  .wordmark {
-
-    padding-inline: 20px;
-
-    gap: 14px;
-
-  }
+/* === RESPONSIVE === */
 
 
 
-  .logo-name {
+@media (min-width: 640px) {
 
-    font-size: 20px;
+  .hero-title {
 
-  }
-
-
-
-  .lens-badge {
-
-    width: 60px;
-
-    height: 60px;
+    font-size: 36px;
 
   }
 
+  .hero-subtitle {
 
-
-  .lens-outer {
-
-    width: 54px;
-
-    height: 54px;
+    font-size: 16px;
 
   }
 
+  .btn-row {
 
-
-  .lens-ring {
-
-    inset: 8px;
+    flex-direction: row;
 
   }
-
-
-
-  .lens-inner {
-
-    inset: 14px;
-
-  }
-
-
-
-  .lens-label {
-
-    font-size: 6px;
-
-    letter-spacing: 0.16em;
-
-  }
-
-
-
-  .hero {
-
-    padding-bottom: 64px;
-
-  }
-
-
 
   .btn {
 
-    min-width: 100%;
+    width: auto;
+
+    min-width: 180px;
+
+  }
+
+  .btn.speak {
+
+    width: 220px;
 
   }
 
