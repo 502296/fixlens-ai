@@ -1,26 +1,106 @@
-body {
+/* ---------- BASE ---------- */
 
-  margin: 0;
+:root {
 
-  background: #070b17;
+  --bg: #030716;
 
-  font-family: system-ui, sans-serif;
+  --card: #0c1222;
 
-  color: #fff;
+  --card-soft: #131a2c;
+
+  --text-main: #f9fbff;
+
+  --text-muted: #b4bdd5;
+
+  --accent: #4b6fff;
+
+  --accent-soft: #2740ff;
+
+  --danger: #ff5a5f;
+
+  --radius-xl: 999px;
+
+  --shadow-soft: 0 40px 80px rgba(0, 0, 0, 0.7);
+
+  --shadow-card: 0 22px 45px rgba(0, 0, 0, 0.6);
+
+  --transition-fast: 180ms ease-out;
+
+  --transition-med: 240ms ease-out;
 
 }
 
 
 
-/* HEADER */
+*,
+
+*::before,
+
+*::after {
+
+  box-sizing: border-box;
+
+}
+
+
+
+html,
+
+body {
+
+  margin: 0;
+
+  padding: 0;
+
+  height: 100%;
+
+}
+
+
+
+body {
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+
+    "Segoe UI", sans-serif;
+
+  background: radial-gradient(circle at top, #101732 0, #02040b 52%, #000 100%);
+
+  color: var(--text-main);
+
+}
+
+
+
+/* ---------- PAGE LAYOUT ---------- */
+
+.page {
+
+  min-height: 100vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  padding: 32px 20px 40px;
+
+}
+
+
+
+/* ---------- WORDMARK / LOGO CAPSULE ---------- */
 
 .top-header {
+
+  width: 100%;
 
   display: flex;
 
   justify-content: center;
 
-  padding: 40px 0 10px;
+  margin-bottom: 32px;
 
 }
 
@@ -28,137 +108,247 @@ body {
 
 .wordmark {
 
-  display: flex;
+  display: inline-flex;
 
   align-items: center;
 
-  gap: 20px;
+  gap: 18px;
 
-  padding: 25px 40px;
+  background: radial-gradient(circle at top left, #151d33, #050814 70%);
 
-  background: #0e1528;
+  padding: 12px 24px 12px 20px;
 
-  border-radius: 999px;
+  border-radius: var(--radius-xl);
 
-  box-shadow: 0 0 40px rgba(20, 60, 255, 0.1);
+  box-shadow: var(--shadow-card);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
 
 }
 
 
 
-/* Lens size (slightly smaller now) */
+/* ---------- LENS ICON ---------- */
 
-.lens-wrapper {
-
-  width: 110px;
-
-  height: 110px;
+.logo-lens {
 
   position: relative;
 
-}
+  width: clamp(70px, 19vw, 96px);
 
-
-
-/* OUTER RING */
-
-.outer-ring {
-
-  position: absolute;
-
-  inset: 0;
-
-  border-radius: 50%;
-
-  background: radial-gradient(circle, #2b2f39, #111 70%, #000);
-
-  border: 5px solid #1a1d24;
-
-}
-
-
-
-/* MIDDLE BLUE RING */
-
-.mid-ring {
-
-  position: absolute;
-
-  inset: 18px;
-
-  border-radius: 50%;
-
-  border: 6px solid #2f66ff;
-
-  box-shadow: 0 0 18px rgba(50, 90, 255, 0.5);
-
-}
-
-
-
-/* INNER LENS */
-
-.inner-lens {
-
-  position: absolute;
-
-  inset: 30px;
-
-  border-radius: 50%;
-
-  background: radial-gradient(#0a0a0a, #000 70%);
+  height: clamp(70px, 19vw, 96px);
 
   display: flex;
 
-  justify-content: center;
-
   align-items: center;
+
+  justify-content: center;
 
 }
 
 
 
-/* Small reflection spot */
+.lens-ring {
 
-.glow-spot {
+  position: relative;
 
-  width: 16px;
+  width: 100%;
 
-  height: 16px;
+  height: 100%;
 
   border-radius: 50%;
 
-  background: rgba(255,255,255,0.8);
+  background:
 
-  margin-top: -10px;
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.25) 0, transparent 40%),
 
-  margin-left: -10px;
+    radial-gradient(circle at 70% 80%, rgba(0, 0, 0, 0.9) 0, #000 52%, #05050a 70%, #000 100%);
+
+  box-shadow:
+
+    0 0 0 2px #101625,
+
+    0 0 0 4px #1c263b,
+
+    0 18px 35px rgba(0, 0, 0, 0.85);
+
+  overflow: hidden;
 
 }
 
 
 
-.logo-name {
+/* engraved numbers on outer ring */
 
-  font-size: 32px;
+.lens-markings {
+
+  position: absolute;
+
+  inset: 11%;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: center;
+
+  flex-direction: column;
+
+  pointer-events: none;
+
+  font-size: clamp(7px, 1.7vw, 9px);
 
   font-weight: 500;
 
-  color: #e5e7eb;
+  text-transform: uppercase;
+
+  color: rgba(235, 239, 255, 0.8);
+
+  letter-spacing: 0.14em;
+
+  padding-top: 6%;
+
+  gap: 2px;
 
 }
 
 
 
-/* HERO */
+/* second & third line a bit curved illusion */
+
+.lens-markings span:nth-child(2) {
+
+  opacity: 0.9;
+
+  transform: translateX(6%);
+
+}
+
+.lens-markings span:nth-child(3) {
+
+  opacity: 0.7;
+
+  transform: translateX(12%);
+
+}
+
+
+
+/* inner rotating iris */
+
+.lens-iris {
+
+  position: absolute;
+
+  inset: 24%;
+
+  border-radius: 50%;
+
+  background:
+
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.18) 0, transparent 40%),
+
+    radial-gradient(circle at 60% 70%, rgba(0, 0, 0, 0.9) 0, #05070d 50%, #000 100%),
+
+    conic-gradient(
+
+      from 40deg,
+
+      #05070c,
+
+      #11151f,
+
+      #05070c 20%,
+
+      #11151f 40%,
+
+      #05070c 60%,
+
+      #11151f 80%,
+
+      #05070c 100%
+
+    );
+
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.9);
+
+  animation: iris-spin 18s linear infinite;
+
+}
+
+
+
+@keyframes iris-spin {
+
+  from {
+
+    transform: rotate(0deg);
+
+  }
+
+  to {
+
+    transform: rotate(360deg);
+
+  }
+
+}
+
+
+
+/* small glossy highlight */
+
+.lens-highlight {
+
+  position: absolute;
+
+  width: 28%;
+
+  height: 28%;
+
+  border-radius: 50%;
+
+  top: 26%;
+
+  left: 30%;
+
+  background: radial-gradient(circle at 30% 30%, #ffffff 0, rgba(255, 255, 255, 0.8) 18%, transparent 70%);
+
+  opacity: 0.95;
+
+}
+
+
+
+/* ---------- LOGO TEXT ---------- */
+
+.logo-name {
+
+  font-size: clamp(20px, 4.1vw, 26px);
+
+  font-weight: 550;
+
+  letter-spacing: 0.06em;
+
+  color: var(--text-main);
+
+}
+
+
+
+/* ---------- HERO TEXT & LAYOUT ---------- */
 
 .hero {
 
+  max-width: 640px;
+
   text-align: center;
 
-  margin-top: 40px;
-
-  padding: 0 25px;
+  margin-top: 20px;
 
 }
 
@@ -166,9 +356,11 @@ body {
 
 .hero-title {
 
-  font-size: 38px;
+  font-size: clamp(28px, 6vw, 40px);
 
-  font-weight: 700;
+  line-height: 1.15;
+
+  margin: 0 0 16px;
 
 }
 
@@ -176,11 +368,11 @@ body {
 
 .hero-subtitle {
 
-  max-width: 500px;
+  margin: 0 0 28px;
 
-  margin: 10px auto 30px;
+  color: var(--text-muted);
 
-  color: #c3c7d1;
+  font-size: clamp(15px, 3.9vw, 17px);
 
   line-height: 1.6;
 
@@ -188,15 +380,19 @@ body {
 
 
 
-/* BUTTONS */
+/* ---------- BUTTONS ---------- */
 
 .btn-row {
 
   display: flex;
 
-  flex-direction: column;
+  flex-wrap: wrap;
 
-  gap: 15px;
+  gap: 12px;
+
+  justify-content: center;
+
+  margin-bottom: 14px;
 
 }
 
@@ -204,17 +400,35 @@ body {
 
 .btn {
 
-  padding: 14px 28px;
-
-  border-radius: 50px;
-
-  background: #1a2236;
-
-  color: white;
-
-  font-size: 17px;
-
   border: none;
+
+  outline: none;
+
+  cursor: pointer;
+
+  font-size: 15px;
+
+  padding: 13px 24px;
+
+  border-radius: 999px;
+
+  background: #121a2a;
+
+  color: var(--text-main);
+
+  min-width: 190px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+
+    background var(--transition-fast), color var(--transition-fast);
+
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.55);
 
 }
 
@@ -222,7 +436,39 @@ body {
 
 .btn.primary {
 
-  background: linear-gradient(90deg, #316bff, #6b5bff);
+  background: radial-gradient(circle at 10% 0, #6a8bff 0, #3050ff 36%, #2335d2 100%);
+
+  box-shadow: 0 18px 35px rgba(40, 83, 255, 0.6);
+
+}
+
+
+
+.btn.primary:hover {
+
+  transform: translateY(-1px);
+
+  box-shadow: 0 20px 40px rgba(40, 83, 255, 0.7);
+
+}
+
+
+
+.btn:hover {
+
+  transform: translateY(-1px);
+
+  background: #151f33;
+
+}
+
+
+
+.btn:active {
+
+  transform: translateY(0);
+
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.55);
 
 }
 
@@ -230,10 +476,42 @@ body {
 
 .btn.speak {
 
-  margin-top: 18px;
+  margin-top: 6px;
 
-  background: #101626;
+  background: #151b2c;
 
-  border: 1px solid rgba(255,255,255,0.08);
+  min-width: 180px;
+
+}
+
+
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 600px) {
+
+  .page {
+
+    padding: 24px 16px 32px;
+
+  }
+
+
+
+  .wordmark {
+
+    padding-inline: 18px 20px;
+
+    gap: 14px;
+
+  }
+
+
+
+  .hero-title {
+
+    margin-top: 10px;
+
+  }
 
 }
