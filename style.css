@@ -1,20 +1,4 @@
-/* === RESET & BASE === */
-
-
-
-*,
-
-*::before,
-
-*::after {
-
-  box-sizing: border-box;
-
-}
-
-
-
-html,
+/* GLOBAL */
 
 body {
 
@@ -22,57 +6,11 @@ body {
 
   padding: 0;
 
-}
+  background: #050b18;
 
+  font-family: system-ui, sans-serif;
 
-
-body {
-
-  min-height: 100vh;
-
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-
-    "Segoe UI", sans-serif;
-
-  color: #e5e7eb;
-
-  background: radial-gradient(circle at top, #020617 0%, #020617 45%, #020617 100%);
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-}
-
-
-
-/* === LAYOUT WRAPPERS === */
-
-
-
-.top-header {
-
-  width: 100%;
-
-  display: flex;
-
-  justify-content: center;
-
-  margin-top: 40px;
-
-}
-
-
-
-.hero {
-
-  width: 100%;
-
-  max-width: 480px;
-
-  padding: 32px 20px 64px;
+  color: white;
 
   text-align: center;
 
@@ -80,7 +18,13 @@ body {
 
 
 
-/* === WORDMARK CAPSULE === */
+/* HEADER */
+
+.top-header {
+
+  padding: 40px 0 10px;
+
+}
 
 
 
@@ -90,85 +34,111 @@ body {
 
   align-items: center;
 
-  gap: 18px;
+  gap: 16px;
 
-  padding: 14px 28px;
+  background: rgba(255,255,255,0.04);
 
-  border-radius: 999px;
+  padding: 18px 32px;
 
-  background: radial-gradient(circle at top, #0b1220, #020617 80%);
+  border-radius: 48px;
 
-  box-shadow:
-
-    0 18px 40px rgba(0, 0, 0, 0.85),
-
-    0 0 0 1px rgba(15, 23, 42, 0.8),
-
-    inset 0 1px 0 rgba(148, 163, 184, 0.16);
+  box-shadow: 0 0 40px rgba(0,0,0,0.4);
 
 }
 
 
 
-/* === LENS BADGE (OUTER RING + TEXT FIXED) === */
-
-
+/* ===== LENS LOGO ===== */
 
 .logo-lens {
 
   position: relative;
 
-  width: 76px;
+  width: 72px;
 
-  height: 76px;
+  height: 72px;
 
   border-radius: 50%;
 
-  display: flex;
+  background: radial-gradient(circle at 50% 50%, #0a0f1a, #000);
 
-  align-items: center;
+  display: inline-flex;
 
   justify-content: center;
 
-  background: radial-gradient(circle at 30% 25%, #111827 0%, #020617 55%, #000 100%);
+  align-items: center;
 
-  box-shadow:
+  overflow: hidden;
 
-    0 0 0 1px rgba(15, 23, 42, 0.9),
-
-    0 0 18px rgba(15, 23, 42, 0.95),
-
-    inset 0 0 20px rgba(0, 0, 0, 0.85);
+  box-shadow: 0 0 12px rgba(0,150,255,0.5);
 
 }
 
 
 
-/* النص المنقوش – ثابت لا يتحرك */
+/* INNER rotating layer */
 
-.logo-lens::before {
-
-  content: "12–40 mm 1:2.8 • Ø 62 mm • ZOOM LENS";
+.lens-inner {
 
   position: absolute;
 
-  top: -12px;
+  width: 54px;
 
-  left: 50%;
+  height: 54px;
 
-  transform: translateX(-50%);
+  border-radius: 50%;
 
-  font-size: 9px;
+  background: radial-gradient(circle at 30% 30%, #477bff, #0a0f1a);
+
+  animation: spin 6s linear infinite;
+
+}
+
+
+
+/* STATIC outer ring text (circular mask) */
+
+.logo-lens::before {
+
+  content: "12–40 mm 1:2.8  •  Ø 62 mm  •  ZOOM LENS";
+
+  position: absolute;
+
+  inset: -6px;
+
+  border-radius: 50%;
+
+  font-size: 8px;
 
   letter-spacing: 0.12em;
 
-  color: rgba(209, 213, 219, 0.78);
-
-  font-weight: 400;
+  color: rgba(255,255,255,0.82);
 
   text-transform: uppercase;
 
-  white-space: nowrap;
+  text-align: center;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+
+
+  /* makes text follow circular path */
+
+  mask: radial-gradient(
+
+    farthest-side,
+
+    transparent calc(100% - 13px),
+
+    black calc(100% - 11px)
+
+  );
+
+
 
   pointer-events: none;
 
@@ -176,185 +146,53 @@ body {
 
 
 
-/* الحلقة المعدنية الخارجية – ثابتة */
+/* Rotation animation */
 
-.logo-lens::after {
+@keyframes spin {
 
-  content: "";
+  from { transform: rotate(0deg); }
 
-  position: absolute;
-
-  inset: -8px;
-
-  border-radius: 50%;
-
-  border: 1px solid rgba(148, 163, 184, 0.45);
-
-  box-shadow:
-
-    0 0 18px rgba(37, 99, 235, 0.35),
-
-    inset 0 0 10px rgba(15, 23, 42, 0.9);
+  to   { transform: rotate(360deg); }
 
 }
 
 
 
-/* === INNER LENS – تدور بهدوء === */
-
-
-
-.lens-inner {
-
-  width: 52px;
-
-  height: 52px;
-
-  border-radius: 50%;
-
-  background:
-
-    radial-gradient(circle at 30% 25%, #4b9cff 0%, #020617 40%, #000 70%) no-repeat,
-
-    conic-gradient(
-
-      from 220deg,
-
-      #020617 0deg,
-
-      #020617 40deg,
-
-      #030712 80deg,
-
-      #020617 120deg,
-
-      #020617 160deg,
-
-      #030712 200deg,
-
-      #020617 240deg,
-
-      #020617 280deg,
-
-      #030712 320deg,
-
-      #020617 360deg
-
-    );
-
-  box-shadow:
-
-    inset 0 0 16px rgba(0, 0, 0, 0.9),
-
-    0 0 8px rgba(15, 23, 42, 0.9);
-
-  position: relative;
-
-
-
-  /* دوران داخلي ناعم */
-
-  animation: lens-spin 18s linear infinite;
-
-  will-change: transform;
-
-}
-
-
-
-/* highlight dot */
-
-.lens-inner::before {
-
-  content: "";
-
-  position: absolute;
-
-  width: 11px;
-
-  height: 11px;
-
-  border-radius: 50%;
-
-  background: radial-gradient(circle at 30% 30%, #f9fafb 0%, #9ca3af 60%, transparent 100%);
-
-  top: 18%;
-
-  left: 26%;
-
-  box-shadow: 0 0 12px rgba(248, 250, 252, 0.45);
-
-}
-
-
-
-/* inner core shadow */
-
-.lens-inner::after {
-
-  content: "";
-
-  position: absolute;
-
-  inset: 18%;
-
-  border-radius: 50%;
-
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.9), transparent 70%);
-
-}
-
-
-
-/* حركة الدوران */
-
-@keyframes lens-spin {
-
-  from {
-
-    transform: rotate(0deg);
-
-  }
-
-  to {
-
-    transform: rotate(360deg);
-
-  }
-
-}
-
-
-
-/* === LOGO TEXT === */
-
-
+/* FixLens Name */
 
 .logo-name {
 
-  font-size: 22px;
+  font-size: 24px;
 
   font-weight: 500;
 
-  letter-spacing: 0.12em;
-
-  color: #e5e7eb;
+  letter-spacing: 0.5px;
 
 }
 
 
 
-/* === HERO TEXT === */
+/* HERO */
+
+.hero {
+
+  max-width: 700px;
+
+  margin: 0 auto;
+
+  padding: 0 24px;
+
+}
 
 
 
 .hero-title {
 
-  margin: 40px 0 16px;
-
   font-size: 32px;
 
-  line-height: 1.15;
+  margin-top: 30px;
+
+  margin-bottom: 12px;
 
   font-weight: 700;
 
@@ -364,21 +202,19 @@ body {
 
 .hero-subtitle {
 
-  margin: 0 0 32px;
+  font-size: 17px;
 
-  font-size: 15px;
+  opacity: 0.75;
 
   line-height: 1.6;
 
-  color: #9ca3af;
+  margin-bottom: 40px;
 
 }
 
 
 
-/* === BUTTONS === */
-
-
+/* BUTTONS */
 
 .btn-row {
 
@@ -386,9 +222,9 @@ body {
 
   flex-direction: column;
 
-  gap: 14px;
+  gap: 16px;
 
-  margin-bottom: 18px;
+  margin-bottom: 24px;
 
 }
 
@@ -396,39 +232,17 @@ body {
 
 .btn {
 
-  width: 100%;
+  padding: 16px 28px;
 
-  border-radius: 999px;
+  border-radius: 40px;
 
-  padding: 14px 20px;
-
-  font-size: 16px;
+  background: rgba(255,255,255,0.05);
 
   border: none;
 
-  outline: none;
+  color: white;
 
-  cursor: pointer;
-
-  background: #020617;
-
-  color: #e5e7eb;
-
-  box-shadow:
-
-    0 0 0 1px rgba(31, 41, 55, 0.9),
-
-    0 10px 26px rgba(15, 23, 42, 0.9);
-
-  transition:
-
-    transform 0.12s ease-out,
-
-    box-shadow 0.12s ease-out,
-
-    background 0.12s ease-out,
-
-    color 0.12s ease-out;
+  font-size: 17px;
 
 }
 
@@ -436,122 +250,18 @@ body {
 
 .btn.primary {
 
-  background: linear-gradient(90deg, #2563eb, #6366f1);
+  background: linear-gradient(to right, #2d68ff, #8a6bff);
 
-  box-shadow:
-
-    0 0 0 1px rgba(37, 99, 235, 0.2),
-
-    0 12px 30px rgba(37, 99, 235, 0.8);
+  box-shadow: 0 0 20px rgba(69,120,255,0.5);
 
 }
-
-
-
-.btn:hover {
-
-  transform: translateY(-1px);
-
-  box-shadow:
-
-    0 0 0 1px rgba(148, 163, 184, 0.5),
-
-    0 14px 34px rgba(15, 23, 42, 0.95);
-
-}
-
-
-
-.btn.primary:hover {
-
-  box-shadow:
-
-    0 0 0 1px rgba(191, 219, 254, 0.7),
-
-    0 14px 34px rgba(37, 99, 235, 0.95);
-
-}
-
-
-
-/* Speak button */
 
 
 
 .btn.speak {
 
-  width: 60%;
+  margin-top: 10px;
 
-  margin: 6px auto 0;
-
-  background: radial-gradient(circle at top, #020617, #020617 60%, #000 100%);
-
-  box-shadow:
-
-    0 0 0 1px rgba(31, 41, 55, 0.9),
-
-    0 10px 26px rgba(15, 23, 42, 0.9);
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  gap: 8px;
-
-}
-
-
-
-.btn.speak:hover {
-
-  box-shadow:
-
-    0 0 0 1px rgba(148, 163, 184, 0.6),
-
-    0 14px 34px rgba(15, 23, 42, 1);
-
-}
-
-
-
-/* === RESPONSIVE === */
-
-
-
-@media (min-width: 640px) {
-
-  .hero-title {
-
-    font-size: 36px;
-
-  }
-
-  .hero-subtitle {
-
-    font-size: 16px;
-
-  }
-
-  .btn-row {
-
-    flex-direction: row;
-
-  }
-
-  .btn {
-
-    width: auto;
-
-    min-width: 180px;
-
-  }
-
-  .btn.speak {
-
-    width: 220px;
-
-  }
+  background: rgba(255,255,255,0.07);
 
 }
