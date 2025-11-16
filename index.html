@@ -1,429 +1,147 @@
-/* ========= RESET بسيط ========= */
+<!DOCTYPE html>
 
-*,
+<html lang="en">
 
-*::before,
+<head>
 
-*::after {
+  <meta charset="UTF-8" />
 
-  box-sizing: border-box;
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  margin: 0;
+  <title>FixLens – AI Diagnostics</title>
 
-  padding: 0;
+  <link rel="stylesheet" href="style.css" />
 
-}
+</head>
 
 
 
-html,
+<body>
 
-body {
+  <!-- TOP WORDMARK (LENS + NAME) -->
 
-  height: 100%;
+  <header class="top-header">
 
-}
+    <div class="logo-pill">
 
+      <div class="lens-wrap">
 
+        <!-- SVG LENS WITH OUTER TEXT RING -->
 
-body {
+        <svg viewBox="0 0 200 200" class="lens-svg" aria-hidden="true">
 
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+          <defs>
 
-    "Segoe UI", sans-serif;
+            <!-- inner glass glow -->
 
-  background: radial-gradient(circle at top, #0f172a 0, #020617 55%, #000 100%);
+            <radialGradient id="lensGlow" cx="50%" cy="35%" r="65%">
 
-  color: #e5e7eb;
+              <stop offset="0%" stop-color="#4f7dff" />
 
-}
+              <stop offset="45%" stop-color="#2740b8" />
 
+              <stop offset="100%" stop-color="#050816" />
 
+            </radialGradient>
 
-/* ========= LAYOUT عام ========= */
+          </defs>
 
-.top-header {
 
-  padding: 32px 20px 8px;
 
-  display: flex;
+          <!-- outer dark ring -->
 
-  justify-content: center;
+          <circle cx="100" cy="100" r="82" class="lens-ring"></circle>
 
-}
 
 
+          <!-- rotating inner glass -->
 
-.hero {
+          <g class="lens-inner-rotating">
 
-  max-width: 640px;
+            <circle cx="100" cy="100" r="60" fill="url(#lensGlow)"></circle>
 
-  margin: 0 auto;
+            <!-- subtle inner shadow -->
 
-  padding: 24px 20px 56px;
+            <circle cx="100" cy="100" r="60" class="lens-inner-vignette"></circle>
 
-  text-align: center;
+            <!-- highlight dot -->
 
-}
+            <circle cx="82" cy="82" r="6" class="lens-highlight"></circle>
 
+          </g>
 
 
-/* ========= LOGO PILL ========= */
 
+          <!-- circular path for outer text (fixed, not rotating) -->
 
+          <circle id="lensTextPath" cx="100" cy="100" r="91" fill="none"></circle>
 
-.logo-pill {
 
-  display: inline-flex;
 
-  align-items: center;
+          <!-- white thin text around the lens -->
 
-  gap: 20px;
+          <text class="lens-text">
 
-  padding: 18px 32px;
+            <textPath href="#lensTextPath" startOffset="50%">
 
-  border-radius: 999px;
+              12–40mm 1:2.8 • Ø62mm • ZOOM LENS • FIXLENS OPTICS •
 
-  background: radial-gradient(circle at top left, #111827 0, #020617 60%);
+            </textPath>
 
-  box-shadow:
+          </text>
 
-    0 18px 40px rgba(0, 0, 0, 0.75),
+        </svg>
 
-    0 0 0 1px rgba(15, 23, 42, 0.9);
+      </div>
 
-}
 
 
+      <span class="logo-word">FixLens</span>
 
-.lens-wrap {
+    </div>
 
-  width: 82px;
+  </header>
 
-  height: 82px;
 
-  display: flex;
 
-  align-items: center;
+  <!-- HERO CONTENT -->
 
-  justify-content: center;
+  <main class="hero">
 
-}
+    <h1 class="hero-title">Fix problems in the real world with AI.</h1>
 
 
 
-/* SVG sizing */
+    <p class="hero-subtitle">
 
-.lens-svg {
+      Point your camera at the issue or describe it in your own words.
 
-  width: 82px;
+      FixLens analyzes engines, appliances, electronics, and more —
 
-  height: 82px;
+      then guides you step by step.
 
-  display: block;
+    </p>
 
-}
 
 
+    <div class="btn-row">
 
-/* Outer ring & inner parts */
+      <button class="btn primary">Describe with text</button>
 
-.lens-ring {
+      <button class="btn">Upload a photo</button>
 
-  fill: #020617;
+    </div>
 
-  stroke: #020617;
 
-  stroke-width: 4;
 
-}
+    <button class="btn speak">
 
+      🎤 Speak
 
+    </button>
 
-/* inner rotating group */
+  </main>
 
-.lens-inner-rotating {
+</body>
 
-  transform-origin: 50% 50%;
-
-  transform-box: fill-box;
-
-  animation: lens-spin 18s linear infinite;
-
-}
-
-
-
-/* subtle vignette for depth */
-
-.lens-inner-vignette {
-
-  fill: radial-gradient(circle at 30% 25%, #000 0, #020617 30%, #000 100%);
-
-  fill: rgba(0, 0, 0, 0.35);
-
-}
-
-
-
-/* highlight dot */
-
-.lens-highlight {
-
-  fill: #f9fafb;
-
-  opacity: 0.9;
-
-}
-
-
-
-/* circular text around outer edge */
-
-.lens-text {
-
-  font-size: 8px;
-
-  letter-spacing: 0.18em;
-
-  fill: #e5e7eb;
-
-  text-transform: uppercase;
-
-}
-
-
-
-/* LOGO WORD */
-
-.logo-word {
-
-  font-size: 24px;
-
-  font-weight: 600;
-
-  letter-spacing: 0.08em;
-
-  color: #f9fafb;
-
-}
-
-
-
-/* ========= HERO TEXT ========= */
-
-
-
-.hero-title {
-
-  font-size: clamp(28px, 5vw, 36px);
-
-  line-height: 1.2;
-
-  font-weight: 700;
-
-  margin-top: 36px;
-
-  margin-bottom: 16px;
-
-}
-
-
-
-.hero-subtitle {
-
-  font-size: 16px;
-
-  line-height: 1.6;
-
-  color: #9ca3af;
-
-  margin-bottom: 32px;
-
-}
-
-
-
-/* ========= BUTTONS ========= */
-
-
-
-.btn-row {
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 14px;
-
-  margin-bottom: 18px;
-
-}
-
-
-
-.btn {
-
-  border: none;
-
-  border-radius: 999px;
-
-  padding: 14px 24px;
-
-  font-size: 16px;
-
-  font-weight: 500;
-
-  cursor: pointer;
-
-  transition:
-
-    transform 0.15s ease,
-
-    box-shadow 0.15s ease,
-
-    background 0.15s ease,
-
-    color 0.15s ease;
-
-}
-
-
-
-/* primary blue button */
-
-.btn.primary {
-
-  background: linear-gradient(90deg, #2563eb, #6366f1);
-
-  color: #f9fafb;
-
-  box-shadow:
-
-    0 0 30px rgba(79, 70, 229, 0.65),
-
-    0 14px 30px rgba(15, 23, 42, 0.75);
-
-}
-
-
-
-.btn.primary:hover {
-
-  transform: translateY(-1px);
-
-  box-shadow:
-
-    0 0 36px rgba(79, 70, 229, 0.9),
-
-    0 18px 36px rgba(15, 23, 42, 0.8);
-
-}
-
-
-
-.btn.primary:active {
-
-  transform: translateY(0);
-
-  box-shadow:
-
-    0 0 20px rgba(79, 70, 229, 0.7),
-
-    0 10px 24px rgba(15, 23, 42, 0.8);
-
-}
-
-
-
-/* secondary button */
-
-.btn:not(.primary):not(.speak) {
-
-  background: #020617;
-
-  color: #e5e7eb;
-
-  box-shadow:
-
-    0 0 0 1px rgba(31, 41, 55, 0.9),
-
-    0 10px 26px rgba(0, 0, 0, 0.85);
-
-}
-
-
-
-.btn:not(.primary):not(.speak):hover {
-
-  background: #020817;
-
-}
-
-
-
-/* speak button */
-
-.btn.speak {
-
-  margin-top: 10px;
-
-  background: #020617;
-
-  color: #e5e7eb;
-
-  box-shadow:
-
-    0 0 0 1px rgba(31, 41, 55, 0.9),
-
-    0 10px 26px rgba(0, 0, 0, 0.85);
-
-}
-
-
-
-/* ========= ANIMATIONS ========= */
-
-
-
-@keyframes lens-spin {
-
-  from {
-
-    transform: rotate(0deg);
-
-  }
-
-  to {
-
-    transform: rotate(360deg);
-
-  }
-
-}
-
-
-
-/* ========= RESPONSIVE ========= */
-
-
-
-@media (min-width: 640px) {
-
-  .btn-row {
-
-    flex-direction: row;
-
-    justify-content: center;
-
-  }
-
-
-
-  .btn {
-
-    min-width: 220px;
-
-  }
-
-}
+</html>
