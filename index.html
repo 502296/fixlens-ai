@@ -26,7 +26,7 @@
 
       <div class="logo-row">
 
-        <!-- عدّل مسار اللوغو هنا حسب ملفك -->
+        <!-- غيّر مسار اللوغو حسب ملفك -->
 
         <img
 
@@ -46,19 +46,15 @@
 
         <a href="#how">How it works</a>
 
-        <a href="#what">What it can fix</a>
-
       </nav>
 
     </header>
 
 
 
-    <!-- Main Content -->
+    <!-- Main -->
 
     <main class="main">
-
-
 
       <!-- Hero -->
 
@@ -68,9 +64,11 @@
 
         <p>
 
-          Describe the issue or upload a photo — FixLens Brain analyzes engines,
+          Point your camera at the problem or describe it in your own words.
 
-          appliances, and electronics, then guides you step by step.
+          FixLens Brain analyzes engines, appliances, and electronics, then
+
+          guides you step by step.
 
         </p>
 
@@ -82,49 +80,49 @@
 
       <section class="chat-shell">
 
+        <!-- Quick actions -->
+
+        <div class="quick-actions">
+
+          <button class="qa-btn qa-primary" id="qaText">
+
+            Start with text
+
+          </button>
+
+          <button class="qa-btn" id="qaPhoto">
+
+            Start with photo
+
+          </button>
+
+          <button class="qa-btn qa-ghost" id="qaVoice" type="button">
+
+            <span class="qa-mic-icon">🎤</span>
+
+            Voice (soon)
+
+          </button>
+
+        </div>
+
+
+
+        <!-- Chat panel -->
+
         <div class="chat-panel" id="chat">
 
-          <!-- Example welcome message -->
-
           <div class="bubble bubble-ai">
 
             <div class="bubble-label">FixLens Brain</div>
 
             <p>
 
-              Hi, I’m your diagnostic assistant. Describe what’s happening or
+              Hi, I’m your diagnostic assistant. Describe what’s happening
 
-              upload a photo of the problem. You can write in English or
+              or upload a photo of the problem. You can write in any
 
-              العربية — I’ll reply in the same language.
-
-            </p>
-
-          </div>
-
-
-
-          <div class="bubble bubble-user">
-
-            <div class="bubble-label">You</div>
-
-            <p>My car makes a squeaking noise at low speed when I brake.</p>
-
-          </div>
-
-
-
-          <div class="bubble bubble-ai">
-
-            <div class="bubble-label">FixLens Brain</div>
-
-            <p>
-
-              This often points to worn brake pads. I’ll help you estimate risk
-
-              level and the next steps after you share a real photo or more
-
-              details.
+              language — I’ll reply in the same one.
 
             </p>
 
@@ -134,7 +132,7 @@
 
 
 
-        <!-- Analysis strip (loader) -->
+        <!-- Analysis strip -->
 
         <div class="analysis-strip" id="analysisStrip" hidden>
 
@@ -142,7 +140,11 @@
 
           <div class="analysis-text">
 
-            <span class="analysis-main">Analyzing your photo and description…</span>
+            <span class="analysis-main">
+
+              Analyzing your problem…
+
+            </span>
 
             <span class="analysis-sub" id="analysisStep">
 
@@ -160,13 +162,9 @@
 
         <div class="chat-input-row">
 
-          <label class="upload-btn">
+          <!-- ملف الصورة مخفي، نتحكم به من الأزرار -->
 
-            <input type="file" id="photoInput" accept="image/*" />
-
-            <span>📷 Upload photo</span>
-
-          </label>
+          <input type="file" id="photoInput" accept="image/*" hidden />
 
 
 
@@ -176,7 +174,7 @@
 
             rows="1"
 
-            placeholder="اكتب مشكلتك هنا أو بالإنجليزي…"
+            placeholder="Type your problem in any language…"
 
           ></textarea>
 
@@ -186,69 +184,21 @@
 
         </div>
 
-      </section>
 
 
+        <!-- Small hint -->
 
-      <!-- Info sections -->
+        <p class="hint">
 
-      <section class="info-grid" id="what">
+          FixLens can help with cars & vehicles, home appliances, and everyday electronics.
 
-        <h2>What FixLens can understand today</h2>
-
-        <div class="info-cards">
-
-          <article class="info-card">
-
-            <h3>Cars & vehicles</h3>
-
-            <p>
-
-              Capture a photo of your dashboard, engine, leaks, or unusual wear.
-
-              FixLens suggests likely issues before you visit a mechanic.
-
-            </p>
-
-          </article>
-
-
-
-          <article class="info-card">
-
-            <h3>Home appliances</h3>
-
-            <p>
-
-              Ovens, washers, fridges, AC units. Upload a photo of error codes
-
-              or damaged parts for quick guidance.
-
-            </p>
-
-          </article>
-
-
-
-          <article class="info-card">
-
-            <h3>Electronics & tools</h3>
-
-            <p>
-
-              From power tools to audio gear, FixLens reads lights, textures,
-
-              and visible damage to help you decide what to do next.
-
-            </p>
-
-          </article>
-
-        </div>
+        </p>
 
       </section>
 
 
+
+      <!-- How it works (short, not crowded) -->
 
       <section class="info-steps" id="how">
 
@@ -256,35 +206,11 @@
 
         <ol>
 
-          <li>
+          <li><strong>See.</strong> It interprets your text and any uploaded photo.</li>
 
-            <strong>See what you see.</strong>
+          <li><strong>Reason.</strong> It compares patterns with thousands of real-world cases.</li>
 
-            Vision models decode your photo — leaks, lights, textures, and
-
-            context.
-
-          </li>
-
-          <li>
-
-            <strong>Reason like a technician.</strong>
-
-            A reasoning layer compares patterns with thousands of known issues
-
-            and repair paths.
-
-          </li>
-
-          <li>
-
-            <strong>Guide you step by step.</strong>
-
-            You get clear explanation, risk level, and recommended next steps —
-
-            in plain language.
-
-          </li>
+          <li><strong>Guide.</strong> It explains likely causes and suggests safe next steps.</li>
 
         </ol>
 
@@ -318,19 +244,25 @@
 
   <script>
 
-    // Simple chat front-end logic
-
     const chatEl = document.getElementById('chat');
 
     const userInputEl = document.getElementById('userInput');
 
-    const photoInputEl = document.getElementById('photoInput');
-
     const sendBtnEl = document.getElementById('sendBtn');
+
+    const photoInputEl = document.getElementById('photoInput');
 
     const analysisStripEl = document.getElementById('analysisStrip');
 
     const analysisStepEl = document.getElementById('analysisStep');
+
+
+
+    const qaTextBtn = document.getElementById('qaText');
+
+    const qaPhotoBtn = document.getElementById('qaPhoto');
+
+    const qaVoiceBtn = document.getElementById('qaVoice');
 
 
 
@@ -434,13 +366,11 @@
 
 
 
-      if (!text && !file) {
-
-        return;
-
-      }
+      if (!text && !file) return;
 
 
+
+      // Show user message
 
       appendBubble(text || '[Photo only]', 'user');
 
@@ -454,21 +384,29 @@
 
       try {
 
-        const formData = new FormData();
+        const payload = {
 
-        if (text) formData.append('description', text);
+          description: text,
 
-        if (file) formData.append('photo', file);
+          // حالياً نرسل فقط معلومة أن هناك صورة، بدون رفعها فعلياً
+
+          hasPhoto: !!file
+
+        };
 
 
-
-        // عدّل مسار ال API هنا إذا احتجت
 
         const response = await fetch('/api/fixlens', {
 
           method: 'POST',
 
-          body: formData
+          headers: {
+
+            'Content-Type': 'application/json'
+
+          },
+
+          body: JSON.stringify(payload)
 
         });
 
@@ -482,15 +420,17 @@
 
           const data = await response.json();
 
-          // نتوقع أن ال API يرجع { answer: "..." }
+          replyText =
 
-          replyText = data.answer || 'I analyzed your issue and prepared some next steps for you.';
+            data.answer ||
+
+            'I analyzed your issue and prepared some next steps for you.';
 
         } else {
 
           replyText =
 
-            'I had trouble contacting the server. Please try again in a moment or check your connection.';
+            'I had trouble contacting the server. Please try again in a moment.';
 
         }
 
@@ -516,13 +456,43 @@
 
       } finally {
 
-        // Reset file input after send
-
         photoInputEl.value = '';
 
       }
 
     }
+
+
+
+    // Quick actions
+
+    qaTextBtn.addEventListener('click', () => {
+
+      userInputEl.focus();
+
+    });
+
+
+
+    qaPhotoBtn.addEventListener('click', () => {
+
+      photoInputEl.click();
+
+    });
+
+
+
+    qaVoiceBtn.addEventListener('click', () => {
+
+      appendBubble(
+
+        'Voice input is coming soon. For now, describe the issue in text and I will help you.',
+
+        'ai'
+
+      );
+
+    });
 
 
 
