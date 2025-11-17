@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>FixLens – Fix problems in the real world with AI</title>
+  <title>FixLens – AI Diagnosis for Real-World Problems</title>
 
   <link rel="stylesheet" href="style.css" />
 
@@ -36,7 +36,7 @@
 
 
 
-      <button id="menu-toggle" class="menu-btn" type="button">
+      <button class="menu-btn" id="menu-toggle" type="button">
 
         Menu
 
@@ -50,9 +50,9 @@
 
     <main class="hero">
 
-      <div class="hero-main">
+      <section class="hero-main">
 
-        <!-- Big Lens -->
+        <!-- Lens -->
 
         <div class="hero-lens-wrap">
 
@@ -62,53 +62,45 @@
 
 
 
-            <svg class="hero-lens-ring" viewBox="0 0 200 200">
+            <!-- النص الدائري حول العدسة -->
+
+            <svg class="hero-lens-ring" viewBox="0 0 100 100" aria-hidden="true">
 
               <defs>
 
-                <path id="fixlens-circle"
+                <path
 
-                  d="M 100,100 m -70,0 a 70,70 0 1,1 140,0 a 70,70 0 1,1 -140,0" />
+                  id="lens-text-path"
+
+                  d="
+
+                    M 50,50
+
+                    m -34,0
+
+                    a 34,34 0 1,1 68,0
+
+                    a 34,34 0 1,1 -68,0
+
+                  "
+
+                />
 
               </defs>
 
+              <text class="hero-lens-text">
 
+                <textPath
 
-              <circle
+                  href="#lens-text-path"
 
-                cx="100"
+                  textLength="215"
 
-                cy="100"
+                  startOffset="50%"
 
-                r="78"
+                >
 
-                fill="none"
-
-                stroke="rgba(148,163,184,0.35)"
-
-                stroke-width="1.5"
-
-              />
-
-
-
-              <text
-
-                class="hero-lens-text"
-
-                font-size="10"
-
-                textLength="440"
-
-                lengthAdjust="spacingAndGlyphs"
-
-              >
-
-                <textPath href="#fixlens-circle" startOffset="0">
-
-                  FIXLENS • ANALYZE • DIAGNOSE • GUIDE • FIX • REAL-WORLD
-
-                  PROBLEMS •
+                  FIXLENS · ANALYZE · DIAGNOSE · GUIDE · FIX · REAL-WORLD PROBLEMS ·
 
                 </textPath>
 
@@ -118,15 +110,13 @@
 
           </div>
 
-
-
           <div class="hero-lens-title">FIXLENS</div>
 
         </div>
 
 
 
-        <!-- Copy + Actions -->
+        <!-- Copy -->
 
         <h1 class="hero-title">
 
@@ -140,17 +130,19 @@
 
           Point your camera at the issue or describe it in your own words.
 
-          FixLens analyzes engines, appliances, electronics, and more — then
+          FixLens analyzes engines, appliances, electronics, and more —
 
-          guides you step by step.
+          then guides you step by step.
 
         </p>
 
 
 
+        <!-- Actions -->
+
         <div class="actions">
 
-          <button id="btn-text" class="btn primary-btn">
+          <button class="btn primary-btn" id="btn-text" type="button">
 
             Describe with text
 
@@ -158,7 +150,7 @@
 
 
 
-          <button id="btn-photo" class="btn secondary-btn">
+          <button class="btn secondary-btn" id="btn-photo" type="button">
 
             Upload a photo
 
@@ -166,49 +158,47 @@
 
 
 
-          <button id="btn-speak" class="btn ghost-btn">
+          <button class="btn ghost-btn" id="btn-speak" type="button">
 
-            🎤 Speak
+            <span role="img" aria-label="microphone">🎙️</span> Speak
 
           </button>
+
+
+
+          <input
+
+            type="file"
+
+            id="photo-input"
+
+            accept="image/*"
+
+            hidden
+
+          />
 
         </div>
 
 
 
-        <!-- Conversation area (chat-style like ChatGPT) -->
+        <!-- Recent Diagnosis -->
 
-        <section id="conversation" class="conversation">
+        <section class="conversation">
 
           <div class="conversation-header">Recent diagnosis</div>
 
-          <div id="conversation-body" class="conversation-body">
+          <div class="conversation-body" id="conversation-body">
 
-            <!-- الرسائل ستُضاف هنا من JavaScript -->
+            <!-- الرسائل تُضاف من خلال JavaScript -->
 
           </div>
 
         </section>
 
-      </div>
+      </section>
 
     </main>
-
-
-
-    <!-- Hidden file input -->
-
-    <input
-
-      type="file"
-
-      id="photo-input"
-
-      accept="image/*"
-
-      style="display:none;"
-
-    />
 
 
 
@@ -216,7 +206,7 @@
 
     <footer class="footer">
 
-      <span>FixLens.ai · Built for real-world problems</span>
+      FixLens.ai · Built for real-world problems
 
     </footer>
 
@@ -224,63 +214,107 @@
 
 
 
-  <!-- Overlay Menu (extra info) -->
+  <!-- Menu overlay -->
 
-  <div id="menu-overlay" class="menu-overlay" aria-hidden="true">
+  <div class="menu-overlay" id="menu-overlay" aria-hidden="true">
 
     <div class="menu-backdrop"></div>
+
+
 
     <aside class="menu-panel">
 
       <div class="menu-header">
 
-        <span class="menu-title">FIXLENS MENU</span>
+        <div class="menu-title">FixLens Menu</div>
 
-        <button id="menu-close" class="menu-close" type="button">✕</button>
+        <button class="menu-close" id="menu-close" type="button">×</button>
 
       </div>
 
 
 
-      <div class="menu-section">
+      <section class="menu-section">
 
         <h2>How it works</h2>
 
         <ol class="menu-list">
 
-          <li><strong>Capture or describe</strong> – Upload a photo, speak, or type what’s wrong.</li>
+          <li>
 
-          <li><strong>FixLens analyzes</strong> – Our AI looks at the image and description together.</li>
+            <strong>Capture or describe</strong> – Upload a photo, speak, or
 
-          <li><strong>Step-by-step guidance</strong> – Get clear, safe, practical steps to fix or inspect.</li>
+            type what’s wrong.
+
+          </li>
+
+          <li>
+
+            <strong>FixLens analyzes</strong> – Our AI looks at the image and
+
+            description together.
+
+          </li>
+
+          <li>
+
+            <strong>Step-by-step guidance</strong> – Get clear, safe, practical
+
+            steps to fix or inspect.
+
+          </li>
 
         </ol>
 
-      </div>
+      </section>
 
 
 
-      <div class="menu-section">
+      <section class="menu-section">
 
         <h2>Where FixLens helps</h2>
 
         <ul class="menu-list">
 
-          <li><strong>Engines & vehicles:</strong> strange noises, warning lights, leaks.</li>
+          <li>
 
-          <li><strong>Home appliances:</strong> washers, dryers, dishwashers, fridges, ovens.</li>
+            <strong>Engines &amp; vehicles:</strong> strange noises, warning
 
-          <li><strong>Electronics:</strong> laptops, TVs, routers, game consoles, cables.</li>
+            lights, leaks.
 
-          <li><strong>Home issues:</strong> small leaks, doors, windows, basic repairs.</li>
+          </li>
+
+          <li>
+
+            <strong>Home appliances:</strong> washers, dryers, dishwashers,
+
+            fridges, ovens.
+
+          </li>
+
+          <li>
+
+            <strong>Electronics:</strong> laptops, TVs, routers, game consoles,
+
+            cables.
+
+          </li>
+
+          <li>
+
+            <strong>Home issues:</strong> small leaks, doors, windows, basic
+
+            repairs.
+
+          </li>
 
         </ul>
 
-      </div>
+      </section>
 
 
 
-      <div class="menu-section">
+      <section class="menu-section">
 
         <h2>Using FixLens safely</h2>
 
@@ -288,13 +322,25 @@
 
           <li>Always disconnect power before touching electrical devices.</li>
 
-          <li>Don’t open pressurized or high-voltage components unless you’re trained.</li>
+          <li>
 
-          <li>When in doubt, use FixLens to decide if you should call a professional.</li>
+            Don’t open pressurized or high-voltage components unless you’re
+
+            trained.
+
+          </li>
+
+          <li>
+
+            When in doubt, use FixLens to decide if you should call a
+
+            professional.
+
+          </li>
 
         </ul>
 
-      </div>
+      </section>
 
     </aside>
 
@@ -302,7 +348,7 @@
 
 
 
-  <script src="script.js" defer></script>
+  <script src="script.js"></script>
 
 </body>
 
