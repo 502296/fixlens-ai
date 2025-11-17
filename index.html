@@ -2,201 +2,115 @@
 
 <html lang="en">
 
-<head>
+  <head>
 
-  <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
 
-  <title>FixLens – Real-world AI diagnosis</title>
+      name="viewport"
 
-  <link rel="stylesheet" href="style.css" />
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
 
-</head>
+    />
 
-<body>
+    <title>FixLens – Real-world AI diagnosis</title>
 
-  <div class="page">
+    <link rel="stylesheet" href="style.css" />
 
+  </head>
 
 
-    <!-- ===== Header ===== -->
 
-    <header class="header">
+  <body>
 
-      <div class="logo-row">
+    <div class="page">
 
-        <div class="logo-mark"></div>
+      <!-- ===== Header ===== -->
 
-        <span class="logo-text">FixLens</span>
+      <header class="header">
 
-      </div>
+        <div class="logo-row">
 
+          <div class="logo-mark"></div>
 
-
-      <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">
-
-        <span></span>
-
-        <span></span>
-
-        <span></span>
-
-      </button>
-
-    </header>
-
-
-
-    <!-- ===== Slide-down Menu ===== -->
-
-    <nav class="menu-panel" id="menu-panel">
-
-      <div class="menu-inner">
-
-        <h3>FixLens</h3>
-
-
-
-        <section>
-
-          <h4>How FixLens works</h4>
-
-          <p>
-
-            FixLens combines computer vision, language understanding, and physics-aware reasoning
-
-            to analyze what it sees and what you describe, then returns a clear explanation of what
-
-            might be wrong and what to check next.
-
-          </p>
-
-        </section>
-
-
-
-        <section>
-
-          <h4>What FixLens can help with</h4>
-
-          <p>
-
-            Engines, household appliances, water leaks, strange noises, wiring issues, structural
-
-            questions, and more. Treat this as intelligent guidance — not a replacement for a
-
-            certified professional.
-
-          </p>
-
-        </section>
-
-
-
-        <section>
-
-          <h4>Safety & legal policy</h4>
-
-          <p>
-
-            FixLens gives guidance and explanations only. You stay in control of what to do next,
-
-            and you’re responsible for any decisions or repairs you make. When in doubt, stop and
-
-            call a licensed professional.
-
-          </p>
-
-        </section>
-
-      </div>
-
-    </nav>
-
-
-
-    <!-- ===== Main Lens Card ===== -->
-
-    <main class="main">
-
-      <section class="lens-card">
-
-
-
-        <!-- Lens -->
-
-        <div class="lens-wrapper">
-
-          <!-- هذه هي الصورة التي أرسلتها -->
-
-          <img
-
-            src="images/fixlens-lens-bw.png"
-
-            alt="FixLens rotating AI lens"
-
-            class="lens-image"
-
-          />
+          <span class="logo-text">FIXLENS</span>
 
         </div>
 
 
 
-        <!-- Subtitle -->
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
 
-        <p class="lens-subtitle">
+          <span></span>
 
-          Rotating AI lens that keeps your real-world problems in focus.
+          <span></span>
 
-        </p>
+          <span></span>
 
+        </button>
 
-
-        <!-- Headline -->
-
-        <h1 class="lens-title">
-
-          Fix problems in the real world<br />with AI.
-
-        </h1>
+      </header>
 
 
 
-        <p class="lens-body">
+      <!-- ===== MAIN CARD ===== -->
 
-          Describe what’s going on in your own words, attach a photo if you like, or speak.
+      <main class="main">
 
-          FixLens analyzes engines, appliances, electronics, structures, and more — then guides you
+        <section class="lens-card">
 
-          step by step.
+          <!-- Lens -->
 
-        </p>
+          <div class="lens-wrapper">
 
+            <img
 
+              src="images/fixlens-lens-bw.png"
 
-        <!-- ===== Chat bar ===== -->
+              alt="FixLens rotating AI lens"
 
-        <section class="chat-section">
+              class="lens-image"
 
-          <!-- input الحقيقي للصورة (مخفي) -->
+            />
 
-          <input
-
-            type="file"
-
-            id="image-input"
-
-            accept="image/*"
-
-            style="display: none"
-
-          />
+          </div>
 
 
 
-          <div class="chat-bar">
+          <p class="hero-tagline">
+
+            Rotating AI lens that keeps your real-world problems in focus.
+
+          </p>
+
+
+
+          <h1 class="hero-title">
+
+            Fix problems in the real world<br />
+
+            with AI.
+
+          </h1>
+
+
+
+          <p class="hero-subtitle">
+
+            Describe what’s going on in your own words, attach a photo if you
+
+            like, or speak. FixLens analyzes engines, appliances, electronics,
+
+            structures, and more — then guides you step by step.
+
+          </p>
+
+
+
+          <!-- ===== Chat bar ===== -->
+
+          <form class="chat-bar" id="chatForm">
 
             <button
 
@@ -204,7 +118,7 @@
 
               class="chat-icon-button"
 
-              id="camera-button"
+              id="photoButton"
 
               aria-label="Upload a photo"
 
@@ -216,17 +130,17 @@
 
 
 
-            <input
+            <textarea
 
-              type="text"
-
-              id="text-input"
+              id="chatInput"
 
               class="chat-input"
 
+              rows="1"
+
               placeholder="Describe what’s going on..."
 
-            />
+            ></textarea>
 
 
 
@@ -236,41 +150,47 @@
 
               class="chat-icon-button"
 
-              id="mic-button"
+              id="voiceButton"
 
-              aria-label="Record voice (coming soon)"
+              aria-label="Record a short voice note"
 
             >
 
-              🎙️
+              🎙
 
             </button>
 
 
 
-            <button
-
-              type="button"
-
-              class="chat-send-button"
-
-              id="send-button"
-
-              aria-label="Send to FixLens"
-
-            >
+            <button type="submit" class="chat-send" aria-label="Send">
 
               ➤
 
             </button>
 
-          </div>
+
+
+            <!-- حقل أخفاء لرفع الصورة (بنفس الصفحة لا ينتقل لمكان آخر) -->
+
+            <input
+
+              type="file"
+
+              id="photoInput"
+
+              accept="image/*"
+
+              style="display: none"
+
+            />
+
+          </form>
 
 
 
           <!-- Quick mode button -->
 
-          <button type="button" class="quick-mode-button" id="quick-mode-button">
+          <button class="mode-button" type="button">
 
             🛠 Pipes, wires &amp; studs in walls and under floors
 
@@ -278,124 +198,184 @@
 
 
 
-          <p class="helper-text" id="helper-text">
-
-            Waiting for your input.
-
-          </p>
+          <p class="status-text" id="statusText">Waiting for your input.</p>
 
         </section>
 
 
 
-      </section>
+        <!-- ===== INFO PANEL (داخل الـ menu) ===== -->
 
-    </main>
+        <section class="info-panel" id="infoPanel">
 
+          <div class="info-inner">
 
+            <h2>FixLens</h2>
 
-  </div>
 
 
+            <h3>How FixLens works</h3>
 
-  <script>
+            <p>
 
-    // ========== MENU TOGGLE ==========
+              FixLens combines computer vision, language understanding, and
 
-    const menuToggle = document.getElementById("menu-toggle");
+              physics-aware reasoning to analyze what it sees and what you
 
-    const menuPanel = document.getElementById("menu-panel");
+              describe, then returns a clear explanation of what might be wrong
 
+              and what to check next.
 
+            </p>
 
-    menuToggle.addEventListener("click", () => {
 
-      menuPanel.classList.toggle("is-open");
 
-      menuToggle.classList.toggle("is-open");
+            <h3>What FixLens can help with</h3>
 
-    });
+            <p>
 
+              Engines, household appliances, water leaks, strange noises, wiring
 
+              issues, structural questions, and more. Treat this as intelligent
 
-    // ========== CHAT BAR BEHAVIOUR ==========
+              guidance — not a replacement for a certified professional.
 
-    const cameraButton = document.getElementById("camera-button");
+            </p>
 
-    const fileInput = document.getElementById("image-input");
 
-    const textInput = document.getElementById("text-input");
 
-    const helperText = document.getElementById("helper-text");
+            <h3>Safety &amp; legal policy</h3>
 
-    const sendButton = document.getElementById("send-button");
+            <p>
 
-    const quickButton = document.getElementById("quick-mode-button");
+              FixLens gives guidance and explanations only. You stay in control
 
+              of what to do next, and you’re responsible for any decisions or
 
+              repairs you make. When in doubt, stop and call a licensed
 
-    cameraButton.addEventListener("click", () => {
+              professional.
 
-      fileInput.click();
+            </p>
 
-    });
 
 
+            <h3>About FixLens</h3>
 
-    fileInput.addEventListener("change", () => {
+            <p>
 
-      if (fileInput.files && fileInput.files[0]) {
+              FixLens is an experimental AI assistant designed to keep
 
-        helperText.textContent = "Photo attached. Describe the issue or press send.";
+              real-world problems in focus and help people understand what might
 
-      } else {
+              be happening before they spend money on a service call.
 
-        helperText.textContent = "Waiting for your input.";
+            </p>
 
-      }
+          </div>
 
-    });
+        </section>
 
+      </main>
 
+    </div>
 
-    quickButton.addEventListener("click", () => {
 
-      textInput.value = "I want to check for pipes, wires, or studs in this wall / under this floor.";
 
-      textInput.focus();
+    <script>
 
-      helperText.textContent = "Quick mode selected. Add any extra details, then press send.";
+      // فتح/إغلاق المينيو
 
-    });
+      const menuToggle = document.getElementById("menuToggle");
 
+      const infoPanel = document.getElementById("infoPanel");
 
+      const page = document.querySelector(".page");
 
-    // مبدئيًا: مجرد تحديث النص. ربط الـ API الحقيقي نعمله معًا لاحقًا.
 
-    sendButton.addEventListener("click", () => {
 
-      const hasText = textInput.value.trim().length > 0;
+      menuToggle.addEventListener("click", () => {
 
-      const hasFile = fileInput.files && fileInput.files[0];
+        page.classList.toggle("page--menu-open");
 
+        infoPanel.classList.toggle("info-panel--open");
 
+      });
 
-      if (!hasText && !hasFile) {
 
-        helperText.textContent = "Please describe the problem or attach a photo first.";
 
-        return;
+      // رفع صورة بدون تغيير الصفحة
 
-      }
+      const photoButton = document.getElementById("photoButton");
 
+      const photoInput = document.getElementById("photoInput");
 
+      const statusText = document.getElementById("statusText");
 
-      helperText.textContent = "Sending to FixLens AI… (preview only for now)";
 
-    });
 
-  </script>
+      photoButton.addEventListener("click", () => {
 
-</body>
+        photoInput.click();
+
+      });
+
+
+
+      photoInput.addEventListener("change", () => {
+
+        if (photoInput.files.length > 0) {
+
+          statusText.textContent = "Photo attached. Describe the issue or press send.";
+
+        }
+
+      });
+
+
+
+      // زر الصوت (حالياً مجرد placeholder حتى نربطه بالذكاء الصناعي لاحقاً)
+
+      const voiceButton = document.getElementById("voiceButton");
+
+      voiceButton.addEventListener("click", () => {
+
+        statusText.textContent =
+
+          "Voice note coming soon. For now, type your description.";
+
+      });
+
+
+
+      // إرسال الشات (بدون باك-إند حالياً)
+
+      const chatForm = document.getElementById("chatForm");
+
+      const chatInput = document.getElementById("chatInput");
+
+
+
+      chatForm.addEventListener("submit", (e) => {
+
+        e.preventDefault();
+
+        const text = chatInput.value.trim();
+
+        if (!text) return;
+
+
+
+        statusText.textContent =
+
+          "AI diagnosis coming soon. Thank you for your description.";
+
+        chatInput.value = "";
+
+      });
+
+    </script>
+
+  </body>
 
 </html>
