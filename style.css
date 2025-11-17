@@ -1,6 +1,4 @@
-/* ====== Base ====== */
-
-
+/* ========= Reset بسيط ========= */
 
 *,
 
@@ -14,83 +12,41 @@
 
 
 
-:root {
-
-  --bg: #000000;
-
-  --panel: #050505;
-
-  --panel-soft: #101010;
-
-  --text-main: #f5f5f5;
-
-  --text-soft: #9a9a9a;
-
-  --accent: #ffffff;
-
-  --border-subtle: #262626;
-
-  --input-bg: #121212;
-
-  --input-border: #333333;
-
-}
-
-
-
-html,
-
 body {
 
   margin: 0;
 
-  padding: 0;
-
-  height: 100%;
-
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
 
-    "Segoe UI", sans-serif;
+    sans-serif;
 
-  color: var(--text-main);
+  background: #000;
 
-  background: radial-gradient(circle at top, #161616 0, #000 52%, #000 100%);
-
-}
-
-
-
-body {
-
-  -webkit-font-smoothing: antialiased;
+  color: #fff;
 
 }
 
 
 
-/* ====== Layout shell ====== */
-
-
-
-.page-shell {
+.page {
 
   min-height: 100vh;
 
-  display: flex;
-
-  flex-direction: column;
-
-  background: linear-gradient(180deg, #050505 0%, #000000 40%, #000 100%);
-
 }
 
 
 
-/* ====== Header ====== */
+/* ========= Header ========= */
 
 
 
 .site-header {
+
+  position: sticky;
+
+  top: 0;
+
+  z-index: 20;
 
   display: flex;
 
@@ -98,19 +54,19 @@ body {
 
   justify-content: space-between;
 
-  padding: 14px 18px;
+  padding: 16px 20px;
 
-}
+  background: linear-gradient(
 
+    to bottom,
 
+    rgba(0, 0, 0, 0.98),
 
-.branding {
+    rgba(0, 0, 0, 0.8),
 
-  display: flex;
+    rgba(0, 0, 0, 0)
 
-  align-items: center;
-
-  gap: 10px;
+  );
 
 }
 
@@ -120,37 +76,31 @@ body {
 
   height: 32px;
 
-  width: auto;
-
   display: block;
 
 }
 
 
 
-/* hamburger */
+/* زر المنيو (٣ خطوط داخل دائرة) */
 
 .menu-toggle {
 
-  width: 40px;
+  width: 42px;
 
-  height: 40px;
+  height: 42px;
 
-  border-radius: 999px;
+  border-radius: 50%;
 
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: none;
 
-  background: radial-gradient(circle at 30% 0%, #3b3b3b 0%, #111 45%, #000 100%);
+  background: radial-gradient(circle at 30% 20%, #444, #111);
 
-  display: inline-flex;
-
-  flex-direction: column;
-
-  justify-content: center;
+  display: flex;
 
   align-items: center;
 
-  gap: 4px;
+  justify-content: center;
 
   padding: 0;
 
@@ -170,35 +120,29 @@ body {
 
   border-radius: 999px;
 
-  background: #f5f5f5;
+  background: #fff;
+
+  margin: 2px 0;
 
 }
 
 
 
-/* ====== Main / Lens ====== */
+/* ========= Main ========= */
 
 
 
 .main {
 
-  flex: 1;
-
-  display: flex;
-
-  justify-content: center;
-
-  padding: 12px 14px 24px;
+  padding: 12px 16px 32px;
 
 }
 
 
 
-.lens-section {
+.hero {
 
-  width: 100%;
-
-  max-width: 620px;
+  max-width: 720px;
 
   margin: 0 auto;
 
@@ -208,13 +152,23 @@ body {
 
   align-items: center;
 
+  gap: 20px;
+
 }
 
 
 
-/* lens image only – بدون أي مربعات إضافية */
+/* ========= Lens ========= */
+
+
 
 .lens-wrapper {
+
+  width: min(280px, 70vw);
+
+  aspect-ratio: 1 / 1;
+
+  border-radius: 50%;
 
   display: flex;
 
@@ -222,7 +176,25 @@ body {
 
   justify-content: center;
 
-  margin: 22px 0 20px;
+  background: radial-gradient(
+
+    circle at 30% 20%,
+
+    #222,
+
+    #050505 60%,
+
+    #000 100%
+
+  );
+
+  box-shadow:
+
+    0 0 30px rgba(0, 0, 0, 0.9),
+
+    0 22px 60px rgba(0, 0, 0, 1);
+
+  margin-top: 8px;
 
 }
 
@@ -230,51 +202,73 @@ body {
 
 .lens-image {
 
-  width: min(260px, 70vw);
+  width: 88%;
 
   height: auto;
 
   display: block;
 
-  filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.9));
+  border-radius: 50%;
+
+  animation: lens-spin 26s linear infinite;
 
 }
 
 
 
-/* ====== Chat bar ====== */
+@keyframes lens-spin {
+
+  from {
+
+    transform: rotate(0deg);
+
+  }
+
+  to {
+
+    transform: rotate(360deg);
+
+  }
+
+}
 
 
 
-.chat-form {
+/* ========= Input Card ========= */
+
+
+
+.input-card {
 
   width: 100%;
+
+  max-width: 640px;
 
   display: flex;
 
   flex-direction: column;
 
-  gap: 12px;
+  gap: 14px;
 
 }
 
 
 
-.chat-input-row {
+/* شريط الكتابة */
+
+.prompt-row {
 
   display: flex;
 
   align-items: center;
 
-  gap: 8px;
-
-  background: var(--panel-soft);
+  background: #070707;
 
   border-radius: 999px;
 
-  padding: 6px 6px 6px 10px;
+  border: 1px solid #262626;
 
-  border: 1px solid var(--border-subtle);
+  padding: 6px 6px 6px 10px;
 
 }
 
@@ -282,31 +276,33 @@ body {
 
 .icon-button {
 
+  width: 32px;
+
+  height: 32px;
+
+  border-radius: 50%;
+
   border: none;
 
   background: transparent;
 
-  color: var(--text-soft);
+  color: #f5f5f5;
 
-  font-size: 18px;
-
-  cursor: pointer;
-
-  display: inline-flex;
+  display: flex;
 
   align-items: center;
 
   justify-content: center;
 
-  width: 32px;
+  font-size: 18px;
 
-  height: 32px;
+  cursor: pointer;
 
 }
 
 
 
-.chat-input {
+.prompt-input {
 
   flex: 1;
 
@@ -314,25 +310,11 @@ body {
 
   background: transparent;
 
-  color: var(--text-main);
+  color: #f5f5f5;
 
-  font-size: 15px;
+  font-size: 16px;
 
-  padding: 8px 4px;
-
-}
-
-
-
-.chat-input::placeholder {
-
-  color: var(--text-soft);
-
-}
-
-
-
-.chat-input:focus {
+  padding: 0 8px;
 
   outline: none;
 
@@ -340,29 +322,37 @@ body {
 
 
 
+.prompt-input::placeholder {
+
+  color: #7a7a7a;
+
+}
+
+
+
 .send-button {
 
-  width: 38px;
+  width: 40px;
 
-  height: 38px;
+  height: 40px;
 
   border-radius: 50%;
 
   border: none;
 
-  cursor: pointer;
-
-  background: radial-gradient(circle at 30% 0%, #ffffff 0%, #f5f5f5 40%, #b0b0b0 100%);
+  background: #f5f5f5;
 
   color: #000;
 
-  font-size: 16px;
-
-  display: inline-flex;
+  display: flex;
 
   align-items: center;
 
   justify-content: center;
+
+  cursor: pointer;
+
+  margin-left: 4px;
 
   flex-shrink: 0;
 
@@ -370,41 +360,151 @@ body {
 
 
 
-/* quick mode button */
+.send-arrow {
 
-
-
-.quick-mode-button {
-
-  margin-top: 2px;
-
-  width: 100%;
-
-  border-radius: 999px;
-
-  border: 1px solid var(--border-subtle);
-
-  background: #080808;
-
-  color: var(--text-main);
-
-  padding: 10px 14px;
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 10px;
-
-  cursor: pointer;
-
-  font-size: 14px;
+  transform: translateX(1px);
 
 }
 
 
 
-.quick-icon {
+/* زر كشف الوايرات */
+
+.secondary-button {
+
+  width: 100%;
+
+  border-radius: 999px;
+
+  border: 1px solid #262626;
+
+  background: #050505;
+
+  color: #f5f5f5;
+
+  min-height: 48px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+}
+
+
+
+.secondary-button .secondary-icon {
+
+  font-size: 18px;
+
+}
+
+
+
+/* حالة الانتظار */
+
+.status-text {
+
+  margin: 0 8px 0 12px;
+
+  font-size: 13px;
+
+  color: #9a9a9a;
+
+}
+
+
+
+/* ========= Slide Menu ========= */
+
+
+
+.menu-panel {
+
+  position: fixed;
+
+  top: 0;
+
+  right: 0;
+
+  bottom: 0;
+
+  width: min(420px, 82vw);
+
+  background: #050505;
+
+  color: #f5f5f5;
+
+  transform: translateX(100%);
+
+  transition: transform 220ms ease-out;
+
+  z-index: 40;
+
+  overflow-y: auto;
+
+  padding-bottom: 32px;
+
+}
+
+
+
+.menu-inner {
+
+  padding: 20px 22px 40px;
+
+}
+
+
+
+.menu-close {
+
+  border: none;
+
+  background: transparent;
+
+  color: #f5f5f5;
+
+  font-size: 30px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  padding: 4px 0;
+
+}
+
+
+
+.menu-title {
+
+  margin: 10px 0 16px;
+
+  font-size: 22px;
+
+}
+
+
+
+.menu-section + .menu-section {
+
+  margin-top: 18px;
+
+}
+
+
+
+.menu-section h3 {
+
+  margin: 0 0 6px;
 
   font-size: 17px;
 
@@ -412,119 +512,63 @@ body {
 
 
 
-.quick-label {
-
-  white-space: nowrap;
-
-  overflow: hidden;
-
-  text-overflow: ellipsis;
-
-}
-
-
-
-.status-line {
+.menu-section p {
 
   margin: 0;
 
-  font-size: 13px;
+  font-size: 14px;
 
-  color: var(--text-soft);
+  line-height: 1.6;
 
-  padding-left: 4px;
+  color: #d0d0d0;
 
 }
 
 
 
-/* ====== Info drawer ====== */
+/* خلفية المنيو */
 
-
-
-.info-drawer {
+.menu-backdrop {
 
   position: fixed;
 
-  inset: auto 0 0 0;
+  inset: 0;
 
-  max-height: 70vh;
+  background: rgba(0, 0, 0, 0.55);
 
-  background: rgba(5, 5, 5, 0.98);
+  opacity: 0;
 
-  border-top: 1px solid #1c1c1c;
+  pointer-events: none;
 
-  transform: translateY(100%);
+  transition: opacity 180ms ease-out;
 
-  transition: transform 220ms ease-out;
-
-  overflow-y: auto;
-
-  padding: 16px 18px 28px;
+  z-index: 30;
 
 }
 
 
 
-.page-shell.info-open .info-drawer {
+/* حالة المنيو مفتوح */
 
-  transform: translateY(0);
+body.menu-open .menu-panel {
 
-}
-
-
-
-.info-content {
-
-  max-width: 720px;
-
-  margin: 0 auto;
+  transform: translateX(0);
 
 }
 
 
 
-.info-content h2 {
+body.menu-open .menu-backdrop {
 
-  margin-top: 0;
+  opacity: 1;
 
-  margin-bottom: 10px;
-
-  font-size: 20px;
+  pointer-events: auto;
 
 }
 
 
 
-.info-content h3 {
-
-  margin-top: 18px;
-
-  margin-bottom: 6px;
-
-  font-size: 16px;
-
-}
-
-
-
-.info-content p {
-
-  margin-top: 0;
-
-  margin-bottom: 6px;
-
-  font-size: 14px;
-
-  line-height: 1.5;
-
-  color: var(--text-soft);
-
-}
-
-
-
-/* ====== Desktop tweaks ====== */
+/* ========= شاشات أكبر ========= */
 
 
 
@@ -532,7 +576,7 @@ body {
 
   .site-header {
 
-    padding: 18px 32px 8px;
+    padding: 18px 40px;
 
   }
 
@@ -540,51 +584,23 @@ body {
 
   .main {
 
-    padding: 8px 32px 32px;
+    padding: 24px 40px 48px;
 
   }
 
 
 
-  .lens-section {
+  .hero {
 
-    align-items: center;
-
-  }
-
-
-
-  .lens-image {
-
-    width: min(320px, 40vw);
+    margin-top: 10px;
 
   }
 
 
 
-  .chat-form {
+  .lens-wrapper {
 
-    max-width: 520px;
-
-  }
-
-
-
-  .info-drawer {
-
-    left: auto;
-
-    right: 24px;
-
-    bottom: 24px;
-
-    width: 420px;
-
-    max-height: 70vh;
-
-    border-radius: 20px;
-
-    border: 1px solid #1f1f1f;
+    width: 320px;
 
   }
 
