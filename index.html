@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>FixLens – AI diagnosis for real-world problems</title>
+  <title>FixLens – Real-world AI diagnosis</title>
 
   <link rel="stylesheet" href="style.css" />
 
@@ -26,89 +26,77 @@
 
       <div class="logo-row">
 
-        <div class="logo-mark">
+        <div class="logo-mark">◎</div>
 
-          <span class="logo-inner-dot"></span>
-
-        </div>
-
-        <span class="logo-text">FixLens</span>
+        <div class="logo-text">FixLens</div>
 
       </div>
 
 
 
-      <!-- hamburger + nav -->
+      <!-- زر المنيو (ثلاث خطوط ناعمة) -->
 
-      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
-
-      <label for="nav-toggle" class="menu-button" aria-label="Open menu">
+      <button class="menu-toggle" aria-label="Open menu">
 
         <span></span><span></span><span></span>
 
-      </label>
+      </button>
 
 
 
-      <nav class="nav-links">
+      <!-- محتوى المنيو -->
 
-        <a href="index.html">Home</a>
+      <nav class="menu-drawer" aria-label="Main menu">
 
-        <a href="how.html">How it works</a>
+        <a href="#how">How FixLens works</a>
 
-        <a href="help.html">What it can help with</a>
+        <a href="#help">What FixLens can help with</a>
 
-        <a href="safety.html">Safety & policy</a>
+        <a href="#safety">Safety & legal policy</a>
 
       </nav>
-
-
-
-      <div class="nav-drawer">
-
-        <a href="index.html">Home</a>
-
-        <a href="how.html">How FixLens works</a>
-
-        <a href="help.html">What FixLens can help with</a>
-
-        <a href="safety.html">Safety & legal policy</a>
-
-      </div>
 
     </header>
 
 
 
-    <!-- ===== Hero with lens (unchanged في الجوهر) ===== -->
+    <!-- ===== Main ===== -->
 
     <main class="main">
 
       <section class="hero">
 
+
+
         <div class="hero-card">
 
-
-
-          <!-- العدسة الملكية -->
+          <!-- ✅ العدسة – لا نلمسها في التصميم -->
 
           <div class="lens-wrapper">
 
             <div class="lens-glow"></div>
 
-            <div class="lens-outer-ring"></div>
 
 
-
-            <div class="lens-inner">
+            <div class="lens">
 
               <div class="lens-core"></div>
 
-              <div class="lens-ring-text">
 
-                <div class="ring-text">
 
-                  FIXLENS • AI DIAGNOSIS • REAL-WORLD PROBLEMS • SMART VISUAL AI •
+              <div class="lens-ring lens-ring-outer"></div>
+
+
+
+              <div class="lens-ring lens-ring-text">
+
+                <div class="lens-ring-text-inner">
+
+                  <span>
+
+                    REAL-WORLD PROBLEMS • SMART VISUAL AI • AI DIAGNOSIS • FIXLENS •
+
+                  </span>
 
                 </div>
 
@@ -120,7 +108,7 @@
 
 
 
-          <p class="lens-caption">
+          <p class="hero-tagline">
 
             Rotating AI lens that keeps your real-world problems in focus.
 
@@ -128,231 +116,89 @@
 
 
 
-          <h1 class="hero-title">
+          <!-- ===== شريط الشات مثل ChatGPT ===== -->
 
-            Fix problems in the real world<br />with AI.
+          <form class="chat-input-row" id="chat-form">
 
-          </h1>
-
-
-
-          <p class="hero-subtitle">
-
-            Point your camera at the issue or describe it in your own words.
-
-            FixLens analyzes engines, appliances, electronics, and more — then
-
-            guides you step by step.
-
-          </p>
-
-
-
-          <div class="hero-buttons">
-
-            <button class="btn primary-btn hero-btn" type="button" onclick="document.getElementById('description-input').focus();">
-
-              Describe with text
-
-            </button>
-
-            <button class="btn ghost-btn hero-btn" type="button" onclick="document.getElementById('image-input').click();">
-
-              Upload a photo
-
-            </button>
-
-            <button class="btn ghost-btn hero-btn" type="button" onclick="document.getElementById('record-btn').click();">
-
-              <span class="mic-emoji">🎙️</span> Speak
-
-            </button>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-
-      <!-- ===== Chat-style inline demo ===== -->
-
-      <section id="preview-section" class="section compact-demo">
-
-        <div class="chat-shell">
-
-
-
-          <!-- quick mode row (فيها أيقونة الوايرات و الأنابيب) -->
-
-          <div class="chat-quick-row">
-
-            <span class="quick-label">Quick modes:</span>
-
-
-
-            <!-- زر خاص بالوايرات و الأنابيب و العواميد -->
+            <!-- زر صورة -->
 
             <button
 
-              class="quick-tag"
-
               type="button"
 
-              onclick="document.getElementById('description-input').value = 'I want to check for hidden electrical wires, water pipes, or wooden studs behind a wall or under the tiles. Here is what I see: '; document.getElementById('description-input').focus();"
+              class="icon-button"
+
+              id="attach-photo"
+
+              title="Upload a photo"
 
             >
-
-              🛰️ Pipes & wires in walls
-
-            </button>
-
-
-
-            <!-- مثال مود آخر بسيط -->
-
-            <button
-
-              class="quick-tag"
-
-              type="button"
-
-              onclick="document.getElementById('description-input').value = 'Car engine issue: I hear a strange sound and I see this area leaking. Here is what I see: '; document.getElementById('description-input').focus();"
-
-            >
-
-              🚗 Engine noise / leak
-
-            </button>
-
-          </div>
-
-
-
-          <!-- منطقة الرسائل (system + نتائج FixLens) -->
-
-          <div class="chat-messages" id="demo-result">
-
-            <div class="chat-message chat-message--system">
-
-              <div class="chat-avatar">◎</div>
-
-              <div class="chat-bubble">
-
-                <p>
-
-                  Hi, I’m FixLens. Describe what’s going on, upload a photo, or record
-
-                  a short voice note — I’ll help you understand what might be wrong
-
-                  before you call a professional.
-
-                </p>
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-
-          <!-- شريط الإدخال مثل ChatGPT -->
-
-          <div class="chat-input-row">
-
-            <!-- زر رفع الصورة -->
-
-            <label class="icon-btn file-btn" for="image-input" title="Upload a photo">
 
               📷
 
-            </label>
+            </button>
 
-            <input id="image-input" type="file" accept="image/*" hidden />
-
-
-
-            <!-- خانة النص -->
-
-            <textarea
-
-              id="description-input"
-
-              rows="1"
-
-              placeholder="Describe what’s going on…"
-
-            ></textarea>
+            <input type="file" id="hidden-image-input" accept="image/*" hidden />
 
 
 
-            <!-- زر المايك -->
+            <!-- حقل النص -->
+
+            <input
+
+              type="text"
+
+              class="chat-input"
+
+              id="chat-text"
+
+              placeholder="Describe what’s going on..."
+
+            />
+
+
+
+            <!-- زر مايك -->
 
             <button
 
-              class="icon-btn"
-
               type="button"
 
-              id="record-btn"
+              class="icon-button"
+
+              id="record-voice"
 
               title="Record voice"
 
             >
 
-              🎤
+              🎙️
 
             </button>
 
 
 
-            <!-- زر الإرسال (يرتبط بنفس دالة Run AI diagnosis في script.js) -->
+            <!-- زر إرسال -->
 
-            <button
-
-              class="send-btn"
-
-              type="button"
-
-              id="run-demo-btn"
-
-              title="Run AI diagnosis"
-
-            >
+            <button type="submit" class="send-button" title="Send">
 
               ➤
 
             </button>
 
-          </div>
+          </form>
 
 
 
-          <!-- حالة الطلب -->
+          <!-- زر خاص لكشف الوايرات والأنابيب وعواميد الخشب -->
 
-          <div class="chat-status-row">
+          <button class="quick-mode-button" id="pipes-mode">
 
-            <span id="demo-status" class="demo-status">
+            🛠️ Pipes, wires & studs in walls and under floors
 
-              Waiting for your input.
-
-            </span>
-
-          </div>
+          </button>
 
         </div>
-
-
-
-        <p class="hero-footnote">
-
-          FixLens gives guidance and explanations only. You stay in control of what to
-
-          do next.
-
-        </p>
 
       </section>
 
@@ -360,11 +206,9 @@
 
 
 
-    <!-- ===== Footer ===== -->
-
     <footer class="footer">
 
-      <p>FixLens – Real-world AI diagnosis • Built with care</p>
+      FixLens – Real-world AI diagnosis • Built with care
 
     </footer>
 
@@ -372,7 +216,93 @@
 
 
 
-  <script src="script.js"></script>
+  <script>
+
+    // فتح/غلق المنيو
+
+    const menuToggle = document.querySelector('.menu-toggle');
+
+    const menuDrawer = document.querySelector('.menu-drawer');
+
+    menuToggle.addEventListener('click', () => {
+
+      menuDrawer.classList.toggle('is-open');
+
+    });
+
+
+
+    // صورة من الشريط أو من الزر
+
+    const hiddenFile = document.getElementById('hidden-image-input');
+
+    const attachPhotoBtn = document.getElementById('attach-photo');
+
+
+
+    attachPhotoBtn.addEventListener('click', () => {
+
+      hiddenFile.click();
+
+    });
+
+
+
+    // مايك (حاليًا فقط placeholder – لاحقًا نربطه بالـ API)
+
+    const recordBtn = document.getElementById('record-voice');
+
+    recordBtn.addEventListener('click', () => {
+
+      alert('Voice recording will be added here soon.');
+
+    });
+
+
+
+    // زر الـ Pipes & wires mode
+
+    const pipesBtn = document.getElementById('pipes-mode');
+
+    pipesBtn.addEventListener('click', () => {
+
+      const chatInput = document.getElementById('chat-text');
+
+      chatInput.value =
+
+        'Scan walls or floors for hidden pipes, electrical wires, or wooden studs.';
+
+      chatInput.focus();
+
+    });
+
+
+
+    // إرسال الشات (حاليًا فقط placeholder – لاحقًا نربطه بـ /api/fixlens)
+
+    const chatForm = document.getElementById('chat-form');
+
+    chatForm.addEventListener('submit', (e) => {
+
+      e.preventDefault();
+
+      const text = document.getElementById('chat-text').value.trim();
+
+      if (!text) return;
+
+      alert(
+
+        'Later this will send your text/photo/voice to the FixLens AI backend.\n\nMessage: ' +
+
+          text
+
+      );
+
+      document.getElementById('chat-text').value = '';
+
+    });
+
+  </script>
 
 </body>
 
