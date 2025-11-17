@@ -8,271 +8,89 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>FixLens – Real-world AI diagnosis</title>
+  <title>FixLens – AI Diagnosis</title>
 
   <link rel="stylesheet" href="style.css" />
 
 </head>
 
+
+
 <body>
 
-  <div class="page">
 
 
+  <!-- TOP BAR -->
 
-    <!-- ===== Header ===== -->
+  <header class="top-bar">
 
-    <header class="header">
+    <div class="left-brand">
 
-      <div class="brand">
+      <img src="./images/fixlens-logo-white.png" class="brand-icon" alt="logo">
 
-        <!-- لو حبيت تستخدم صورة الشعار بدلاً من الدائرة،
-
-             استبدل الـ div التالي بـ:
-
-             <img src="images/fixlens-logo-wordmark.png" alt="FixLens" class="brand-logo" />
-
-        -->
-
-        <div class="brand-mark">
-
-          <div class="brand-blade"></div>
-
-        </div>
-
-        <span class="brand-text">FixLens</span>
-
-      </div>
-
-
-
-      <button class="menu-toggle" aria-label="Open menu">
-
-        <span></span>
-
-        <span></span>
-
-        <span></span>
-
-      </button>
-
-    </header>
-
-
-
-    <!-- ===== Main ===== -->
-
-    <main class="main">
-
-      <!-- Lens -->
-
-      <section class="lens-section">
-
-        <div class="lens-wrapper">
-
-          <img
-
-            src="images/fixlens-lens-bw.png"
-
-            alt="FixLens rotating lens"
-
-            class="lens-image"
-
-          />
-
-        </div>
-
-        <p class="tagline">
-
-          Rotating AI lens that keeps your real-world problems in focus.
-
-        </p>
-
-      </section>
-
-
-
-      <!-- Call to action -->
-
-      <section class="cta-section">
-
-        <button class="cta cta-primary">
-
-          <span class="cta-icon-left">📷</span>
-
-          <span class="cta-text">Describe what's going on…</span>
-
-          <span class="cta-icon-right">🎙️</span>
-
-        </button>
-
-
-
-        <button class="cta cta-secondary">
-
-          <span class="cta-icon-left">🛠️</span>
-
-          <span class="cta-text">
-
-            Detect pipes, wires & studs behind walls / floors
-
-          </span>
-
-        </button>
-
-
-
-        <p class="status">Waiting for your input.</p>
-
-      </section>
-
-    </main>
-
-
-
-    <!-- ===== Overlay Menu ===== -->
-
-    <div class="menu-overlay" aria-hidden="true">
-
-      <div class="menu-panel">
-
-        <button class="menu-close" aria-label="Close menu">×</button>
-
-
-
-        <nav class="menu-nav">
-
-          <h2>How FixLens works</h2>
-
-          <p>
-
-            FixLens combines computer vision, language understanding, and
-
-            physics-aware reasoning to analyze what it sees and what you
-
-            describe, then returns a clear explanation of what might be
-
-            wrong and what to check next.
-
-          </p>
-
-
-
-          <h2>What FixLens can help with</h2>
-
-          <p>
-
-            Engines, household appliances, water leaks, strange noises, wiring
-
-            issues, structural questions, and more. Treat this as intelligent
-
-            guidance — not a replacement for a certified professional.
-
-          </p>
-
-
-
-          <h2>Safety & legal policy</h2>
-
-          <p>
-
-            FixLens gives guidance and explanations only. You stay in control
-
-            of what to do next, and you're responsible for any decisions or
-
-            repairs you make. When in doubt, stop and call a licensed
-
-            professional.
-
-          </p>
-
-
-
-          <h2>About FixLens</h2>
-
-          <p>
-
-            FixLens is an experimental AI assistant designed to keep
-
-            real-world problems in focus and help you understand what might
-
-            be happening before you spend money on a service call.
-
-          </p>
-
-        </nav>
-
-      </div>
+      <span class="brand-text">FixLens</span>
 
     </div>
 
-  </div>
+
+
+    <div class="menu-icon">
+
+      <div></div>
+
+      <div></div>
+
+      <div></div>
+
+    </div>
+
+  </header>
 
 
 
-  <script>
+  <!-- LENS SECTION -->
 
-    const toggle = document.querySelector(".menu-toggle");
+  <section class="hero">
 
-    const overlay = document.querySelector(".menu-overlay");
+    <img src="./images/fixlens-lens-bw.png" class="lens" alt="lens">
 
-    const closeBtn = document.querySelector(".menu-close");
-
-
-
-    function openMenu() {
-
-      overlay.classList.add("menu-open");
-
-      document.body.classList.add("no-scroll");
-
-      overlay.setAttribute("aria-hidden", "false");
-
-    }
+  </section>
 
 
 
-    function closeMenu() {
+  <!-- MAIN CONTENT -->
 
-      overlay.classList.remove("menu-open");
-
-      document.body.classList.remove("no-scroll");
-
-      overlay.setAttribute("aria-hidden", "true");
-
-    }
+  <section class="content">
 
 
 
-    toggle.addEventListener("click", openMenu);
-
-    closeBtn.addEventListener("click", closeMenu);
+    <h2>Try FixLens</h2>
 
 
 
-    overlay.addEventListener("click", (event) => {
+    <label class="input-label">Upload a photo</label>
 
-      if (event.target === overlay) {
-
-        closeMenu();
-
-      }
-
-    });
+    <input type="file" class="input" />
 
 
 
-    document.addEventListener("keydown", (event) => {
+    <label class="input-label">Describe what's going on</label>
 
-      if (event.key === "Escape") {
+    <textarea class="textarea" placeholder="Example: knocking noise, leak, vibration..."></textarea>
 
-        closeMenu();
 
-      }
 
-    });
+    <button class="run-btn">Run AI Diagnosis</button>
 
-  </script>
+
+
+    <div class="output-box">Your result will appear here...</div>
+
+
+
+  </section>
+
+
 
 </body>
 
