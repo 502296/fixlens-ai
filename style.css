@@ -52,7 +52,7 @@
 
   --radius-pill: 999px;
 
-  --lens-rotation-duration: 18s; /* غيّرها لـ 12s لو تريد أسرع */
+  --lens-rotation-duration: 18s; /* غيّرها لـ 12s لو تحب أسرع */
 
 }
 
@@ -522,7 +522,7 @@ body {
 
 /* =========================
 
-   Conversation (Chat style)
+   Conversation (Recent Diagnosis)
 
    ========================= */
 
@@ -675,6 +675,62 @@ body {
 .message-bubble.ai {
 
   background: radial-gradient(circle at top left, #020617, #020617 55%, #020617);
+
+}
+
+
+
+/* ===== Bubble التفكير / السكننغ ===== */
+
+
+
+.message-bubble.thinking {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 10px;
+
+}
+
+
+
+.message-bubble.thinking .thinking-main {
+
+  flex: 1;
+
+}
+
+
+
+.message-bubble.thinking .thinking-bar {
+
+  width: 70px;
+
+  height: 6px;
+
+  border-radius: 999px;
+
+  background: linear-gradient(
+
+    90deg,
+
+    rgba(15, 23, 42, 0.2),
+
+    rgba(129, 140, 248, 0.95),
+
+    rgba(15, 23, 42, 0.2)
+
+  );
+
+  background-size: 200% 100%;
+
+  box-shadow: 0 0 12px rgba(79, 70, 229, 0.8);
+
+  animation: fixlens-shimmer 1.1s ease-in-out infinite;
 
 }
 
@@ -879,6 +935,30 @@ body {
   to {
 
     transform: rotate(360deg);
+
+  }
+
+}
+
+
+
+@keyframes fixlens-shimmer {
+
+  0% {
+
+    background-position: 0% 0;
+
+  }
+
+  50% {
+
+    background-position: 100% 0;
+
+  }
+
+  100% {
+
+    background-position: 0% 0;
 
   }
 
