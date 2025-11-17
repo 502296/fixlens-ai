@@ -1,4 +1,48 @@
-/* ========== Base ========== */
+/* =========================
+
+   FixLens – Global Styles
+
+   ========================= */
+
+
+
+:root {
+
+  --bg: #000000;
+
+  --bg-card: #101010;
+
+  --bg-card-soft: #141414;
+
+  --text-main: #f5f5f5;
+
+  --text-muted: #a0a0a0;
+
+  --accent: #ffffff;
+
+  --accent-soft: #dcdcdc;
+
+  --border-soft: #2b2b2b;
+
+  --pill-bg: #151515;
+
+  --pill-border: #333333;
+
+  --shadow-soft: 0 0 1px #222, 0 18px 45px rgba(0, 0, 0, 0.9);
+
+  --transition-fast: 140ms ease-out;
+
+  --radius-card: 32px;
+
+  --radius-pill: 999px;
+
+  --max-width: 960px;
+
+}
+
+
+
+/* Reset-ish */
 
 
 
@@ -14,40 +58,6 @@
 
 
 
-:root {
-
-  --bg-main: #050505;
-
-  --bg-card: #111111;
-
-  --bg-chip: #101010;
-
-  --text-main: #f5f5f5;
-
-  --text-muted: #b7b7b7;
-
-  --accent: #ffffff;
-
-  --accent-soft: #cfcfcf;
-
-  --border-subtle: #2b2b2b;
-
-  --shadow-soft: 0 22px 55px rgba(0, 0, 0, 0.75);
-
-  --radius-full: 999px;
-
-  --radius-card: 26px;
-
-  --transition-fast: 0.18s ease-out;
-
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-
-    "Segoe UI", sans-serif;
-
-}
-
-
-
 html,
 
 body {
@@ -56,11 +66,7 @@ body {
 
   padding: 0;
 
-  font-family: var(--font-sans);
-
-  background: radial-gradient(circle at top, #111111 0, #050505 55%, #000 100%);
-
-  color: var(--text-main);
+  height: 100%;
 
 }
 
@@ -68,13 +74,31 @@ body {
 
 body {
 
-  min-height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+
+    "Segoe UI", sans-serif;
+
+  background: radial-gradient(circle at top, #141414 0, #000 55%, #000 100%);
+
+  color: var(--text-main);
+
+  -webkit-font-smoothing: antialiased;
 
 }
 
 
 
-/* ========== Layout ========== */
+img {
+
+  max-width: 100%;
+
+  display: block;
+
+}
+
+
+
+/* Layout wrapper */
 
 
 
@@ -86,41 +110,31 @@ body {
 
   flex-direction: column;
 
-  padding: 18px 16px 32px;
-
 }
 
 
 
-@media (min-width: 768px) {
+/* =========================
 
-  .page {
+   Header
 
-    max-width: 960px;
-
-    margin: 0 auto;
-
-    padding: 24px 20px 40px;
-
-  }
-
-}
-
-
-
-/* ========== Header ========== */
+   ========================= */
 
 
 
 .header {
+
+  max-width: var(--max-width);
+
+  margin: 0 auto;
+
+  padding: 18px 18px 10px;
 
   display: flex;
 
   align-items: center;
 
   justify-content: space-between;
-
-  margin-bottom: 18px;
 
 }
 
@@ -138,35 +152,17 @@ body {
 
 
 
-.logo-orbit {
+.logo-mark {
 
   width: 26px;
 
   height: 26px;
 
-  border-radius: 999px;
+  border-radius: 50%;
 
-  border: 2px solid rgba(255, 255, 255, 0.35);
+  border: 2px solid #ffffff;
 
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
-
-  position: relative;
-
-}
-
-
-
-.logo-orbit::after {
-
-  content: "";
-
-  position: absolute;
-
-  inset: 5px;
-
-  border-radius: inherit;
-
-  border: 2px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
 
 }
 
@@ -174,29 +170,33 @@ body {
 
 .logo-text {
 
-  letter-spacing: 0.22em;
+  letter-spacing: 0.18em;
 
-  font-size: 0.85rem;
+  font-size: 0.9rem;
 
   text-transform: uppercase;
 
-  color: #fdfdfd;
+  color: var(--accent-soft);
 
 }
 
 
 
+/* hamburger menu */
+
+
+
 .menu-toggle {
 
-  width: 40px;
+  width: 44px;
 
-  height: 40px;
+  height: 44px;
 
   border-radius: 999px;
 
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid #2c2c2c;
 
-  background: radial-gradient(circle at top, #222, #0b0b0b);
+  background: radial-gradient(circle at top, #1c1c1c 0, #0c0c0c 60%);
 
   display: inline-flex;
 
@@ -206,27 +206,35 @@ body {
 
   cursor: pointer;
 
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.7);
+
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+
+    background var(--transition-fast), border-color var(--transition-fast);
 
 }
 
 
 
-.menu-toggle span,
+.menu-toggle:hover {
 
-.menu-toggle span::before,
+  transform: translateY(-1px);
 
-.menu-toggle span::after {
+  border-color: #444;
 
-  display: block;
+  background: radial-gradient(circle at top, #222 0, #0f0f0f 60%);
 
-  width: 17px;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.9);
 
-  height: 2px;
+}
 
-  border-radius: 999px;
 
-  background: #f5f5f5;
+
+.menu-toggle-lines {
+
+  width: 20px;
+
+  height: 12px;
 
   position: relative;
 
@@ -234,9 +242,11 @@ body {
 
 
 
-.menu-toggle span::before,
+.menu-toggle-lines::before,
 
-.menu-toggle span::after {
+.menu-toggle-lines::after,
+
+.menu-toggle-lines span {
 
   content: "";
 
@@ -244,69 +254,83 @@ body {
 
   left: 0;
 
-}
+  right: 0;
 
+  height: 2px;
 
+  border-radius: 10px;
 
-.menu-toggle span::before {
-
-  top: -5px;
-
-}
-
-
-
-.menu-toggle span::after {
-
-  top: 5px;
+  background: var(--accent-soft);
 
 }
 
 
 
-/* ========== Lens Card ========== */
+.menu-toggle-lines::before {
+
+  top: 0;
+
+}
+
+.menu-toggle-lines::after {
+
+  bottom: 0;
+
+}
+
+.menu-toggle-lines span {
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+}
 
 
 
-.lens-card {
+/* =========================
 
-  margin-inline: auto;
+   Main hero card
 
-  width: 100%;
+   ========================= */
 
-  max-width: 620px;
 
-  border-radius: var(--radius-card);
 
-  background: radial-gradient(circle at top, #191919 0, #060606 55%, #020202 100%);
+main.main {
 
-  box-shadow: var(--shadow-soft);
-
-  padding: 28px 20px 26px;
+  flex: 1;
 
   display: flex;
 
   flex-direction: column;
 
-  align-items: center;
+  align-items: stretch;
 
 }
 
 
 
-@media (min-width: 768px) {
+.lens-card {
 
-  .lens-card {
+  max-width: var(--max-width);
 
-    padding: 32px 32px 30px;
+  margin: 6px auto 32px;
 
-  }
+  padding: 28px 22px 26px;
+
+  border-radius: var(--radius-card);
+
+  background: radial-gradient(circle at top, #1a1a1a 0, #050505 65%, #000 100%);
+
+  box-shadow: var(--shadow-soft);
+
+  border: 1px solid rgba(255, 255, 255, 0.02);
 
 }
 
 
 
-/* ===== Lens ===== */
+/* ----- Lens block ----- */
 
 
 
@@ -324,15 +348,11 @@ body {
 
   justify-content: center;
 
-  margin-bottom: 18px;
+  margin: 4px auto 18px;
 
   background: radial-gradient(circle at top, #2b2b2b 0, #050505 70%);
 
-  box-shadow:
-
-    0 0 1px #222,
-
-    0 18px 45px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 0 1px #222, 0 16px 40px rgba(0, 0, 0, 0.9);
 
   position: relative;
 
@@ -342,7 +362,25 @@ body {
 
 
 
-/* Soft inner light inside the lens (white/gray glow) */
+.lens-image {
+
+  width: 90%;
+
+  height: auto;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  animation: lens-spin 26s linear infinite;
+
+}
+
+
+
+/* soft inner light */
+
+
 
 .lens-wrapper::after {
 
@@ -350,7 +388,7 @@ body {
 
   position: absolute;
 
-  width: 40%;
+  width: 34%;
 
   aspect-ratio: 1 / 1;
 
@@ -362,17 +400,17 @@ body {
 
     circle at 50% 45%,
 
-    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.72) 0%,
 
-    rgba(230, 230, 230, 0.75) 22%,
+    rgba(230, 230, 230, 0.6) 20%,
 
-    rgba(40, 40, 40, 0.9) 65%,
+    rgba(45, 45, 45, 0.92) 60%,
 
     rgba(0, 0, 0, 1) 100%
 
   );
 
-  opacity: 0.95;
+  opacity: 0.9;
 
   mix-blend-mode: screen;
 
@@ -380,35 +418,17 @@ body {
 
 
 
-/* Lens image (PNG) */
-
-.lens-image {
-
-  width: 86%;
-
-  height: auto;
-
-  display: block;
-
-  filter: drop-shadow(0 12px 25px rgba(0, 0, 0, 0.9));
-
-  animation: lens-spin 40s linear infinite;
-
-  z-index: 1;
-
-}
-
-
+/* slow rotation for the whole lens */
 
 @keyframes lens-spin {
 
-  from {
+  0% {
 
     transform: rotate(0deg);
 
   }
 
-  to {
+  100% {
 
     transform: rotate(360deg);
 
@@ -418,23 +438,23 @@ body {
 
 
 
-/* ========== Text + Tagline ========== */
+/* ----- Hero text ----- */
 
 
 
-.lens-tagline {
-
-  text-transform: uppercase;
-
-  letter-spacing: 0.18em;
-
-  font-size: 0.72rem;
-
-  color: rgba(245, 245, 245, 0.7);
+.hero-subtitle-centered {
 
   text-align: center;
 
-  margin-bottom: 14px;
+  font-size: 0.78rem;
+
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+
+  color: var(--text-muted);
+
+  margin-bottom: 12px;
 
 }
 
@@ -442,69 +462,55 @@ body {
 
 .hero-title {
 
-  font-size: 1.6rem;
+  text-align: center;
+
+  font-size: 1.9rem;
 
   font-weight: 700;
 
-  letter-spacing: 0.01em;
+  margin: 0 0 10px;
+
+}
+
+
+
+.hero-lead {
 
   text-align: center;
 
-  margin: 0 0 6px;
+  font-size: 0.92rem;
 
-}
-
-
-
-.hero-title span {
-
-  display: block;
-
-}
-
-
-
-.hero-subtitle {
-
-  font-size: 0.93rem;
-
-  line-height: 1.55;
+  line-height: 1.5;
 
   color: var(--text-muted);
 
-  text-align: center;
-
   max-width: 520px;
 
-  margin: 0 0 22px;
+  margin: 0 auto 22px;
 
 }
 
 
 
-/* ========== Chat Bar + Mode Button ========== */
+/* =========================
+
+   Chat input strip
+
+   ========================= */
 
 
 
-.chat-area {
+.chat-shell {
 
-  width: 100%;
+  max-width: 640px;
 
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 12px;
+  margin: 0 auto;
 
 }
 
 
 
-/* input row */
-
-
-
-.chat-row {
+.chat-input-row {
 
   display: flex;
 
@@ -512,47 +518,57 @@ body {
 
   gap: 10px;
 
-  width: 100%;
+  padding: 6px 8px 6px 12px;
 
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-pill);
 
-  padding: 10px 12px 10px 14px;
+  background: var(--pill-bg);
 
-  background: linear-gradient(135deg, #101010, #050505);
+  border: 1px solid var(--pill-border);
 
-  box-shadow:
-
-    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
-
-    0 14px 30px rgba(0, 0, 0, 0.85);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.85);
 
 }
+
+
+
+.chat-input-row:focus-within {
+
+  border-color: #4a4a4a;
+
+}
+
+
+
+/* left camera icon */
 
 
 
 .chat-icon-left {
 
-  width: 30px;
+  width: 32px;
 
-  height: 30px;
+  height: 32px;
 
   border-radius: 999px;
 
-  display: inline-flex;
+  border: 1px solid #3a3a3a;
+
+  background: radial-gradient(circle at top, #2a2a2a 0, #101010 70%);
+
+  display: flex;
 
   align-items: center;
 
   justify-content: center;
 
-  background: radial-gradient(circle at 30% 20%, #444, #111);
-
-  color: #f5f5f5;
-
-  font-size: 1.05rem;
-
-  flex-shrink: 0;
+  font-size: 1.02rem;
 
 }
+
+
+
+/* central text field */
 
 
 
@@ -568,7 +584,9 @@ body {
 
   color: var(--text-main);
 
-  font-size: 0.95rem;
+  font-size: 0.94rem;
+
+  padding: 8px 4px;
 
 }
 
@@ -576,183 +594,47 @@ body {
 
 .chat-input::placeholder {
 
-  color: rgba(200, 200, 200, 0.5);
+  color: #767676;
 
 }
 
 
 
-/* right icons (mic + send) */
+/* mic + send group (right) */
 
 
 
 .chat-actions {
 
-  display: inline-flex;
+  display: flex;
 
   align-items: center;
 
-  gap: 8px;
-
-  flex-shrink: 0;
+  gap: 6px;
 
 }
 
 
 
-.chat-icon-btn {
+.chat-icon-button {
 
-  width: 30px;
+  width: 32px;
 
-  height: 30px;
+  height: 32px;
 
   border-radius: 999px;
 
-  border: none;
+  border: 1px solid #3a3a3a;
 
-  background: radial-gradient(circle at top, #202020, #060606);
-
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  cursor: pointer;
-
-  color: #f4f4f4;
-
-  font-size: 1rem;
-
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
-
-    background var(--transition-fast), opacity var(--transition-fast);
-
-}
-
-
-
-.chat-icon-btn:hover {
-
-  transform: translateY(-1px);
-
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
-
-}
-
-
-
-.chat-icon-btn:active {
-
-  transform: translateY(0);
-
-  box-shadow: none;
-
-}
-
-
-
-/* send button */
-
-.chat-send {
-
-  width: 40px;
-
-  height: 40px;
-
-  border-radius: 999px;
-
-  border: none;
-
-  cursor: pointer;
-
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  background: radial-gradient(circle at 30% 0%, #ffffff, #d1d1d1);
-
-  color: #050505;
-
-  box-shadow:
-
-    0 0 0 1px rgba(255, 255, 255, 0.4),
-
-    0 12px 30px rgba(0, 0, 0, 1);
-
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-
-}
-
-
-
-.chat-send:hover {
-
-  transform: translateY(-1px);
-
-  box-shadow:
-
-    0 0 0 1px rgba(255, 255, 255, 0.5),
-
-    0 16px 34px rgba(0, 0, 0, 1);
-
-}
-
-
-
-.chat-send:active {
-
-  transform: translateY(0);
-
-  box-shadow:
-
-    0 0 0 1px rgba(255, 255, 255, 0.4),
-
-    0 8px 20px rgba(0, 0, 0, 0.9);
-
-}
-
-
-
-/* mode button */
-
-
-
-.mode-row {
-
-  width: 100%;
-
-}
-
-
-
-.mode-button {
-
-  width: 100%;
-
-  border-radius: var(--radius-full);
-
-  border: 1px solid rgba(255, 255, 255, 0.08);
-
-  background: radial-gradient(circle at top, #151515, #050505);
-
-  padding: 10px 16px;
+  background: radial-gradient(circle at top, #2d2d2d 0, #111 70%);
 
   display: flex;
 
   align-items: center;
 
-  gap: 10px;
-
-  color: #f5f5f5;
-
-  font-size: 0.92rem;
+  justify-content: center;
 
   cursor: pointer;
-
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.85);
 
   transition: transform var(--transition-fast), box-shadow var(--transition-fast),
 
@@ -762,89 +644,141 @@ body {
 
 
 
-.mode-button-icon {
+.chat-icon-button:hover {
 
-  width: 26px;
+  transform: translateY(-1px);
 
-  height: 26px;
+  border-color: #555;
+
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.85);
+
+}
+
+
+
+/* primary send button */
+
+
+
+.chat-send-button {
+
+  width: 38px;
+
+  height: 38px;
 
   border-radius: 999px;
 
-  display: inline-flex;
+  border: none;
+
+  cursor: pointer;
+
+  display: flex;
 
   align-items: center;
 
   justify-content: center;
 
-  background: radial-gradient(circle at 30% 0%, #ffffff, #dddddd);
+  background: radial-gradient(circle at 30% 0%, #ffffff 0, #999 45%, #444 100%);
 
-  color: #111;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.95);
 
-  font-size: 1rem;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 
 }
 
 
 
-.mode-button:hover {
+.chat-send-button:hover {
 
   transform: translateY(-1px);
 
-  border-color: rgba(255, 255, 255, 0.18);
-
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.95);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 1);
 
 }
 
 
 
-/* status text */
+/* =========================
+
+   Quick mode pill
+
+   ========================= */
 
 
 
-.status-text {
+.quick-mode-row {
 
-  margin-top: 6px;
+  margin-top: 14px;
 
-  font-size: 0.78rem;
+  display: flex;
 
-  color: rgba(240, 240, 240, 0.55);
+  justify-content: center;
 
 }
 
 
 
-/* ========== Info Sections (under menu – optional) ========== */
+.quick-mode-button {
+
+  padding: 11px 18px;
+
+  font-size: 0.9rem;
+
+  border-radius: var(--radius-pill);
+
+  border: 1px solid var(--pill-border);
+
+  background: linear-gradient(135deg, #171717, #0f0f0f);
+
+  color: var(--accent-soft);
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  cursor: pointer;
+
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.9);
+
+  transition: background var(--transition-fast), border-color var(--transition-fast),
+
+    transform var(--transition-fast), box-shadow var(--transition-fast);
+
+}
+
+
+
+.quick-mode-button:hover {
+
+  background: linear-gradient(135deg, #222, #151515);
+
+  border-color: #4a4a4a;
+
+  transform: translateY(-1px);
+
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 1);
+
+}
+
+
+
+/* =========================
+
+   Info sections (inside menu)
+
+   ========================= */
 
 
 
 .info-section {
 
-  max-width: 620px;
+  max-width: var(--max-width);
 
-  margin: 26px auto 0;
+  margin: 0 auto 60px;
 
-  color: var(--text-main);
-
-}
-
-
-
-.info-section h3 {
-
-  font-size: 1rem;
-
-  margin: 0 0 6px;
-
-}
-
-
-
-.info-section p {
-
-  margin: 0 0 14px;
-
-  font-size: 0.9rem;
+  padding: 0 18px 40px;
 
   line-height: 1.6;
 
@@ -854,25 +788,75 @@ body {
 
 
 
-/* ========== Responsive ========== */
+.info-section h2 {
+
+  color: var(--text-main);
+
+  font-size: 1.1rem;
+
+  margin-top: 30px;
+
+  margin-bottom: 8px;
+
+}
 
 
 
-@media (max-width: 480px) {
+.info-section p {
 
-  .lens-wrapper {
+  margin: 0 0 10px;
 
-    width: 220px;
+}
 
-    height: 220px;
+
+
+/* footer-ish line under chat */
+
+
+
+.diagnosis-status {
+
+  max-width: var(--max-width);
+
+  margin: 12px auto 36px;
+
+  padding: 0 22px;
+
+  font-size: 0.78rem;
+
+  color: var(--text-muted);
+
+}
+
+
+
+/* =========================
+
+   Responsive
+
+   ========================= */
+
+
+
+@media (max-width: 700px) {
+
+  .lens-card {
+
+    margin: 4px 12px 26px;
+
+    padding: 22px 16px 22px;
+
+    border-radius: 28px;
 
   }
 
 
 
-  .lens-card {
+  .lens-wrapper {
 
-    padding-inline: 18px;
+    width: 230px;
+
+    height: 230px;
 
   }
 
@@ -880,15 +864,81 @@ body {
 
   .hero-title {
 
-    font-size: 1.4rem;
+    font-size: 1.65rem;
 
   }
 
 
 
-  .chat-row {
+  .hero-lead {
 
-    padding-inline: 12px;
+    font-size: 0.88rem;
+
+  }
+
+
+
+  .chat-shell {
+
+    max-width: 100%;
+
+  }
+
+
+
+  .chat-input-row {
+
+    padding-inline: 10px;
+
+  }
+
+
+
+  .info-section {
+
+    padding-inline: 16px;
+
+  }
+
+}
+
+
+
+@media (max-width: 480px) {
+
+  .lens-wrapper {
+
+    width: 210px;
+
+    height: 210px;
+
+  }
+
+
+
+  .chat-input-row {
+
+    gap: 8px;
+
+  }
+
+
+
+  .chat-input {
+
+    font-size: 0.88rem;
+
+  }
+
+
+
+  .quick-mode-button {
+
+    width: 100%;
+
+    justify-content: center;
+
+    text-align: center;
 
   }
 
