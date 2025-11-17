@@ -62,25 +62,25 @@
 
 
 
-            <!-- النص الدائري حول العدسة -->
+            <!-- الحلقة الخارجية: أرقام العدسة -->
 
-            <svg class="hero-lens-ring" viewBox="0 0 100 100" aria-hidden="true">
+            <svg class="hero-lens-ring hero-lens-ring-outer" viewBox="0 0 100 100" aria-hidden="true">
 
               <defs>
 
                 <path
 
-                  id="lens-text-path"
+                  id="lens-text-path-outer"
 
                   d="
 
                     M 50,50
 
-                    m -34,0
+                    m -36,0
 
-                    a 34,34 0 1,1 68,0
+                    a 36,36 0 1,1 72,0
 
-                    a 34,34 0 1,1 -68,0
+                    a 36,36 0 1,1 -72,0
 
                   "
 
@@ -88,13 +88,61 @@
 
               </defs>
 
-              <text class="hero-lens-text">
-
-                <!-- ❗ كرّرنا النص حتى يملأ الدائرة كاملة -->
+              <text class="hero-lens-text hero-lens-text-outer">
 
                 <textPath
 
-                  href="#lens-text-path"
+                  href="#lens-text-path-outer"
+
+                  startOffset="50%"
+
+                  lengthAdjust="spacingAndGlyphs"
+
+                >
+
+                  12–40mm · f/2.8 · Ø 62mm · FIXLENS OPTICS ·
+
+                  12–40mm · f/2.8 · Ø 62mm · FIXLENS OPTICS ·
+
+                </textPath>
+
+              </text>
+
+            </svg>
+
+
+
+            <!-- الحلقة الداخلية: شعار FixLens وتحليل المشاكل -->
+
+            <svg class="hero-lens-ring hero-lens-ring-inner" viewBox="0 0 100 100" aria-hidden="true">
+
+              <defs>
+
+                <path
+
+                  id="lens-text-path-inner"
+
+                  d="
+
+                    M 50,50
+
+                    m -30,0
+
+                    a 30,30 0 1,1 60,0
+
+                    a 30,30 0 1,1 -60,0
+
+                  "
+
+                />
+
+              </defs>
+
+              <text class="hero-lens-text hero-lens-text-inner">
+
+                <textPath
+
+                  href="#lens-text-path-inner"
 
                   startOffset="50%"
 
