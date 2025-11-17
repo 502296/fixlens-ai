@@ -38,9 +38,7 @@ export default async function handler(req, res) {
 
   try {
 
-    // نقرأ الـ mime type من الـ data URL
-
-    const match = image.match(/^data:(image\/[a-zA-Z0-9+.-]+);base64,(.*)$/);
+    const match = image.match(/^data:(image\/[a-zA-Z0-9+.+-]+);base64,(.*)$/);
 
     if (!match) {
 
@@ -72,7 +70,7 @@ export default async function handler(req, res) {
 
           content:
 
-            "You are FixLens, an AI that visually inspects real-world problems (engines, appliances, electronics, tools, leaks, etc.) and gives step-by-step repair guidance. Be practical and safety-focused.",
+            "You are FixLens, an AI that visually inspects real-world problems (engines, car parts, appliances, electronics, tools, leaks, etc.) and gives step-by-step repair guidance. Be practical and safety-focused.",
 
         },
 
@@ -86,7 +84,7 @@ export default async function handler(req, res) {
 
               type: "text",
 
-              text: "Analyze this image. What problem do you see, what could be wrong, and what should the user do step by step to fix or inspect it carefully?",
+              text: "Analyze this image. What problem do you see, what might be wrong, and what should the user do step by step to inspect and fix it safely?",
 
             },
 
@@ -120,11 +118,7 @@ export default async function handler(req, res) {
 
     console.error("FixLens photo error:", err);
 
-    return res.status(500).json({
-
-      error: "Failed to analyze image.",
-
-    });
+    return res.status(500).json({ error: "Failed to analyze image." });
 
   }
 
