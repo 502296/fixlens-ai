@@ -146,10 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!dataUrl) return;
 
-
-
-        // نرسل الـ Data URL مباشرة للـ API
-
         callApi(API_PHOTO, { image: dataUrl });
 
       };
@@ -162,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  // 3) Speak – نتركها "قريبًا"
+  // 3) Speak – placeholder
 
   if (btnSpeak) {
 
