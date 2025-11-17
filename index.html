@@ -62,7 +62,7 @@
 
 
 
-            <!-- النص الدائري حول العدسة -->
+            <!-- النص الدائري حول العدسة (مقسوم إلى 3 مسارات لملء الدائرة كاملة) -->
 
             <svg class="hero-lens-ring" viewBox="0 0 100 100" aria-hidden="true">
 
@@ -88,23 +88,35 @@
 
               </defs>
 
+
+
               <text class="hero-lens-text">
 
-                <textPath
+                <!-- الجزء الأول -->
 
-                  href="#lens-text-path"
+                <textPath href="#lens-text-path" startOffset="0%">
 
-                  textLength="215"
+                  FIXLENS · ANALYZE · DIAGNOSE · GUIDE · FIX ·
 
-                  startOffset="50%"
+                </textPath>
 
-                  lengthAdjust="spacingAndGlyphs"
 
-                >
 
-                  FIXLENS · ANALYZE · DIAGNOSE · GUIDE · FIX · REAL-WORLD PROBLEMS ·
+                <!-- الجزء الثاني -->
 
-                  FIXLENS · ANALYZE · DIAGNOSE · GUIDE · FIX · REAL-WORLD PROBLEMS ·
+                <textPath href="#lens-text-path" startOffset="33%">
+
+                  REAL-WORLD PROBLEMS · FIXLENS · ANALYZE ·
+
+                </textPath>
+
+
+
+                <!-- الجزء الثالث -->
+
+                <textPath href="#lens-text-path" startOffset="66%">
+
+                  DIAGNOSE · GUIDE · FIX · REAL-WORLD PROBLEMS ·
 
                 </textPath>
 
