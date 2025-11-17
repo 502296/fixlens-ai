@@ -24,233 +24,273 @@
 
       <div class="logo-row">
 
-        <div class="logo-mark">
-
-          <div class="logo-core"></div>
-
-        </div>
+        <div class="logo-mark">◎</div>
 
         <span class="logo-text">FixLens</span>
 
       </div>
 
+      <nav class="nav">
 
+        <a href="#how">How it works</a>
 
-      <button class="menu-btn" id="menu-toggle" type="button">
+        <a href="#use-cases">Use cases</a>
 
-        Menu
+        <a href="#demo">Live demo</a>
 
-      </button>
+      </nav>
 
     </header>
 
 
 
-    <!-- Hero -->
+    <!-- Hero Section -->
 
     <main class="hero">
 
-      <section class="hero-main">
+      <div class="hero-text">
 
-        <!-- Lens -->
-
-        <div class="hero-lens-wrap">
-
-          <div class="hero-lens">
-
-            <div class="hero-lens-core"></div>
-
-
-
-            <!-- الحلقة الخارجية: أرقام العدسة -->
-
-            <svg class="hero-lens-ring hero-lens-ring-outer" viewBox="0 0 100 100" aria-hidden="true">
-
-              <defs>
-
-                <path
-
-                  id="lens-text-path-outer"
-
-                  d="
-
-                    M 50,50
-
-                    m -36,0
-
-                    a 36,36 0 1,1 72,0
-
-                    a 36,36 0 1,1 -72,0
-
-                  "
-
-                />
-
-              </defs>
-
-              <text class="hero-lens-text hero-lens-text-outer">
-
-                <textPath
-
-                  href="#lens-text-path-outer"
-
-                  startOffset="50%"
-
-                  lengthAdjust="spacingAndGlyphs"
-
-                >
-
-                  12–40mm · f/2.8 · Ø 62mm · FIXLENS OPTICS ·
-
-                  12–40mm · f/2.8 · Ø 62mm · FIXLENS OPTICS ·
-
-                </textPath>
-
-              </text>
-
-            </svg>
-
-
-
-            <!-- الحلقة الداخلية: شعار FixLens وتحليل المشاكل -->
-
-            <svg class="hero-lens-ring hero-lens-ring-inner" viewBox="0 0 100 100" aria-hidden="true">
-
-              <defs>
-
-                <path
-
-                  id="lens-text-path-inner"
-
-                  d="
-
-                    M 50,50
-
-                    m -30,0
-
-                    a 30,30 0 1,1 60,0
-
-                    a 30,30 0 1,1 -60,0
-
-                  "
-
-                />
-
-              </defs>
-
-              <text class="hero-lens-text hero-lens-text-inner">
-
-                <textPath
-
-                  href="#lens-text-path-inner"
-
-                  startOffset="50%"
-
-                  lengthAdjust="spacingAndGlyphs"
-
-                >
-
-                  FIXLENS · ANALYZE · DIAGNOSE · GUIDE · FIX · REAL-WORLD PROBLEMS ·
-
-                  FIXLENS · ANALYZE · DIAGNOSE · GUIDE · FIX · REAL-WORLD PROBLEMS ·
-
-                </textPath>
-
-              </text>
-
-            </svg>
-
-          </div>
-
-          <div class="hero-lens-title">FIXLENS</div>
-
-        </div>
-
-
-
-        <!-- Copy -->
-
-        <h1 class="hero-title">
-
-          Fix problems in the real world with AI.
-
-        </h1>
-
-
+        <h1>AI diagnosis for real-world problems.</h1>
 
         <p class="hero-subtitle">
 
-          Point your camera at the issue or describe it in your own words.
+          Upload a photo, describe the issue, and let FixLens give you a clear,
 
-          FixLens analyzes engines, appliances, electronics, and more —
-
-          then guides you step by step.
+          human-friendly diagnosis for cars, home appliances, and everyday issues.
 
         </p>
 
+        <div class="hero-actions">
 
+          <a href="#demo" class="btn primary-btn">Try FixLens demo</a>
 
-        <!-- Actions -->
+          <a href="#how" class="btn ghost-btn">See how it works</a>
 
-        <div class="actions">
+        </div>
 
-          <button class="btn primary-btn" id="btn-text" type="button">
+        <p class="hero-note">
 
-            Describe with text
+          Built for mechanics, homeowners, and everyday people who just want straight answers.
 
-          </button>
+        </p>
 
-
-
-          <button class="btn secondary-btn" id="btn-photo" type="button">
-
-            Upload a photo
-
-          </button>
+      </div>
 
 
 
-          <button class="btn ghost-btn" id="btn-speak" type="button">
+      <!-- Lens Logo with inner text ring + outer ring -->
 
-            <span role="img" aria-label="microphone">🎙️</span> Speak
+      <div class="hero-lens">
 
-          </button>
+        <div class="lens-wrapper">
+
+          <!-- Outer ring (border only, rotates one way) -->
+
+          <div class="lens-outer-ring"></div>
 
 
 
-          <input
+          <!-- Inner ring (SVG text 360°, rotates opposite) -->
 
-            type="file"
+          <div class="lens-inner-ring">
 
-            id="photo-input"
+            <svg viewBox="0 0 220 220" class="lens-svg" aria-hidden="true">
 
-            accept="image/*"
+              <defs>
 
-            hidden
+                <!-- Circle path for text -->
 
-          />
+                <path id="lensCirclePath"
+
+                  d="M 110,110
+
+                     m -80,0
+
+                     a 80,80 0 1,1 160,0
+
+                     a 80,80 0 1,1 -160,0" />
+
+                <!-- Gradient for the center glow -->
+
+                <radialGradient id="lensCenterGradient" cx="50%" cy="50%" r="60%">
+
+                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
+
+                  <stop offset="40%" stop-color="#d4f1ff" stop-opacity="0.8" />
+
+                  <stop offset="100%" stop-color="#111928" stop-opacity="0.1" />
+
+                </radialGradient>
+
+              </defs>
+
+
+
+              <!-- Center glowing circle -->
+
+              <circle
+
+                cx="110"
+
+                cy="110"
+
+                r="52"
+
+                fill="url(#lensCenterGradient)"
+
+                class="lens-core"
+
+              />
+
+
+
+              <!-- Inner border circle to give “lens” feeling -->
+
+              <circle
+
+                cx="110"
+
+                cy="110"
+
+                r="80"
+
+                fill="none"
+
+                stroke="rgba(255,255,255,0.15)"
+
+                stroke-width="1.5"
+
+              />
+
+
+
+              <!-- Text on circle 360° -->
+
+              <text class="lens-text">
+
+                <textPath href="#lensCirclePath" startOffset="0%">
+
+                  FIXLENS • AI DIAGNOSIS • REAL-WORLD PROBLEMS • SMART VISUAL INSPECTION •
+
+                  FIXLENS • AI DIAGNOSIS • REAL-WORLD PROBLEMS • SMART VISUAL INSPECTION •
+
+                </textPath>
+
+              </text>
+
+            </svg>
+
+          </div>
 
         </div>
 
 
 
-        <!-- Recent Diagnosis -->
+        <p class="lens-caption">
 
-        <section class="conversation">
+          Rotating AI lens that keeps your real-world problems in focus.
 
-          <div class="conversation-header">Recent diagnosis</div>
+        </p>
 
-          <div class="conversation-body" id="conversation-body">
-
-            <!-- الرسائل تُضاف من خلال JavaScript -->
-
-          </div>
-
-        </section>
-
-      </section>
+      </div>
 
     </main>
+
+
+
+    <!-- How it works -->
+
+    <section id="how" class="section">
+
+      <h2>How FixLens works</h2>
+
+      <div class="three-cols">
+
+        <div class="card">
+
+          <h3>1. Capture</h3>
+
+          <p>Take a clear photo of the problem—car engine, strange leak, broken device, anything.</p>
+
+        </div>
+
+        <div class="card">
+
+          <h3>2. Describe</h3>
+
+          <p>Add a short description or voice note about what you see, hear, or smell.</p>
+
+        </div>
+
+        <div class="card">
+
+          <h3>3. Understand</h3>
+
+          <p>FixLens combines vision + language AI to give you a clear, step-by-step explanation.</p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- Use cases -->
+
+    <section id="use-cases" class="section">
+
+      <h2>Use cases</h2>
+
+      <div class="three-cols">
+
+        <div class="card">
+
+          <h3>Car diagnostics</h3>
+
+          <p>From engine lights to strange noises — get a first opinion before you go to the shop.</p>
+
+        </div>
+
+        <div class="card">
+
+          <h3>Home & utilities</h3>
+
+          <p>Water leaks, boiler issues, strange stains, or damaged parts — see what’s really going on.</p>
+
+        </div>
+
+        <div class="card">
+
+          <h3>Workshop & tools</h3>
+
+          <p>Identify worn parts, incorrect setups, or dangerous conditions in your tools and machines.</p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- Demo placeholder -->
+
+    <section id="demo" class="section demo-section">
+
+      <h2>Live demo (coming soon)</h2>
+
+      <p class="demo-text">
+
+        Soon you’ll be able to upload a photo, add your voice, and watch FixLens build a real diagnosis
+
+        in front of you. This is the brain of real-world problem solving.
+
+      </p>
+
+      <button class="btn primary-btn" type="button">Notify me at launch</button>
+
+    </section>
 
 
 
@@ -258,137 +298,11 @@
 
     <footer class="footer">
 
-      FixLens.ai · Built for real-world problems
+      <p>FixLens – Real-world AI diagnosis • Built with care</p>
 
     </footer>
 
   </div>
-
-
-
-  <!-- Menu overlay -->
-
-  <div class="menu-overlay" id="menu-overlay" aria-hidden="true">
-
-    <div class="menu-backdrop"></div>
-
-
-
-    <aside class="menu-panel">
-
-      <div class="menu-header">
-
-        <div class="menu-title">FixLens Menu</div>
-
-        <button class="menu-close" id="menu-close" type="button">×</button>
-
-      </div>
-
-
-
-      <section class="menu-section">
-
-        <h2>How it works</h2>
-
-        <ol class="menu-list">
-
-          <li>
-
-            <strong>Capture or describe</strong> – Upload a photo, speak, or
-
-            type what’s wrong.
-
-          </li>
-
-          <li>
-
-            <strong>FixLens analyzes</strong> – Our AI looks at the image and
-
-            description together.
-
-          </li>
-
-          <li>
-
-            <strong>Step-by-step guidance</strong> – Get clear, safe, practical
-
-            steps to fix or inspect.
-
-          </li>
-
-        </ol>
-
-      </section>
-
-
-
-      <section class="menu-section">
-
-        <h2>Where FixLens helps</h2>
-
-        <ul class="menu-list">
-
-          <li>
-
-            <strong>Engines &amp; vehicles:</strong> strange noises, warning
-
-            lights, leaks.
-
-          </li>
-
-          <li>
-
-            <strong>Home appliances:</strong> washers, dryers, dishwashers,
-
-            fridges, ovens.
-
-          </li>
-
-          <li>
-
-            <strong>Electronics:</strong> laptops, TVs, routers, game consoles,
-
-            cables.
-
-          </li>
-
-          <li>
-
-            <strong>Home issues:</strong> small leaks, doors, windows, basic
-
-            repairs.
-
-          </li>
-
-        </ul>
-
-      </section>
-
-
-
-      <section class="menu-section">
-
-        <h2>Using FixLens safely</h2>
-
-        <ul class="menu-list">
-
-          <li>Always disconnect power before touching electrical devices.</li>
-
-          <li>Don’t open high-voltage components.</li>
-
-          <li>Use FixLens to decide when to call a professional.</li>
-
-        </ul>
-
-      </section>
-
-    </aside>
-
-  </div>
-
-
-
-  <script src="script.js"></script>
 
 </body>
 
