@@ -1,371 +1,327 @@
-// script.js
+// عناصر الواجهة
+
+const menuToggle = document.getElementById("menu-toggle");
+
+const menuOverlay = document.getElementById("menu-overlay");
+
+const menuClose = document.getElementById("menu-close");
 
 
 
-document.addEventListener("DOMContentLoaded", () => {
+const chatInput = document.getElementById("chat-input");
 
-  /* =========
+const imageInput = document.getElementById("image-input");
 
-     1) Panels from header menu (How it works, etc.)
+const imageButton = document.getElementById("image-button");
 
-     ========= */
+const micButton = document.getElementById("mic-button");
 
-  const panelLinks = document.querySelectorAll('[href^="#panel-"]');
+const sendButton = document.getElementById("send-button");
 
-  const panels = document.querySelectorAll(".info-panel");
-
-
-
-  function openPanel(id) {
-
-    panels.forEach((panel) => {
-
-      if (panel.id === id) {
-
-        panel.classList.remove("is-hidden");
-
-      } else {
-
-        panel.classList.add("is-hidden");
-
-      }
-
-    });
+const pipesMode = document.getElementById("pipes-mode");
 
 
 
-    const target = document.getElementById(id);
+let selectedImageFile = null;
 
-    if (target) {
+let mediaRecorder = null;
 
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
+let audioChunks = [];
+
+let audioBlob = null;
+
+let recording = false;
+
+
+
+/* ========== MENU ========== */
+
+
+
+if (menuToggle && menuOverlay && menuClose) {
+
+  const openMenu = () => {
+
+    menuOverlay.classList.add("is-open");
+
+    menuOverlay.setAttribute("aria-hidden", "false");
+
+  };
+
+
+
+  const closeMenu = () => {
+
+    menuOverlay.classList.remove("is-open");
+
+    menuOverlay.setAttribute("aria-hidden", "true");
+
+  };
+
+
+
+  menuToggle.addEventListener("click", openMenu);
+
+  menuClose.addEventListener("click", closeMenu);
+
+  menuOverlay.addEventListener("click", (e) => {
+
+    if (e.target === menuOverlay) closeMenu();
+
+  });
+
+}
+
+
+
+/* ========== IMAGE UPLOAD ========== */
+
+
+
+if (imageButton && imageInput) {
+
+  imageButton.addEventListener("click", () => {
+
+    imageInput.click();
+
+  });
+
+
+
+  imageInput.addEventListener("change", () => {
+
+    const file = imageInput.files?.[0];
+
+    if (file) {
+
+      selectedImageFile = file;
+
+      imageButton.textContent = "🖼️"; // علامة توضح أن صورة مختارة
+
+    } else {
+
+      selectedImageFile = null;
+
+      imageButton.textContent = "📷";
 
     }
 
+  });
+
+}
+
+
+
+/* ========== VOICE RECORD ========== */
+
+
+
+async function toggleRecording() {
+
+  if (!recording) {
+
+    try {
+
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+      mediaRecorder = new MediaRecorder(stream);
+
+      audioChunks = [];
+
+
+
+      mediaRecorder.ondataavailable = (e) => {
+
+        if (e.data.size > 0) audioChunks.push(e.data);
+
+      };
+
+
+
+      mediaRecorder.onstop = () => {
+
+        audioBlob = new Blob(audioChunks, { type: "audio/webm" });
+
+        stream.getTracks().forEach((t) => t.stop());
+
+      };
+
+
+
+      mediaRecorder.start();
+
+      recording = true;
+
+      micButton.textContent = "⏺";
+
+    } catch (err) {
+
+      console.error("Mic error", err);
+
+      alert("Could not access microphone. Please check permissions.");
+
+    }
+
+  } else {
+
+    mediaRecorder?.stop();
+
+    recording = false;
+
+    micButton.textContent = "🎤";
+
+  }
+
+}
+
+
+
+if (micButton) {
+
+  micButton.addEventListener("click", toggleRecording);
+
+}
+
+
+
+/* ========== QUICK MODE (PIPES & WIRES) ========== */
+
+
+
+if (pipesMode) {
+
+  pipesMode.addEventListener("click", () => {
+
+    const template =
+
+      "Scan for pipes, wires, and wall studs in this wall/floor. " +
+
+      "Explain what risks I should know before I drill or cut.";
+
+    chatInput.value = template;
+
+    chatInput.focus();
+
+  });
+
+}
+
+
+
+/* ========== SEND TO /api/brain ========== */
+
+
+
+async function runDiagnosis() {
+
+  const text = chatInput.value.trim();
+
+
+
+  if (!text && !selectedImageFile && !audioBlob) {
+
+    alert("Please describe the problem, upload a photo, or record a short voice note.");
+
+    return;
+
   }
 
 
 
-  panelLinks.forEach((link) => {
+  const formData = new FormData();
 
-    link.addEventListener("click", (e) => {
+  if (text) formData.append("description", text);
 
-      const href = link.getAttribute("href") || "";
+  if (selectedImageFile) formData.append("image", selectedImageFile);
 
-      if (!href.startsWith("#panel-")) return;
+  if (audioBlob) formData.append("voice", audioBlob, "voice.webm");
 
 
+
+  sendButton.disabled = true;
+
+  sendButton.textContent = "…";
+
+
+
+  try {
+
+    const res = await fetch("/api/brain", {
+
+      method: "POST",
+
+      body: formData,
+
+    });
+
+
+
+    let message = "FixLens processed your request.";
+
+    if (res.ok) {
+
+      const data = await res.json().catch(() => null);
+
+      if (data && data.message) {
+
+        message = data.message;
+
+      } else if (data && data.diagnosis) {
+
+        message = data.diagnosis;
+
+      }
+
+    } else {
+
+      message = "There was a problem reaching FixLens. Please try again.";
+
+    }
+
+
+
+    // مؤقتاً نعرض النتيجة بـ alert — لاحقاً نعمل صندوق شات كامل
+
+    alert(message);
+
+  } catch (err) {
+
+    console.error(err);
+
+    alert("Network error. Please try again.");
+
+  } finally {
+
+    sendButton.disabled = false;
+
+    sendButton.textContent = "➜";
+
+  }
+
+}
+
+
+
+if (sendButton) {
+
+  sendButton.addEventListener("click", runDiagnosis);
+
+}
+
+
+
+if (chatInput) {
+
+  chatInput.addEventListener("keydown", (e) => {
+
+    if (e.key === "Enter" && !e.shiftKey) {
 
       e.preventDefault();
 
-      const id = href.replace("#", "");
+      runDiagnosis();
 
-      openPanel(id);
-
-    });
+    }
 
   });
 
-
-
-  /* =========
-
-     2) Hero buttons → فتح مربع التشخيص في نفس الصفحة
-
-     ========= */
-
-  const previewSection = document.getElementById("preview-section");
-
-  const modeButtons = document.querySelectorAll("[data-mode]");
-
-
-
-  const groupPhoto = document.getElementById("group-photo");
-
-  const groupText = document.getElementById("group-text");
-
-  const groupVoice = document.getElementById("group-voice");
-
-
-
-  function clearHighlights() {
-
-    [groupPhoto, groupText, groupVoice].forEach((g) => {
-
-      if (g) g.classList.remove("highlight");
-
-    });
-
-  }
-
-
-
-  function highlightMode(mode) {
-
-    clearHighlights();
-
-    if (mode === "photo" && groupPhoto) groupPhoto.classList.add("highlight");
-
-    if (mode === "text" && groupText) groupText.classList.add("highlight");
-
-    if (mode === "voice" && groupVoice) groupVoice.classList.add("highlight");
-
-  }
-
-
-
-  modeButtons.forEach((btn) => {
-
-    btn.addEventListener("click", () => {
-
-      const mode = btn.getAttribute("data-mode") || "photo";
-
-      if (previewSection) {
-
-        previewSection.classList.remove("is-hidden");
-
-        highlightMode(mode);
-
-        previewSection.scrollIntoView({ behavior: "smooth", block: "start" });
-
-      }
-
-    });
-
-  });
-
-
-
-  /* =========
-
-     3) Diagnosis logic (image + text + voice → /api/brain)
-
-     ========= */
-
-  const imageInput = document.getElementById("image-input");
-
-  const descriptionInput = document.getElementById("description-input");
-
-  const recordBtn = document.getElementById("record-btn");
-
-  const recordStatus = document.getElementById("record-status");
-
-  const runDemoBtn = document.getElementById("run-demo-btn");
-
-  const demoStatus = document.getElementById("demo-status");
-
-  const demoResult = document.getElementById("demo-result");
-
-
-
-  let mediaRecorder = null;
-
-  let audioChunks = [];
-
-  let isRecording = false;
-
-
-
-  // ===== Voice recording =====
-
-  if (recordBtn) {
-
-    recordBtn.addEventListener("click", async () => {
-
-      if (!isRecording) {
-
-        if (!navigator.mediaDevices || !window.MediaRecorder) {
-
-          recordStatus.textContent =
-
-            "Voice recording is not supported on this device.";
-
-          return;
-
-        }
-
-
-
-        try {
-
-          const stream = await navigator.mediaDevices.getUserMedia({
-
-            audio: true,
-
-          });
-
-          mediaRecorder = new MediaRecorder(stream);
-
-          audioChunks = [];
-
-
-
-          mediaRecorder.ondataavailable = (event) => {
-
-            if (event.data.size > 0) {
-
-              audioChunks.push(event.data);
-
-            }
-
-          };
-
-
-
-          mediaRecorder.onstop = () => {
-
-            stream.getTracks().forEach((t) => t.stop());
-
-            recordStatus.textContent = audioChunks.length
-
-              ? "Voice note recorded."
-
-              : "No audio captured.";
-
-          };
-
-
-
-          mediaRecorder.start();
-
-          isRecording = true;
-
-          recordBtn.textContent = "⏹️ Stop recording";
-
-          recordStatus.textContent = "Recording… speak near your phone.";
-
-        } catch (err) {
-
-          console.error("Error starting recording:", err);
-
-          recordStatus.textContent = "Could not access microphone.";
-
-        }
-
-      } else {
-
-        if (mediaRecorder && mediaRecorder.state !== "inactive") {
-
-          mediaRecorder.stop();
-
-        }
-
-        isRecording = false;
-
-        recordBtn.textContent = "🎙️ Record voice";
-
-      }
-
-    });
-
-  }
-
-
-
-  // ===== Run AI diagnosis =====
-
-  if (runDemoBtn) {
-
-    runDemoBtn.addEventListener("click", async () => {
-
-      const file = imageInput?.files?.[0] || null;
-
-      const description = (descriptionInput?.value || "").trim();
-
-
-
-      if (!file && !description && !audioChunks.length) {
-
-        demoStatus.textContent =
-
-          "Please upload a photo, add a description, or record a voice note.";
-
-        return;
-
-      }
-
-
-
-      demoStatus.textContent = "Sending to FixLens AI brain…";
-
-      demoResult.innerHTML =
-
-        '<p class="placeholder-text">Thinking… please wait a moment.</p>';
-
-
-
-      try {
-
-        const formData = new FormData();
-
-        if (file) formData.append("image", file);
-
-        if (description) formData.append("description", description);
-
-
-
-        if (audioChunks.length) {
-
-          const audioBlob = new Blob(audioChunks, { type: "audio/webm" });
-
-          formData.append("audio", audioBlob, "voice-note.webm");
-
-        }
-
-
-
-        const response = await fetch("/api/brain", {
-
-          method: "POST",
-
-          body: formData,
-
-        });
-
-
-
-        if (!response.ok) {
-
-          throw new Error("API returned status " + response.status);
-
-        }
-
-
-
-        const data = (await response.json().catch(() => null)) || {};
-
-        const text =
-
-          data.diagnosis ||
-
-          data.result ||
-
-          data.message ||
-
-          "FixLens processed your request, but no readable message was returned.";
-
-
-
-        demoResult.innerHTML =
-
-          "<p>" + text.replace(/\n/g, "<br>") + "</p>";
-
-        demoStatus.textContent = "Diagnosis complete.";
-
-      } catch (err) {
-
-        console.error("Demo error:", err);
-
-        demoResult.innerHTML =
-
-          '<p class="placeholder-text">Something went wrong while talking to the AI. Please try again in a moment.</p>';
-
-        demoStatus.textContent = "Error while contacting FixLens AI.";
-
-      }
-
-    });
-
-  }
-
-});
+}
