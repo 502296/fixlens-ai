@@ -188,13 +188,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function callApi(url, payload) {
 
-    const thinkingBubble = addMessage(
+    // نضيف رسالة "تفكير" لكن بهيكل خاص
 
-      "ai",
+    const thinkingBubble = addMessage("ai", "");
 
-      "Thinking… analyzing your problem with FixLens AI."
+    if (thinkingBubble) {
 
-    );
+      thinkingBubble.classList.add("thinking");
+
+      thinkingBubble.innerHTML = `
+
+        <div class="thinking-main">
+
+          Thinking… analyzing your problem with FixLens AI.
+
+        </div>
+
+        <div class="thinking-bar"></div>
+
+      `;
+
+      // نخزّن نص مبدئي في التاريخ (سنستبدله بالجواب لاحقًا)
+
+      history[history.length - 1].text =
+
+        "Thinking… analyzing your problem with FixLens AI.";
+
+      saveHistory(history);
+
+    }
 
 
 
@@ -222,15 +244,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
         console.error("API error:", errorBody);
 
-        thinkingBubble.textContent =
+        if (thinkingBubble) {
 
-          "Something went wrong. Please try again in a moment.";
+          thinkingBubble.classList.remove("thinking");
 
-        // نحدث التاريخ بالنص الجديد
+          thinkingBubble.textContent =
 
-        history[history.length - 1].text = thinkingBubble.textContent;
+            "Something went wrong. Please try again in a moment.";
 
-        saveHistory(history);
+          history[history.length - 1].text = thinkingBubble.textContent;
+
+          saveHistory(history);
+
+        }
 
         return;
 
@@ -248,23 +274,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-      thinkingBubble.textContent = answer;
+      if (thinkingBubble) {
 
-      history[history.length - 1].text = answer;
+        thinkingBubble.classList.remove("thinking");
 
-      saveHistory(history);
+        thinkingBubble.textContent = answer;
+
+        history[history.length - 1].text = answer;
+
+        saveHistory(history);
+
+      }
 
     } catch (err) {
 
       console.error(err);
 
-      thinkingBubble.textContent =
+      if (thinkingBubble) {
 
-        "Network error. Please check your connection and try again.";
+        thinkingBubble.classList.remove("thinking");
 
-      history[history.length - 1].text = thinkingBubble.textContent;
+        thinkingBubble.textContent =
 
-      saveHistory(history);
+          "Network error. Please check your connection and try again.";
+
+        history[history.length - 1].text = thinkingBubble.textContent;
+
+        saveHistory(history);
+
+      }
 
     }
 
