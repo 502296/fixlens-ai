@@ -2,234 +2,372 @@
 
 <html lang="en">
 
-<head>
+  <head>
 
-  <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
 
-  <title>FixLens – Fix real-world problems with AI</title>
+      name="viewport"
 
-  <!-- IMPORTANT: ?v=6 لكسر الكاش على الموبايل -->
+      content="width=device-width, initial-scale=1.0"
 
-  <link rel="stylesheet" href="style.css?v=6" />
+    />
 
-</head>
+    <title>FixLens – AI Diagnosis for Real-World Problems</title>
 
-<body>
+    <link rel="stylesheet" href="style.css" />
 
-  <!-- ===== Header ===== -->
+  </head>
 
-  <header class="site-header">
 
-    <div class="logo-row">
 
-      <span class="logo-mark"></span>
+  <body>
 
-      <span class="logo-text">FixLens</span>
+    <div class="page">
+
+      <!-- ===== Header ===== -->
+
+      <header class="header">
+
+        <div class="brand">
+
+          <!-- شعار FixLens في الأعلى يسار -->
+
+          <img
+
+            src="images/fixlens-logo-white.png"
+
+            alt="FixLens logo"
+
+            class="brand-logo"
+
+          />
+
+        </div>
+
+
+
+        <!-- زر الثلاث خطوط للـ menu -->
+
+        <button
+
+          class="menu-toggle"
+
+          aria-label="Open menu"
+
+          aria-expanded="false"
+
+          aria-controls="site-menu"
+
+        >
+
+          <span></span>
+
+          <span></span>
+
+          <span></span>
+
+        </button>
+
+      </header>
+
+
+
+      <!-- ===== Main content ===== -->
+
+      <main class="main">
+
+        <!-- عدسة FixLens في الأعلى بالمنتصف -->
+
+        <section class="hero">
+
+          <div class="lens-wrapper">
+
+            <img
+
+              src="images/fixlens-lens.png"
+
+              alt="FixLens AI lens"
+
+              class="lens-image"
+
+            />
+
+          </div>
+
+          <p class="tagline">
+
+            Rotating AI lens that keeps your real-world problems in focus.
+
+          </p>
+
+        </section>
+
+
+
+        <!-- حقول الإدخال الرئيسية (مثل ChatGPT) -->
+
+        <section class="input-panel">
+
+          <div class="prompt-row">
+
+            <button
+
+              class="icon-button"
+
+              type="button"
+
+              aria-label="Upload a photo"
+
+            >
+
+              📷
+
+            </button>
+
+
+
+            <input
+
+              type="text"
+
+              class="prompt-input"
+
+              placeholder="Describe what's going on..."
+
+            />
+
+
+
+            <button
+
+              class="icon-button"
+
+              type="button"
+
+              aria-label="Use your voice"
+
+            >
+
+              🎙️
+
+            </button>
+
+
+
+            <button
+
+              class="send-button"
+
+              type="button"
+
+              aria-label="Send to FixLens"
+
+            >
+
+              ➤
+
+            </button>
+
+          </div>
+
+
+
+          <button class="secondary-button" type="button">
+
+            🛠️ Detect pipes, wires & studs behind walls / floors
+
+          </button>
+
+
+
+          <p class="status-text">Waiting for your input.</p>
+
+        </section>
+
+      </main>
+
+
+
+      <!-- ===== Slide-in Menu (كل الشرح والسياسة هنا) ===== -->
+
+      <div class="menu-overlay" id="site-menu" aria-hidden="true">
+
+        <div class="menu-panel">
+
+          <button
+
+            class="menu-close"
+
+            type="button"
+
+            aria-label="Close menu"
+
+          >
+
+            ×
+
+          </button>
+
+
+
+          <h2 class="menu-title">FixLens</h2>
+
+
+
+          <section class="menu-section">
+
+            <h3>How FixLens works</h3>
+
+            <p>
+
+              FixLens combines computer vision, language understanding, and
+
+              physics-aware reasoning to analyze what it sees and what you
+
+              describe, then returns a clear explanation of what might be wrong
+
+              and what to check next.
+
+            </p>
+
+          </section>
+
+
+
+          <section class="menu-section">
+
+            <h3>What FixLens can help with</h3>
+
+            <p>
+
+              Engines, household appliances, water leaks, strange noises, wiring
+
+              issues, structural questions, and more. Treat this as intelligent
+
+              guidance &mdash; not a replacement for a certified professional.
+
+            </p>
+
+          </section>
+
+
+
+          <section class="menu-section">
+
+            <h3>Safety &amp; legal policy</h3>
+
+            <p>
+
+              FixLens gives guidance and explanations only. You stay in control
+
+              of what to do next, and you’re responsible for any decisions or
+
+              repairs you make. When in doubt, stop and call a licensed
+
+              professional.
+
+            </p>
+
+          </section>
+
+
+
+          <section class="menu-section">
+
+            <h3>About FixLens</h3>
+
+            <p>
+
+              FixLens is an experimental AI assistant designed to keep
+
+              real-world problems in focus and help you understand what might be
+
+              happening before you spend money on a service call.
+
+            </p>
+
+          </section>
+
+        </div>
+
+      </div>
 
     </div>
 
 
 
-    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+    <!-- ===== Menu toggle script (بسيط جداً) ===== -->
 
-      <span></span>
+    <script>
 
-      <span></span>
+      const menuToggle = document.querySelector(".menu-toggle");
 
-      <span></span>
+      const menuOverlay = document.getElementById("site-menu");
 
-    </button>
+      const menuClose = document.querySelector(".menu-close");
 
-  </header>
 
 
+      function openMenu() {
 
-  <!-- ===== Main ===== -->
+        menuOverlay.classList.add("menu-open");
 
-  <main class="main">
+        menuOverlay.setAttribute("aria-hidden", "false");
 
-    <section class="hero">
+        menuToggle.setAttribute("aria-expanded", "true");
 
-      <!-- العدسة الدوّارة -->
+      }
 
-      <div class="lens-wrapper">
 
-        <!-- تأكد أن الصورة موجودة في المسار التالي: images/fixlens-lens-bw.png -->
 
-        <img
+      function closeMenu() {
 
-          src="images/fixlens-lens-bw.png"
+        menuOverlay.classList.remove("menu-open");
 
-          alt="FixLens rotating AI lens"
+        menuOverlay.setAttribute("aria-hidden", "true");
 
-          class="lens-image"
+        menuToggle.setAttribute("aria-expanded", "false");
 
-        />
+      }
 
-      </div>
 
 
+      menuToggle.addEventListener("click", () => {
 
-      <p class="tagline">
+        if (menuOverlay.classList.contains("menu-open")) {
 
-        Rotating AI lens that keeps your real-world problems in focus.
+          closeMenu();
 
-      </p>
+        } else {
 
+          openMenu();
 
-
-      <div class="input-stack">
-
-        <!-- حقل الكتابة / الكلام -->
-
-        <button class="input-button primary-input">
-
-          <span class="input-left">
-
-            <span class="icon-circle">📷</span>
-
-          </span>
-
-          <span class="input-label">Describe what's going on…</span>
-
-          <span class="input-right">
-
-            <span class="icon-mic">🎙️</span>
-
-            <span class="icon-send">➤</span>
-
-          </span>
-
-        </button>
-
-
-
-        <!-- زر كشف الأنابيب والوايرات -->
-
-        <button class="input-button secondary-input">
-
-          <span class="input-left">
-
-            <span class="icon-circle">🛠️</span>
-
-          </span>
-
-          <span class="input-label">
-
-            Detect pipes, wires & studs behind walls / floors
-
-          </span>
-
-        </button>
-
-
-
-        <p class="status-line">Waiting for your input.</p>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-
-  <!-- ===== Drawer Menu (How it works, Safety, About) ===== -->
-
-  <nav class="info-drawer" id="info-drawer">
-
-    <div class="drawer-inner">
-
-      <h2>FixLens</h2>
-
-
-
-      <h3>How FixLens works</h3>
-
-      <p>
-
-        FixLens combines computer vision, language understanding, and
-
-        physics-aware reasoning to analyze what it sees and what you describe,
-
-        then returns a clear explanation of what might be wrong and what to
-
-        check next.
-
-      </p>
-
-
-
-      <h3>What FixLens can help with</h3>
-
-      <p>
-
-        Engines, household appliances, water leaks, strange noises, wiring
-
-        issues, structural questions, and more. Treat this as intelligent
-
-        guidance — not a replacement for a certified professional.
-
-      </p>
-
-
-
-      <h3>Safety &amp; legal policy</h3>
-
-      <p>
-
-        FixLens gives guidance and explanations only. You stay in control of
-
-        what to do next, and you're responsible for any decisions or repairs
-
-        you make. When in doubt, stop and call a licensed professional.
-
-      </p>
-
-
-
-      <h3>About FixLens</h3>
-
-      <p>
-
-        FixLens is an experimental AI assistant designed to keep real-world
-
-        problems in focus and help you understand what might be happening
-
-        before you spend money on a service call.
-
-      </p>
-
-    </div>
-
-  </nav>
-
-
-
-  <script>
-
-    const menuToggle = document.querySelector('.menu-toggle');
-
-    const drawer = document.getElementById('info-drawer');
-
-
-
-    if (menuToggle && drawer) {
-
-      menuToggle.addEventListener('click', () => {
-
-        const isOpen = drawer.classList.toggle('info-drawer--open');
-
-        menuToggle.setAttribute('aria-expanded', isOpen);
+        }
 
       });
 
-    }
 
-  </script>
 
-</body>
+      menuClose.addEventListener("click", closeMenu);
+
+
+
+      // اغلاق القائمة عند الضغط خارج اللوحة
+
+      menuOverlay.addEventListener("click", (e) => {
+
+        if (e.target === menuOverlay) {
+
+          closeMenu();
+
+        }
+
+      });
+
+    </script>
+
+  </body>
 
 </html>
