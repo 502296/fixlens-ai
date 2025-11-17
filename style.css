@@ -232,8 +232,6 @@ body {
 
 }
 
-
-
 /* ===== Lens ===== */
 
 
@@ -244,10 +242,6 @@ body {
 
   height: 260px;
 
-  max-width: 80vw;
-
-  max-height: 80vw;
-
   border-radius: 999px;
 
   display: flex;
@@ -256,9 +250,13 @@ body {
 
   justify-content: center;
 
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 
-  background: radial-gradient(circle at top, #181818 0, #050505 60%, #000 100%);
+
+
+  /* الخلفية الأصلية حوالين العدسة */
+
+  background: radial-gradient(circle at top, #2b2b2b 0, #050505 70%);
 
   box-shadow:
 
@@ -266,11 +264,95 @@ body {
 
     0 18px 45px rgba(0, 0, 0, 0.9);
 
+
+
+  /* مهم عشان الزجاج يجلس فوق الصورة فقط */
+
   position: relative;
 
   overflow: hidden;
 
 }
+
+
+
+/* صورة العدسة نفسها تبقى تحت الزجاج */
+
+.lens-image {
+
+  width: 100%;
+
+  height: auto;
+
+  border-radius: 50%;
+
+  display: block;
+
+  position: relative;
+
+  z-index: 1;
+
+}
+
+
+
+/* الزجاج الذي يغطي الدوامة ويخليها ناعمة أسود + رمادي */
+
+.lens-wrapper::before {
+
+  content: "";
+
+  position: absolute;
+
+  z-index: 2;
+
+  pointer-events: none;
+
+
+
+  /* حجم الزجاج داخل العدسة – تقدر تغير 60% لو حاب */
+
+  width: 60%;
+
+  aspect-ratio: 1 / 1;
+
+  border-radius: 50%;
+
+
+
+  top: 50%;
+
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+
+
+  /* تدرّج زجاجي ناعم أسود/رمادي مع لمعة خفيفة */
+
+  background: radial-gradient(
+
+    circle at 30% 25%,
+
+    rgba(255, 255, 255, 0.35) 0%,
+
+    rgba(210, 210, 210, 0.18) 20%,
+
+    rgba(40, 40, 40, 0.95) 68%,
+
+    rgba(0, 0, 0, 1) 100%
+
+  );
+
+
+
+  opacity: 0.9;
+
+  mix-blend-mode: screen;
+
+}
+
+
 
 
 
