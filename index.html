@@ -2,151 +2,399 @@
 
 <html lang="en">
 
-
-
 <head>
 
-    <meta charset="UTF-8" />
+  <meta charset="UTF-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>FixLens – AI Diagnosis</title>
+  <title>FixLens – Real-world AI diagnosis</title>
 
-    <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css" />
 
 </head>
 
-
-
 <body>
 
+  <div class="page">
 
 
-    <!-- Header -->
+
+    <!-- ===== Header ===== -->
 
     <header class="header">
 
-        <div class="logo-row">
+      <div class="logo-row">
 
-            <div class="logo-mark"></div>
+        <div class="logo-mark"></div>
 
-            <span class="logo-text">FIXLENS</span>
+        <span class="logo-text">FixLens</span>
 
-        </div>
+      </div>
 
 
 
-        <!-- Menu button -->
+      <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">
 
-        <button class="menu-btn">
+        <span></span>
 
-            <span></span>
+        <span></span>
 
-            <span></span>
+        <span></span>
 
-            <span></span>
-
-        </button>
+      </button>
 
     </header>
 
 
 
-    <!-- Main -->
+    <!-- ===== Slide-down Menu ===== -->
 
-    <main class="main">
+    <nav class="menu-panel" id="menu-panel">
 
+      <div class="menu-inner">
 
-
-        <section class="lens-card">
-
-
-
-            <!-- Lens -->
-
-            <div class="lens-wrapper">
-
-                <img
-
-                    src="images/fixlens-lens-bw.png"
-
-                    alt="FixLens rotating AI lens"
-
-                    class="lens-image"
-
-                />
-
-            </div>
+        <h3>FixLens</h3>
 
 
 
-            <p class="lens-caption">
+        <section>
 
-                Rotating AI lens that keeps your real-world problems in focus.
+          <h4>How FixLens works</h4>
 
-            </p>
+          <p>
 
+            FixLens combines computer vision, language understanding, and physics-aware reasoning
 
+            to analyze what it sees and what you describe, then returns a clear explanation of what
 
-            <!-- Chat bar -->
+            might be wrong and what to check next.
 
-            <div class="chat-bar">
-
-
-
-                <button class="icon-btn">
-
-                    <img src="images/icon-photo.png" class="icon" />
-
-                </button>
-
-
-
-                <input
-
-                    type="text"
-
-                    placeholder="Describe what’s going on..."
-
-                    class="chat-input"
-
-                />
-
-
-
-                <button class="icon-btn">
-
-                    <img src="images/icon-mic.png" class="icon" />
-
-                </button>
-
-
-
-                <button class="send-btn">➤</button>
-
-
-
-            </div>
-
-
-
-            <!-- Quick button -->
-
-            <button class="quick-btn">
-
-                🔧 Pipes, wires & studs in walls and under floors
-
-            </button>
-
-
+          </p>
 
         </section>
 
 
 
+        <section>
+
+          <h4>What FixLens can help with</h4>
+
+          <p>
+
+            Engines, household appliances, water leaks, strange noises, wiring issues, structural
+
+            questions, and more. Treat this as intelligent guidance — not a replacement for a
+
+            certified professional.
+
+          </p>
+
+        </section>
+
+
+
+        <section>
+
+          <h4>Safety & legal policy</h4>
+
+          <p>
+
+            FixLens gives guidance and explanations only. You stay in control of what to do next,
+
+            and you’re responsible for any decisions or repairs you make. When in doubt, stop and
+
+            call a licensed professional.
+
+          </p>
+
+        </section>
+
+      </div>
+
+    </nav>
+
+
+
+    <!-- ===== Main Lens Card ===== -->
+
+    <main class="main">
+
+      <section class="lens-card">
+
+
+
+        <!-- Lens -->
+
+        <div class="lens-wrapper">
+
+          <!-- هذه هي الصورة التي أرسلتها -->
+
+          <img
+
+            src="images/fixlens-lens-bw.png"
+
+            alt="FixLens rotating AI lens"
+
+            class="lens-image"
+
+          />
+
+        </div>
+
+
+
+        <!-- Subtitle -->
+
+        <p class="lens-subtitle">
+
+          Rotating AI lens that keeps your real-world problems in focus.
+
+        </p>
+
+
+
+        <!-- Headline -->
+
+        <h1 class="lens-title">
+
+          Fix problems in the real world<br />with AI.
+
+        </h1>
+
+
+
+        <p class="lens-body">
+
+          Describe what’s going on in your own words, attach a photo if you like, or speak.
+
+          FixLens analyzes engines, appliances, electronics, structures, and more — then guides you
+
+          step by step.
+
+        </p>
+
+
+
+        <!-- ===== Chat bar ===== -->
+
+        <section class="chat-section">
+
+          <!-- input الحقيقي للصورة (مخفي) -->
+
+          <input
+
+            type="file"
+
+            id="image-input"
+
+            accept="image/*"
+
+            style="display: none"
+
+          />
+
+
+
+          <div class="chat-bar">
+
+            <button
+
+              type="button"
+
+              class="chat-icon-button"
+
+              id="camera-button"
+
+              aria-label="Upload a photo"
+
+            >
+
+              📷
+
+            </button>
+
+
+
+            <input
+
+              type="text"
+
+              id="text-input"
+
+              class="chat-input"
+
+              placeholder="Describe what’s going on..."
+
+            />
+
+
+
+            <button
+
+              type="button"
+
+              class="chat-icon-button"
+
+              id="mic-button"
+
+              aria-label="Record voice (coming soon)"
+
+            >
+
+              🎙️
+
+            </button>
+
+
+
+            <button
+
+              type="button"
+
+              class="chat-send-button"
+
+              id="send-button"
+
+              aria-label="Send to FixLens"
+
+            >
+
+              ➤
+
+            </button>
+
+          </div>
+
+
+
+          <!-- Quick mode button -->
+
+          <button type="button" class="quick-mode-button" id="quick-mode-button">
+
+            🛠 Pipes, wires &amp; studs in walls and under floors
+
+          </button>
+
+
+
+          <p class="helper-text" id="helper-text">
+
+            Waiting for your input.
+
+          </p>
+
+        </section>
+
+
+
+      </section>
+
     </main>
 
 
+
+  </div>
+
+
+
+  <script>
+
+    // ========== MENU TOGGLE ==========
+
+    const menuToggle = document.getElementById("menu-toggle");
+
+    const menuPanel = document.getElementById("menu-panel");
+
+
+
+    menuToggle.addEventListener("click", () => {
+
+      menuPanel.classList.toggle("is-open");
+
+      menuToggle.classList.toggle("is-open");
+
+    });
+
+
+
+    // ========== CHAT BAR BEHAVIOUR ==========
+
+    const cameraButton = document.getElementById("camera-button");
+
+    const fileInput = document.getElementById("image-input");
+
+    const textInput = document.getElementById("text-input");
+
+    const helperText = document.getElementById("helper-text");
+
+    const sendButton = document.getElementById("send-button");
+
+    const quickButton = document.getElementById("quick-mode-button");
+
+
+
+    cameraButton.addEventListener("click", () => {
+
+      fileInput.click();
+
+    });
+
+
+
+    fileInput.addEventListener("change", () => {
+
+      if (fileInput.files && fileInput.files[0]) {
+
+        helperText.textContent = "Photo attached. Describe the issue or press send.";
+
+      } else {
+
+        helperText.textContent = "Waiting for your input.";
+
+      }
+
+    });
+
+
+
+    quickButton.addEventListener("click", () => {
+
+      textInput.value = "I want to check for pipes, wires, or studs in this wall / under this floor.";
+
+      textInput.focus();
+
+      helperText.textContent = "Quick mode selected. Add any extra details, then press send.";
+
+    });
+
+
+
+    // مبدئيًا: مجرد تحديث النص. ربط الـ API الحقيقي نعمله معًا لاحقًا.
+
+    sendButton.addEventListener("click", () => {
+
+      const hasText = textInput.value.trim().length > 0;
+
+      const hasFile = fileInput.files && fileInput.files[0];
+
+
+
+      if (!hasText && !hasFile) {
+
+        helperText.textContent = "Please describe the problem or attach a photo first.";
+
+        return;
+
+      }
+
+
+
+      helperText.textContent = "Sending to FixLens AI… (preview only for now)";
+
+    });
+
+  </script>
 
 </body>
 
