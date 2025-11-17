@@ -170,19 +170,19 @@
 
         <div class="hero-actions hero-actions-stack hero-modes">
 
-          <button class="btn primary-btn" type="button" data-go-mode="text">
+          <button class="btn primary-btn" type="button" data-mode="text">
 
             Describe with text
 
           </button>
 
-          <button class="btn ghost-btn" type="button" data-go-mode="photo">
+          <button class="btn ghost-btn" type="button" data-mode="photo">
 
             Upload a photo
 
           </button>
 
-          <button class="btn ghost-btn" type="button" data-go-mode="voice">
+          <button class="btn ghost-btn" type="button" data-mode="voice">
 
             🎙️ Speak
 
@@ -196,9 +196,127 @@
 
 
 
-    <!-- PANELS (تُفتح من المنيو فقط) -->
+    <!-- ===== Inline Try FixLens (preview) – مخفي افتراضياً ===== -->
+
+    <section id="preview-section" class="section demo-section is-hidden">
+
+      <h2 class="demo-title">Try FixLens (preview)</h2>
+
+      <p class="hero-subtitle-centered" style="max-width:520px;">
+
+        Upload a photo, describe what’s going on, and (optionally) add a short voice note.
+
+        FixLens will send everything securely to the AI brain and return a clear explanation
+
+        before you call a professional.
+
+      </p>
 
 
+
+      <div class="demo-card">
+
+        <div class="field-group" id="group-photo">
+
+          <label class="field-label" for="image-input">Upload a photo</label>
+
+          <input id="image-input" type="file" accept="image/*" />
+
+          <p class="field-hint">
+
+            Clear photo of the issue: engine bay, leak, stain, broken part, etc.
+
+          </p>
+
+        </div>
+
+
+
+        <div class="field-group" id="group-text">
+
+          <label class="field-label" for="description-input">
+
+            Describe what’s going on <span class="optional">(optional but recommended)</span>
+
+          </label>
+
+          <textarea
+
+            id="description-input"
+
+            rows="3"
+
+            placeholder="Example: Strange knocking sound when I start the car, mostly when the engine is cold..."
+
+          ></textarea>
+
+        </div>
+
+
+
+        <div class="field-group" id="group-voice">
+
+          <span class="field-label">
+
+            Add a short voice note <span class="optional">(optional)</span>
+
+          </span>
+
+          <div class="voice-row">
+
+            <button class="btn ghost-btn record-btn" type="button" id="record-btn">
+
+              🎙️ Record voice
+
+            </button>
+
+            <span id="record-status" class="record-status">Not recording</span>
+
+          </div>
+
+          <p class="field-hint">
+
+            FixLens can use your voice note later to understand sounds and extra context.
+
+          </p>
+
+        </div>
+
+
+
+        <div class="demo-actions">
+
+          <button class="btn primary-btn" type="button" id="run-demo-btn">
+
+            Run AI diagnosis
+
+          </button>
+
+          <span id="demo-status" class="demo-status">Waiting for your input.</span>
+
+        </div>
+
+
+
+        <div id="demo-result" class="demo-result">
+
+          <p class="placeholder-text">
+
+            Your diagnosis will appear here — including what might be wrong,
+
+            what to check, and what to tell a professional.
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- Info panels (من المينيو) -->
 
     <section id="panel-how" class="section info-panel is-hidden">
 
