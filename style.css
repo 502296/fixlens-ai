@@ -266,9 +266,9 @@ body {
 
 /* ---------------------------
 
-   FixLens – Hero Lens (new)
+   FixLens – Hero Lens (metallic)
 
-   عدسة معدنية مثل الكاميرا
+   عدسة معدنية أقرب للواقع
 
 ----------------------------*/
 
@@ -310,23 +310,23 @@ body {
 
 
 
-  /* خلفية عامة داكنة */
+  /* خلفية داكنة عميقة */
 
-  background: radial-gradient(circle at 30% 30%, #0f172a 0, #020617 45%, #000 80%);
+  background: radial-gradient(circle at 30% 30%, #020617 0, #020617 32%, #000 78%);
 
   box-shadow:
 
-    0 22px 50px rgba(0, 0, 0, 0.95),
+    0 26px 60px rgba(0, 0, 0, 0.96),
 
-    0 0 40px rgba(15, 23, 42, 1),
+    0 0 42px rgba(15, 23, 42, 1),
 
-    0 0 36px rgba(79, 70, 229, 0.55);
+    0 0 34px rgba(79, 70, 229, 0.6);
 
 }
 
 
 
-/* الحلقة المعدنية الخارجية + التدرج */
+/* الحلقة المعدنية الخارجية (مثل حلقة العدسة الحقيقية) */
 
 .hero-lens::before {
 
@@ -340,31 +340,37 @@ body {
 
   background:
 
-    radial-gradient(circle at 30% 30%,
+    conic-gradient(
 
-      rgba(255, 255, 255, 0.25) 0,
+      from 135deg,
 
-      rgba(148, 163, 184, 0.18) 22%,
+      #020617,
 
-      rgba(51, 65, 85, 0.18) 40%,
+      #111827,
 
-      #020617 65%,
+      #4b5563,
 
-      #000 100%);
+      #9ca3af,
+
+      #4b5563,
+
+      #020617
+
+    );
 
   box-shadow:
 
-    0 0 0 1px rgba(15, 23, 42, 0.95),
+    0 0 0 2px #020617,
 
-    0 0 0 3px rgba(75, 85, 99, 0.8),
+    0 0 0 4px rgba(75, 85, 99, 0.9),
 
-    0 0 26px rgba(15, 23, 42, 0.95);
+    0 0 28px rgba(15, 23, 42, 0.96);
 
 }
 
 
 
-/* الحلقة الأقرب للزجاج (bezel) */
+/* الحلقة الأقرب للزجاج (bezel الداخلي) */
 
 .hero-lens::after {
 
@@ -372,7 +378,7 @@ body {
 
   position: absolute;
 
-  inset: 18px;
+  inset: 16px;
 
   border-radius: inherit;
 
@@ -384,15 +390,15 @@ body {
 
       #020617 30%,
 
-      #111827 55%,
+      #111827 60%,
 
-      #000 100%);
+      #000000 100%);
 
   box-shadow:
 
-    inset 0 0 14px rgba(0, 0, 0, 0.95),
+    inset 0 0 18px rgba(0, 0, 0, 0.95),
 
-    0 0 18px rgba(31, 41, 55, 0.9);
+    0 0 20px rgba(15, 23, 42, 0.9);
 
 }
 
@@ -404,47 +410,47 @@ body {
 
   position: relative;
 
-  z-index: 2;
+  z-index: 3;
 
-  width: 56%;
+  width: 58%;
 
-  height: 56%;
+  height: 58%;
 
   border-radius: 50%;
 
   background:
 
-    radial-gradient(circle at 30% 20%,
+    radial-gradient(circle at 30% 22%,
 
       #ffffff 0,
 
-      #c7d2fe 25%,
+      #dbeafe 22%,
 
-      #818cf8 40%,
+      #818cf8 45%,
 
-      #111827 70%,
+      #111827 75%,
 
       #020617 100%);
 
   box-shadow:
 
-    0 0 26px rgba(96, 165, 250, 0.95),
+    0 0 30px rgba(129, 140, 248, 0.96),
 
-    inset 0 0 26px rgba(15, 23, 42, 0.95);
+    inset 0 0 24px rgba(15, 23, 42, 0.96);
 
 }
 
 
 
-/* الحلقة التي تحتوي على الكتابة */
+/* الحلقة اللي فيها الكتابة تدور حول العدسة */
 
 .hero-lens-ring {
 
   position: absolute;
 
-  inset: 7px;
+  inset: 6px;
 
-  z-index: 1;
+  z-index: 2;
 
   transform-origin: 50% 50%;
 
