@@ -52,7 +52,9 @@
 
   --radius-pill: 999px;
 
-  --lens-rotation-duration: 18s;
+  --lens-rotation-duration-inner: 18s;
+
+  --lens-rotation-duration-outer: 26s;
 
 }
 
@@ -448,39 +450,75 @@ body {
 
 
 
-/* الحلقة التي تحتوي على الكتابة */
+/* الحلقات النصية */
 
 .hero-lens-ring {
 
   position: absolute;
 
-  inset: 7px;
-
   width: 100%;
 
   height: 100%;
 
-  z-index: 1;
-
   transform-origin: 50% 50%;
 
-  animation: fixlens-spin var(--lens-rotation-duration) linear infinite;
+  pointer-events: none;
 
 }
 
 
 
-/* نص FIXLENS – ANALYZE – … حول العدسة */
+/* الخارجية – أرقام العدسة */
+
+.hero-lens-ring-outer {
+
+  inset: 4px;
+
+  animation: fixlens-spin var(--lens-rotation-duration-outer) linear infinite;
+
+}
+
+
+
+/* الداخلية – شعار FixLens */
+
+.hero-lens-ring-inner {
+
+  inset: 11px;
+
+  animation: fixlens-spin-reverse var(--lens-rotation-duration-inner) linear infinite;
+
+}
+
+
+
+/* نصوص الحلقات */
 
 .hero-lens-text {
 
   fill: rgba(229, 231, 235, 0.96);
 
+  text-transform: uppercase;
+
+}
+
+
+
+.hero-lens-text-inner {
+
   font-size: 7px;
 
   letter-spacing: 0.22em;
 
-  text-transform: uppercase;
+}
+
+
+
+.hero-lens-text-outer {
+
+  font-size: 4.8px;
+
+  letter-spacing: 0.18em;
 
 }
 
@@ -826,7 +864,7 @@ body {
 
 
 
-/* ===== Bubble التفكير / شبكة عصبية تدور ===== */
+/* ===== Bubble التفكير ===== */
 
 
 
@@ -884,8 +922,6 @@ body {
 
 
 
-/* نواة الشبكة */
-
 .thinking-core {
 
   width: 10px;
@@ -901,8 +937,6 @@ body {
 }
 
 
-
-/* الحلقات */
 
 .thinking-ring {
 
@@ -927,8 +961,6 @@ body {
 }
 
 
-
-/* النقاط */
 
 .thinking-ring .thinking-dot {
 
@@ -957,8 +989,6 @@ body {
 }
 
 
-
-/* حركات الدوران */
 
 .thinking-ring-outer {
 
@@ -1175,6 +1205,24 @@ body {
   to {
 
     transform: rotate(360deg);
+
+  }
+
+}
+
+
+
+@keyframes fixlens-spin-reverse {
+
+  from {
+
+    transform: rotate(360deg);
+
+  }
+
+  to {
+
+    transform: rotate(0deg);
 
   }
 
