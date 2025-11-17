@@ -44,9 +44,11 @@
 
 
 
-    <!-- Hero Section – العدسة + 3 أزرار فقط -->
+    <!-- Hero: MAIN INTERFACE (Upload + Text + Voice) + Lens -->
 
     <main class="hero">
+
+      <!-- Left: interaction area -->
 
       <div class="hero-text">
 
@@ -54,49 +56,113 @@
 
         <p class="hero-subtitle">
 
-          FixLens looks at your photo, listens to your description, and gives a clear explanation
+          Upload a photo, describe what’s going on, add a short voice note — and let FixLens AI
 
-          of what might be wrong — before you call a professional.
+          build a clear explanation before you call a professional.
 
         </p>
 
 
 
-        <div class="hero-actions hero-actions-stack">
+        <div class="demo-card hero-demo-card">
 
-          <button class="btn primary-btn" type="button" data-panel="panel-how">
+          <div class="field-group">
 
-            How FixLens works
+            <label class="field-label" for="image-input">Upload a photo</label>
 
-          </button>
+            <input id="image-input" type="file" accept="image/*" />
 
-          <button class="btn ghost-btn" type="button" data-panel="panel-use-cases">
+            <p class="field-hint">
 
-            What FixLens can help with
+              Clear photo of the issue: engine bay, leak, stain, broken part, etc.
 
-          </button>
+            </p>
 
-          <button class="btn ghost-btn" type="button" data-panel="panel-policy">
+          </div>
 
-            Safety & legal policy
 
-          </button>
+
+          <div class="field-group">
+
+            <label class="field-label" for="description-input">
+
+              Describe what’s going on <span class="optional">(optional but recommended)</span>
+
+            </label>
+
+            <textarea
+
+              id="description-input"
+
+              rows="3"
+
+              placeholder="Example: Strange knocking sound when I start the car, mostly when the engine is cold..."
+
+            ></textarea>
+
+          </div>
+
+
+
+          <div class="field-group">
+
+            <span class="field-label">Add a short voice note <span class="optional">(optional)</span></span>
+
+            <div class="voice-row">
+
+              <button class="btn ghost-btn record-btn" type="button" id="record-btn">
+
+                🎙️ Record voice
+
+              </button>
+
+              <span id="record-status" class="record-status">Not recording</span>
+
+            </div>
+
+            <p class="field-hint">
+
+              FixLens can use your voice note later to understand sounds and extra context.
+
+            </p>
+
+          </div>
+
+
+
+          <div class="demo-actions">
+
+            <button class="btn primary-btn" type="button" id="run-demo-btn">
+
+              Run AI diagnosis
+
+            </button>
+
+            <span id="demo-status" class="demo-status">Waiting for your input.</span>
+
+          </div>
+
+
+
+          <div id="demo-result" class="demo-result">
+
+            <p class="placeholder-text">
+
+              Your diagnosis will appear here — including what might be wrong, what to check,
+
+              and what to tell a professional.
+
+            </p>
+
+          </div>
 
         </div>
-
-
-
-        <p class="hero-note">
-
-          FixLens gives guidance and explanations only. You stay in control of what to do next.
-
-        </p>
 
       </div>
 
 
 
-      <!-- Lens Logo -->
+      <!-- Right: lens logo -->
 
       <div class="hero-lens">
 
@@ -178,7 +244,7 @@
 
 
 
-              <!-- Text 360° -->
+              <!-- 360° text -->
 
               <text class="lens-text">
 
@@ -212,7 +278,7 @@
 
 
 
-    <!-- ===== PANELS (تظهر فقط عند الضغط على الأزرار أو الـmenu) ===== -->
+    <!-- ===== PANELS (تظهر من الـmenu في الأعلى) ===== -->
 
 
 
@@ -372,9 +438,9 @@
 
         <p class="policy-note">
 
-          Important: Always use FixLens as guidance only. If something is dangerous, expensive,
+          FixLens gives guidance and explanations only. You stay in control of what to do next.
 
-          or safety-critical, talk to a qualified professional before taking action.
+          For anything dangerous, expensive, or safety-critical, always consult a qualified professional.
 
         </p>
 
@@ -396,13 +462,15 @@
 
 
 
-  <!-- Script: panels فقط -->
+  <!-- Script: panels + upload/text/voice demo -->
 
   <script>
 
     document.addEventListener('DOMContentLoaded', function () {
 
-      const triggers = document.querySelectorAll('[data-panel], .nav a[href^="#panel-"]');
+      /* ===== Panels (menu) ===== */
+
+      const triggers = document.querySelectorAll('[href^="#panel-"]');
 
       const panels = document.querySelectorAll('.info-panel');
 
@@ -444,15 +512,229 @@
 
           const href = el.getAttribute('href');
 
-          const fromData = el.getAttribute('data-panel');
-
-          const id = fromData || (href ? href.replace('#', '') : null);
+          const id = href ? href.replace('#', '') : null;
 
           if (id) openPanel(id);
 
         });
 
       });
+
+
+
+      /* ===== Upload + Text + Voice demo ===== */
+
+      const imageInput = document.getElementById('image-input');
+
+      const descriptionInput = document.getElementById('description-input');
+
+      const recordBtn = document.getElementById('record-btn');
+
+      const recordStatus = document.getElementById('record-status');
+
+      const runDemoBtn = document.getElementById('run-demo-btn');
+
+      const demoStatus = document.getElementById('demo-status');
+
+      const demoResult = document.getElementById('demo-result');
+
+
+
+      let mediaRecorder = null;
+
+      let audioChunks = [];
+
+      let isRecording = false;
+
+
+
+      // Voice recording
+
+      if (recordBtn) {
+
+        recordBtn.addEventListener('click', async () => {
+
+          if (!isRecording) {
+
+            if (!navigator.mediaDevices || !window.MediaRecorder) {
+
+              recordStatus.textContent = 'Voice recording not supported on this device.';
+
+              return;
+
+            }
+
+
+
+            try {
+
+              const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+              mediaRecorder = new MediaRecorder(stream);
+
+              audioChunks = [];
+
+
+
+              mediaRecorder.ondataavailable = (event) => {
+
+                if (event.data.size > 0) {
+
+                  audioChunks.push(event.data);
+
+                }
+
+              };
+
+
+
+              mediaRecorder.onstop = () => {
+
+                stream.getTracks().forEach(t => t.stop());
+
+                recordStatus.textContent = audioChunks.length
+
+                  ? 'Voice note recorded.'
+
+                  : 'No audio captured.';
+
+              };
+
+
+
+              mediaRecorder.start();
+
+              isRecording = true;
+
+              recordBtn.textContent = '⏹️ Stop recording';
+
+              recordStatus.textContent = 'Recording… speak naturally near your phone.';
+
+            } catch (err) {
+
+              console.error('Error starting recording:', err);
+
+              recordStatus.textContent = 'Could not access microphone.';
+
+            }
+
+          } else {
+
+            mediaRecorder && mediaRecorder.stop();
+
+            isRecording = false;
+
+            recordBtn.textContent = '🎙️ Record voice';
+
+          }
+
+        });
+
+      }
+
+
+
+      // Run AI diagnosis
+
+      if (runDemoBtn) {
+
+        runDemoBtn.addEventListener('click', async () => {
+
+          const file = imageInput?.files?.[0] || null;
+
+          const description = (descriptionInput?.value || '').trim();
+
+
+
+          if (!file && !description && !audioChunks.length) {
+
+            demoStatus.textContent = 'Please upload a photo, add a description, or record a voice note.';
+
+            return;
+
+          }
+
+
+
+          demoStatus.textContent = 'Sending to FixLens AI brain…';
+
+          demoResult.innerHTML = '<p class="placeholder-text">Thinking… please wait a moment.</p>';
+
+
+
+          try {
+
+            const formData = new FormData();
+
+            if (file) formData.append('image', file);
+
+            if (description) formData.append('description', description);
+
+
+
+            if (audioChunks.length) {
+
+              const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+
+              formData.append('audio', audioBlob, 'voice-note.webm');
+
+            }
+
+
+
+            // NOTE: غيّر /api/diagnose إذا الـendpoint عندك باسم آخر
+
+            const response = await fetch('/api/diagnose', {
+
+              method: 'POST',
+
+              body: formData
+
+            });
+
+
+
+            if (!response.ok) {
+
+              throw new Error('API returned ' + response.status);
+
+            }
+
+
+
+            const data = await response.json().catch(() => ({}));
+
+            const text =
+
+              data.diagnosis ||
+
+              data.result ||
+
+              data.message ||
+
+              'FixLens processed your request, but no readable message was returned.';
+
+
+
+            demoResult.innerHTML = '<p>' + text.replace(/\n/g, '<br>') + '</p>';
+
+            demoStatus.textContent = 'Diagnosis complete.';
+
+          } catch (err) {
+
+            console.error('Demo error:', err);
+
+            demoResult.innerHTML =
+
+              '<p class="placeholder-text">Something went wrong while talking to the AI. Please try again in a moment.</p>';
+
+            demoStatus.textContent = 'Error while contacting FixLens AI.';
+
+          }
+
+        });
+
+      }
 
     });
 
