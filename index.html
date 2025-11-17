@@ -44,125 +44,11 @@
 
 
 
-    <!-- Hero: MAIN INTERFACE (Upload + Text + Voice) + Lens -->
+    <!-- Hero: lens + title + 3 big buttons -->
 
-    <main class="hero">
+    <main class="hero hero-centered">
 
-      <!-- Left: interaction area -->
-
-      <div class="hero-text">
-
-        <h1>AI diagnosis for real-world problems.</h1>
-
-        <p class="hero-subtitle">
-
-          Upload a photo, describe what’s going on, add a short voice note — and let FixLens AI
-
-          build a clear explanation before you call a professional.
-
-        </p>
-
-
-
-        <div class="demo-card hero-demo-card">
-
-          <div class="field-group">
-
-            <label class="field-label" for="image-input">Upload a photo</label>
-
-            <input id="image-input" type="file" accept="image/*" />
-
-            <p class="field-hint">
-
-              Clear photo of the issue: engine bay, leak, stain, broken part, etc.
-
-            </p>
-
-          </div>
-
-
-
-          <div class="field-group">
-
-            <label class="field-label" for="description-input">
-
-              Describe what’s going on <span class="optional">(optional but recommended)</span>
-
-            </label>
-
-            <textarea
-
-              id="description-input"
-
-              rows="3"
-
-              placeholder="Example: Strange knocking sound when I start the car, mostly when the engine is cold..."
-
-            ></textarea>
-
-          </div>
-
-
-
-          <div class="field-group">
-
-            <span class="field-label">Add a short voice note <span class="optional">(optional)</span></span>
-
-            <div class="voice-row">
-
-              <button class="btn ghost-btn record-btn" type="button" id="record-btn">
-
-                🎙️ Record voice
-
-              </button>
-
-              <span id="record-status" class="record-status">Not recording</span>
-
-            </div>
-
-            <p class="field-hint">
-
-              FixLens can use your voice note later to understand sounds and extra context.
-
-            </p>
-
-          </div>
-
-
-
-          <div class="demo-actions">
-
-            <button class="btn primary-btn" type="button" id="run-demo-btn">
-
-              Run AI diagnosis
-
-            </button>
-
-            <span id="demo-status" class="demo-status">Waiting for your input.</span>
-
-          </div>
-
-
-
-          <div id="demo-result" class="demo-result">
-
-            <p class="placeholder-text">
-
-              Your diagnosis will appear here — including what might be wrong, what to check,
-
-              and what to tell a professional.
-
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-
-      <!-- Right: lens logo -->
+      <!-- Lens on top -->
 
       <div class="hero-lens">
 
@@ -274,11 +160,159 @@
 
       </div>
 
+
+
+      <!-- Title + 3 buttons -->
+
+      <div class="hero-text hero-text-centered">
+
+        <h1>Fix problems in the real world with AI.</h1>
+
+        <p class="hero-subtitle hero-subtitle-centered">
+
+          Point your camera at the issue or describe it in your own words. FixLens analyzes engines,
+
+          appliances, electronics, and more — then guides you step by step.
+
+        </p>
+
+
+
+        <div class="hero-actions hero-actions-stack hero-modes">
+
+          <button class="btn primary-btn hero-mode-btn" type="button" data-mode="text">
+
+            Describe with text
+
+          </button>
+
+          <button class="btn ghost-btn hero-mode-btn" type="button" data-mode="photo">
+
+            Upload a photo
+
+          </button>
+
+          <button class="btn ghost-btn hero-mode-btn" type="button" data-mode="voice">
+
+            🎙️ Speak
+
+          </button>
+
+        </div>
+
+      </div>
+
     </main>
 
 
 
-    <!-- ===== PANELS (تظهر من الـmenu في الأعلى) ===== -->
+    <!-- Main interaction card (under hero) -->
+
+    <section id="demo-section" class="section demo-section">
+
+      <div class="demo-card">
+
+        <h2 class="demo-title">Try FixLens (preview)</h2>
+
+
+
+        <div class="field-group" id="group-photo">
+
+          <label class="field-label" for="image-input">Upload a photo</label>
+
+          <input id="image-input" type="file" accept="image/*" />
+
+          <p class="field-hint">
+
+            Clear photo of the issue: engine bay, leak, stain, broken part, etc.
+
+          </p>
+
+        </div>
+
+
+
+        <div class="field-group" id="group-text">
+
+          <label class="field-label" for="description-input">
+
+            Describe what’s going on <span class="optional">(optional but recommended)</span>
+
+          </label>
+
+          <textarea
+
+            id="description-input"
+
+            rows="3"
+
+            placeholder="Example: Strange knocking sound when I start the car, mostly when the engine is cold..."
+
+          ></textarea>
+
+        </div>
+
+
+
+        <div class="field-group" id="group-voice">
+
+          <span class="field-label">Add a short voice note <span class="optional">(optional)</span></span>
+
+          <div class="voice-row">
+
+            <button class="btn ghost-btn record-btn" type="button" id="record-btn">
+
+              🎙️ Record voice
+
+            </button>
+
+            <span id="record-status" class="record-status">Not recording</span>
+
+          </div>
+
+          <p class="field-hint">
+
+            FixLens can use your voice note later to understand sounds and extra context.
+
+          </p>
+
+        </div>
+
+
+
+        <div class="demo-actions">
+
+          <button class="btn primary-btn" type="button" id="run-demo-btn">
+
+            Run AI diagnosis
+
+          </button>
+
+          <span id="demo-status" class="demo-status">Waiting for your input.</span>
+
+        </div>
+
+
+
+        <div id="demo-result" class="demo-result">
+
+          <p class="placeholder-text">
+
+            Your diagnosis will appear here — including what might be wrong, what to check,
+
+            and what to tell a professional.
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===== PANELS (menu) ===== -->
 
 
 
@@ -462,7 +496,7 @@
 
 
 
-  <!-- Script: panels + upload/text/voice demo -->
+  <!-- Script -->
 
   <script>
 
@@ -515,6 +549,56 @@
           const id = href ? href.replace('#', '') : null;
 
           if (id) openPanel(id);
+
+        });
+
+      });
+
+
+
+      /* ===== Hero mode buttons scroll & highlight ===== */
+
+      const modeButtons = document.querySelectorAll('.hero-mode-btn');
+
+      const demoSection = document.getElementById('demo-section');
+
+      const groupPhoto = document.getElementById('group-photo');
+
+      const groupText = document.getElementById('group-text');
+
+      const groupVoice = document.getElementById('group-voice');
+
+
+
+      function clearHighlights() {
+
+        [groupPhoto, groupText, groupVoice].forEach(g => g && g.classList.remove('highlight'));
+
+      }
+
+
+
+      modeButtons.forEach(btn => {
+
+        btn.addEventListener('click', () => {
+
+          const mode = btn.getAttribute('data-mode');
+
+          clearHighlights();
+
+          if (mode === 'photo' && groupPhoto) groupPhoto.classList.add('highlight');
+
+          if (mode === 'text' && groupText) groupText.classList.add('highlight');
+
+          if (mode === 'voice' && groupVoice) groupVoice.classList.add('highlight');
+
+
+
+          if (demoSection) {
+
+            demoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+          }
 
         });
 
@@ -682,7 +766,7 @@
 
 
 
-            // NOTE: غيّر /api/diagnose إذا الـendpoint عندك باسم آخر
+            // NOTE: غيّر /api/diagnose إذا اسم الـendpoint مختلف
 
             const response = await fetch('/api/diagnose', {
 
