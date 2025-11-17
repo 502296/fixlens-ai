@@ -1,4 +1,4 @@
-// script.js – FixLens frontend logic
+// script.js – FixLens frontend logic (chat-style)
 
 
 
@@ -18,9 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const photoInput = document.getElementById("photo-input");
 
-  const resultPanel = document.getElementById("result-panel");
 
-  const resultContent = document.getElementById("result-content");
+
+  const conversationBody = document.getElementById("conversation-body");
 
 
 
@@ -32,17 +32,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  // ========= Result handling =========
+  // ========== Helpers: Chat messages ==========
 
 
 
-  function showResult(text) {
+  function addMessage(role, text) {
 
-    if (!resultPanel || !resultContent) return;
+    if (!conversationBody) return;
 
-    resultPanel.style.display = "block";
 
-    resultContent.textContent = text;
+
+    const msg = document.createElement("div");
+
+    msg.className = "message";
+
+
+
+    const label = document.createElement("div");
+
+    label.className = "message-label " + (role === "user" ? "user" : "ai");
+
+    label.textContent = role === "user" ? "You" : "FixLens";
+
+
+
+    const bubble = document.createElement("div");
+
+    bubble.className = "message-bubble " + (role === "user" ? "user" : "ai");
+
+    bubble.textContent = text;
+
+
+
+    msg.appendChild(label);
+
+    msg.appendChild(bubble);
+
+    conversationBody.appendChild(msg);
+
+
+
+    // Scroll to bottom
+
+    conversationBody.scrollTop = conversationBody.scrollHeight;
+
+
+
+    return bubble; // نرجع البابل عشان نقدر نحدّثه في حالة "Thinking…"
 
   }
 
@@ -50,7 +86,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function callApi(url, payload) {
 
-    showResult("Thinking… analyzing your problem with FixLens AI.");
+    // رسالة AI مبدئية "Thinking..."
+
+    const thinkingBubble = addMessage(
+
+      "ai",
+
+      "Thinking… analyzing your problem with FixLens AI."
+
+    );
+
+
 
     try {
 
@@ -76,7 +122,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         console.error("API error:", errorBody);
 
-        showResult("Something went wrong. Please try again in a moment.");
+        thinkingBubble.textContent =
+
+          "Something went wrong. Please try again in a moment.";
 
         return;
 
@@ -88,11 +136,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (data && data.answer) {
 
-        showResult(data.answer);
+        thinkingBubble.textContent = data.answer;
 
       } else {
 
-        showResult("No answer returned from FixLens AI.");
+        thinkingBubble.textContent =
+
+          "No answer returned from FixLens AI. Please try again.";
 
       }
 
@@ -100,7 +150,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       console.error(err);
 
-      showResult("Network error. Please check your connection and try again.");
+      thinkingBubble.textContent =
+
+        "Network error. Please check your connection and try again.";
 
     }
 
@@ -108,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  // ========= Buttons: Text / Photo / Voice =========
+  // ========== Buttons: Text / Photo / Voice ==========
 
 
 
@@ -124,6 +176,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (!description || !description.trim()) return;
 
+
+
+      // أضف رسالة المستخدم أولاً
+
+      addMessage("user", description.trim());
+
+      // ثم استدعاء الـ API
+
       callApi(API_TEXT, { description: description.trim() });
 
     });
@@ -136,6 +196,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     btnPhoto.addEventListener("click", () => {
 
+      photoInput.value = ""; // reset
+
       photoInput.click();
 
     });
@@ -147,6 +209,18 @@ document.addEventListener("DOMContentLoaded", () => {
       const file = photoInput.files && photoInput.files[0];
 
       if (!file) return;
+
+
+
+      // رسالة user تختصر الموضوع
+
+      addMessage(
+
+        "user",
+
+        `Uploaded a photo: ${file.name || "image"} (FixLens will analyze it).`
+
+      );
 
 
 
@@ -174,6 +248,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     btnSpeak.addEventListener("click", () => {
 
+      // لسه placeholder – نطوره لاحقًا مع voice API
+
       alert("Voice mode is coming soon to FixLens 🔊");
 
     });
@@ -182,7 +258,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  // ========= Menu overlay =========
+  // ========== Menu overlay ==========
 
 
 
@@ -241,8 +317,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-
-  // Optional: ESC to close menu
 
   document.addEventListener("keydown", (e) => {
 
