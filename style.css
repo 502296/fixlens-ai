@@ -282,7 +282,7 @@ body {
 
 
 
-/* تكديس الأزرار رأسياً على الموبايل / الواجهة */
+/* تكديس الأزرار رأسياً في الواجهة */
 
 .hero-actions-stack {
 
@@ -468,7 +468,7 @@ body {
 
 
 
-/* Lens flare صغير على الطرف */
+/* Lens flare صغير على الحافة فقط */
 
 .lens-wrapper::after {
 
@@ -476,29 +476,31 @@ body {
 
   position: absolute;
 
-  width: 34%;
+  width: 22%;
 
-  height: 34%;
+  height: 22%;
 
   border-radius: 999px;
 
   background: radial-gradient(
 
-    circle at 30% 30%,
+    circle at 35% 35%,
 
-    rgba(255, 255, 255, 0.95) 0%,
+    rgba(255, 255, 255, 0.85) 0%,
 
-    rgba(124, 211, 255, 0.0) 60%
+    rgba(255, 255, 255, 0.25) 25%,
+
+    rgba(124, 211, 255, 0.0) 70%
 
   );
 
-  transform: translate(26%, -30%) rotate(-18deg);
+  transform: translate(55%, -55%) rotate(-18deg);
 
-  opacity: 0.55;
+  opacity: 0.26;
 
   mix-blend-mode: screen;
 
-  filter: blur(0.5px);
+  filter: blur(0.6px);
 
   pointer-events: none;
 
@@ -506,7 +508,7 @@ body {
 
 
 
-/* Outer ring (ثخين مثل عدسة احترافية، يدور باتجاه واحد) */
+/* Outer ring (عدسة احترافية) */
 
 .lens-outer-ring {
 
@@ -576,7 +578,7 @@ body {
 
 
 
-/* Inner ring (SVG text, opposite direction) */
+/* Inner ring (SVG text يدور بالعكس) */
 
 .lens-inner-ring {
 
@@ -662,7 +664,7 @@ body {
 
 
 
-/* هذه البانلز مخفية في البداية */
+/* البانلز مخفية في البداية */
 
 .info-panel.is-hidden {
 
