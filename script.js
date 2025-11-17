@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     label.className = "message-label " + (role === "user" ? "user" : "ai");
 
-    label.textContent = role === "user" ? "You" : "FixLens";
+    label.textContent = role === "user" ? "YOU" : "FIXLENS";
 
 
 
@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function callApi(url, payload) {
 
-    // نضيف رسالة "تفكير" لكن بهيكل خاص
+    // فقاعة التفكير الجديدة – Neural Orbit Animation
 
     const thinkingBubble = addMessage("ai", "");
 
@@ -204,11 +204,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
         </div>
 
-        <div class="thinking-bar"></div>
+
+
+        <div class="thinking-orbit" aria-hidden="true">
+
+          <div class="thinking-core"></div>
+
+
+
+          <div class="thinking-ring thinking-ring-outer">
+
+            <div class="thinking-dot"></div>
+
+          </div>
+
+
+
+          <div class="thinking-ring thinking-ring-inner">
+
+            <div class="thinking-dot"></div>
+
+          </div>
+
+        </div>
 
       `;
 
-      // نخزّن نص مبدئي في التاريخ (سنستبدله بالجواب لاحقًا)
+
 
       history[history.length - 1].text =
 
