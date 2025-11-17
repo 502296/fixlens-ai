@@ -14,13 +14,9 @@
 
 </head>
 
-
-
 <body>
 
   <div class="page">
-
-
 
     <!-- Header -->
 
@@ -28,7 +24,11 @@
 
       <div class="logo-row">
 
-        <div class="logo-mark"><div class="logo-core"></div></div>
+        <div class="logo-mark">
+
+          <div class="logo-core"></div>
+
+        </div>
 
         <span class="logo-text">FixLens</span>
 
@@ -36,7 +36,11 @@
 
 
 
-      <button class="menu-btn" id="menu-toggle" type="button">Menu</button>
+      <button class="menu-btn" id="menu-toggle" type="button">
+
+        Menu
+
+      </button>
 
     </header>
 
@@ -48,8 +52,6 @@
 
       <section class="hero-main">
 
-
-
         <!-- Lens -->
 
         <div class="hero-lens-wrap">
@@ -60,29 +62,43 @@
 
 
 
-            <!-- Circle Text -->
+            <!-- النص الدائري حول العدسة -->
 
             <svg class="hero-lens-ring" viewBox="0 0 100 100" aria-hidden="true">
 
               <defs>
 
-                <path id="lens-text-path"
+                <path
 
-                  d="M 50,50 m -34,0 a 34,34 0 1,1 68,0 a 34,34 0 1,1 -68,0"/>
+                  id="lens-text-path"
+
+                  d="
+
+                    M 50,50
+
+                    m -34,0
+
+                    a 34,34 0 1,1 68,0
+
+                    a 34,34 0 1,1 -68,0
+
+                  "
+
+                />
 
               </defs>
 
-
-
               <text class="hero-lens-text">
 
-                <textPath 
+                <!-- ✅ بدون textLength – يلف دائرة كاملة على كل الأجهزة -->
+
+                <textPath
 
                   href="#lens-text-path"
 
-                  textLength="255"
-
                   startOffset="50%"
+
+                  lengthAdjust="spacingAndGlyphs"
 
                 >
 
@@ -96,17 +112,21 @@
 
           </div>
 
-
-
           <div class="hero-lens-title">FIXLENS</div>
 
         </div>
 
 
 
-        <!-- Title -->
+        <!-- Copy -->
 
-        <h1 class="hero-title">Fix problems in the real world with AI.</h1>
+        <h1 class="hero-title">
+
+          Fix problems in the real world with AI.
+
+        </h1>
+
+
 
         <p class="hero-subtitle">
 
@@ -124,13 +144,41 @@
 
         <div class="actions">
 
-          <button class="btn primary-btn" id="btn-text">Describe with text</button>
+          <button class="btn primary-btn" id="btn-text" type="button">
 
-          <button class="btn secondary-btn" id="btn-photo">Upload a photo</button>
+            Describe with text
 
-          <button class="btn ghost-btn" id="btn-speak">🎙️ Speak</button>
+          </button>
 
-          <input type="file" id="photo-input" accept="image/*" hidden />
+
+
+          <button class="btn secondary-btn" id="btn-photo" type="button">
+
+            Upload a photo
+
+          </button>
+
+
+
+          <button class="btn ghost-btn" id="btn-speak" type="button">
+
+            <span role="img" aria-label="microphone">🎙️</span> Speak
+
+          </button>
+
+
+
+          <input
+
+            type="file"
+
+            id="photo-input"
+
+            accept="image/*"
+
+            hidden
+
+          />
 
         </div>
 
@@ -142,11 +190,13 @@
 
           <div class="conversation-header">Recent diagnosis</div>
 
-          <div class="conversation-body" id="conversation-body"></div>
+          <div class="conversation-body" id="conversation-body">
+
+            <!-- الرسائل تُضاف من خلال JavaScript -->
+
+          </div>
 
         </section>
-
-
 
       </section>
 
@@ -156,15 +206,17 @@
 
     <!-- Footer -->
 
-    <footer class="footer">FixLens.ai · Built for real-world problems</footer>
+    <footer class="footer">
 
+      FixLens.ai · Built for real-world problems
 
+    </footer>
 
   </div>
 
 
 
-  <!-- Menu (same as before) -->
+  <!-- Menu overlay -->
 
   <div class="menu-overlay" id="menu-overlay" aria-hidden="true">
 
@@ -178,7 +230,7 @@
 
         <div class="menu-title">FixLens Menu</div>
 
-        <button class="menu-close" id="menu-close">×</button>
+        <button class="menu-close" id="menu-close" type="button">×</button>
 
       </div>
 
@@ -190,11 +242,29 @@
 
         <ol class="menu-list">
 
-          <li><strong>Capture or describe</strong> – Upload a photo, speak, or type what’s wrong.</li>
+          <li>
 
-          <li><strong>FixLens analyzes</strong> – Our AI looks at the image and description together.</li>
+            <strong>Capture or describe</strong> – Upload a photo, speak, or
 
-          <li><strong>Step-by-step guidance</strong> – Get clear, safe, practical steps.</li>
+            type what’s wrong.
+
+          </li>
+
+          <li>
+
+            <strong>FixLens analyzes</strong> – Our AI looks at the image and
+
+            description together.
+
+          </li>
+
+          <li>
+
+            <strong>Step-by-step guidance</strong> – Get clear, safe, practical
+
+            steps to fix or inspect.
+
+          </li>
 
         </ol>
 
@@ -208,13 +278,37 @@
 
         <ul class="menu-list">
 
-          <li><strong>Engines & vehicles:</strong> noises, leaks, warnings.</li>
+          <li>
 
-          <li><strong>Home appliances:</strong> washers, dryers, fridges.</li>
+            <strong>Engines &amp; vehicles:</strong> strange noises, warning
 
-          <li><strong>Electronics:</strong> laptops, TVs, routers.</li>
+            lights, leaks.
 
-          <li><strong>Home issues:</strong> leaks, doors, windows.</li>
+          </li>
+
+          <li>
+
+            <strong>Home appliances:</strong> washers, dryers, dishwashers,
+
+            fridges, ovens.
+
+          </li>
+
+          <li>
+
+            <strong>Electronics:</strong> laptops, TVs, routers, game consoles,
+
+            cables.
+
+          </li>
+
+          <li>
+
+            <strong>Home issues:</strong> small leaks, doors, windows, basic
+
+            repairs.
+
+          </li>
 
         </ul>
 
@@ -228,17 +322,27 @@
 
         <ul class="menu-list">
 
-          <li>Disconnect power before touching electrical devices.</li>
+          <li>Always disconnect power before touching electrical devices.</li>
 
-          <li>Don’t open high-voltage components.</li>
+          <li>
 
-          <li>Use FixLens to decide when to call a professional.</li>
+            Don’t open pressurized or high-voltage components unless you’re
+
+            trained.
+
+          </li>
+
+          <li>
+
+            When in doubt, use FixLens to decide if you should call a
+
+            professional.
+
+          </li>
 
         </ul>
 
       </section>
-
-
 
     </aside>
 
