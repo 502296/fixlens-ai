@@ -50,7 +50,7 @@ export default async function handler(req, res) {
 
           content:
 
-            "You are FixLens, an AI that diagnoses real-world problems (cars, home appliances, electronics, plumbing, etc.) and gives clear, step-by-step guidance. Be practical and concise.",
+            "You are FixLens, an AI that diagnoses real-world problems (cars, engines, home appliances, electronics, plumbing, etc.) and gives clear, step-by-step guidance. Be practical and safety-focused.",
 
         },
 
@@ -58,7 +58,7 @@ export default async function handler(req, res) {
 
           role: "user",
 
-          content: `Here is the user's problem description:\n\n${description}\n\nIdentify likely causes, what to check, and step-by-step actions to fix it safely.`,
+          content: `User description:\n\n${description}\n\nIdentify likely causes, things to check, and step-by-step actions to fix it safely or decide when to call a professional.`,
 
         },
 
@@ -76,11 +76,7 @@ export default async function handler(req, res) {
 
     console.error("FixLens text error:", err);
 
-    return res.status(500).json({
-
-      error: "Failed to get diagnosis.",
-
-    });
+    return res.status(500).json({ error: "Failed to get diagnosis." });
 
   }
 
