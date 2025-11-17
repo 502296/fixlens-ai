@@ -282,7 +282,7 @@ body {
 
 
 
-/* تكديس الأزرار رأسياً في الواجهة */
+/* تكديس الأزرار رأسياً */
 
 .hero-actions-stack {
 
@@ -532,7 +532,7 @@ body {
 
 
 
-/* حلقات إضافية لإحساس عدسة عالمية */
+/* حلقات إضافية */
 
 .lens-outer-ring::before,
 
@@ -578,7 +578,7 @@ body {
 
 
 
-/* Inner ring (SVG text يدور بالعكس) */
+/* Inner ring (SVG text) */
 
 .lens-inner-ring {
 
@@ -734,35 +734,271 @@ body {
 
 
 
-.demo-block {
+/* =========
 
-  margin-top: 18px;
+   Demo panel
+
+   ========= */
+
+
+
+.demo-panel {
+
+  margin-top: -6px;
 
 }
 
 
 
-.demo-text {
-
-  max-width: 40rem;
+.demo-intro {
 
   font-size: 14px;
 
   color: var(--text-soft);
 
-  margin-bottom: 12px;
+  max-width: 46rem;
+
+  margin: 0 0 12px;
 
 }
 
 
 
-/* policy card */
+.demo-grid {
 
-.card-policy ul {
+  display: grid;
 
-  margin: 6px 0 10px 18px;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
 
-  padding: 0;
+  gap: 14px;
+
+}
+
+
+
+.demo-card {
+
+  background: var(--card-bg);
+
+  border-radius: var(--radius-md);
+
+  border: 1px solid var(--border-subtle);
+
+  padding: 14px 14px 16px;
+
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.65);
+
+}
+
+
+
+.field-group {
+
+  margin-bottom: 10px;
+
+}
+
+
+
+.field-label {
+
+  display: block;
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  margin-bottom: 4px;
+
+}
+
+
+
+.optional {
+
+  font-weight: 400;
+
+  color: var(--text-soft);
+
+  font-size: 11px;
+
+}
+
+
+
+.field-hint {
+
+  margin: 2px 0 0;
+
+  font-size: 11px;
+
+  color: var(--text-soft);
+
+}
+
+
+
+input[type="file"] {
+
+  width: 100%;
+
+  font-size: 12px;
+
+  color: var(--text-soft);
+
+}
+
+
+
+textarea {
+
+  width: 100%;
+
+  resize: vertical;
+
+  min-height: 70px;
+
+  max-height: 200px;
+
+  padding: 7px 9px;
+
+  border-radius: 8px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  background: rgba(4, 9, 18, 0.9);
+
+  color: var(--text-main);
+
+  font-size: 13px;
+
+  font-family: inherit;
+
+}
+
+
+
+textarea::placeholder {
+
+  color: rgba(166, 176, 197, 0.7);
+
+}
+
+
+
+.voice-row {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+}
+
+
+
+.record-btn {
+
+  padding-inline: 14px;
+
+}
+
+
+
+.record-status {
+
+  font-size: 11px;
+
+  color: var(--text-soft);
+
+}
+
+
+
+.demo-actions {
+
+  margin-top: 8px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+}
+
+
+
+.demo-status {
+
+  font-size: 11px;
+
+  color: var(--text-soft);
+
+}
+
+
+
+.demo-result-card {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+}
+
+
+
+.result-header {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  font-size: 12px;
+
+}
+
+
+
+.result-title {
+
+  font-weight: 500;
+
+}
+
+
+
+.result-tag {
+
+  font-size: 11px;
+
+  padding: 2px 8px;
+
+  border-radius: 999px;
+
+  border: 1px solid rgba(124, 211, 255, 0.5);
+
+  color: var(--accent-strong);
+
+}
+
+
+
+.demo-result {
+
+  min-height: 120px;
+
+  border-radius: 10px;
+
+  border: 1px dashed rgba(255, 255, 255, 0.14);
+
+  padding: 10px 11px;
 
   font-size: 13px;
 
@@ -772,21 +1008,9 @@ body {
 
 
 
-.card-policy li {
+.placeholder-text {
 
-  margin-bottom: 2px;
-
-}
-
-
-
-.policy-note {
-
-  margin-top: 6px;
-
-  font-size: 12px;
-
-  color: var(--text-soft);
+  margin: 0;
 
 }
 
@@ -981,6 +1205,14 @@ body {
     width: 100%;
 
     justify-content: center;
+
+  }
+
+
+
+  .demo-grid {
+
+    grid-template-columns: 1fr;
 
   }
 
