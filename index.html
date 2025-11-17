@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>FixLens – AI Diagnosis for Real-World Problems</title>
+  <title>FixLens – AI diagnosis for real-world problems</title>
 
   <link rel="stylesheet" href="style.css" />
 
@@ -18,123 +18,327 @@
 
   <div class="page">
 
-    <!-- Header -->
+
+
+    <!-- ===== Header ===== -->
 
     <header class="header">
 
       <div class="logo-row">
 
-        <div class="logo-mark">◎</div>
+        <div class="logo-mark">
+
+          <span class="logo-inner-dot"></span>
+
+        </div>
 
         <span class="logo-text">FixLens</span>
 
       </div>
 
-      <nav class="nav">
 
-        <a href="#panel-how">How it works</a>
 
-        <a href="#panel-use-cases">What it can help with</a>
+      <!-- hamburger + nav -->
 
-        <a href="#panel-policy">Safety & policy</a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+
+      <label for="nav-toggle" class="menu-button" aria-label="Open menu">
+
+        <span></span><span></span><span></span>
+
+      </label>
+
+
+
+      <nav class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="how.html">How it works</a>
+
+        <a href="help.html">What it can help with</a>
+
+        <a href="safety.html">Safety & policy</a>
 
       </nav>
+
+
+
+      <div class="nav-drawer">
+
+        <a href="index.html">Home</a>
+
+        <a href="how.html">How FixLens works</a>
+
+        <a href="help.html">What FixLens can help with</a>
+
+        <a href="safety.html">Safety & legal policy</a>
+
+      </div>
 
     </header>
 
 
 
-    <!-- Hero -->
+    <!-- ===== Hero with lens (unchanged في الجوهر) ===== -->
 
-    <main class="hero hero-centered">
+    <main class="main">
 
-      <!-- Lens -->
+      <section class="hero">
 
-      <div class="hero-lens">
-
-        <div class="lens-wrapper">
-
-          <div class="lens-outer-ring"></div>
+        <div class="hero-card">
 
 
 
-          <div class="lens-inner-ring">
+          <!-- العدسة الملكية -->
 
-            <svg viewBox="0 0 220 220" class="lens-svg" aria-hidden="true">
+          <div class="lens-wrapper">
 
-              <defs>
+            <div class="lens-glow"></div>
 
-                <path id="lensCirclePath"
-
-                  d="M 110,110
-
-                     m -80,0
-
-                     a 80,80 0 1,1 160,0
-
-                     a 80,80 0 1,1 -160,0" />
-
-                <radialGradient id="lensCenterGradient" cx="50%" cy="50%" r="60%">
-
-                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
-
-                  <stop offset="40%" stop-color="#d4f1ff" stop-opacity="0.8" />
-
-                  <stop offset="100%" stop-color="#111928" stop-opacity="0.1" />
-
-                </radialGradient>
-
-              </defs>
+            <div class="lens-outer-ring"></div>
 
 
 
-              <circle
+            <div class="lens-inner">
 
-                cx="110"
+              <div class="lens-core"></div>
 
-                cy="110"
+              <div class="lens-ring-text">
 
-                r="52"
+                <div class="ring-text">
 
-                fill="url(#lensCenterGradient)"
+                  FIXLENS • AI DIAGNOSIS • REAL-WORLD PROBLEMS • SMART VISUAL AI •
 
-                class="lens-core"
+                </div>
 
-              />
+              </div>
 
+            </div>
 
-
-              <circle
-
-                cx="110"
-
-                cy="110"
-
-                r="80"
-
-                fill="none"
-
-                stroke="rgba(255,255,255,0.15)"
-
-                stroke-width="1.5"
-
-              />
+          </div>
 
 
 
-              <text class="lens-text">
+          <p class="lens-caption">
 
-                <textPath href="#lensCirclePath" startOffset="0%">
+            Rotating AI lens that keeps your real-world problems in focus.
 
-                  FIXLENS • AI DIAGNOSIS • REAL-WORLD PROBLEMS • SMART VISUAL INSPECTION •
+          </p>
 
-                  FIXLENS • AI DIAGNOSIS • REAL-WORLD PROBLEMS • SMART VISUAL INSPECTION •
 
-                </textPath>
 
-              </text>
+          <h1 class="hero-title">
 
-            </svg>
+            Fix problems in the real world<br />with AI.
+
+          </h1>
+
+
+
+          <p class="hero-subtitle">
+
+            Point your camera at the issue or describe it in your own words.
+
+            FixLens analyzes engines, appliances, electronics, and more — then
+
+            guides you step by step.
+
+          </p>
+
+
+
+          <div class="hero-buttons">
+
+            <button class="btn primary-btn hero-btn" type="button" onclick="document.getElementById('description-input').focus();">
+
+              Describe with text
+
+            </button>
+
+            <button class="btn ghost-btn hero-btn" type="button" onclick="document.getElementById('image-input').click();">
+
+              Upload a photo
+
+            </button>
+
+            <button class="btn ghost-btn hero-btn" type="button" onclick="document.getElementById('record-btn').click();">
+
+              <span class="mic-emoji">🎙️</span> Speak
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- ===== Chat-style inline demo ===== -->
+
+      <section id="preview-section" class="section compact-demo">
+
+        <div class="chat-shell">
+
+
+
+          <!-- quick mode row (فيها أيقونة الوايرات و الأنابيب) -->
+
+          <div class="chat-quick-row">
+
+            <span class="quick-label">Quick modes:</span>
+
+
+
+            <!-- زر خاص بالوايرات و الأنابيب و العواميد -->
+
+            <button
+
+              class="quick-tag"
+
+              type="button"
+
+              onclick="document.getElementById('description-input').value = 'I want to check for hidden electrical wires, water pipes, or wooden studs behind a wall or under the tiles. Here is what I see: '; document.getElementById('description-input').focus();"
+
+            >
+
+              🛰️ Pipes & wires in walls
+
+            </button>
+
+
+
+            <!-- مثال مود آخر بسيط -->
+
+            <button
+
+              class="quick-tag"
+
+              type="button"
+
+              onclick="document.getElementById('description-input').value = 'Car engine issue: I hear a strange sound and I see this area leaking. Here is what I see: '; document.getElementById('description-input').focus();"
+
+            >
+
+              🚗 Engine noise / leak
+
+            </button>
+
+          </div>
+
+
+
+          <!-- منطقة الرسائل (system + نتائج FixLens) -->
+
+          <div class="chat-messages" id="demo-result">
+
+            <div class="chat-message chat-message--system">
+
+              <div class="chat-avatar">◎</div>
+
+              <div class="chat-bubble">
+
+                <p>
+
+                  Hi, I’m FixLens. Describe what’s going on, upload a photo, or record
+
+                  a short voice note — I’ll help you understand what might be wrong
+
+                  before you call a professional.
+
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <!-- شريط الإدخال مثل ChatGPT -->
+
+          <div class="chat-input-row">
+
+            <!-- زر رفع الصورة -->
+
+            <label class="icon-btn file-btn" for="image-input" title="Upload a photo">
+
+              📷
+
+            </label>
+
+            <input id="image-input" type="file" accept="image/*" hidden />
+
+
+
+            <!-- خانة النص -->
+
+            <textarea
+
+              id="description-input"
+
+              rows="1"
+
+              placeholder="Describe what’s going on…"
+
+            ></textarea>
+
+
+
+            <!-- زر المايك -->
+
+            <button
+
+              class="icon-btn"
+
+              type="button"
+
+              id="record-btn"
+
+              title="Record voice"
+
+            >
+
+              🎤
+
+            </button>
+
+
+
+            <!-- زر الإرسال (يرتبط بنفس دالة Run AI diagnosis في script.js) -->
+
+            <button
+
+              class="send-btn"
+
+              type="button"
+
+              id="run-demo-btn"
+
+              title="Run AI diagnosis"
+
+            >
+
+              ➤
+
+            </button>
+
+          </div>
+
+
+
+          <!-- حالة الطلب -->
+
+          <div class="chat-status-row">
+
+            <span id="demo-status" class="demo-status">
+
+              Waiting for your input.
+
+            </span>
 
           </div>
 
@@ -142,412 +346,21 @@
 
 
 
-        <p class="lens-caption">
+        <p class="hero-footnote">
 
-          Rotating AI lens that keeps your real-world problems in focus.
+          FixLens gives guidance and explanations only. You stay in control of what to
 
-        </p>
-
-      </div>
-
-
-
-      <!-- Title + 3 buttons -->
-
-      <div class="hero-text hero-text-centered">
-
-        <h1>Fix problems in the real world with AI.</h1>
-
-        <p class="hero-subtitle hero-subtitle-centered">
-
-          Point your camera at the issue or describe it in your own words.
-
-          FixLens analyzes engines, appliances, electronics, and more — then guides you step by step.
+          do next.
 
         </p>
 
-
-
-        <div class="hero-actions hero-actions-stack hero-modes">
-
-          <button class="btn primary-btn" type="button" data-mode="text">
-
-            Describe with text
-
-          </button>
-
-          <button class="btn ghost-btn" type="button" data-mode="photo">
-
-            Upload a photo
-
-          </button>
-
-          <button class="btn ghost-btn" type="button" data-mode="voice">
-
-            🎙️ Speak
-
-          </button>
-
-        </div>
-
-      </div>
+      </section>
 
     </main>
 
 
 
-    <!-- ===== Inline Try FixLens – small inline box ===== -->
-
-<section id="preview-section" class="section demo-section compact-demo is-hidden">
-
-  <div class="demo-card">
-
-    <div class="field-group" id="group-photo">
-
-      <label class="field-label" for="image-input">Upload a photo</label>
-
-      <input id="image-input" type="file" accept="image/*" />
-
-      <p class="field-hint">
-
-        Clear photo of the issue: engine bay, leak, stain, broken part, etc.
-
-      </p>
-
-    </div>
-
-
-
-    <div class="field-group" id="group-text">
-
-      <label class="field-label" for="description-input">
-
-        Describe what’s going on <span class="optional">(optional but recommended)</span>
-
-      </label>
-
-      <textarea
-
-        id="description-input"
-
-        rows="3"
-
-        placeholder="Example: Strange knocking sound when I start the car, mostly when the engine is cold..."
-
-      ></textarea>
-
-    </div>
-
-
-
-    <div class="field-group" id="group-voice">
-
-      <span class="field-label">
-
-        Add a short voice note <span class="optional">(optional)</span>
-
-      </span>
-
-      <div class="voice-row">
-
-        <button class="btn ghost-btn record-btn" type="button" id="record-btn">
-
-          🎙️ Record voice
-
-        </button>
-
-        <span id="record-status" class="record-status">Not recording</span>
-
-      </div>
-
-      <p class="field-hint">
-
-        FixLens can use your voice note later to understand sounds and extra context.
-
-      </p>
-
-    </div>
-
-
-
-    <div class="demo-actions">
-
-      <button class="btn primary-btn" type="button" id="run-demo-btn">
-
-        Run AI diagnosis
-
-      </button>
-
-      <span id="demo-status" class="demo-status">Waiting for your input.</span>
-
-    </div>
-
-
-
-    <div id="demo-result" class="demo-result">
-
-      <p class="placeholder-text">
-
-        Your diagnosis will appear here — including what might be wrong,
-
-        what to check, and what to tell a professional.
-
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-        <div class="field-group" id="group-text">
-
-          <label class="field-label" for="description-input">
-
-            Describe what’s going on <span class="optional">(optional but recommended)</span>
-
-          </label>
-
-          <textarea
-
-            id="description-input"
-
-            rows="3"
-
-            placeholder="Example: Strange knocking sound when I start the car, mostly when the engine is cold..."
-
-          ></textarea>
-
-        </div>
-
-
-
-        <div class="field-group" id="group-voice">
-
-          <span class="field-label">
-
-            Add a short voice note <span class="optional">(optional)</span>
-
-          </span>
-
-          <div class="voice-row">
-
-            <button class="btn ghost-btn record-btn" type="button" id="record-btn">
-
-              🎙️ Record voice
-
-            </button>
-
-            <span id="record-status" class="record-status">Not recording</span>
-
-          </div>
-
-          <p class="field-hint">
-
-            FixLens can use your voice note later to understand sounds and extra context.
-
-          </p>
-
-        </div>
-
-
-
-        <div class="demo-actions">
-
-          <button class="btn primary-btn" type="button" id="run-demo-btn">
-
-            Run AI diagnosis
-
-          </button>
-
-          <span id="demo-status" class="demo-status">Waiting for your input.</span>
-
-        </div>
-
-
-
-        <div id="demo-result" class="demo-result">
-
-          <p class="placeholder-text">
-
-            Your diagnosis will appear here — including what might be wrong,
-
-            what to check, and what to tell a professional.
-
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- Info panels (من المينيو) -->
-
-    <section id="panel-how" class="section info-panel is-hidden">
-
-      <h2>How FixLens works</h2>
-
-      <div class="three-cols">
-
-        <div class="card">
-
-          <h3>1. Capture</h3>
-
-          <p>
-
-            Take a clear photo or short video of the problem—car engine, strange leak,
-
-            broken device, anything in the real world.
-
-          </p>
-
-        </div>
-
-        <div class="card">
-
-          <h3>2. Describe</h3>
-
-          <p>
-
-            Add a short description or voice note about what you see, hear, or smell.
-
-            The more detail you share, the smarter the diagnosis.
-
-          </p>
-
-        </div>
-
-        <div class="card">
-
-          <h3>3. Understand</h3>
-
-          <p>
-
-            FixLens combines vision + language AI to give you a clear, human-friendly
-
-            explanation and possible next steps.
-
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <section id="panel-use-cases" class="section info-panel is-hidden">
-
-      <h2>What FixLens can help with</h2>
-
-      <div class="three-cols">
-
-        <div class="card">
-
-          <h3>Car diagnostics</h3>
-
-          <p>
-
-            From warning lights to strange noises — get a first explanation before you go to
-
-            the shop, so you know what to ask.
-
-          </p>
-
-        </div>
-
-        <div class="card">
-
-          <h3>Home & utilities</h3>
-
-          <p>
-
-            Water leaks, boiler issues, stains, broken parts, or suspicious damage —
-
-            see what might be going on behind the scenes.
-
-          </p>
-
-        </div>
-
-        <div class="card">
-
-          <h3>Workshop & tools</h3>
-
-          <p>
-
-            Identify worn parts, wrong setups, and dangerous conditions around your
-
-            tools and machines.
-
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <section id="panel-policy" class="section info-panel is-hidden">
-
-      <h2>Safety & legal policy</h2>
-
-      <div class="card card-policy">
-
-        <p>
-
-          <strong>FixLens does not repair or replace anything.</strong>
-
-          It provides information only — like a smart “second opinion” based on your photo
-
-          and description.
-
-        </p>
-
-        <p>FixLens can:</p>
-
-        <ul>
-
-          <li>Help you understand what might be wrong.</li>
-
-          <li>Suggest what to check or ask a professional about.</li>
-
-          <li>Explain risks in simple, human language.</li>
-
-        </ul>
-
-        <p>FixLens cannot:</p>
-
-        <ul>
-
-          <li>Guarantee that the diagnosis is 100% correct in every case.</li>
-
-          <li>Replace certified mechanics, electricians, plumbers, or any licensed expert.</li>
-
-          <li>Take responsibility for any damage caused by ignoring professional advice.</li>
-
-        </ul>
-
-        <p class="policy-note">
-
-          FixLens gives guidance and explanations only. You stay in control of what to do next.
-
-          For anything dangerous, expensive, or safety-critical, always consult a qualified professional.
-
-        </p>
-
-      </div>
-
-    </section>
-
-
+    <!-- ===== Footer ===== -->
 
     <footer class="footer">
 
