@@ -1,40 +1,42 @@
-/* RESET */
+/* Global ------------------------------------------------------- */
 
-* {
+body {
 
   margin: 0;
 
   padding: 0;
 
-  box-sizing: border-box;
-
-}
-
-
-
-body {
-
   background: #000;
 
-  color: #fff;
+  color: white;
 
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
 
 }
 
 
 
-/* HEADER */
+/* Header ------------------------------------------------------- */
 
 .header {
 
-  padding: 16px 20px;
+  width: 100%;
+
+  padding: 22px;
 
   display: flex;
 
   justify-content: space-between;
 
   align-items: center;
+
+  box-sizing: border-box;
 
 }
 
@@ -52,15 +54,17 @@ body {
 
 
 
-.logo-mark {
+.logo-dot {
 
-  width: 20px;
+  width: 22px;
 
-  height: 20px;
+  height: 22px;
 
   border-radius: 50%;
 
   border: 3px solid white;
+
+  box-shadow: 0 0 10px white;
 
 }
 
@@ -68,65 +72,83 @@ body {
 
 .logo-text {
 
-  font-size: 18px;
+  font-size: 20px;
 
-  letter-spacing: 2px;
+  font-weight: 500;
 
-  font-weight: 700;
+  letter-spacing: 3px;
 
 }
 
 
 
-.menu-btn {
+/* Menu Icon (3 lines) ------------------------------------------ */
 
-  background: #111;
+.menu-icon {
 
-  border: 1px solid #444;
+  width: 38px;
 
-  width: 40px;
+  height: 38px;
 
-  height: 40px;
+  border-radius: 999px;
 
-  padding: 8px;
-
-  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
 
   display: flex;
 
   flex-direction: column;
-
-  gap: 5px;
 
   justify-content: center;
 
+  align-items: center;
+
+  gap: 4px;
+
 }
 
 
 
-.menu-btn span {
+.menu-icon div {
+
+  width: 22px;
+
+  height: 2px;
+
+  background: white;
+
+  border-radius: 99px;
+
+}
+
+
+
+/* Lens ---------------------------------------------------------- */
+
+.lens-section {
 
   width: 100%;
 
-  height: 3px;
+  display: flex;
 
-  background: #fff;
+  justify-content: center;
 
-  border-radius: 4px;
+  margin-top: 40px;
 
 }
 
 
 
-/* MAIN */
+.lens-wrapper {
 
-.main {
+  width: 260px;
 
-  padding: 25px 20px;
+  height: 260px;
+
+  position: relative;
 
   display: flex;
 
-  flex-direction: column;
+  justify-content: center;
 
   align-items: center;
 
@@ -134,67 +156,21 @@ body {
 
 
 
-/* LENS AREA */
-
-.lens-container {
-
-  position: relative;
-
-  width: 240px;
-
-  height: 240px;
-
-  margin-bottom: 30px;
-
-}
-
-
-
-/* Glass center (black + gray) */
-
-.lens-glass {
-
-  position: absolute;
-
-  inset: 25px;
-
-  border-radius: 50%;
-
-  background: radial-gradient(circle at 50% 45%,
-
-      #2a2a2a 0%,
-
-      #1a1a1a 40%,
-
-      #050505 85%,
-
-      #000 100%);
-
-  box-shadow:
-
-    inset 0 0 25px rgba(255, 255, 255, 0.07),
-
-    inset 0 0 60px rgba(0, 0, 0, 0.8);
-
-}
-
-
-
-/* Rotating ring */
-
-.lens-ring {
+.lens-image {
 
   width: 100%;
 
   height: 100%;
 
-  border-radius: 50%;
+  object-fit: contain;
 
-  animation: spin 16s linear infinite;
+  animation: spin 22s linear infinite;
 
 }
 
 
+
+/* Smooth rotation */
 
 @keyframes spin {
 
@@ -206,33 +182,45 @@ body {
 
 
 
-/* CHAT BAR */
+/* Chat Bar ------------------------------------------------------ */
 
 .chat-bar {
 
   width: 100%;
 
-  max-width: 420px;
+  max-width: 600px;
+
+  margin-top: 38px;
+
+  padding: 0 18px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 16px;
+
+}
+
+
+
+.input-row {
+
+  width: 100%;
 
   background: #111;
 
-  border-radius: 40px;
-
-  padding: 10px 15px;
-
   border: 1px solid #333;
 
-
+  border-radius: 40px;
 
   display: flex;
 
   align-items: center;
 
-  gap: 12px;
+  padding: 10px 16px;
 
-
-
-  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.05);
 
 }
 
@@ -248,29 +236,21 @@ body {
 
   outline: none;
 
+  font-size: 16px;
+
   color: white;
 
-  font-size: 15px;
-
 }
 
 
 
-.icon-btn {
+.icon-left, .icon-mic {
 
-  background: none;
+  font-size: 20px;
 
-  border: none;
+  opacity: 0.9;
 
-}
-
-
-
-.icon {
-
-  width: 20px;
-
-  opacity: 0.85;
+  padding-right: 10px;
 
 }
 
@@ -278,48 +258,44 @@ body {
 
 .send-btn {
 
-  width: 36px;
+  width: 42px;
 
-  height: 36px;
+  height: 42px;
 
   border-radius: 50%;
+
+  border: none;
 
   background: white;
 
   color: black;
 
-  font-size: 18px;
-
-  border: none;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
+  font-size: 20px;
 
 }
 
 
 
-/* QUICK BUTTON */
+/* Scanner Button */
 
-.quick-btn {
+.scan-btn {
 
   width: 100%;
 
-  max-width: 420px;
+  padding: 16px;
 
-  padding: 14px;
+  background: #111;
 
-  font-size: 15px;
+  border: 1px solid #333;
 
   border-radius: 40px;
 
-  border: 1px solid #444;
+  color: white;
 
-  background: transparent;
+  font-size: 16px;
 
-  color: #ccc;
+  text-align: left;
+
+  box-shadow: 0 0 20px rgba(255,255,255,0.05);
 
 }
