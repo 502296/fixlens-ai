@@ -1,501 +1,251 @@
-// script.js – FixLens frontend logic (chat-style + recent diagnosis history)
+/* ------------------------------------------------------
 
+   FIXLENS – Image Upload + Text Input + Voice
 
+-------------------------------------------------------*/
 
-const API_TEXT = "/api/text-diagnosis";
 
-const API_PHOTO = "/api/photo-diagnosis";
 
-const STORAGE_KEY = "fixlens_recent_history";
+// ---------- TEXT INPUT ----------
 
+const describeForm = document.getElementById("describe-form");
 
+const describeInput = document.getElementById("describe-input");
 
-document.addEventListener("DOMContentLoaded", () => {
 
-  const btnText = document.getElementById("btn-text");
 
-  const btnPhoto = document.getElementById("btn-photo");
+if (describeForm) {
 
-  const btnSpeak = document.getElementById("btn-speak");
+  describeForm.addEventListener("submit", async (e) => {
 
-  const photoInput = document.getElementById("photo-input");
+    e.preventDefault();
 
 
 
-  const conversationBody = document.getElementById("conversation-body");
+    const text = describeInput.value.trim();
 
+    if (!text) return;
 
 
-  const menuToggle = document.getElementById("menu-toggle");
 
-  const menuOverlay = document.getElementById("menu-overlay");
+    sendToFixLens({ text });
 
-  const menuClose = document.getElementById("menu-close");
+  });
 
+}
 
 
-  // ========= History in localStorage =========
 
 
 
-  function loadHistory() {
 
-    try {
 
-      const raw = window.localStorage.getItem(STORAGE_KEY);
+// ---------- IMAGE UPLOAD ----------
 
-      if (!raw) return [];
+const photoInput = document.getElementById("photo-input");
 
-      const parsed = JSON.parse(raw);
 
-      if (!Array.isArray(parsed)) return [];
 
-      return parsed;
+if (photoInput) {
 
-    } catch {
+  photoInput.addEventListener("change", async () => {
 
-      return [];
+    const file = photoInput.files[0];
 
-    }
+    if (!file) return;
 
-  }
 
 
+    const reader = new FileReader();
 
-  function saveHistory(history) {
 
-    try {
 
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
+    reader.onloadend = () => {
 
-    } catch {
+      const base64Image = reader.result.split(",")[1];
 
-      // ignore
-
-    }
-
-  }
-
-
-
-  let history = loadHistory(); // [{role, text, ts}, ...]
-
-
-
-  // ========= Rendering messages =========
-
-
-
-  function renderMessage(role, text) {
-
-    if (!conversationBody) return null;
-
-
-
-    const msg = document.createElement("div");
-
-    msg.className = "message";
-
-
-
-    const label = document.createElement("div");
-
-    label.className = "message-label " + (role === "user" ? "user" : "ai");
-
-    label.textContent = role === "user" ? "YOU" : "FIXLENS";
-
-
-
-    const bubble = document.createElement("div");
-
-    bubble.className = "message-bubble " + (role === "user" ? "user" : "ai");
-
-    bubble.textContent = text;
-
-
-
-    msg.appendChild(label);
-
-    msg.appendChild(bubble);
-
-    conversationBody.appendChild(msg);
-
-
-
-    conversationBody.scrollTop = conversationBody.scrollHeight;
-
-
-
-    return bubble;
-
-  }
-
-
-
-  // addMessage: يرسم ويخزّن في التاريخ
-
-  function addMessage(role, text) {
-
-    const bubble = renderMessage(role, text);
-
-
-
-    const entry = {
-
-      role,
-
-      text,
-
-      ts: Date.now(),
+      sendToFixLens({ image: base64Image });
 
     };
 
-    history.push(entry);
 
 
-
-    // نخلي فقط آخر 10 رسائل حتى يبقى القسم خفيف
-
-    if (history.length > 10) {
-
-      history = history.slice(history.length - 10);
-
-    }
-
-    saveHistory(history);
-
-
-
-    return bubble;
-
-  }
-
-
-
-  // عند فتح الصفحة: نرسم التاريخ السابق (بدون مضاعفة التخزين)
-
-  history.forEach((entry) => {
-
-    renderMessage(entry.role, entry.text);
+    reader.readAsDataURL(file);
 
   });
 
+}
 
 
-  // ========= API call =========
 
 
 
-  async function callApi(url, payload) {
 
-    // فقاعة التفكير الجديدة – Neural Orbit Animation
 
-    const thinkingBubble = addMessage("ai", "");
+// ---------- VOICE INPUT ----------
 
-    if (thinkingBubble) {
+let recognition;
 
-      thinkingBubble.classList.add("thinking");
 
-      thinkingBubble.innerHTML = `
 
-        <div class="thinking-main">
+const speakBtn = document.getElementById("speak-btn");
 
-          Thinking… analyzing your problem with FixLens AI.
+const speakIcon = document.getElementById("speak-icon");
 
-        </div>
 
 
+if ("webkitSpeechRecognition" in window) {
 
-        <div class="thinking-orbit" aria-hidden="true">
+  recognition = new webkitSpeechRecognition();
 
-          <div class="thinking-core"></div>
+  recognition.lang = "en-US";
 
+  recognition.interimResults = false;
 
+  recognition.continuous = false;
 
-          <div class="thinking-ring thinking-ring-outer">
 
-            <div class="thinking-dot"></div>
 
-          </div>
+  recognition.onstart = () => {
 
+    if (speakIcon) speakIcon.style.opacity = "1";
 
+  };
 
-          <div class="thinking-ring thinking-ring-inner">
 
-            <div class="thinking-dot"></div>
 
-          </div>
+  recognition.onend = () => {
 
-        </div>
+    if (speakIcon) speakIcon.style.opacity = "0.5";
 
-      `;
+  };
 
 
 
-      history[history.length - 1].text =
+  recognition.onresult = (event) => {
 
-        "Thinking… analyzing your problem with FixLens AI.";
+    const text = event.results[0][0].transcript;
 
-      saveHistory(history);
+    sendToFixLens({ text });
 
-    }
+  };
 
+}
 
 
-    try {
 
-      const res = await fetch(url, {
+if (speakBtn) {
 
-        method: "POST",
+  speakBtn.addEventListener("click", () => {
 
-        headers: {
-
-          "Content-Type": "application/json",
-
-        },
-
-        body: JSON.stringify(payload),
-
-      });
-
-
-
-      if (!res.ok) {
-
-        const errorBody = await res.text();
-
-        console.error("API error:", errorBody);
-
-        if (thinkingBubble) {
-
-          thinkingBubble.classList.remove("thinking");
-
-          thinkingBubble.textContent =
-
-            "Something went wrong. Please try again in a moment.";
-
-          history[history.length - 1].text = thinkingBubble.textContent;
-
-          saveHistory(history);
-
-        }
-
-        return;
-
-      }
-
-
-
-      const data = await res.json();
-
-      const answer =
-
-        (data && data.answer) ||
-
-        "No answer returned from FixLens AI. Please try again.";
-
-
-
-      if (thinkingBubble) {
-
-        thinkingBubble.classList.remove("thinking");
-
-        thinkingBubble.textContent = answer;
-
-        history[history.length - 1].text = answer;
-
-        saveHistory(history);
-
-      }
-
-    } catch (err) {
-
-      console.error(err);
-
-      if (thinkingBubble) {
-
-        thinkingBubble.classList.remove("thinking");
-
-        thinkingBubble.textContent =
-
-          "Network error. Please check your connection and try again.";
-
-        history[history.length - 1].text = thinkingBubble.textContent;
-
-        saveHistory(history);
-
-      }
-
-    }
-
-  }
-
-
-
-  // ========= Buttons: Text / Photo / Voice =========
-
-
-
-  if (btnText) {
-
-    btnText.addEventListener("click", () => {
-
-      const description = window.prompt(
-
-        "Describe the problem in your own words:"
-
-      );
-
-      if (!description || !description.trim()) return;
-
-
-
-      const cleaned = description.trim();
-
-      addMessage("user", cleaned);
-
-      callApi(API_TEXT, { description: cleaned });
-
-    });
-
-  }
-
-
-
-  if (btnPhoto && photoInput) {
-
-    btnPhoto.addEventListener("click", () => {
-
-      photoInput.value = "";
-
-      photoInput.click();
-
-    });
-
-
-
-    photoInput.addEventListener("change", () => {
-
-      const file = photoInput.files && photoInput.files[0];
-
-      if (!file) return;
-
-
-
-      addMessage(
-
-        "user",
-
-        `Uploaded a photo: ${
-
-          file.name || "image"
-
-        } (FixLens will analyze it).`
-
-      );
-
-
-
-      const reader = new FileReader();
-
-      reader.onloadend = () => {
-
-        const dataUrl = reader.result;
-
-        if (!dataUrl) return;
-
-        callApi(API_PHOTO, { image: dataUrl });
-
-      };
-
-      reader.readAsDataURL(file);
-
-    });
-
-  }
-
-
-
-  if (btnSpeak) {
-
-    btnSpeak.addEventListener("click", () => {
-
-      alert("Voice mode is coming soon to FixLens 🔊");
-
-    });
-
-  }
-
-
-
-  // ========= Menu overlay =========
-
-
-
-  function openMenu() {
-
-    if (!menuOverlay) return;
-
-    menuOverlay.classList.add("is-open");
-
-    menuOverlay.setAttribute("aria-hidden", "false");
-
-  }
-
-
-
-  function closeMenu() {
-
-    if (!menuOverlay) return;
-
-    menuOverlay.classList.remove("is-open");
-
-    menuOverlay.setAttribute("aria-hidden", "true");
-
-  }
-
-
-
-  if (menuToggle) {
-
-    menuToggle.addEventListener("click", openMenu);
-
-  }
-
-
-
-  if (menuClose) {
-
-    menuClose.addEventListener("click", closeMenu);
-
-  }
-
-
-
-  if (menuOverlay) {
-
-    menuOverlay.addEventListener("click", (e) => {
-
-      if (e.target.classList.contains("menu-backdrop")) {
-
-        closeMenu();
-
-      }
-
-    });
-
-  }
-
-
-
-  document.addEventListener("keydown", (e) => {
-
-    if (e.key === "Escape") {
-
-      closeMenu();
-
-    }
+    if (recognition) recognition.start();
 
   });
 
-});
+}
+
+
+
+
+
+
+
+// ------------------------------------------------------
+
+// SEND TO FIXLENS API
+
+// ------------------------------------------------------
+
+async function sendToFixLens(payload) {
+
+  const conversationBox = document.getElementById("conversation-box");
+
+
+
+  if (conversationBox) {
+
+    conversationBox.innerHTML = "Analyzing… Please wait ⏳";
+
+  }
+
+
+
+  try {
+
+    const res = await fetch("/api/fixlens", {
+
+      method: "POST",
+
+      headers: { "Content-Type": "application/json" },
+
+      body: JSON.stringify(payload),
+
+    });
+
+
+
+    const data = await res.json();
+
+
+
+    if (conversationBox) {
+
+      if (data.error) {
+
+        conversationBox.innerHTML = "⚠️ Error: " + data.error;
+
+      } else {
+
+        conversationBox.innerHTML = data.result;
+
+      }
+
+    }
+
+  } catch (err) {
+
+    if (conversationBox) {
+
+      conversationBox.innerHTML = "⚠️ Network error — please try again.";
+
+    }
+
+  }
+
+}
+
+
+
+
+
+
+
+// ------------------------------------------------------
+
+// ROTATING CIRCLE TEXT (PERFECT 360°)
+
+// ------------------------------------------------------
+
+const circleText = document.querySelector(".hero-lens-text");
+
+let rotation = 0;
+
+
+
+function animateText() {
+
+  rotation += 0.12; // speed (higher = faster)
+
+  circleText.setAttribute("transform", `rotate(${rotation} 152 152)`);
+
+  requestAnimationFrame(animateText);
+
+}
+
+
+
+if (circleText) {
+
+  requestAnimationFrame(animateText);
+
+}
