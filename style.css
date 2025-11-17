@@ -312,6 +312,80 @@ body {
 
 
 
+/* هالة ومدار حوالين العدسة */
+
+.hero-lens::before {
+
+  content: "";
+
+  position: absolute;
+
+  inset: -14px;
+
+  border-radius: 999px;
+
+  background: radial-gradient(circle, rgba(129, 140, 248, 0.22), transparent 70%);
+
+  box-shadow:
+
+    0 0 40px rgba(79, 70, 229, 0.65),
+
+    0 0 80px rgba(129, 140, 248, 0.5);
+
+  opacity: 0;
+
+  animation: fixlens-lens-pulse 3.2s ease-in-out infinite;
+
+  pointer-events: none;
+
+}
+
+
+
+.hero-lens::after {
+
+  content: "";
+
+  position: absolute;
+
+  inset: -4px;
+
+  border-radius: 999px;
+
+  border: 1px solid rgba(148, 163, 184, 0.3);
+
+  background:
+
+    conic-gradient(
+
+      from 0deg,
+
+      rgba(129, 140, 248, 0) 0deg,
+
+      rgba(129, 140, 248, 0.9) 70deg,
+
+      rgba(129, 140, 248, 0) 140deg,
+
+      rgba(79, 70, 229, 0.9) 210deg,
+
+      rgba(129, 140, 248, 0) 280deg,
+
+      rgba(129, 140, 248, 0) 360deg
+
+    );
+
+  mix-blend-mode: screen;
+
+  opacity: 0.85;
+
+  animation: fixlens-orbit-glow 9s linear infinite;
+
+  pointer-events: none;
+
+}
+
+
+
 .hero-lens-core {
 
   width: 60%;
@@ -1065,6 +1139,54 @@ body {
   to {
 
     transform: rotate(0deg);
+
+  }
+
+}
+
+
+
+@keyframes fixlens-lens-pulse {
+
+  0% {
+
+    opacity: 0;
+
+    transform: scale(0.96);
+
+  }
+
+  50% {
+
+    opacity: 1;
+
+    transform: scale(1.04);
+
+  }
+
+  100% {
+
+    opacity: 0;
+
+    transform: scale(0.96);
+
+  }
+
+}
+
+
+
+@keyframes fixlens-orbit-glow {
+
+  from {
+
+    transform: rotate(0deg);
+
+  }
+
+  to {
+
+    transform: rotate(360deg);
 
   }
 
