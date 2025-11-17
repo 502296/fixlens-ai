@@ -176,13 +176,17 @@
 
 
 
-        <!-- Result panel -->
+        <!-- Conversation area (chat-style like ChatGPT) -->
 
-        <section id="result-panel" class="result-panel" style="display:none;">
+        <section id="conversation" class="conversation">
 
-          <h2>FixLens diagnosis</h2>
+          <div class="conversation-header">Recent diagnosis</div>
 
-          <div id="result-content"></div>
+          <div id="conversation-body" class="conversation-body">
+
+            <!-- الرسائل ستُضاف هنا من JavaScript -->
+
+          </div>
 
         </section>
 
@@ -220,7 +224,7 @@
 
 
 
-  <!-- Overlay Menu (all extra info هنا) -->
+  <!-- Overlay Menu (extra info) -->
 
   <div id="menu-overlay" class="menu-overlay" aria-hidden="true">
 
@@ -230,7 +234,7 @@
 
       <div class="menu-header">
 
-        <span class="menu-title">FixLens menu</span>
+        <span class="menu-title">FIXLENS MENU</span>
 
         <button id="menu-close" class="menu-close" type="button">✕</button>
 
