@@ -1,48 +1,140 @@
+/* ===== Base ===== */
+
+
+
+*,
+
+*::before,
+
+*::after {
+
+  box-sizing: border-box;
+
+}
+
+
+
+html,
+
 body {
 
-    margin: 0;
+  margin: 0;
 
-    background: #000;
-
-    color: white;
-
-    font-family: Arial, sans-serif;
+  padding: 0;
 
 }
 
 
 
-/* Header */
+body {
 
-.header {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
 
-    display: flex;
+    "Segoe UI", sans-serif;
 
-    justify-content: space-between;
+  background: #000000;
 
-    align-items: center;
-
-    padding: 20px;
+  color: #f5f5f5;
 
 }
 
 
 
-.logo {
+img {
 
-    display: flex;
+  max-width: 100%;
 
-    align-items: center;
-
-    gap: 10px;
+  display: block;
 
 }
 
 
 
-.logo-icon {
+/* ===== Layout ===== */
 
-    width: 35px;
+
+
+.main {
+
+  min-height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+
+  padding: 72px 16px 40px;
+
+}
+
+
+
+.hero {
+
+  width: 100%;
+
+  max-width: 640px;
+
+  margin: 0 auto;
+
+  text-align: center;
+
+}
+
+
+
+/* ===== Header ===== */
+
+
+
+.site-header {
+
+  position: fixed;
+
+  top: 0;
+
+  left: 0;
+
+  right: 0;
+
+  z-index: 20;
+
+  padding: 12px 16px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent);
+
+}
+
+
+
+.logo-row {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+}
+
+
+
+.logo-mark {
+
+  width: 20px;
+
+  height: 20px;
+
+  border-radius: 999px;
+
+  border: 2px solid #ffffff;
+
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.85);
 
 }
 
@@ -50,218 +142,426 @@ body {
 
 .logo-text {
 
-    font-size: 22px;
+  font-size: 18px;
 
-    font-weight: bold;
+  letter-spacing: 0.18em;
 
-}
-
-
-
-/* Menu Button */
-
-.menu-btn {
-
-    width: 32px;
-
-    cursor: pointer;
-
-}
-
-.menu-btn div {
-
-    height: 4px;
-
-    background: white;
-
-    margin: 5px 0;
-
-    border-radius: 5px;
+  text-transform: uppercase;
 
 }
 
 
 
-/* Side Menu */
+/* ===== Menu button ===== */
 
-.side-menu {
 
-    position: fixed;
 
-    top: 0;
+.menu-toggle {
 
-    right: -260px;
+  width: 40px;
 
-    width: 250px;
+  height: 40px;
 
-    height: 100%;
+  border-radius: 999px;
 
-    background: #111;
+  border: 1px solid #444;
 
-    padding: 20px;
+  background: radial-gradient(circle at 30% 0%, #333 0%, #000 55%, #000 100%);
 
-    transition: 0.3s;
+  display: inline-flex;
 
-    overflow-y: auto;
+  flex-direction: column;
 
-    z-index: 200;
+  justify-content: center;
 
-}
+  align-items: center;
 
-.side-menu.open {
+  gap: 4px;
 
-    right: 0;
+  cursor: pointer;
 
-}
-
-.side-menu h3 {
-
-    margin-top: 0;
+  padding: 0;
 
 }
 
 
 
-/* Lens */
+.menu-toggle span {
+
+  width: 18px;
+
+  height: 2px;
+
+  border-radius: 999px;
+
+  background: #ffffff;
+
+}
+
+
+
+/* ===== Lens ===== */
+
+
 
 .lens-wrapper {
 
-    width: 90%;
+  width: 260px;
 
-    max-width: 330px;
+  height: 260px;
 
-    margin: 40px auto 20px auto;
+  margin: 32px auto 20px;
 
-    position: relative;
+  border-radius: 999px;
 
-}
+  display: flex;
 
+  align-items: center;
 
+  justify-content: center;
 
-.lens-glass {
+  background: radial-gradient(circle at top, #1b1b1b 0, #050505 68%);
 
-    width: 100%;
+  box-shadow:
 
-    border-radius: 50%;
+    0 0 1px #222,
 
-    display: block;
-
-}
-
-
-
-.lens-ring {
-
-    width: 100%;
-
-    position: absolute;
-
-    top: 0;
-
-    left: 0;
+    0 18px 45px rgba(0, 0, 0, 0.9);
 
 }
 
 
 
-/* Rotation animation ONLY for the ring */
+.lens-image {
 
-.rotate {
+  width: 100%;
 
-    animation: spin 9s linear infinite;
+  height: 100%;
 
-}
+  border-radius: 999px;
 
-@keyframes spin {
-
-    from { transform: rotate(0deg); }
-
-    to   { transform: rotate(360deg); }
+  animation: lens-spin 18s linear infinite;
 
 }
 
 
 
-/* Input Section */
+@keyframes lens-spin {
 
-.input-area {
+  from {
 
-    width: 90%;
+    transform: rotate(0deg);
 
-    margin: auto;
+  }
 
-}
+  to {
 
+    transform: rotate(360deg);
 
-
-.input-box {
-
-    background: #222;
-
-    border-radius: 45px;
-
-    padding: 12px 20px;
-
-    display: flex;
-
-    align-items: center;
-
-    margin-bottom: 15px;
-
-    border: 1px solid #444;
+  }
 
 }
 
 
 
-.input-box input {
-
-    flex: 1;
-
-    border: none;
-
-    background: transparent;
-
-    color: white;
-
-    font-size: 16px;
-
-    margin: 0 10px;
-
-}
+/* ===== Text & inputs ===== */
 
 
 
-.input-box input:focus {
+.tagline {
 
-    outline: none;
+  max-width: 480px;
+
+  margin: 10px auto 26px;
+
+  font-size: 14px;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+
+  color: #d1d5db;
 
 }
 
 
 
-.detect-btn {
+.input-stack {
 
-    width: 100%;
+  display: flex;
 
-    background: #111;
+  flex-direction: column;
 
-    color: white;
+  gap: 12px;
 
-    padding: 15px;
+  margin-top: 10px;
 
-    border-radius: 50px;
+}
 
-    border: 1px solid #444;
+
+
+.input-button {
+
+  border-radius: 999px;
+
+  border: 1px solid #333;
+
+  background: radial-gradient(circle at top, #101010 0, #050505 65%);
+
+  color: #f5f5f5;
+
+  padding: 10px 16px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  cursor: pointer;
+
+  text-align: left;
+
+}
+
+
+
+.input-button:hover {
+
+  border-color: #555;
+
+  box-shadow: 0 0 0 1px rgba(120, 120, 120, 0.4);
+
+}
+
+
+
+.input-left {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+}
+
+
+
+.icon-circle {
+
+  width: 26px;
+
+  height: 26px;
+
+  border-radius: 999px;
+
+  background: #111;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 13px;
+
+}
+
+
+
+.input-label {
+
+  flex: 1;
+
+  font-size: 15px;
+
+}
+
+
+
+.input-right {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+}
+
+
+
+.icon-mic {
+
+  font-size: 15px;
+
+  opacity: 0.9;
+
+}
+
+
+
+.icon-send {
+
+  width: 30px;
+
+  height: 30px;
+
+  border-radius: 999px;
+
+  background: #ffffff;
+
+  color: #000;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 16px;
+
+}
+
+
+
+.secondary-input {
+
+  background: radial-gradient(circle at top, #0b0b0b 0, #020202 70%);
+
+}
+
+
+
+.status-line {
+
+  margin: 4px 2px 0;
+
+  font-size: 13px;
+
+  color: #9ca3af;
+
+  text-align: left;
+
+}
+
+
+
+/* ===== Info Drawer (menu with text) ===== */
+
+
+
+.info-drawer {
+
+  position: fixed;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.97);
+
+  color: #f9fafb;
+
+  padding: 72px 18px 32px;
+
+  z-index: 30;
+
+  display: none;
+
+  overflow-y: auto;
+
+}
+
+
+
+.info-drawer--open {
+
+  display: block;
+
+}
+
+
+
+.drawer-inner {
+
+  max-width: 640px;
+
+  margin: 0 auto;
+
+}
+
+
+
+.info-drawer h2 {
+
+  margin: 0 0 16px;
+
+  font-size: 24px;
+
+}
+
+
+
+.info-drawer h3 {
+
+  margin: 22px 0 8px;
+
+  font-size: 18px;
+
+}
+
+
+
+.info-drawer p {
+
+  margin: 0;
+
+  line-height: 1.6;
+
+  font-size: 15px;
+
+  color: #d1d5db;
+
+}
+
+
+
+/* ===== Responsive tweaks ===== */
+
+
+
+@media (min-width: 768px) {
+
+  .main {
+
+    padding-top: 96px;
+
+  }
+
+
+
+  .lens-wrapper {
+
+    width: 320px;
+
+    height: 320px;
+
+  }
+
+
+
+  .tagline {
 
     font-size: 15px;
 
-    cursor: pointer;
+  }
 
-}
 
-.detect-btn:hover {
 
-    background: #222;
+  .input-button {
+
+    padding: 12px 20px;
+
+  }
 
 }
