@@ -282,7 +282,7 @@ body {
 
 
 
-/* تكديس الأزرار رأسياً على الموبايل */
+/* تكديس الأزرار رأسياً على الموبايل / الواجهة */
 
 .hero-actions-stack {
 
@@ -425,6 +425,82 @@ body {
   align-items: center;
 
   justify-content: center;
+
+}
+
+
+
+/* هالة خارجية تتنفس حول العدسة */
+
+.lens-wrapper::before {
+
+  content: "";
+
+  position: absolute;
+
+  inset: -18px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+
+    circle,
+
+    rgba(124, 211, 255, 0.45) 0%,
+
+    rgba(124, 211, 255, 0.18) 35%,
+
+    transparent 70%
+
+  );
+
+  opacity: 0.18;
+
+  mix-blend-mode: screen;
+
+  animation: lens-glow 5.5s ease-in-out infinite;
+
+  pointer-events: none;
+
+  z-index: -1;
+
+}
+
+
+
+/* Lens flare صغير على الطرف */
+
+.lens-wrapper::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 34%;
+
+  height: 34%;
+
+  border-radius: 999px;
+
+  background: radial-gradient(
+
+    circle at 30% 30%,
+
+    rgba(255, 255, 255, 0.95) 0%,
+
+    rgba(124, 211, 255, 0.0) 60%
+
+  );
+
+  transform: translate(26%, -30%) rotate(-18deg);
+
+  opacity: 0.55;
+
+  mix-blend-mode: screen;
+
+  filter: blur(0.5px);
+
+  pointer-events: none;
 
 }
 
@@ -775,6 +851,38 @@ body {
   100% {
 
     transform: rotate(360deg);
+
+  }
+
+}
+
+
+
+/* تنفّس الهالة حول العدسة */
+
+@keyframes lens-glow {
+
+  0% {
+
+    opacity: 0.16;
+
+    transform: scale(0.98);
+
+  }
+
+  50% {
+
+    opacity: 0.38;
+
+    transform: scale(1.03);
+
+  }
+
+  100% {
+
+    opacity: 0.16;
+
+    transform: scale(0.98);
 
   }
 
