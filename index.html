@@ -8,89 +8,325 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>FixLens – AI Diagnosis</title>
+  <title>FixLens – Real-world AI diagnosis</title>
 
   <link rel="stylesheet" href="style.css" />
 
 </head>
 
-
-
 <body>
 
-
-
-  <!-- TOP BAR -->
-
-  <header class="top-bar">
-
-    <div class="left-brand">
-
-      <img src="./images/fixlens-logo-white.png" class="brand-icon" alt="logo">
-
-      <span class="brand-text">FixLens</span>
-
-    </div>
+  <div class="page">
 
 
 
-    <div class="menu-icon">
+    <!-- Top bar -->
 
-      <div></div>
+    <header class="top-bar">
 
-      <div></div>
+      <div class="brand">
 
-      <div></div>
+        <img src="images/fixlens-logo-white.png" alt="FixLens logo" class="brand-mark" />
 
-    </div>
+        <span class="brand-text">FixLens</span>
 
-  </header>
-
-
-
-  <!-- LENS SECTION -->
-
-  <section class="hero">
-
-    <img src="./images/fixlens-lens-bw.png" class="lens" alt="lens">
-
-  </section>
+      </div>
 
 
 
-  <!-- MAIN CONTENT -->
+      <button class="menu-toggle" aria-label="Open menu">
 
-  <section class="content">
+        <span></span>
 
+        <span></span>
 
+        <span></span>
 
-    <h2>Try FixLens</h2>
+      </button>
 
-
-
-    <label class="input-label">Upload a photo</label>
-
-    <input type="file" class="input" />
+    </header>
 
 
 
-    <label class="input-label">Describe what's going on</label>
+    <!-- Slide-down menu -->
 
-    <textarea class="textarea" placeholder="Example: knocking noise, leak, vibration..."></textarea>
+    <nav class="menu-panel" id="main-menu">
 
+      <a href="#how">How FixLens works</a>
 
+      <a href="#help">What FixLens can help with</a>
 
-    <button class="run-btn">Run AI Diagnosis</button>
+      <a href="#safety">Safety & legal policy</a>
 
+      <a href="#about">About FixLens</a>
 
-
-    <div class="output-box">Your result will appear here...</div>
-
-
-
-  </section>
+    </nav>
 
 
+
+    <!-- Hero section -->
+
+    <main class="main">
+
+
+
+      <section class="hero">
+
+        <div class="lens-wrapper">
+
+          <img src="images/fixlens-lens-bw.png" alt="FixLens rotating lens" class="lens-img" />
+
+        </div>
+
+
+
+        <h1 class="hero-title">
+
+          Rotating AI lens that keeps your real-world problems in focus.
+
+        </h1>
+
+
+
+        <p class="hero-subtitle">
+
+          Describe what’s going on, upload a photo, or add a short voice note.
+
+          FixLens analyzes engines, appliances, electronics, structures, and more —
+
+          then guides you step by step.
+
+        </p>
+
+
+
+        <!-- Input card -->
+
+        <div class="input-card">
+
+          <button class="pill-button pill-ghost">
+
+            <span class="pill-icon">📷</span>
+
+            <span>Upload a clear photo of the issue</span>
+
+          </button>
+
+
+
+          <label class="field-label" for="description">Describe what’s going on</label>
+
+          <div class="field-row">
+
+            <textarea id="description" class="text-input" placeholder="Example: Strange knocking sound when I start the car, mostly when the engine is cold."></textarea>
+
+            <button class="icon-button" aria-label="Record voice note">🎙️</button>
+
+          </div>
+
+
+
+          <div class="primary-row">
+
+            <button class="primary-button">
+
+              <span>Run AI diagnosis</span>
+
+              <span class="primary-arrow">➜</span>
+
+            </button>
+
+          </div>
+
+
+
+          <button class="pill-button">
+
+            <span class="pill-icon">🛠️</span>
+
+            <span>Detect pipes, wires & studs behind walls / floors</span>
+
+          </button>
+
+
+
+          <p class="status-text">Waiting for your input.</p>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- Content sections -->
+
+      <section class="content">
+
+
+
+        <section id="how" class="content-block">
+
+          <h2>How FixLens works</h2>
+
+          <p>
+
+            FixLens combines computer vision, language understanding, and
+
+            physics-aware reasoning to analyze what it sees and what you
+
+            describe, then returns a clear explanation of what might be wrong
+
+            and what to check next.
+
+          </p>
+
+          <ol class="steps">
+
+            <li><strong>Capture.</strong> Take a clear photo or short video of the problem — car engine, strange leak, broken device, anything in the real world.</li>
+
+            <li><strong>Describe.</strong> Add a few sentences in your own words so FixLens understands symptoms, sounds, timing, and context.</li>
+
+            <li><strong>Analyze.</strong> FixLens compares what it sees and hears against patterns of real-world failures.</li>
+
+            <li><strong>Guide.</strong> You get step-by-step checks to run, what to watch out for, and what to tell a professional if you need one.</li>
+
+          </ol>
+
+        </section>
+
+
+
+        <section id="help" class="content-block">
+
+          <h2>What FixLens can help with</h2>
+
+          <ul>
+
+            <li>Engines, strange noises, warning lights, and leaks.</li>
+
+            <li>Household appliances, HVAC units, and electronics.</li>
+
+            <li>Water leaks, stains, and moisture issues.</li>
+
+            <li>Wiring concerns, breaker trips, and outlet problems.</li>
+
+            <li>Cracks in walls, floors, and structural questions.</li>
+
+            <li>General “is this normal?” questions before you call a pro.</li>
+
+          </ul>
+
+        </section>
+
+
+
+        <section id="safety" class="content-block">
+
+          <h2>Safety & legal policy</h2>
+
+          <p>
+
+            FixLens gives guidance and explanations only. You stay in control of
+
+            what to do next, and you’re responsible for any decisions or repairs
+
+            you make. Treat everything as intelligent guidance — not a
+
+            replacement for a certified professional.
+
+          </p>
+
+          <p>
+
+            When in doubt, stop and call a licensed professional in your area.
+
+            Never attempt repairs that could put you or others at risk.
+
+          </p>
+
+        </section>
+
+
+
+        <section id="about" class="content-block">
+
+          <h2>About FixLens</h2>
+
+          <p>
+
+            FixLens is an experimental AI assistant designed to keep real-world
+
+            problems in focus and help you understand what might be happening
+
+            before you spend money on a service call. It’s built for curious,
+
+            hands-on people who want to understand their machines, homes, and
+
+            tools — not just replace them.
+
+          </p>
+
+        </section>
+
+
+
+      </section>
+
+    </main>
+
+
+
+    <footer class="footer">
+
+      <span>© <span id="year"></span> FixLens.ai – Experimental AI diagnosis assistant.</span>
+
+    </footer>
+
+  </div>
+
+
+
+  <script>
+
+    // Year in footer
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+
+
+    // Simple menu toggle
+
+    const menuBtn = document.querySelector('.menu-toggle');
+
+    const menu = document.getElementById('main-menu');
+
+
+
+    menuBtn.addEventListener('click', () => {
+
+      menu.classList.toggle('open');
+
+      menuBtn.classList.toggle('open');
+
+    });
+
+
+
+    // Close menu when clicking a link
+
+    menu.querySelectorAll('a').forEach(link => {
+
+      link.addEventListener('click', () => {
+
+        menu.classList.remove('open');
+
+        menuBtn.classList.remove('open');
+
+      });
+
+    });
+
+  </script>
 
 </body>
 
