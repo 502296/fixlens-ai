@@ -234,8 +234,6 @@ body {
 
 /* ===== Lens ===== */
 
-
-
 .lens-wrapper {
 
   width: 260px;
@@ -254,7 +252,7 @@ body {
 
 
 
-  /* الخلفية الأصلية حوالين العدسة */
+  /* نفس الخلفية القديمة */
 
   background: radial-gradient(circle at top, #2b2b2b 0, #050505 70%);
 
@@ -266,11 +264,56 @@ body {
 
 
 
-  /* مهم عشان الزجاج يجلس فوق الصورة فقط */
+  /* مهم حتى pseudo-element يكون فوق الصورة */
 
   position: relative;
 
-  overflow: hidden;
+}
+/* طبقة زجاج ناعمة تغطي الدوامة داخل العدسة */
+
+.lens-wrapper::after {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 20%;              /* حجم دائرة الزجاج داخل العدسة */
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  z-index: 2;
+
+
+
+  background: radial-gradient(
+
+    circle at 30% 25%,
+
+    rgba(255, 255, 255, 0.45) 0%,
+
+    rgba(230, 230, 230, 0.35) 10%,
+
+    rgba(70, 70, 70, 0.9) 55%,
+
+    rgba(0, 0, 0, 1) 100%
+
+  );
+
+
+
+  /* إحساس زجاج / عمق */
+
+  box-shadow:
+
+    0 0 22px rgba(0, 0, 0, 0.9) inset,
+
+    0 0 18px rgba(0, 0, 0, 0.9);
+
+  mix-blend-mode: screen;
+
+  opacity: 0.95;
 
 }
 
@@ -284,13 +327,11 @@ body {
 
   height: auto;
 
-  border-radius: 50%;
-
   display: block;
 
   position: relative;
 
-  z-index: 1;
+  z-index: 1;   /* مهم عشان تبقى تحت طبقة الزجاج */
 
 }
 
