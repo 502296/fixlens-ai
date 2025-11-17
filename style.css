@@ -282,6 +282,18 @@ body {
 
 
 
+/* تكديس الأزرار رأسياً على الموبايل */
+
+.hero-actions-stack {
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+}
+
+
+
 .hero-note {
 
   margin: 0;
@@ -418,7 +430,7 @@ body {
 
 
 
-/* Outer ring (border only, clockwise) */
+/* Outer ring (ثخين مثل عدسة احترافية، يدور باتجاه واحد) */
 
 .lens-outer-ring {
 
@@ -428,15 +440,61 @@ body {
 
   border-radius: 50%;
 
-  border: 2px solid rgba(124, 211, 255, 0.45);
+  border: 3px solid rgba(124, 211, 255, 0.55);
 
   box-shadow:
 
-    0 0 25px rgba(71, 181, 255, 0.5),
+    0 0 25px rgba(71, 181, 255, 0.6),
 
-    0 0 55px rgba(0, 0, 0, 0.9);
+    0 0 70px rgba(0, 0, 0, 0.95);
 
   animation: spin-outer 8s linear infinite;
+
+}
+
+
+
+/* حلقات إضافية لإحساس عدسة عالمية */
+
+.lens-outer-ring::before,
+
+.lens-outer-ring::after {
+
+  content: "";
+
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+}
+
+
+
+.lens-outer-ring::before {
+
+  inset: 8px;
+
+  border: 7px solid rgba(8, 13, 24, 0.96);
+
+  box-shadow:
+
+    0 0 10px rgba(0, 0, 0, 0.9) inset,
+
+    0 0 14px rgba(0, 0, 0, 0.8);
+
+}
+
+
+
+.lens-outer-ring::after {
+
+  inset: 20px;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  box-shadow: 0 0 10px rgba(124, 211, 255, 0.35);
 
 }
 
@@ -514,7 +572,7 @@ body {
 
 /* =========
 
-   Sections
+   Sections / Panels
 
    ========= */
 
@@ -522,7 +580,17 @@ body {
 
 .section {
 
-  padding: 6px 2px 2px;
+  padding: 18px 2px 10px;
+
+}
+
+
+
+/* هذه البانلز مخفية في البداية */
+
+.info-panel.is-hidden {
+
+  display: none;
 
 }
 
@@ -588,9 +656,9 @@ body {
 
 
 
-.demo-section {
+.demo-block {
 
-  text-align: left;
+  margin-top: 18px;
 
 }
 
@@ -605,6 +673,42 @@ body {
   color: var(--text-soft);
 
   margin-bottom: 12px;
+
+}
+
+
+
+/* policy card */
+
+.card-policy ul {
+
+  margin: 6px 0 10px 18px;
+
+  padding: 0;
+
+  font-size: 13px;
+
+  color: var(--text-soft);
+
+}
+
+
+
+.card-policy li {
+
+  margin-bottom: 2px;
+
+}
+
+
+
+.policy-note {
+
+  margin-top: 6px;
+
+  font-size: 12px;
+
+  color: var(--text-soft);
 
 }
 
@@ -749,6 +853,24 @@ body {
   .page {
 
     padding-inline: 14px;
+
+  }
+
+
+
+  .hero-actions-stack {
+
+    width: 100%;
+
+  }
+
+
+
+  .hero-actions-stack .btn {
+
+    width: 100%;
+
+    justify-content: center;
 
   }
 
