@@ -1,10 +1,12 @@
-// script.js – FixLens frontend logic (chat-style)
+// script.js – FixLens frontend logic (chat-style + recent diagnosis history)
 
 
 
 const API_TEXT = "/api/text-diagnosis";
 
 const API_PHOTO = "/api/photo-diagnosis";
+
+const STORAGE_KEY = "fixlens_recent_history";
 
 
 
@@ -32,13 +34,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  // ========== Helpers: Chat messages ==========
+  // ========= History in localStorage =========
 
 
 
-  function addMessage(role, text) {
+  function loadHistory() {
 
-    if (!conversationBody) return;
+    try {
+
+      const raw = window.localStorage.getItem(STORAGE_KEY);
+
+      if (!raw) return [];
+
+      const parsed = JSON.parse(raw);
+
+      if (!Array.isArray(parsed)) return [];
+
+      return parsed;
+
+    } catch {
+
+      return [];
+
+    }
+
+  }
+
+
+
+  function saveHistory(history) {
+
+    try {
+
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
+
+    } catch {
+
+      // ignore
+
+    }
+
+  }
+
+
+
+  let history = loadHistory(); // [{role, text, ts}, ...]
+
+
+
+  // ========= Rendering messages =========
+
+
+
+  function renderMessage(role, text) {
+
+    if (!conversationBody) return null;
 
 
 
@@ -72,21 +122,71 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    // Scroll to bottom
-
     conversationBody.scrollTop = conversationBody.scrollHeight;
 
 
 
-    return bubble; // نرجع البابل عشان نقدر نحدّثه في حالة "Thinking…"
+    return bubble;
 
   }
 
 
 
-  async function callApi(url, payload) {
+  // addMessage: يرسم ويخزّن في التاريخ
 
-    // رسالة AI مبدئية "Thinking..."
+  function addMessage(role, text) {
+
+    const bubble = renderMessage(role, text);
+
+
+
+    const entry = {
+
+      role,
+
+      text,
+
+      ts: Date.now(),
+
+    };
+
+    history.push(entry);
+
+
+
+    // نخلي فقط آخر 10 رسائل حتى يبقى القسم خفيف
+
+    if (history.length > 10) {
+
+      history = history.slice(history.length - 10);
+
+    }
+
+    saveHistory(history);
+
+
+
+    return bubble;
+
+  }
+
+
+
+  // عند فتح الصفحة: نرسم التاريخ السابق (بدون مضاعفة التخزين)
+
+  history.forEach((entry) => {
+
+    renderMessage(entry.role, entry.text);
+
+  });
+
+
+
+  // ========= API call =========
+
+
+
+  async function callApi(url, payload) {
 
     const thinkingBubble = addMessage(
 
@@ -126,6 +226,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
           "Something went wrong. Please try again in a moment.";
 
+        // نحدث التاريخ بالنص الجديد
+
+        history[history.length - 1].text = thinkingBubble.textContent;
+
+        saveHistory(history);
+
         return;
 
       }
@@ -134,17 +240,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const data = await res.json();
 
-      if (data && data.answer) {
+      const answer =
 
-        thinkingBubble.textContent = data.answer;
+        (data && data.answer) ||
 
-      } else {
+        "No answer returned from FixLens AI. Please try again.";
 
-        thinkingBubble.textContent =
 
-          "No answer returned from FixLens AI. Please try again.";
 
-      }
+      thinkingBubble.textContent = answer;
+
+      history[history.length - 1].text = answer;
+
+      saveHistory(history);
 
     } catch (err) {
 
@@ -154,13 +262,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         "Network error. Please check your connection and try again.";
 
+      history[history.length - 1].text = thinkingBubble.textContent;
+
+      saveHistory(history);
+
     }
 
   }
 
 
 
-  // ========== Buttons: Text / Photo / Voice ==========
+  // ========= Buttons: Text / Photo / Voice =========
 
 
 
@@ -178,13 +290,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-      // أضف رسالة المستخدم أولاً
+      const cleaned = description.trim();
 
-      addMessage("user", description.trim());
+      addMessage("user", cleaned);
 
-      // ثم استدعاء الـ API
-
-      callApi(API_TEXT, { description: description.trim() });
+      callApi(API_TEXT, { description: cleaned });
 
     });
 
@@ -196,7 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     btnPhoto.addEventListener("click", () => {
 
-      photoInput.value = ""; // reset
+      photoInput.value = "";
 
       photoInput.click();
 
@@ -212,13 +322,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-      // رسالة user تختصر الموضوع
-
       addMessage(
 
         "user",
 
-        `Uploaded a photo: ${file.name || "image"} (FixLens will analyze it).`
+        `Uploaded a photo: ${
+
+          file.name || "image"
+
+        } (FixLens will analyze it).`
 
       );
 
@@ -248,8 +360,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     btnSpeak.addEventListener("click", () => {
 
-      // لسه placeholder – نطوره لاحقًا مع voice API
-
       alert("Voice mode is coming soon to FixLens 🔊");
 
     });
@@ -258,7 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  // ========== Menu overlay ==========
+  // ========= Menu overlay =========
 
 
 
