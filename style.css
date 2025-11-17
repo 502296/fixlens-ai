@@ -1,20 +1,4 @@
-/* ===== Reset بسيط ===== */
-
-
-
-*,
-
-*::before,
-
-*::after {
-
-  box-sizing: border-box;
-
-}
-
-
-
-html,
+/* GLOBAL */
 
 body {
 
@@ -22,77 +6,39 @@ body {
 
   padding: 0;
 
-}
-
-
-
-body {
-
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-
-    "Segoe UI", sans-serif;
-
   background: #000;
 
   color: #fff;
 
-}
-
-
-
-/* لمنع التمرير عند فتح القائمة */
-
-body.no-scroll {
-
-  overflow: hidden;
+  font-family: Arial, sans-serif;
 
 }
 
 
 
-/* ===== Layout عام ===== */
+/* TOP BAR */
 
+.top-bar {
 
+  width: 100%;
 
-.page {
-
-  min-height: 100vh;
+  padding: 15px 20px;
 
   display: flex;
-
-  flex-direction: column;
-
-}
-
-
-
-/* ===== Header ===== */
-
-
-
-.header {
-
-  position: sticky;
-
-  top: 0;
-
-  z-index: 20;
-
-  display: flex;
-
-  align-items: center;
 
   justify-content: space-between;
 
-  padding: 14px 20px;
+  align-items: center;
 
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.4));
+  background: #000;
+
+  border-bottom: 1px solid #222;
 
 }
 
 
 
-.brand {
+.left-brand {
 
   display: flex;
 
@@ -104,49 +50,11 @@ body.no-scroll {
 
 
 
-.brand-mark {
+.brand-icon {
 
-  width: 26px;
+  width: 32px;
 
-  height: 26px;
-
-  border-radius: 999px;
-
-  border: 2px solid #fff;
-
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
-
-  position: relative;
-
-  overflow: hidden;
-
-}
-
-
-
-/* شريحة بسيطة داخل الدائرة تعطي إحساس الشاتر */
-
-.brand-blade {
-
-  position: absolute;
-
-  width: 140%;
-
-  height: 140%;
-
-  background: conic-gradient(
-
-    from 210deg,
-
-    transparent 0 35%,
-
-    rgba(255, 255, 255, 0.8) 35% 40%,
-
-    transparent 40% 100%
-
-  );
-
-  transform: translate(-20%, -10%);
+  height: 32px;
 
 }
 
@@ -154,429 +62,169 @@ body.no-scroll {
 
 .brand-text {
 
-  font-size: 1.1rem;
+  font-size: 20px;
 
-  letter-spacing: 0.16em;
-
-  text-transform: uppercase;
+  font-weight: 700;
 
 }
 
 
 
-/* لو استخدمت صورة شعار */
+/* MENU ICON */
 
-.brand-logo {
+.menu-icon {
 
-  height: 26px;
-
-  width: auto;
-
-}
-
-
-
-/* ===== زر المنيو (ثلاث خطوط) ===== */
-
-
-
-.menu-toggle {
-
-  width: 40px;
-
-  height: 40px;
-
-  border-radius: 999px;
-
-  border: none;
-
-  background: radial-gradient(circle at 30% 30%, #333, #0b0b0b);
-
-  display: flex;
-
-  flex-direction: column;
-
-  justify-content: center;
-
-  gap: 5px;
-
-  padding: 0 10px;
+  width: 28px;
 
   cursor: pointer;
 
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
+}
+
+
+
+.menu-icon div {
+
+  width: 28px;
+
+  height: 3px;
+
+  background: white;
+
+  margin: 5px 0;
+
+  border-radius: 3px;
 
 }
 
 
 
-.menu-toggle span {
+/* HERO LENS SECTION */
 
-  display: block;
-
-  height: 2px;
-
-  border-radius: 999px;
-
-  background: #f5f5f5;
-
-}
-
-
-
-/* ===== Main ===== */
-
-
-
-.main {
-
-  flex: 1;
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  padding: 18px 18px 40px;
-
-}
-
-
-
-/* ===== Lens ===== */
-
-
-
-.lens-section {
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  gap: 16px;
-
-  margin-top: 10px;
+.hero {
 
   text-align: center;
 
-}
-
-
-
-.lens-wrapper {
-
-  width: 260px;
-
-  height: 260px;
-
-  border-radius: 999px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  animation: lens-spin 18s linear infinite;
-
-  box-shadow:
-
-    0 0 0 1px rgba(255, 255, 255, 0.18),
-
-    0 22px 40px rgba(0, 0, 0, 0.95);
+  padding: 40px 0 20px;
 
 }
 
 
 
-.lens-image {
+.lens {
 
-  width: 100%;
+  width: 180px;
 
-  height: auto;
+  height: 180px;
+
+  animation: spin 9s linear infinite;
+
+}
+
+
+
+@keyframes spin {
+
+  from { transform: rotate(0deg); }
+
+  to { transform: rotate(360deg); }
+
+}
+
+
+
+/* CONTENT */
+
+.content {
+
+  width: 90%;
+
+  max-width: 600px;
+
+  margin: 0 auto;
+
+}
+
+
+
+h2 {
+
+  font-size: 26px;
+
+  text-align: center;
+
+  margin-bottom: 20px;
+
+}
+
+
+
+.input-label {
 
   display: block;
 
-}
+  margin-top: 20px;
 
+  margin-bottom: 6px;
 
+  font-size: 16px;
 
-@keyframes lens-spin {
-
-  from {
-
-    transform: rotate(0deg);
-
-  }
-
-  to {
-
-    transform: rotate(360deg);
-
-  }
+  color: #ddd;
 
 }
 
 
 
-.tagline {
-
-  max-width: 420px;
-
-  font-size: 0.95rem;
-
-  line-height: 1.5;
-
-  color: rgba(255, 255, 255, 0.85);
-
-}
-
-
-
-/* ===== CTA Section ===== */
-
-
-
-.cta-section {
+.input, .textarea {
 
   width: 100%;
 
-  max-width: 640px;
+  padding: 12px;
 
-  margin-top: 24px;
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 14px;
-
-}
-
-
-
-.cta {
-
-  width: 100%;
-
-  border-radius: 999px;
+  border-radius: 8px;
 
   border: none;
 
-  padding: 14px 18px;
+  background: #111;
 
-  display: flex;
+  color: white;
 
-  align-items: center;
-
-  gap: 10px;
-
-  font-size: 0.98rem;
-
-  cursor: pointer;
+  font-size: 15px;
 
   outline: none;
 
-  transition: transform 0.12s ease, box-shadow 0.12s ease,
+}
 
-    background 0.12s ease;
+
+
+.textarea {
+
+  height: 80px;
+
+  resize: none;
 
 }
 
 
 
-.cta-primary {
-
-  background: radial-gradient(circle at 0% 0%, #2b2b2b, #111);
-
-  color: #f5f5f5;
-
-  box-shadow:
-
-    0 0 0 1px rgba(255, 255, 255, 0.12),
-
-    0 16px 32px rgba(0, 0, 0, 0.85);
-
-}
-
-
-
-.cta-secondary {
-
-  background: rgba(28, 28, 28, 0.96);
-
-  color: #f5f5f5;
-
-  box-shadow:
-
-    0 0 0 1px rgba(255, 255, 255, 0.05),
-
-    0 10px 24px rgba(0, 0, 0, 0.8);
-
-}
-
-
-
-.cta:hover {
-
-  transform: translateY(-1px);
-
-  box-shadow:
-
-    0 0 0 1px rgba(255, 255, 255, 0.2),
-
-    0 18px 38px rgba(0, 0, 0, 0.9);
-
-}
-
-
-
-.cta:active {
-
-  transform: translateY(0);
-
-  box-shadow:
-
-    0 0 0 1px rgba(255, 255, 255, 0.18),
-
-    0 10px 20px rgba(0, 0, 0, 0.85);
-
-}
-
-
-
-.cta-icon-left {
-
-  font-size: 1.1rem;
-
-  flex-shrink: 0;
-
-}
-
-
-
-.cta-icon-right {
-
-  margin-left: auto;
-
-  font-size: 1.1rem;
-
-}
-
-
-
-.cta-text {
-
-  flex: 1;
-
-  text-align: left;
-
-}
-
-
-
-/* Status text */
-
-
-
-.status {
-
-  margin-top: 6px;
-
-  font-size: 0.85rem;
-
-  color: rgba(255, 255, 255, 0.7);
-
-}
-
-
-
-/* ===== Menu overlay ===== */
-
-
-
-.menu-overlay {
-
-  position: fixed;
-
-  inset: 0;
-
-  background: rgba(0, 0, 0, 0.86);
-
-  display: flex;
-
-  align-items: flex-start;
-
-  justify-content: center;
-
-  opacity: 0;
-
-  pointer-events: none;
-
-  transition: opacity 0.18s ease;
-
-  z-index: 40;
-
-}
-
-
-
-.menu-overlay.menu-open {
-
-  opacity: 1;
-
-  pointer-events: auto;
-
-}
-
-
-
-.menu-panel {
-
-  margin-top: 56px;
+.run-btn {
 
   width: 100%;
 
-  max-width: 720px;
+  padding: 14px;
 
-  padding: 18px 20px 32px;
+  margin-top: 20px;
 
-  border-radius: 18px 18px 0 0;
+  background: white;
 
-  background: radial-gradient(circle at top, #252525, #050505);
-
-  box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.9);
-
-  position: relative;
-
-}
-
-
-
-.menu-close {
-
-  position: absolute;
-
-  top: 10px;
-
-  right: 16px;
-
-  width: 32px;
-
-  height: 32px;
-
-  border-radius: 999px;
+  color: black;
 
   border: none;
 
-  background: rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
 
-  color: #fff;
+  font-size: 17px;
 
-  font-size: 1.4rem;
+  font-weight: bold;
 
   cursor: pointer;
 
@@ -584,76 +232,20 @@ body.no-scroll {
 
 
 
-.menu-nav {
+.output-box {
 
-  margin-top: 22px;
+  margin-top: 25px;
 
-  max-height: calc(100vh - 120px);
+  background: #111;
 
-  overflow-y: auto;
+  padding: 20px;
 
-}
+  border-radius: 8px;
 
+  font-size: 15px;
 
+  min-height: 50px;
 
-.menu-nav h2 {
-
-  font-size: 1.08rem;
-
-  margin: 12px 0 6px;
-
-}
-
-
-
-.menu-nav p {
-
-  font-size: 0.94rem;
-
-  line-height: 1.6;
-
-  color: rgba(230, 230, 230, 0.9);
-
-}
-
-
-
-/* ===== شاشات أكبر قليلاً ===== */
-
-
-
-@media (min-width: 768px) {
-
-  .main {
-
-    padding-top: 32px;
-
-  }
-
-
-
-  .lens-section {
-
-    margin-top: 20px;
-
-  }
-
-
-
-  .lens-wrapper {
-
-    width: 320px;
-
-    height: 320px;
-
-  }
-
-
-
-  .cta-section {
-
-    margin-top: 30px;
-
-  }
+  color: #ccc;
 
 }
