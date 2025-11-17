@@ -32,11 +32,11 @@
 
       <nav class="nav">
 
-        <a href="#how">How it works</a>
+        <a href="#panel-how">How it works</a>
 
-        <a href="#use-cases">Use cases</a>
+        <a href="#panel-use-cases">What it can help with</a>
 
-        <a href="#demo">Live demo</a>
+        <a href="#panel-policy">Safety & policy</a>
 
       </nav>
 
@@ -44,7 +44,7 @@
 
 
 
-    <!-- Hero Section -->
+    <!-- Hero Section – فقط العدسة + عنوان + 3 أزرار -->
 
     <main class="hero">
 
@@ -54,23 +54,43 @@
 
         <p class="hero-subtitle">
 
-          Upload a photo, describe the issue, and let FixLens give you a clear,
+          FixLens looks at your photo, listens to your description, and gives a clear explanation
 
-          human-friendly diagnosis for cars, home appliances, and everyday issues.
+          of what might be wrong — before you call a professional.
 
         </p>
 
-        <div class="hero-actions">
 
-          <a href="#demo" class="btn primary-btn">Try FixLens demo</a>
 
-          <a href="#how" class="btn ghost-btn">See how it works</a>
+        <!-- ثلاث أزرار فقط في الواجهة -->
+
+        <div class="hero-actions hero-actions-stack">
+
+          <button class="btn primary-btn" type="button" data-panel="panel-how">
+
+            How FixLens works
+
+          </button>
+
+          <button class="btn ghost-btn" type="button" data-panel="panel-use-cases">
+
+            What FixLens can help with
+
+          </button>
+
+          <button class="btn ghost-btn" type="button" data-panel="panel-policy">
+
+            Safety & legal policy
+
+          </button>
 
         </div>
 
+
+
         <p class="hero-note">
 
-          Built for mechanics, homeowners, and everyday people who just want straight answers.
+          FixLens gives guidance and explanations only. You stay in control of what to do next.
 
         </p>
 
@@ -84,7 +104,7 @@
 
         <div class="lens-wrapper">
 
-          <!-- Outer ring (border only, rotates one way) -->
+          <!-- Outer ring (now thicker, like pro lenses) -->
 
           <div class="lens-outer-ring"></div>
 
@@ -198,9 +218,13 @@
 
 
 
+    <!-- PANELS (تظهر فقط عند الضغط على الأزرار أو من الـmenu) -->
+
+
+
     <!-- How it works -->
 
-    <section id="how" class="section">
+    <section id="panel-how" class="section info-panel is-hidden">
 
       <h2>How FixLens works</h2>
 
@@ -210,7 +234,13 @@
 
           <h3>1. Capture</h3>
 
-          <p>Take a clear photo of the problem—car engine, strange leak, broken device, anything.</p>
+          <p>
+
+            Take a clear photo or short video of the problem—car engine, strange leak,
+
+            broken device, anything in the real world.
+
+          </p>
 
         </div>
 
@@ -218,7 +248,13 @@
 
           <h3>2. Describe</h3>
 
-          <p>Add a short description or voice note about what you see, hear, or smell.</p>
+          <p>
+
+            Add a short description or voice note about what you see, hear, or smell.
+
+            The more detail you share, the smarter the diagnosis.
+
+          </p>
 
         </div>
 
@@ -226,7 +262,13 @@
 
           <h3>3. Understand</h3>
 
-          <p>FixLens combines vision + language AI to give you a clear, step-by-step explanation.</p>
+          <p>
+
+            FixLens combines vision + language AI to give you a clear, human-friendly
+
+            explanation and possible next steps.
+
+          </p>
 
         </div>
 
@@ -236,11 +278,11 @@
 
 
 
-    <!-- Use cases -->
+    <!-- Use cases & demo -->
 
-    <section id="use-cases" class="section">
+    <section id="panel-use-cases" class="section info-panel is-hidden">
 
-      <h2>Use cases</h2>
+      <h2>What FixLens can help with</h2>
 
       <div class="three-cols">
 
@@ -248,7 +290,13 @@
 
           <h3>Car diagnostics</h3>
 
-          <p>From engine lights to strange noises — get a first opinion before you go to the shop.</p>
+          <p>
+
+            From warning lights to strange noises — get a first explanation before you go to
+
+            the shop, so you know what to ask.
+
+          </p>
 
         </div>
 
@@ -256,7 +304,13 @@
 
           <h3>Home & utilities</h3>
 
-          <p>Water leaks, boiler issues, strange stains, or damaged parts — see what’s really going on.</p>
+          <p>
+
+            Water leaks, boiler issues, stains, broken parts, or suspicious damage —
+
+            see what might be going on behind the scenes.
+
+          </p>
 
         </div>
 
@@ -264,9 +318,37 @@
 
           <h3>Workshop & tools</h3>
 
-          <p>Identify worn parts, incorrect setups, or dangerous conditions in your tools and machines.</p>
+          <p>
+
+            Identify worn parts, wrong setups, and dangerous conditions around your
+
+            tools and machines.
+
+          </p>
 
         </div>
+
+      </div>
+
+
+
+      <div class="demo-block">
+
+        <h3>Live demo (coming soon)</h3>
+
+        <p class="demo-text">
+
+          Soon you’ll be able to upload a photo, add your voice, and watch FixLens build
+
+          a real diagnosis in front of you. This is the brain of real-world problem solving.
+
+        </p>
+
+        <button class="btn primary-btn" type="button">
+
+          Notify me at launch
+
+        </button>
 
       </div>
 
@@ -274,21 +356,65 @@
 
 
 
-    <!-- Demo placeholder -->
+    <!-- Safety & policy -->
 
-    <section id="demo" class="section demo-section">
+    <section id="panel-policy" class="section info-panel is-hidden">
 
-      <h2>Live demo (coming soon)</h2>
+      <h2>Safety & legal policy</h2>
 
-      <p class="demo-text">
+      <div class="card card-policy">
 
-        Soon you’ll be able to upload a photo, add your voice, and watch FixLens build a real diagnosis
+        <p>
 
-        in front of you. This is the brain of real-world problem solving.
+          <strong>FixLens does not repair or replace anything.</strong>
 
-      </p>
+          It provides information only — like a smart “second opinion” based on your photo
 
-      <button class="btn primary-btn" type="button">Notify me at launch</button>
+          and description.
+
+        </p>
+
+        <p>
+
+          FixLens can:
+
+        </p>
+
+        <ul>
+
+          <li>Help you understand what might be wrong.</li>
+
+          <li>Suggest what to check or ask a professional about.</li>
+
+          <li>Explain risks in simple, human language.</li>
+
+        </ul>
+
+        <p>
+
+          FixLens cannot:
+
+        </p>
+
+        <ul>
+
+          <li>Guarantee that the diagnosis is 100% correct in every case.</li>
+
+          <li>Replace certified mechanics, electricians, plumbers, or any licensed expert.</li>
+
+          <li>Take responsibility for any damage caused by ignoring professional advice.</li>
+
+        </ul>
+
+        <p class="policy-note">
+
+          Important: Always use FixLens as guidance only. If something is dangerous, expensive,
+
+          or safety-critical, talk to a qualified professional before taking action.
+
+        </p>
+
+      </div>
 
     </section>
 
@@ -303,6 +429,74 @@
     </footer>
 
   </div>
+
+
+
+  <!-- Script بسيط لفتح البانلز عند الضغط على الأزرار أو الـmenu -->
+
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+      const triggers = document.querySelectorAll('[data-panel], .nav a[href^="#panel-"]');
+
+      const panels = document.querySelectorAll('.info-panel');
+
+
+
+      function openPanel(id) {
+
+        panels.forEach(panel => {
+
+          if (panel.id === id) {
+
+            panel.classList.remove('is-hidden');
+
+          } else {
+
+            panel.classList.add('is-hidden');
+
+          }
+
+        });
+
+        const target = document.getElementById(id);
+
+        if (target) {
+
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        }
+
+      }
+
+
+
+      triggers.forEach(el => {
+
+        el.addEventListener('click', (e) => {
+
+          e.preventDefault();
+
+          const href = el.getAttribute('href');
+
+          const fromData = el.getAttribute('data-panel');
+
+          const id = fromData || (href ? href.replace('#', '') : null);
+
+          if (id) {
+
+            openPanel(id);
+
+          }
+
+        });
+
+      });
+
+    });
+
+  </script>
 
 </body>
 
