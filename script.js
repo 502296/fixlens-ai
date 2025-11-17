@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========
 
-     1) Panels from header menu (both pages)
+     1) Panels from header menu (How it works, etc.)
 
      ========= */
 
@@ -50,8 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     link.addEventListener("click", (e) => {
 
-      // لو الرابط Home لا نفتح بانل
-
       const href = link.getAttribute("href") || "";
 
       if (!href.startsWith("#panel-")) return;
@@ -72,47 +70,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========
 
-     2) Hero buttons on index.html → go to diagnosis.html
+     2) Hero buttons → فتح مربع التشخيص في نفس الصفحة
 
      ========= */
 
-  const modeButtons = document.querySelectorAll("[data-go-mode]");
+  const previewSection = document.getElementById("preview-section");
 
-  modeButtons.forEach((btn) => {
-
-    btn.addEventListener("click", () => {
-
-      const mode = btn.getAttribute("data-go-mode") || "photo";
-
-      window.location.href = `diagnosis.html?mode=${encodeURIComponent(mode)}`;
-
-    });
-
-  });
-
-
-
-  /* =========
-
-     3) Diagnosis page: upload + text + voice + send to /api/brain
-
-     ========= */
-
-  const demoCard = document.querySelector(".demo-card");
-
-  if (!demoCard) {
-
-    // لسنا في diagnosis.html، نخرج.
-
-    return;
-
-  }
-
-
-
-  const urlParams = new URLSearchParams(window.location.search);
-
-  const initialMode = urlParams.get("mode") || "photo";
+  const modeButtons = document.querySelectorAll("[data-mode]");
 
 
 
@@ -150,9 +114,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  highlightMode(initialMode);
+  modeButtons.forEach((btn) => {
+
+    btn.addEventListener("click", () => {
+
+      const mode = btn.getAttribute("data-mode") || "photo";
+
+      if (previewSection) {
+
+        previewSection.classList.remove("is-hidden");
+
+        highlightMode(mode);
+
+        previewSection.scrollIntoView({ behavior: "smooth", block: "start" });
+
+      }
+
+    });
+
+  });
 
 
+
+  /* =========
+
+     3) Diagnosis logic (image + text + voice → /api/brain)
+
+     ========= */
 
   const imageInput = document.getElementById("image-input");
 
@@ -325,8 +313,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-
-        // 👇 هنا نستخدم /api/brain (موجود عندك في فولدر api)
 
         const response = await fetch("/api/brain", {
 
