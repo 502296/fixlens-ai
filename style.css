@@ -6,46 +6,6 @@
 
 
 
-:root {
-
-  --bg: #000000;
-
-  --bg-card: #101010;
-
-  --bg-card-soft: #141414;
-
-  --text-main: #f5f5f5;
-
-  --text-muted: #a0a0a0;
-
-  --accent: #ffffff;
-
-  --accent-soft: #dcdcdc;
-
-  --border-soft: #2b2b2b;
-
-  --pill-bg: #151515;
-
-  --pill-border: #333333;
-
-  --shadow-soft: 0 0 1px #222, 0 18px 45px rgba(0, 0, 0, 0.9);
-
-  --transition-fast: 140ms ease-out;
-
-  --radius-card: 32px;
-
-  --radius-pill: 999px;
-
-  --max-width: 960px;
-
-}
-
-
-
-/* Reset-ish */
-
-
-
 *,
 
 *::before,
@@ -54,6 +14,10 @@
 
   box-sizing: border-box;
 
+  margin: 0;
+
+  padding: 0;
+
 }
 
 
@@ -61,10 +25,6 @@
 html,
 
 body {
-
-  margin: 0;
-
-  padding: 0;
 
   height: 100%;
 
@@ -78,27 +38,15 @@ body {
 
     "Segoe UI", sans-serif;
 
-  background: radial-gradient(circle at top, #141414 0, #000 55%, #000 100%);
+  background: #050505;
 
-  color: var(--text-main);
+  color: #f5f5f5;
+
+  line-height: 1.6;
 
   -webkit-font-smoothing: antialiased;
 
 }
-
-
-
-img {
-
-  max-width: 100%;
-
-  display: block;
-
-}
-
-
-
-/* Layout wrapper */
 
 
 
@@ -116,7 +64,7 @@ img {
 
 /* =========================
 
-   Header
+   Header / Nav
 
    ========================= */
 
@@ -124,9 +72,11 @@ img {
 
 .header {
 
-  max-width: var(--max-width);
+  position: sticky;
 
-  margin: 0 auto;
+  top: 0;
+
+  z-index: 50;
 
   padding: 18px 18px 10px;
 
@@ -135,6 +85,8 @@ img {
   align-items: center;
 
   justify-content: space-between;
+
+  background: radial-gradient(circle at top, #101010 0%, #050505 55%, #020202 100%);
 
 }
 
@@ -158,11 +110,13 @@ img {
 
   height: 26px;
 
-  border-radius: 50%;
+  border-radius: 999px;
 
-  border: 2px solid #ffffff;
+  border: 2px solid #f5f5f5;
 
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.75),
+
+    0 0 40px rgba(255, 255, 255, 0.25);
 
 }
 
@@ -170,33 +124,33 @@ img {
 
 .logo-text {
 
-  letter-spacing: 0.18em;
-
-  font-size: 0.9rem;
+  letter-spacing: 0.28em;
 
   text-transform: uppercase;
 
-  color: var(--accent-soft);
+  font-size: 0.85rem;
+
+  color: #f5f5f5;
 
 }
 
 
 
-/* hamburger menu */
+/* Menu button (three lines) */
 
 
 
 .menu-toggle {
 
-  width: 44px;
+  width: 42px;
 
-  height: 44px;
+  height: 42px;
 
   border-radius: 999px;
 
-  border: 1px solid #2c2c2c;
+  border: 1px solid #555;
 
-  background: radial-gradient(circle at top, #1c1c1c 0, #0c0c0c 60%);
+  background: radial-gradient(circle at 25% 0%, #333 0%, #111 60%, #050505 100%);
 
   display: inline-flex;
 
@@ -204,85 +158,37 @@ img {
 
   justify-content: center;
 
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.85);
+
   cursor: pointer;
 
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.7);
+}
 
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
 
-    background var(--transition-fast), border-color var(--transition-fast);
+
+.menu-lines {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
 
 }
 
 
 
-.menu-toggle:hover {
+.menu-lines span {
 
-  transform: translateY(-1px);
+  display: block;
 
-  border-color: #444;
-
-  background: radial-gradient(circle at top, #222 0, #0f0f0f 60%);
-
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.9);
-
-}
-
-
-
-.menu-toggle-lines {
-
-  width: 20px;
-
-  height: 12px;
-
-  position: relative;
-
-}
-
-
-
-.menu-toggle-lines::before,
-
-.menu-toggle-lines::after,
-
-.menu-toggle-lines span {
-
-  content: "";
-
-  position: absolute;
-
-  left: 0;
-
-  right: 0;
+  width: 18px;
 
   height: 2px;
 
-  border-radius: 10px;
+  border-radius: 999px;
 
-  background: var(--accent-soft);
-
-}
-
-
-
-.menu-toggle-lines::before {
-
-  top: 0;
-
-}
-
-.menu-toggle-lines::after {
-
-  bottom: 0;
-
-}
-
-.menu-toggle-lines span {
-
-  top: 50%;
-
-  transform: translateY(-50%);
+  background: #f5f5f5;
 
 }
 
@@ -290,21 +196,29 @@ img {
 
 /* =========================
 
-   Main hero card
+   Hero + Lens Card
 
    ========================= */
 
 
 
-main.main {
+.main {
 
-  flex: 1;
+  flex: 1 0 auto;
+
+}
+
+
+
+.hero {
+
+  padding: 18px 16px 36px;
 
   display: flex;
 
   flex-direction: column;
 
-  align-items: stretch;
+  align-items: center;
 
 }
 
@@ -312,25 +226,35 @@ main.main {
 
 .lens-card {
 
-  max-width: var(--max-width);
+  width: 100%;
 
-  margin: 6px auto 32px;
+  max-width: 430px;
 
-  padding: 28px 22px 26px;
+  margin: 0 auto;
 
-  border-radius: var(--radius-card);
+  padding: 26px 22px 24px;
 
-  background: radial-gradient(circle at top, #1a1a1a 0, #050505 65%, #000 100%);
+  border-radius: 26px;
 
-  box-shadow: var(--shadow-soft);
+  background: radial-gradient(circle at top, #141414 0%, #050505 65%);
 
-  border: 1px solid rgba(255, 255, 255, 0.02);
+  box-shadow:
+
+    0 0 0 1px rgba(255, 255, 255, 0.02),
+
+    0 20px 45px rgba(0, 0, 0, 0.9);
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
 
 }
 
 
 
-/* ----- Lens block ----- */
+/* ---- Lens ---- */
 
 
 
@@ -348,15 +272,17 @@ main.main {
 
   justify-content: center;
 
-  margin: 4px auto 18px;
-
-  background: radial-gradient(circle at top, #2b2b2b 0, #050505 70%);
-
-  box-shadow: 0 0 1px #222, 0 16px 40px rgba(0, 0, 0, 0.9);
+  margin-bottom: 18px;
 
   position: relative;
 
-  overflow: hidden;
+  background: radial-gradient(circle at top, #2b2b2b 0%, #050505 70%);
+
+  box-shadow:
+
+    0 0 0 1px #222,
+
+    0 18px 45px rgba(0, 0, 0, 0.9);
 
 }
 
@@ -364,23 +290,19 @@ main.main {
 
 .lens-image {
 
-  width: 90%;
+  display: block;
+
+  max-width: 100%;
 
   height: auto;
 
   border-radius: 50%;
 
-  pointer-events: none;
-
-  animation: lens-spin 26s linear infinite;
-
 }
 
 
 
-/* soft inner light */
-
-
+/* Soft inner light to soften / hide the dark vortex */
 
 .lens-wrapper::after {
 
@@ -388,7 +310,7 @@ main.main {
 
   position: absolute;
 
-  width: 34%;
+  width: 60%;
 
   aspect-ratio: 1 / 1;
 
@@ -400,17 +322,17 @@ main.main {
 
     circle at 50% 45%,
 
-    rgba(255, 255, 255, 0.72) 0%,
+    rgba(255, 255, 255, 0.92) 0%,
 
-    rgba(230, 230, 230, 0.6) 20%,
+    rgba(232, 232, 232, 0.8) 22%,
 
-    rgba(45, 45, 45, 0.92) 60%,
+    rgba(60, 60, 60, 0.9) 60%,
 
     rgba(0, 0, 0, 1) 100%
 
   );
 
-  opacity: 0.9;
+  opacity: 0.83;
 
   mix-blend-mode: screen;
 
@@ -418,75 +340,63 @@ main.main {
 
 
 
-/* slow rotation for the whole lens */
-
-@keyframes lens-spin {
-
-  0% {
-
-    transform: rotate(0deg);
-
-  }
-
-  100% {
-
-    transform: rotate(360deg);
-
-  }
-
-}
+/* Lens caption */
 
 
 
-/* ----- Hero text ----- */
+.lens-caption {
 
+  font-size: 0.8rem;
 
-
-.hero-subtitle-centered {
-
-  text-align: center;
-
-  font-size: 0.78rem;
-
-  letter-spacing: 0.18em;
+  letter-spacing: 0.12em;
 
   text-transform: uppercase;
 
-  color: var(--text-muted);
+  color: #c7c7c7;
 
-  margin-bottom: 12px;
+  text-align: center;
+
+  margin-bottom: 14px;
 
 }
+
+
+
+/* Hero heading + body */
 
 
 
 .hero-title {
 
+  font-size: 1.7rem;
+
+  font-weight: 750;
+
   text-align: center;
 
-  font-size: 1.9rem;
-
-  font-weight: 700;
-
-  margin: 0 0 10px;
+  margin-bottom: 10px;
 
 }
 
 
 
-.hero-lead {
+.hero-title span {
+
+  display: block;
+
+}
+
+
+
+.hero-body {
+
+  font-size: 0.95rem;
+
+  color: #e1e1e1;
 
   text-align: center;
 
-  font-size: 0.92rem;
-
-  line-height: 1.5;
-
-  color: var(--text-muted);
-
-  max-width: 520px;
-
-  margin: 0 auto 22px;
+  max-width: 360px;
 
 }
 
@@ -494,7 +404,7 @@ main.main {
 
 /* =========================
 
-   Chat input strip
+   Chat bar + Quick mode
 
    ========================= */
 
@@ -502,15 +412,17 @@ main.main {
 
 .chat-shell {
 
-  max-width: 640px;
+  width: 100%;
 
-  margin: 0 auto;
+  margin-top: 22px;
 
 }
 
 
 
-.chat-input-row {
+.chat-bar {
+
+  width: 100%;
 
   display: flex;
 
@@ -518,57 +430,45 @@ main.main {
 
   gap: 10px;
 
-  padding: 6px 8px 6px 12px;
+  border-radius: 999px;
 
-  border-radius: var(--radius-pill);
+  padding: 9px 12px;
 
-  background: var(--pill-bg);
+  border: 1px solid #444;
 
-  border: 1px solid var(--pill-border);
+  background: #050505;
 
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.85);
+  box-shadow:
 
-}
+    0 0 0 1px rgba(255, 255, 255, 0.02),
 
-
-
-.chat-input-row:focus-within {
-
-  border-color: #4a4a4a;
+    0 14px 38px rgba(0, 0, 0, 0.95);
 
 }
 
 
 
-/* left camera icon */
+.chat-icon-button {
 
+  width: 30px;
 
-
-.chat-icon-left {
-
-  width: 32px;
-
-  height: 32px;
+  height: 30px;
 
   border-radius: 999px;
 
-  border: 1px solid #3a3a3a;
+  background: #111;
 
-  background: radial-gradient(circle at top, #2a2a2a 0, #101010 70%);
+  border: 1px solid #555;
 
-  display: flex;
+  display: inline-flex;
 
   align-items: center;
 
   justify-content: center;
 
-  font-size: 1.02rem;
+  font-size: 0.9rem;
 
 }
-
-
-
-/* central text field */
 
 
 
@@ -582,11 +482,9 @@ main.main {
 
   background: transparent;
 
-  color: var(--text-main);
+  color: #f5f5f5;
 
-  font-size: 0.94rem;
-
-  padding: 8px 4px;
+  font-size: 0.95rem;
 
 }
 
@@ -594,237 +492,95 @@ main.main {
 
 .chat-input::placeholder {
 
-  color: #767676;
+  color: #8c8c8c;
 
 }
 
 
 
-/* mic + send group (right) */
+.chat-send {
 
+  width: 34px;
 
-
-.chat-actions {
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 6px;
-
-}
-
-
-
-.chat-icon-button {
-
-  width: 32px;
-
-  height: 32px;
-
-  border-radius: 999px;
-
-  border: 1px solid #3a3a3a;
-
-  background: radial-gradient(circle at top, #2d2d2d 0, #111 70%);
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  cursor: pointer;
-
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
-
-    border-color var(--transition-fast), background var(--transition-fast);
-
-}
-
-
-
-.chat-icon-button:hover {
-
-  transform: translateY(-1px);
-
-  border-color: #555;
-
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.85);
-
-}
-
-
-
-/* primary send button */
-
-
-
-.chat-send-button {
-
-  width: 38px;
-
-  height: 38px;
+  height: 34px;
 
   border-radius: 999px;
 
   border: none;
 
-  cursor: pointer;
+  outline: none;
 
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  background: radial-gradient(circle at 30% 0%, #ffffff 0, #999 45%, #444 100%);
-
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.95);
-
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-
-}
-
-
-
-.chat-send-button:hover {
-
-  transform: translateY(-1px);
-
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 1);
-
-}
-
-
-
-/* =========================
-
-   Quick mode pill
-
-   ========================= */
-
-
-
-.quick-mode-row {
-
-  margin-top: 14px;
-
-  display: flex;
-
-  justify-content: center;
-
-}
-
-
-
-.quick-mode-button {
-
-  padding: 11px 18px;
-
-  font-size: 0.9rem;
-
-  border-radius: var(--radius-pill);
-
-  border: 1px solid var(--pill-border);
-
-  background: linear-gradient(135deg, #171717, #0f0f0f);
-
-  color: var(--accent-soft);
+  background: radial-gradient(circle at 30% 0%, #ffffff 0%, #d3d3d3 40%, #969696 100%);
 
   display: inline-flex;
 
   align-items: center;
 
-  gap: 8px;
+  justify-content: center;
+
+  box-shadow:
+
+    0 0 0 1px rgba(255, 255, 255, 0.4),
+
+    0 12px 30px rgba(0, 0, 0, 0.85);
+
+  color: #000;
 
   cursor: pointer;
 
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.9);
+}
 
-  transition: background var(--transition-fast), border-color var(--transition-fast),
 
-    transform var(--transition-fast), box-shadow var(--transition-fast);
+
+/* Quick mode button */
+
+
+
+.quick-mode-button {
+
+  margin-top: 12px;
+
+  width: 100%;
+
+  border-radius: 999px;
+
+  padding: 11px 18px;
+
+  border: 1px solid #555;
+
+  background: #050505;
+
+  color: #f5f5f5;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  font-size: 0.95rem;
+
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.95);
 
 }
 
 
 
-.quick-mode-button:hover {
-
-  background: linear-gradient(135deg, #222, #151515);
-
-  border-color: #4a4a4a;
-
-  transform: translateY(-1px);
-
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 1);
-
-}
+/* Status line */
 
 
 
-/* =========================
+.status-line {
 
-   Info sections (inside menu)
+  margin-top: 10px;
 
-   ========================= */
+  font-size: 0.8rem;
 
+  color: #b5b5b5;
 
-
-.info-section {
-
-  max-width: var(--max-width);
-
-  margin: 0 auto 60px;
-
-  padding: 0 18px 40px;
-
-  line-height: 1.6;
-
-  color: var(--text-muted);
-
-}
-
-
-
-.info-section h2 {
-
-  color: var(--text-main);
-
-  font-size: 1.1rem;
-
-  margin-top: 30px;
-
-  margin-bottom: 8px;
-
-}
-
-
-
-.info-section p {
-
-  margin: 0 0 10px;
-
-}
-
-
-
-/* footer-ish line under chat */
-
-
-
-.diagnosis-status {
-
-  max-width: var(--max-width);
-
-  margin: 12px auto 36px;
-
-  padding: 0 22px;
-
-  font-size: 0.78rem;
-
-  color: var(--text-muted);
+  text-align: left;
 
 }
 
@@ -832,21 +588,99 @@ main.main {
 
 /* =========================
 
-   Responsive
+   Info Sections (How / Help / Safety / About)
 
    ========================= */
 
 
 
-@media (max-width: 700px) {
+.section {
+
+  max-width: 720px;
+
+  margin: 0 auto;
+
+  padding: 36px 20px 10px;
+
+}
+
+
+
+.section h2 {
+
+  font-size: 1.3rem;
+
+  margin-bottom: 10px;
+
+}
+
+
+
+.section p {
+
+  margin-bottom: 12px;
+
+  color: #e3e3e3;
+
+}
+
+
+
+/* =========================
+
+   Footer
+
+   ========================= */
+
+
+
+.footer {
+
+  padding: 26px 18px 30px;
+
+  font-size: 0.8rem;
+
+  color: #a0a0a0;
+
+  text-align: center;
+
+  border-top: 1px solid #1a1a1a;
+
+}
+
+
+
+/* =========================
+
+   Desktop tweaks
+
+   ========================= */
+
+
+
+@media (min-width: 768px) {
+
+  .header {
+
+    padding-inline: 32px;
+
+  }
+
+
+
+  .hero {
+
+    padding-top: 32px;
+
+  }
+
+
 
   .lens-card {
 
-    margin: 4px 12px 26px;
+    max-width: 540px;
 
-    padding: 22px 16px 22px;
-
-    border-radius: 28px;
+    padding: 32px 30px 26px;
 
   }
 
@@ -854,9 +688,9 @@ main.main {
 
   .lens-wrapper {
 
-    width: 230px;
+    width: 320px;
 
-    height: 230px;
+    height: 320px;
 
   }
 
@@ -864,81 +698,7 @@ main.main {
 
   .hero-title {
 
-    font-size: 1.65rem;
-
-  }
-
-
-
-  .hero-lead {
-
-    font-size: 0.88rem;
-
-  }
-
-
-
-  .chat-shell {
-
-    max-width: 100%;
-
-  }
-
-
-
-  .chat-input-row {
-
-    padding-inline: 10px;
-
-  }
-
-
-
-  .info-section {
-
-    padding-inline: 16px;
-
-  }
-
-}
-
-
-
-@media (max-width: 480px) {
-
-  .lens-wrapper {
-
-    width: 210px;
-
-    height: 210px;
-
-  }
-
-
-
-  .chat-input-row {
-
-    gap: 8px;
-
-  }
-
-
-
-  .chat-input {
-
-    font-size: 0.88rem;
-
-  }
-
-
-
-  .quick-mode-button {
-
-    width: 100%;
-
-    justify-content: center;
-
-    text-align: center;
+    font-size: 2rem;
 
   }
 
