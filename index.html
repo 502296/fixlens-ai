@@ -8,99 +8,367 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>FixLens</title>
+  <title>FixLens – Real-world AI diagnosis</title>
 
   <link rel="stylesheet" href="style.css" />
 
 </head>
 
-
-
 <body>
 
-
-
-  <!-- Header -->
-
-  <header class="header">
-
-    <div class="logo-row">
-
-      <div class="logo-dot"></div>
-
-      <span class="logo-text">FIXLENS</span>
-
-    </div>
+  <div class="page">
 
 
 
-    <div class="menu-icon">
+    <!-- ===== Top Bar (logo + menu) ===== -->
 
-      <div></div>
+    <header class="top-bar">
 
-      <div></div>
+      <div class="brand">
 
-      <div></div>
+        <!-- الشعار الجديد الأبيض -->
 
-    </div>
+        <img
 
-  </header>
+          src="images/fixlens-logo-white.png"
 
+          alt="FixLens logo"
 
+          class="brand-logo"
 
-  <!-- Main Lens -->
+        />
 
-  <section class="lens-section">
-
-    <div class="lens-wrapper">
-
-      <img src="images/fixlens-lens-bw.png" class="lens-image" alt="FixLens AI Lens" />
-
-    </div>
-
-  </section>
+      </div>
 
 
 
-  <!-- Chat Bar -->
+      <!-- زر المنيو (ثلاث خطوط) -->
 
-  <section class="chat-bar">
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
 
+        <span></span>
 
+        <span></span>
 
-    <div class="input-row">
+        <span></span>
 
-      <span class="icon-left">📷</span>
+      </button>
 
-      <input
-
-        type="text"
-
-        placeholder="Describe what's going on..."
-
-        class="chat-input"
-
-      />
-
-      <span class="icon-mic">🎤</span>
-
-      <button class="send-btn">➤</button>
-
-    </div>
+    </header>
 
 
 
-    <button class="scan-btn">
+    <!-- ===== Main content ===== -->
 
-      🛠️ Detect pipes, wires & studs behind walls / floors
-
-    </button>
+    <main class="main">
 
 
 
-  </section>
+      <!-- عدسة FixLens -->
+
+      <section class="lens-card">
+
+        <div class="lens-wrapper">
+
+          <img
+
+            src="images/fixlens-lens-bw.png"
+
+            alt="FixLens rotating AI lens"
+
+            class="lens-image"
+
+          />
+
+        </div>
 
 
+
+        <p class="lens-tagline">
+
+          Rotating AI lens that keeps your real-world problems in focus.
+
+        </p>
+
+
+
+        <!-- شريط الشات (كتابة + صورة + مايك + إرسال) -->
+
+        <form class="chat-bar" id="chatForm">
+
+          <button
+
+            type="button"
+
+            class="chat-icon-btn"
+
+            aria-label="Attach photo"
+
+            title="Attach a photo"
+
+          >
+
+            <span class="chat-icon">📷</span>
+
+          </button>
+
+
+
+          <input
+
+            type="text"
+
+            id="chatInput"
+
+            class="chat-input"
+
+            placeholder="Describe what's going on…"
+
+            autocomplete="off"
+
+          />
+
+
+
+          <button
+
+            type="button"
+
+            class="chat-icon-btn"
+
+            aria-label="Record voice"
+
+            title="Record a short voice note"
+
+          >
+
+            <span class="chat-icon">🎙️</span>
+
+          </button>
+
+
+
+          <button
+
+            type="submit"
+
+            class="send-btn"
+
+            aria-label="Send to FixLens"
+
+          >
+
+            ➤
+
+          </button>
+
+        </form>
+
+
+
+        <!-- زر كشف الوايرات و الأنابيب -->
+
+        <button class="mode-button" id="pipesModeBtn">
+
+          <span class="mode-icon">🛠️</span>
+
+          <span class="mode-label">
+
+            Detect pipes, wires & studs behind walls / floors
+
+          </span>
+
+        </button>
+
+
+
+        <p class="status-text" id="statusText">
+
+          Waiting for your input.
+
+        </p>
+
+      </section>
+
+
+
+    </main>
+
+
+
+    <!-- ===== Info panel (يُفتح من المنيو) ===== -->
+
+    <aside class="info-panel" id="infoPanel" aria-hidden="true">
+
+      <div class="info-inner">
+
+        <h2>FixLens</h2>
+
+
+
+        <section class="info-section">
+
+          <h3>How FixLens works</h3>
+
+          <p>
+
+            FixLens combines computer vision, language understanding, and
+
+            physics-aware reasoning to analyze what it sees and what you
+
+            describe, then returns a clear explanation of what might be wrong
+
+            and what to check next.
+
+          </p>
+
+        </section>
+
+
+
+        <section class="info-section">
+
+          <h3>What FixLens can help with</h3>
+
+          <p>
+
+            Engines, household appliances, water leaks, strange noises, wiring
+
+            issues, structural questions, and more. Treat this as intelligent
+
+            guidance — not a replacement for a certified professional.
+
+          </p>
+
+        </section>
+
+
+
+        <section class="info-section">
+
+          <h3>Safety &amp; legal policy</h3>
+
+          <p>
+
+            FixLens gives guidance and explanations only. You stay in control of
+
+            what to do next, and you’re responsible for any decisions or
+
+            repairs you make. When in doubt, stop and call a licensed
+
+            professional.
+
+          </p>
+
+        </section>
+
+
+
+        <section class="info-section">
+
+          <h3>About FixLens</h3>
+
+          <p>
+
+            FixLens is an experimental AI assistant designed to keep real-world
+
+            problems in focus and help you understand what might be happening
+
+            before you spend money on a service call.
+
+          </p>
+
+        </section>
+
+      </div>
+
+    </aside>
+
+
+
+    <!-- خلفية داكنة عند فتح المنيو -->
+
+    <div class="overlay" id="overlay"></div>
+
+  </div>
+
+
+
+  <!-- ===== Minimal JS (menu + رسائل بسيطة فقط للواجهة) ===== -->
+
+  <script>
+
+    const menuToggle = document.getElementById('menuToggle');
+
+    const infoPanel = document.getElementById('infoPanel');
+
+    const overlay = document.getElementById('overlay');
+
+    const chatForm = document.getElementById('chatForm');
+
+    const chatInput = document.getElementById('chatInput');
+
+    const statusText = document.getElementById('statusText');
+
+    const pipesModeBtn = document.getElementById('pipesModeBtn');
+
+
+
+    function toggleMenu() {
+
+      const isOpen = infoPanel.classList.toggle('is-open');
+
+      overlay.classList.toggle('is-visible', isOpen);
+
+      menuToggle.classList.toggle('is-open', isOpen);
+
+      infoPanel.setAttribute('aria-hidden', String(!isOpen));
+
+    }
+
+
+
+    menuToggle.addEventListener('click', toggleMenu);
+
+    overlay.addEventListener('click', toggleMenu);
+
+
+
+    // مجرد واجهة – لا يوجد اتصال حقيقي بالذكاء الاصطناعي هنا
+
+    chatForm.addEventListener('submit', function (e) {
+
+      e.preventDefault();
+
+      const text = chatInput.value.trim();
+
+      if (!text) return;
+
+      statusText.textContent = 'FixLens is thinking about your issue…';
+
+      chatInput.value = '';
+
+      // هنا لاحقاً نربط API
+
+    });
+
+
+
+    pipesModeBtn.addEventListener('click', function () {
+
+      chatInput.value =
+
+        "I'm checking pipes, wires & studs behind a wall / floor. Here's what I'm seeing:";
+
+      chatInput.focus();
+
+      statusText.textContent =
+
+        'Pipes & wires mode selected. Add a photo or describe the wall / floor.';
+
+    });
+
+  </script>
 
 </body>
 
