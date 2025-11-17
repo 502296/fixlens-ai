@@ -1,115 +1,177 @@
-const chatContainer = document.getElementById("chat-container");
-
-const userInput = document.getElementById("user-input");
+// script.js – Frontend logic for FixLens
 
 
 
-// Add message to chat UI
+const API_TEXT = "/api/text-diagnosis";
 
-function addMessage(content, isUser = false) {
-
-  const bubble = document.createElement("div");
-
-  bubble.className = isUser ? "user-bubble" : "ai-bubble";
-
-  bubble.textContent = content;
-
-  chatContainer.appendChild(bubble);
+const API_PHOTO = "/api/photo-diagnosis";
 
 
 
-  // Scroll to bottom
+document.addEventListener("DOMContentLoaded", () => {
 
-  chatContainer.scrollTop = chatContainer.scrollHeight;
+  const btnText = document.getElementById("btn-text");
 
-}
+  const btnPhoto = document.getElementById("btn-photo");
 
+  const btnSpeak = document.getElementById("btn-speak");
 
+  const photoInput = document.getElementById("photo-input");
 
-// Loader (animated)
+  const resultPanel = document.getElementById("result-panel");
 
-function showLoader() {
-
-  const loader = document.createElement("div");
-
-  loader.className = "ai-bubble";
-
-  loader.id = "loader";
-
-  loader.textContent = "Analyzing your photo and description...";
-
-  chatContainer.appendChild(loader);
-
-}
+  const resultContent = document.getElementById("result-content");
 
 
 
-function hideLoader() {
+  function showResult(text) {
 
-  const loader = document.getElementById("loader");
+    if (!resultPanel || !resultContent) return;
 
-  if (loader) loader.remove();
+    resultPanel.style.display = "block";
 
-}
+    resultContent.textContent = text;
 
-
-
-// Send message to backend API
-
-async function sendMessage() {
-
-  const text = userInput.value.trim();
-
-  if (!text) return;
+  }
 
 
 
-  addMessage(text, true); // user bubble
+  async function callApi(url, payload) {
 
-  userInput.value = ""; // clear input
+    showResult("Thinking… analyzing your problem with FixLens AI.");
+
+    try {
+
+      const res = await fetch(url, {
+
+        method: "POST",
+
+        headers: {
+
+          "Content-Type": "application/json",
+
+        },
+
+        body: JSON.stringify(payload),
+
+      });
 
 
 
-  showLoader();
+      if (!res.ok) {
+
+        const errorBody = await res.text();
+
+        console.error("API error:", errorBody);
+
+        showResult("Something went wrong. Please try again in a moment.");
+
+        return;
+
+      }
 
 
 
-  try {
+      const data = await res.json();
 
-    const response = await fetch("/api/fixlens", {
+      if (data && data.answer) {
 
-      method: "POST",
+        showResult(data.answer);
 
-      headers: { "Content-Type": "application/json" },
+      } else {
 
-      body: JSON.stringify({ description: text })
+        showResult("No answer returned from FixLens AI.");
+
+      }
+
+    } catch (err) {
+
+      console.error(err);
+
+      showResult("Network error. Please check your connection and try again.");
+
+    }
+
+  }
+
+
+
+  // 1) Describe with text
+
+  if (btnText) {
+
+    btnText.addEventListener("click", () => {
+
+      const description = window.prompt(
+
+        "Describe the problem in your own words:"
+
+      );
+
+      if (!description || !description.trim()) return;
+
+      callApi(API_TEXT, { description: description.trim() });
+
+    });
+
+  }
+
+
+
+  // 2) Upload a photo
+
+  if (btnPhoto && photoInput) {
+
+    btnPhoto.addEventListener("click", () => {
+
+      photoInput.click();
 
     });
 
 
 
-    const data = await response.json();
+    photoInput.addEventListener("change", () => {
 
-    hideLoader();
+      const file = photoInput.files && photoInput.files[0];
+
+      if (!file) return;
 
 
 
-    if (data.reply) {
+      const reader = new FileReader();
 
-      addMessage(data.reply, false);
+      reader.onloadend = () => {
 
-    } else {
+        const dataUrl = reader.result;
 
-      addMessage("Something went wrong. Try again.", false);
+        if (!dataUrl) return;
 
-    }
 
-  } catch (error) {
 
-    hideLoader();
+        // نرسل الـ Data URL مباشرة للـ API
 
-    addMessage("Server error. Please try again later.", false);
+        callApi(API_PHOTO, { image: dataUrl });
+
+      };
+
+      reader.readAsDataURL(file);
+
+    });
 
   }
 
-}
+
+
+  // 3) Speak – نتركها "قريبًا"
+
+  if (btnSpeak) {
+
+    btnSpeak.addEventListener("click", () => {
+
+      alert("Voice mode is coming soon to FixLens 🔊");
+
+    });
+
+  }
+
+});
