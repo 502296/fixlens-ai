@@ -1,82 +1,38 @@
-/* =========================
+/* ------------------------------------------------------
 
-   FixLens – Global Styles
+   GLOBAL
 
-   ========================= */
+-------------------------------------------------------*/
+
+:root {
+
+  --bg: #070b14;
+
+  --card: #0c1220;
+
+  --text: #dbe1ff;
+
+  --text-dim: #8f9bb8;
+
+  --accent: #7354ff;
+
+  --accent2: #9a63ff;
+
+  --border: rgba(255,255,255,0.1);
+
+  --ring: #b8c2d6;
+
+}
 
 
 
-/* Reset بسيط */
-
-*,
-
-*::before,
-
-*::after {
-
-  box-sizing: border-box;
+* {
 
   margin: 0;
 
   padding: 0;
 
-}
-
-
-
-:root {
-
-  --bg: #020617;
-
-  --bg-card: #020617;
-
-  --bg-soft: #02061a;
-
-  --accent: #4f46e5;
-
-  --accent-soft: #6366f1;
-
-  --accent-strong: #a855f7;
-
-  --text: #e5e7eb;
-
-  --muted: #9ca3af;
-
-  --border: rgba(148, 163, 184, 0.35);
-
-  --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.85);
-
-  --radius-xl: 28px;
-
-  --radius-lg: 20px;
-
-  --radius-pill: 999px;
-
-  --lens-rotation-duration: 18s;
-
-}
-
-
-
-html,
-
-body {
-
-  height: 100%;
-
-}
-
-
-
-body {
-
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-
-    "Segoe UI", sans-serif;
-
-  background: radial-gradient(circle at top, #020617 0, #000 55%, #020617 100%);
-
-  color: var(--text);
+  box-sizing: border-box;
 
   -webkit-font-smoothing: antialiased;
 
@@ -84,31 +40,39 @@ body {
 
 
 
-.page {
+body {
 
-  min-height: 100vh;
+  background: var(--bg);
 
-  max-width: 960px;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif;
 
-  margin: 0 auto;
+  color: var(--text);
 
-  padding: 24px 16px 40px;
-
-  display: flex;
-
-  flex-direction: column;
+  overflow-x: hidden;
 
 }
 
 
 
-/* =========================
+.page {
 
-   Header
+  width: 100%;
 
-   ========================= */
+  max-width: 880px;
+
+  margin: 0 auto;
+
+  padding: 28px 20px 120px;
+
+}
 
 
+
+/* ------------------------------------------------------
+
+   HEADER
+
+-------------------------------------------------------*/
 
 .header {
 
@@ -118,7 +82,7 @@ body {
 
   justify-content: space-between;
 
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 
 }
 
@@ -138,21 +102,19 @@ body {
 
 .logo-mark {
 
-  width: 30px;
+  width: 28px;
 
-  height: 30px;
+  height: 28px;
 
-  border-radius: 999px;
+  border-radius: 50%;
 
-  background: radial-gradient(circle at 25% 20%, #4f46e5, #020617 70%);
+  background: radial-gradient(circle at center, #7f8cff, #3c436a 60%, #1a1f33);
 
   display: flex;
 
   align-items: center;
 
   justify-content: center;
-
-  box-shadow: 0 0 18px rgba(79, 70, 229, 0.7);
 
 }
 
@@ -164,9 +126,9 @@ body {
 
   height: 12px;
 
-  border-radius: 999px;
+  background: radial-gradient(circle, white, #b4c0ff 70%, #8393ff);
 
-  background: radial-gradient(circle at 30% 20%, #ffffff, #6366f1);
+  border-radius: 50%;
 
 }
 
@@ -174,321 +136,45 @@ body {
 
 .logo-text {
 
-  font-size: 13px;
+  font-size: 20px;
 
-  text-transform: uppercase;
+  font-weight: 600;
 
-  letter-spacing: 0.12em;
+  letter-spacing: 1px;
+
+  color: var(--text);
 
 }
-
-
-
-/* زر Menu */
 
 
 
 .menu-btn {
 
-  border-radius: var(--radius-pill);
+  padding: 8px 16px;
 
-  border: 1px solid rgba(148, 163, 184, 0.45);
+  background: rgba(255,255,255,0.06);
 
-  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid var(--border);
 
-  color: var(--muted);
-
-  font-size: 13px;
-
-  padding: 7px 14px;
-
-  cursor: pointer;
-
-  transition: background 0.12s ease-out, color 0.12s ease-out,
-
-    transform 0.1s ease-out, box-shadow 0.1s ease-out;
-
-}
-
-
-
-.menu-btn:hover {
-
-  background: rgba(15, 23, 42, 1);
+  border-radius: 12px;
 
   color: var(--text);
 
-  transform: translateY(-1px);
-
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.8);
+  font-size: 16px;
 
 }
 
 
 
-/* =========================
+/* ------------------------------------------------------
 
-   Hero
+   HERO
 
-   ========================= */
-
-
+-------------------------------------------------------*/
 
 .hero {
 
-  flex: 1;
-
-  display: flex;
-
-  align-items: center;
-
-}
-
-
-
-.hero-main {
-
   width: 100%;
-
-  padding: 26px 22px 24px;
-
-  border-radius: var(--radius-xl);
-
-  border: 1px solid rgba(148, 163, 184, 0.28);
-
-  background: radial-gradient(circle at top left, #020617, #02041a 60%, #000);
-
-  box-shadow: var(--shadow-soft);
-
-}
-
-
-
-/* ---------------------------
-
-   FixLens – Hero Lens (metallic)
-
-   عدسة معدنية أقرب للواقع
-
-----------------------------*/
-
-
-
-.hero-lens-wrap {
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  margin-bottom: 20px;
-
-}
-
-
-
-/* العدسة الأساسية */
-
-.hero-lens {
-
-  position: relative;
-
-  width: 190px;
-
-  height: 190px;
-
-  border-radius: 50%;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  overflow: hidden;
-
-
-
-  /* خلفية داكنة عميقة */
-
-  background: radial-gradient(circle at 30% 30%, #020617 0, #020617 32%, #000 78%);
-
-  box-shadow:
-
-    0 26px 60px rgba(0, 0, 0, 0.96),
-
-    0 0 42px rgba(15, 23, 42, 1),
-
-    0 0 34px rgba(79, 70, 229, 0.6);
-
-}
-
-
-
-/* الحلقة المعدنية الخارجية (مثل حلقة العدسة الحقيقية) */
-
-.hero-lens::before {
-
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  border-radius: inherit;
-
-  background:
-
-    conic-gradient(
-
-      from 135deg,
-
-      #020617,
-
-      #111827,
-
-      #4b5563,
-
-      #9ca3af,
-
-      #4b5563,
-
-      #020617
-
-    );
-
-  box-shadow:
-
-    0 0 0 2px #020617,
-
-    0 0 0 4px rgba(75, 85, 99, 0.9),
-
-    0 0 28px rgba(15, 23, 42, 0.96);
-
-}
-
-
-
-/* الحلقة الأقرب للزجاج (bezel الداخلي) */
-
-.hero-lens::after {
-
-  content: "";
-
-  position: absolute;
-
-  inset: 16px;
-
-  border-radius: inherit;
-
-  background:
-
-    radial-gradient(circle at 35% 30%,
-
-      #020617 0,
-
-      #020617 30%,
-
-      #111827 60%,
-
-      #000000 100%);
-
-  box-shadow:
-
-    inset 0 0 18px rgba(0, 0, 0, 0.95),
-
-    0 0 20px rgba(15, 23, 42, 0.9);
-
-}
-
-
-
-/* الزجاج في الوسط */
-
-.hero-lens-core {
-
-  position: relative;
-
-  z-index: 3;
-
-  width: 58%;
-
-  height: 58%;
-
-  border-radius: 50%;
-
-  background:
-
-    radial-gradient(circle at 30% 22%,
-
-      #ffffff 0,
-
-      #dbeafe 22%,
-
-      #818cf8 45%,
-
-      #111827 75%,
-
-      #020617 100%);
-
-  box-shadow:
-
-    0 0 30px rgba(129, 140, 248, 0.96),
-
-    inset 0 0 24px rgba(15, 23, 42, 0.96);
-
-}
-
-
-
-/* الحلقة اللي فيها الكتابة تدور حول العدسة */
-
-.hero-lens-ring {
-
-  position: absolute;
-
-  inset: 6px;
-
-  z-index: 2;
-
-  transform-origin: 50% 50%;
-
-  animation: fixlens-spin var(--lens-rotation-duration) linear infinite;
-
-}
-
-
-
-/* نص FIXLENS – ANALYZE – … حول العدسة */
-
-.hero-lens-text {
-
-  fill: rgba(229, 231, 235, 0.96);
-
-  font-size: 7px;
-
-  letter-spacing: 0.22em;
-
-  text-transform: uppercase;
-
-}
-
-
-
-/* عنوان FIXLENS تحت العدسة */
-
-.hero-lens-title {
-
-  margin-top: 10px;
-
-  font-size: 11px;
-
-  letter-spacing: 0.28em;
-
-  text-transform: uppercase;
-
-  color: #9ca3af;
 
   text-align: center;
 
@@ -496,9 +182,181 @@ body {
 
 
 
-/* حجم أكبر قليلاً على الشاشات الكبيرة (لابتوب) */
+.hero-main {
 
-@media (min-width: 900px) {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+}
+
+
+
+
+
+/* ------------------------------------------------------
+
+   LENS
+
+-------------------------------------------------------*/
+
+.hero-lens-wrap {
+
+  margin: 20px auto 34px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+}
+
+
+
+.hero-lens {
+
+  width: 260px;
+
+  height: 260px;
+
+  border-radius: 50%;
+
+  position: relative;
+
+  background: radial-gradient(circle at center,
+
+    #6570ff 0%,
+
+    #303a70 40%,
+
+    #111829 75%,
+
+    #0c101b 95%
+
+  );
+
+  box-shadow:
+
+    0 0 180px rgba(100,120,255,0.25),
+
+    inset 0 0 40px rgba(255,255,255,0.08);
+
+}
+
+
+
+/* Metal ring */
+
+.hero-lens::before {
+
+  content: "";
+
+  position: absolute;
+
+  inset: -22px;
+
+  border-radius: 50%;
+
+  background: conic-gradient(
+
+    #f3f5ff,
+
+    #a2acc2,
+
+    #7a8499,
+
+    #cfd7e6,
+
+    #f3f5ff
+
+  );
+
+  box-shadow:
+
+    0 0 50px rgba(255,255,255,0.18),
+
+    inset 0 0 25px rgba(0,0,0,0.3);
+
+}
+
+
+
+/* Inner core */
+
+.hero-lens-core {
+
+  position: absolute;
+
+  inset: 38px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(circle at 40% 40%,
+
+    #e0e6ff,
+
+    #a9b3ff 40%,
+
+    #6d7aff 75%,
+
+    #000 95%
+
+  );
+
+  box-shadow: inset 0 0 35px rgba(0,0,0,0.45);
+
+}
+
+
+
+/* ------------------------------------------------------
+
+   CIRCLE TEXT
+
+-------------------------------------------------------*/
+
+.hero-lens-ring {
+
+  position: absolute;
+
+  inset: -22px;
+
+  width: 304px;
+
+  height: 304px;
+
+}
+
+
+
+.hero-lens-text {
+
+  font-size: 9px;
+
+  letter-spacing: 4px;
+
+  fill: #ffffff;
+
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  paint-order: stroke;
+
+  stroke: rgba(0,0,0,0.7);
+
+  stroke-width: 0.6px;
+
+}
+
+
+
+/* Fix circle text scaling issue on mobile */
+
+@media (max-width: 480px) {
 
   .hero-lens {
 
@@ -508,23 +366,67 @@ body {
 
   }
 
+
+
+  .hero-lens-ring {
+
+    width: 260px;
+
+    height: 260px;
+
+  }
+
+
+
+  .hero-lens-text {
+
+    font-size: 7.3px;
+
+    letter-spacing: 3px;
+
+  }
+
 }
 
 
 
-/* Title & subtitle */
+/* ------------------------------------------------------
+
+   FIXLENS Label
+
+-------------------------------------------------------*/
+
+.hero-lens-title {
+
+  margin-top: 10px;
+
+  font-size: 15px;
+
+  letter-spacing: 6px;
+
+  color: var(--text-dim);
+
+}
 
 
+
+
+
+/* ------------------------------------------------------
+
+   TITLE + SUBTITLE
+
+-------------------------------------------------------*/
 
 .hero-title {
 
-  font-size: clamp(28px, 5vw, 34px);
+  margin-top: 10px;
 
-  line-height: 1.1;
+  font-size: 34px;
 
-  margin-bottom: 10px;
+  font-weight: 700;
 
-  text-align: center;
+  line-height: 1.2;
 
 }
 
@@ -532,37 +434,41 @@ body {
 
 .hero-subtitle {
 
-  font-size: 14px;
+  margin-top: 14px;
 
-  color: var(--muted);
-
-  max-width: 550px;
-
-  margin: 0 auto 22px;
-
-  text-align: center;
+  font-size: 17px;
 
   line-height: 1.6;
+
+  color: var(--text-dim);
+
+  max-width: 580px;
 
 }
 
 
 
-/* Buttons */
 
 
+/* ------------------------------------------------------
+
+   BUTTONS
+
+-------------------------------------------------------*/
 
 .actions {
 
   display: flex;
 
-  justify-content: center;
+  flex-direction: column;
 
-  flex-wrap: wrap;
+  gap: 16px;
 
-  gap: 10px;
+  margin-top: 30px;
 
-  margin-bottom: 14px;
+  width: 100%;
+
+  max-width: 480px;
 
 }
 
@@ -570,21 +476,17 @@ body {
 
 .btn {
 
-  border-radius: var(--radius-pill);
+  width: 100%;
 
-  border: 1px solid transparent;
+  padding: 16px;
 
-  font-size: 14px;
+  border-radius: 14px;
 
-  padding: 11px 20px;
+  border: 1px solid var(--border);
 
-  cursor: pointer;
+  font-size: 17px;
 
-  transition: transform 0.1s ease-out, box-shadow 0.1s ease-out,
-
-    background 0.1s ease-out, border-color 0.1s ease-out;
-
-  white-space: nowrap;
+  letter-spacing: 0.4px;
 
 }
 
@@ -592,21 +494,11 @@ body {
 
 .primary-btn {
 
-  background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
 
   color: #fff;
 
-  box-shadow: 0 14px 30px rgba(79, 70, 229, 0.5);
-
-}
-
-
-
-.primary-btn:hover {
-
-  transform: translateY(-1px);
-
-  box-shadow: 0 18px 40px rgba(79, 70, 229, 0.7);
+  border: none;
 
 }
 
@@ -614,21 +506,9 @@ body {
 
 .secondary-btn {
 
-  background: rgba(15, 23, 42, 0.95);
+  background: rgba(255,255,255,0.04);
 
   color: var(--text);
-
-  border-color: rgba(148, 163, 184, 0.55);
-
-}
-
-
-
-.secondary-btn:hover {
-
-  background: rgba(15, 23, 42, 1);
-
-  transform: translateY(-1px);
 
 }
 
@@ -638,49 +518,35 @@ body {
 
   background: transparent;
 
-  color: var(--muted);
-
-  border-color: rgba(51, 65, 85, 0.9);
-
-}
-
-
-
-.ghost-btn:hover {
-
   color: var(--text);
 
-  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(255,255,255,0.12);
 
 }
 
 
 
-/* =========================
-
-   Conversation (Recent Diagnosis)
-
-   ========================= */
 
 
+/* ------------------------------------------------------
+
+   CONVERSATION BOX
+
+-------------------------------------------------------*/
 
 .conversation {
 
-  margin-top: 18px;
+  width: 100%;
 
-  padding: 14px 14px 12px;
+  margin-top: 50px;
 
-  border-radius: var(--radius-lg);
+  background: var(--card);
 
-  background: rgba(15, 23, 42, 0.9);
+  border-radius: 16px;
 
-  border: 1px solid rgba(148, 163, 184, 0.45);
+  border: 1px solid var(--border);
 
-  max-height: 280px;
-
-  display: flex;
-
-  flex-direction: column;
+  padding: 18px;
 
 }
 
@@ -688,15 +554,15 @@ body {
 
 .conversation-header {
 
-  font-size: 12px;
+  font-size: 13px;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 12px;
 
   text-transform: uppercase;
 
-  letter-spacing: 0.12em;
-
-  color: var(--muted);
-
-  margin-bottom: 6px;
+  color: var(--text-dim);
 
 }
 
@@ -704,596 +570,38 @@ body {
 
 .conversation-body {
 
-  flex: 1;
+  max-height: 260px;
 
   overflow-y: auto;
 
-  padding-right: 4px;
+  font-size: 15px;
 
-  display: flex;
+  line-height: 1.55;
 
-  flex-direction: column;
-
-  gap: 8px;
+  white-space: pre-wrap;
 
 }
 
 
 
-/* Scrollbar بسيط */
 
-.conversation-body::-webkit-scrollbar {
 
-  width: 5px;
+/* ------------------------------------------------------
 
-}
+   FOOTER
 
-
-
-.conversation-body::-webkit-scrollbar-thumb {
-
-  background: rgba(75, 85, 99, 0.8);
-
-  border-radius: 999px;
-
-}
-
-
-
-/* Message bubbles */
-
-
-
-.message {
-
-  max-width: 100%;
-
-  font-size: 13px;
-
-  line-height: 1.6;
-
-}
-
-
-
-.message-label {
-
-  font-size: 11px;
-
-  text-transform: uppercase;
-
-  letter-spacing: 0.16em;
-
-  margin-bottom: 2px;
-
-}
-
-
-
-.message-label.user {
-
-  color: rgba(148, 163, 184, 0.9);
-
-}
-
-
-
-.message-label.ai {
-
-  color: rgba(129, 140, 248, 0.95);
-
-}
-
-
-
-.message-bubble {
-
-  padding: 8px 10px;
-
-  border-radius: 12px;
-
-  border: 1px solid rgba(51, 65, 85, 0.9);
-
-  background: rgba(15, 23, 42, 0.9);
-
-}
-
-
-
-.message-bubble.user {
-
-  background: rgba(15, 23, 42, 0.85);
-
-}
-
-
-
-.message-bubble.ai {
-
-  background: radial-gradient(circle at top left, #020617, #020617 55%, #020617);
-
-}
-
-
-
-/* ===== Bubble التفكير / شبكة عصبية تدور ===== */
-
-
-
-.message-bubble.thinking {
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  gap: 12px;
-
-}
-
-
-
-.message-bubble.thinking .thinking-main {
-
-  flex: 1;
-
-  padding-right: 8px;
-
-}
-
-
-
-.thinking-orbit {
-
-  position: relative;
-
-  width: 32px;
-
-  height: 32px;
-
-  border-radius: 50%;
-
-  background: radial-gradient(circle at 30% 20%, #4f46e5, #020617 70%);
-
-  box-shadow:
-
-    0 0 22px rgba(79, 70, 229, 0.9),
-
-    0 0 38px rgba(129, 140, 248, 0.7);
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  overflow: hidden;
-
-}
-
-
-
-/* نواة الشبكة */
-
-.thinking-core {
-
-  width: 10px;
-
-  height: 10px;
-
-  border-radius: 50%;
-
-  background: radial-gradient(circle, #ffffff, #c4b5fd);
-
-  box-shadow: 0 0 18px rgba(196, 181, 253, 1);
-
-}
-
-
-
-/* الحلقات */
-
-.thinking-ring {
-
-  position: absolute;
-
-  inset: 2px;
-
-  border-radius: 50%;
-
-  border: 1px solid rgba(191, 219, 254, 0.35);
-
-  box-shadow: 0 0 12px rgba(129, 140, 248, 0.9);
-
-}
-
-
-
-.thinking-ring-inner {
-
-  inset: 7px;
-
-}
-
-
-
-/* النقاط */
-
-.thinking-ring .thinking-dot {
-
-  position: absolute;
-
-  top: 0px;
-
-  left: 50%;
-
-  transform: translateX(-50%);
-
-  width: 6px;
-
-  height: 6px;
-
-  border-radius: 50%;
-
-  background: #e0f2fe;
-
-  box-shadow:
-
-    0 0 12px rgba(191, 219, 254, 1),
-
-    0 0 20px rgba(129, 140, 248, 0.9);
-
-}
-
-
-
-/* حركات الدوران */
-
-.thinking-ring-outer {
-
-  animation: fixlens-orbit-outer 1.2s linear infinite;
-
-}
-
-
-
-.thinking-ring-inner {
-
-  animation: fixlens-orbit-inner 1.8s linear infinite;
-
-}
-
-
-
-/* Footer */
-
-
+-------------------------------------------------------*/
 
 .footer {
 
-  margin-top: 26px;
+  margin-top: 70px;
 
-  font-size: 12px;
+  text-align: center;
 
-  color: var(--muted);
-
-  border-top: 1px solid rgba(15, 23, 42, 1);
-
-  padding-top: 10px;
-
-}
-
-
-
-/* =========================
-
-   Menu Overlay
-
-   ========================= */
-
-
-
-.menu-overlay {
-
-  position: fixed;
-
-  inset: 0;
-
-  display: none;
-
-  z-index: 40;
-
-}
-
-
-
-.menu-overlay.is-open {
-
-  display: block;
-
-}
-
-
-
-.menu-backdrop {
-
-  position: absolute;
-
-  inset: 0;
-
-  background: rgba(15, 23, 42, 0.78);
-
-  backdrop-filter: blur(8px);
-
-}
-
-
-
-.menu-panel {
-
-  position: absolute;
-
-  right: 0;
-
-  top: 0;
-
-  bottom: 0;
-
-  width: min(360px, 100%);
-
-  background: #020617;
-
-  border-left: 1px solid rgba(148, 163, 184, 0.35);
-
-  padding: 18px 18px 20px;
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 18px;
-
-}
-
-
-
-.menu-header {
-
-  display: flex;
-
-  justify-content: space-between;
-
-  align-items: center;
-
-  margin-bottom: 4px;
-
-}
-
-
-
-.menu-title {
+  color: var(--text-dim);
 
   font-size: 14px;
 
-  text-transform: uppercase;
-
-  letter-spacing: 0.12em;
-
-  color: var(--muted);
-
-}
-
-
-
-.menu-close {
-
-  border-radius: 999px;
-
-  border: 1px solid rgba(148, 163, 184, 0.5);
-
-  background: transparent;
-
-  color: var(--muted);
-
-  font-size: 13px;
-
-  padding: 4px 9px;
-
-  cursor: pointer;
-
-}
-
-
-
-.menu-close:hover {
-
-  background: rgba(15, 23, 42, 0.9);
-
-  color: var(--text);
-
-}
-
-
-
-.menu-section h2 {
-
-  font-size: 15px;
-
-  margin-bottom: 6px;
-
-}
-
-
-
-.menu-list {
-
-  font-size: 13px;
-
-  color: var(--muted);
-
-  padding-left: 18px;
-
-}
-
-
-
-.menu-list li + li {
-
-  margin-top: 4px;
-
-}
-
-
-
-/* =========================
-
-   Animations
-
-   ========================= */
-
-
-
-@keyframes fixlens-spin {
-
-  from {
-
-    transform: rotate(0deg);
-
-  }
-
-  to {
-
-    transform: rotate(360deg);
-
-  }
-
-}
-
-
-
-@keyframes fixlens-orbit-outer {
-
-  from {
-
-    transform: rotate(0deg);
-
-  }
-
-  to {
-
-    transform: rotate(360deg);
-
-  }
-
-}
-
-
-
-@keyframes fixlens-orbit-inner {
-
-  from {
-
-    transform: rotate(360deg);
-
-  }
-
-  to {
-
-    transform: rotate(0deg);
-
-  }
-
-}
-
-
-
-/* =========================
-
-   Responsive
-
-   ========================= */
-
-
-
-@keyframes fixlens-lens-pulse {
-
-  0% {
-
-    opacity: 0;
-
-    transform: scale(0.96);
-
-  }
-
-  50% {
-
-    opacity: 1;
-
-    transform: scale(1.04);
-
-  }
-
-  100% {
-
-    opacity: 0;
-
-    transform: scale(0.96);
-
-  }
-
-}
-
-
-
-@media (max-width: 640px) {
-
-  .page {
-
-    padding: 16px 12px 28px;
-
-  }
-
-
-
-  .header {
-
-    margin-bottom: 18px;
-
-  }
-
-
-
-  .hero-main {
-
-    padding: 22px 16px 18px;
-
-  }
-
-
-
-  .actions {
-
-    flex-direction: column;
-
-  }
-
-
-
-  .btn {
-
-    width: 100%;
-
-    text-align: center;
-
-  }
-
-
-
-  .conversation {
-
-    max-height: 320px;
-
-  }
+  opacity: 0.7;
 
 }
