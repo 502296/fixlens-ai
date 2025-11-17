@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>FixLens – Real-world AI diagnosis</title>
+  <title>FixLens – AI Diagnosis for Real-World Problems</title>
 
   <link rel="stylesheet" href="style.css" />
 
@@ -16,31 +16,33 @@
 
 <body>
 
-
-
-  <div class="page-shell">
+  <div class="page">
 
 
 
-    <!-- Header -->
+    <!-- ============ Header ============ -->
 
     <header class="site-header">
 
-      <div class="branding">
+      <div class="brand">
 
-        <!-- حمّل صورة اللوغو الجديدة وضعها بهذا الاسم داخل مجلد images -->
+        <!-- تأكد أن الصورة موجودة في images/fixlens-logo-white.png -->
 
-        <img src="images/fixlens-logo-white.png"
+        <img
 
-             alt="FixLens logo"
+          src="images/fixlens-logo-white.png"
 
-             class="brand-logo" />
+          alt="FixLens"
+
+          class="brand-logo"
+
+        />
 
       </div>
 
 
 
-      <button class="menu-toggle" aria-label="Open info menu" aria-expanded="false">
+      <button class="menu-toggle" aria-label="Open menu">
 
         <span></span>
 
@@ -54,39 +56,47 @@
 
 
 
-    <!-- Main -->
+    <!-- ============ Main ============ -->
 
     <main class="main">
 
-      <section class="lens-section">
+      <section class="hero">
 
 
 
-        <!-- عدسة FixLens -->
+        <!-- العدسة -->
 
         <div class="lens-wrapper">
 
-          <!-- تأكد أن صورة العدسة اسمها هكذا وموجودة في images -->
+          <!-- تأكد أن الصورة موجودة في images/fixlens-lens-bw.png -->
 
-          <img src="images/fixlens-lens-bw.png"
+          <img
 
-               alt="FixLens rotating AI lens"
+            src="images/fixlens-lens-bw.png"
 
-               class="lens-image" />
+            alt="FixLens AI lens"
+
+            class="lens-image"
+
+          />
 
         </div>
 
 
 
-        <!-- شريط الشات -->
+        <!-- كارت الإدخال (مثل ChatGPT) -->
 
-        <form class="chat-form" autocomplete="off">
+        <div class="input-card">
 
-          <div class="chat-input-row">
 
-            <button type="button" class="icon-button" aria-label="Upload a photo">
 
-              📷
+          <!-- شريط الكتابة -->
+
+          <div class="prompt-row">
+
+            <button class="icon-button" aria-label="Attach photo">
+
+              <span class="icon">📷</span>
 
             </button>
 
@@ -96,27 +106,25 @@
 
               type="text"
 
-              class="chat-input"
+              class="prompt-input"
 
               placeholder="Describe what's going on..."
-
-              name="message"
 
             />
 
 
 
-            <button type="button" class="icon-button" aria-label="Record voice">
+            <button class="icon-button" aria-label="Use microphone">
 
-              🎙️
+              <span class="icon">🎙️</span>
 
             </button>
 
 
 
-            <button type="submit" class="send-button" aria-label="Run AI diagnosis">
+            <button class="send-button" aria-label="Send">
 
-              ▶
+              <span class="send-arrow">➤</span>
 
             </button>
 
@@ -124,25 +132,21 @@
 
 
 
-          <button type="button" class="quick-mode-button">
+          <!-- زر كشف الوايرات والأنابيب -->
 
-            <span class="quick-icon">🛠️</span>
+          <button class="secondary-button">
 
-            <span class="quick-label">
+            <span class="secondary-icon">🛠️</span>
 
-              Detect pipes, wires & studs behind walls / floors
-
-            </span>
+            <span>Detect pipes, wires & studs behind walls / floors</span>
 
           </button>
 
 
 
-          <p class="status-line">Waiting for your input.</p>
+          <p class="status-text">Waiting for your input.</p>
 
-        </form>
-
-
+        </div>
 
       </section>
 
@@ -150,103 +154,151 @@
 
 
 
-    <!-- لوحة المعلومات (تفتح من المنيو) -->
+    <!-- ============ Slide Menu ============ -->
 
-    <aside class="info-drawer" aria-hidden="true">
+    <nav class="menu-panel" aria-label="FixLens menu">
 
-      <div class="info-content">
+      <div class="menu-inner">
 
-        <h2>FixLens</h2>
-
-
-
-        <h3>How FixLens works</h3>
-
-        <p>
-
-          FixLens combines computer vision, language understanding, and
-
-          physics-aware reasoning to analyze what it sees and what you
-
-          describe, then returns a clear explanation of what might be wrong
-
-          and what to check next.
-
-        </p>
+        <button class="menu-close" aria-label="Close menu">×</button>
 
 
 
-        <h3>What FixLens can help with</h3>
-
-        <p>
-
-          Engines, household appliances, water leaks, strange noises,
-
-          wiring issues, structural questions, and more. Treat this as
-
-          intelligent guidance — not a replacement for a certified professional.
-
-        </p>
+        <h2 class="menu-title">FixLens</h2>
 
 
 
-        <h3>Safety &amp; legal policy</h3>
+        <section class="menu-section">
 
-        <p>
+          <h3>How FixLens works</h3>
 
-          FixLens gives guidance and explanations only. You stay in control of
+          <p>
 
-          what to do next, and you’re responsible for any decisions or repairs
+            FixLens combines computer vision, language understanding, and
 
-          you make. When in doubt, stop and call a licensed professional.
+            physics-aware reasoning to analyze what it sees and what you
 
-        </p>
+            describe, then returns a clear explanation of what might be wrong
+
+            and what to check next.
+
+          </p>
+
+        </section>
 
 
 
-        <h3>About FixLens</h3>
+        <section class="menu-section">
 
-        <p>
+          <h3>What FixLens can help with</h3>
 
-          FixLens is an experimental AI assistant designed to keep
+          <p>
 
-          real-world problems in focus and help you understand what might
+            Engines, household appliances, water leaks, strange noises,
 
-          be happening before you spend money on a service call.
+            wiring issues, structural questions, and more. Treat this as
 
-        </p>
+            intelligent guidance — not a replacement for a certified
+
+            professional.
+
+          </p>
+
+        </section>
+
+
+
+        <section class="menu-section">
+
+          <h3>Safety &amp; legal policy</h3>
+
+          <p>
+
+            FixLens gives guidance and explanations only. You stay in control
+
+            of what to do next, and you’re responsible for any decisions or
+
+            repairs you make. When in doubt, stop and call a licensed
+
+            professional.
+
+          </p>
+
+        </section>
+
+
+
+        <section class="menu-section">
+
+          <h3>About FixLens</h3>
+
+          <p>
+
+            FixLens is an experimental AI assistant designed to keep
+
+            real-world problems in focus and help you understand what might
+
+            be happening before you spend money on a service call.
+
+          </p>
+
+        </section>
 
       </div>
 
-    </aside>
+    </nav>
 
 
+
+    <div class="menu-backdrop"></div>
 
   </div>
 
 
 
-  <!-- سكربت بسيط لفتح/غلق المنيو -->
+  <!-- ============ Menu JS ============ -->
 
   <script>
 
-    const menuBtn = document.querySelector('.menu-toggle');
+    const menuToggle = document.querySelector('.menu-toggle');
 
-    const drawer = document.querySelector('.info-drawer');
+    const menuPanel = document.querySelector('.menu-panel');
 
-    const pageShell = document.querySelector('.page-shell');
+    const menuClose = document.querySelector('.menu-close');
+
+    const menuBackdrop = document.querySelector('.menu-backdrop');
 
 
 
-    menuBtn.addEventListener('click', () => {
+    function setMenu(open) {
 
-      const isOpen = pageShell.classList.toggle('info-open');
+      if (open) {
 
-      menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        document.body.classList.add('menu-open');
 
-      drawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+      } else {
+
+        document.body.classList.remove('menu-open');
+
+      }
+
+    }
+
+
+
+    menuToggle.addEventListener('click', () => {
+
+      const isOpen = document.body.classList.contains('menu-open');
+
+      setMenu(!isOpen);
 
     });
+
+
+
+    menuClose.addEventListener('click', () => setMenu(false));
+
+    menuBackdrop.addEventListener('click', () => setMenu(false));
 
   </script>
 
