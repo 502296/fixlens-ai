@@ -1,4 +1,6 @@
-/* ===== Reset بسيط ===== */
+/* ====== Base ====== */
+
+
 
 *,
 
@@ -8,9 +10,29 @@
 
   box-sizing: border-box;
 
-  margin: 0;
+}
 
-  padding: 0;
+
+
+:root {
+
+  --bg: #000000;
+
+  --panel: #050505;
+
+  --panel-soft: #101010;
+
+  --text-main: #f5f5f5;
+
+  --text-soft: #9a9a9a;
+
+  --accent: #ffffff;
+
+  --border-subtle: #262626;
+
+  --input-bg: #121212;
+
+  --input-border: #333333;
 
 }
 
@@ -20,7 +42,19 @@ html,
 
 body {
 
+  margin: 0;
+
+  padding: 0;
+
   height: 100%;
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+
+    "Segoe UI", sans-serif;
+
+  color: var(--text-main);
+
+  background: radial-gradient(circle at top, #161616 0, #000 52%, #000 100%);
 
 }
 
@@ -28,21 +62,17 @@ body {
 
 body {
 
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-
-    "Segoe UI", sans-serif;
-
-  background: #000;
-
-  color: #f5f5f5;
+  -webkit-font-smoothing: antialiased;
 
 }
 
 
 
-/* ===== Layout عام ===== */
+/* ====== Layout shell ====== */
 
-.page {
+
+
+.page-shell {
 
   min-height: 100vh;
 
@@ -50,33 +80,37 @@ body {
 
   flex-direction: column;
 
+  background: linear-gradient(180deg, #050505 0%, #000000 40%, #000 100%);
+
 }
 
 
 
-/* ===== Top bar ===== */
+/* ====== Header ====== */
 
-.top-bar {
+
+
+.site-header {
 
   display: flex;
+
+  align-items: center;
 
   justify-content: space-between;
 
-  align-items: center;
-
-  padding: 16px 20px;
+  padding: 14px 18px;
 
 }
 
 
 
-.brand {
+.branding {
 
   display: flex;
 
   align-items: center;
 
-  gap: 8px;
+  gap: 10px;
 
 }
 
@@ -84,7 +118,7 @@ body {
 
 .brand-logo {
 
-  height: 36px;
+  height: 32px;
 
   width: auto;
 
@@ -94,41 +128,41 @@ body {
 
 
 
-/* زر المنيو (ثلاث خطوط) */
+/* hamburger */
 
 .menu-toggle {
 
-  width: 44px;
+  width: 40px;
 
-  height: 44px;
+  height: 40px;
 
   border-radius: 999px;
 
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 
-  background: radial-gradient(circle at top, #202020 0%, #050505 70%);
+  background: radial-gradient(circle at 30% 0%, #3b3b3b 0%, #111 45%, #000 100%);
 
   display: inline-flex;
 
-  align-items: center;
+  flex-direction: column;
 
   justify-content: center;
 
-  flex-direction: column;
+  align-items: center;
 
-  gap: 5px;
+  gap: 4px;
+
+  padding: 0;
 
   cursor: pointer;
-
-  transition: background 0.2s ease, border-color 0.2s ease,
-
-    transform 0.15s ease;
 
 }
 
 
 
 .menu-toggle span {
+
+  display: block;
 
   width: 18px;
 
@@ -138,43 +172,13 @@ body {
 
   background: #f5f5f5;
 
-  transition: transform 0.2s ease, opacity 0.2s ease;
-
 }
 
 
 
-/* حالة الفتح (X خفيفة) */
-
-.menu-toggle.is-open span:nth-child(1) {
-
-  transform: translateY(3.5px) rotate(45deg);
-
-}
-
-.menu-toggle.is-open span:nth-child(2) {
-
-  opacity: 0;
-
-}
-
-.menu-toggle.is-open span:nth-child(3) {
-
-  transform: translateY(-3.5px) rotate(-45deg);
-
-}
+/* ====== Main / Lens ====== */
 
 
-
-.menu-toggle:active {
-
-  transform: scale(0.96);
-
-}
-
-
-
-/* ===== Main ===== */
 
 .main {
 
@@ -184,39 +188,33 @@ body {
 
   justify-content: center;
 
-  padding: 8px 16px 28px;
+  padding: 12px 14px 24px;
 
 }
 
 
 
-/* بطاقة العدسة */
-
-.lens-card {
+.lens-section {
 
   width: 100%;
 
-  max-width: 520px;
+  max-width: 620px;
 
   margin: 0 auto;
 
-  text-align: center;
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
 
 }
 
 
 
-/* ===== Lens ===== */
+/* lens image only – بدون أي مربعات إضافية */
 
 .lens-wrapper {
-
-  width: 260px;
-
-  height: 260px;
-
-  border-radius: 999px;
-
-  margin: 12px auto 18px;
 
   display: flex;
 
@@ -224,97 +222,45 @@ body {
 
   justify-content: center;
 
-  position: relative;
+  margin: 22px 0 20px;
 
 }
 
 
-
-/* صورة العدسة نفسها */
 
 .lens-image {
 
+  width: min(260px, 70vw);
+
+  height: auto;
+
+  display: block;
+
+  filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.9));
+
+}
+
+
+
+/* ====== Chat bar ====== */
+
+
+
+.chat-form {
+
   width: 100%;
 
-  height: 100%;
+  display: flex;
 
-  object-fit: contain;
+  flex-direction: column;
 
-  border-radius: 999px;
-
-  animation: lens-spin 28s linear infinite;
+  gap: 12px;
 
 }
 
 
 
-/* لمسة زجاج خفيفة فوق العدسة (لا تخرب التصميم) */
-
-.lens-wrapper::after {
-
-  content: "";
-
-  position: absolute;
-
-  inset: 20%;
-
-  border-radius: 50%;
-
-  pointer-events: none;
-
-  background: radial-gradient(
-
-    circle at 30% 20%,
-
-    rgba(255, 255, 255, 0.18),
-
-    transparent 55%
-
-  );
-
-  mix-blend-mode: screen;
-
-}
-
-
-
-@keyframes lens-spin {
-
-  from {
-
-    transform: rotate(0deg);
-
-  }
-
-  to {
-
-    transform: rotate(360deg);
-
-  }
-
-}
-
-
-
-.lens-tagline {
-
-  font-size: 0.82rem;
-
-  letter-spacing: 0.15em;
-
-  text-transform: uppercase;
-
-  color: rgba(245, 245, 245, 0.7);
-
-  margin-bottom: 22px;
-
-}
-
-
-
-/* ===== Chat bar ===== */
-
-.chat-bar {
+.chat-input-row {
 
   display: flex;
 
@@ -322,17 +268,39 @@ body {
 
   gap: 8px;
 
-  background: linear-gradient(135deg, #121212, #060606);
+  background: var(--panel-soft);
 
   border-radius: 999px;
 
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 6px 6px 6px 10px;
 
-  padding: 8px 10px 8px 12px;
+  border: 1px solid var(--border-subtle);
 
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55);
+}
 
-  margin-bottom: 14px;
+
+
+.icon-button {
+
+  border: none;
+
+  background: transparent;
+
+  color: var(--text-soft);
+
+  font-size: 18px;
+
+  cursor: pointer;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 32px;
+
+  height: 32px;
 
 }
 
@@ -346,11 +314,11 @@ body {
 
   background: transparent;
 
-  color: #f5f5f5;
+  color: var(--text-main);
 
-  font-size: 0.95rem;
+  font-size: 15px;
 
-  outline: none;
+  padding: 8px 4px;
 
 }
 
@@ -358,77 +326,37 @@ body {
 
 .chat-input::placeholder {
 
-  color: rgba(245, 245, 245, 0.5);
+  color: var(--text-soft);
 
 }
 
 
 
-.chat-icon-btn {
+.chat-input:focus {
+
+  outline: none;
+
+}
+
+
+
+.send-button {
+
+  width: 38px;
+
+  height: 38px;
+
+  border-radius: 50%;
 
   border: none;
-
-  background: transparent;
-
-  padding: 4px;
-
-  border-radius: 999px;
-
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: center;
 
   cursor: pointer;
 
-  transition: background 0.15s ease, transform 0.1s ease;
-
-}
-
-
-
-.chat-icon {
-
-  font-size: 1.1rem;
-
-}
-
-
-
-.chat-icon-btn:hover {
-
-  background: rgba(255, 255, 255, 0.08);
-
-}
-
-
-
-.chat-icon-btn:active {
-
-  transform: scale(0.95);
-
-}
-
-
-
-.send-btn {
-
-  border: none;
-
-  width: 40px;
-
-  height: 40px;
-
-  border-radius: 999px;
-
-  background: radial-gradient(circle at 30% 0%, #ffffff, #bfbfbf);
+  background: radial-gradient(circle at 30% 0%, #ffffff 0%, #f5f5f5 40%, #b0b0b0 100%);
 
   color: #000;
 
-  font-size: 1.1rem;
-
-  cursor: pointer;
+  font-size: 16px;
 
   display: inline-flex;
 
@@ -436,139 +364,109 @@ body {
 
   justify-content: center;
 
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
-
-  transition: transform 0.1s ease, box-shadow 0.15s ease;
+  flex-shrink: 0;
 
 }
 
 
 
-.send-btn:active {
-
-  transform: scale(0.95);
-
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7);
-
-}
+/* quick mode button */
 
 
 
-/* ===== Pipes / wires mode button ===== */
+.quick-mode-button {
 
-.mode-button {
-
-  margin: 8px auto 10px;
+  margin-top: 2px;
 
   width: 100%;
 
   border-radius: 999px;
 
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid var(--border-subtle);
 
-  background: linear-gradient(135deg, #141414, #050505);
+  background: #080808;
 
-  color: #f5f5f5;
+  color: var(--text-main);
 
-  padding: 10px 16px;
+  padding: 10px 14px;
 
   display: flex;
 
   align-items: center;
 
-  justify-content: center;
-
-  gap: 8px;
-
-  font-size: 0.93rem;
+  gap: 10px;
 
   cursor: pointer;
 
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
-
-  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+  font-size: 14px;
 
 }
 
 
 
-.mode-icon {
+.quick-icon {
 
-  font-size: 1.1rem;
-
-}
-
-
-
-.mode-button:hover {
-
-  background: linear-gradient(135deg, #1b1b1b, #090909);
+  font-size: 17px;
 
 }
 
 
 
-.mode-button:active {
+.quick-label {
 
-  transform: scale(0.97);
+  white-space: nowrap;
 
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
 
-}
-
-
-
-.status-text {
-
-  margin-top: 6px;
-
-  font-size: 0.8rem;
-
-  color: rgba(245, 245, 245, 0.6);
-
-  text-align: left;
+  text-overflow: ellipsis;
 
 }
 
 
 
-/* ===== Info panel (menu content) ===== */
+.status-line {
 
-.info-panel {
+  margin: 0;
+
+  font-size: 13px;
+
+  color: var(--text-soft);
+
+  padding-left: 4px;
+
+}
+
+
+
+/* ====== Info drawer ====== */
+
+
+
+.info-drawer {
 
   position: fixed;
 
-  top: 0;
+  inset: auto 0 0 0;
 
-  right: 0;
+  max-height: 70vh;
 
-  left: 0;
+  background: rgba(5, 5, 5, 0.98);
 
-  max-width: 600px;
+  border-top: 1px solid #1c1c1c;
 
-  margin: 0 auto;
+  transform: translateY(100%);
 
-  background: #050505;
+  transition: transform 220ms ease-out;
 
-  color: #f5f5f5;
+  overflow-y: auto;
 
-  padding: 72px 20px 24px;
-
-  transform: translateY(-100%);
-
-  transition: transform 0.25s ease;
-
-  z-index: 60;
-
-  border-radius: 0 0 18px 18px;
-
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.8);
+  padding: 16px 18px 28px;
 
 }
 
 
 
-.info-panel.is-open {
+.page-shell.info-open .info-drawer {
 
   transform: translateY(0);
 
@@ -576,105 +474,117 @@ body {
 
 
 
-.info-inner {
+.info-content {
 
-  max-height: calc(100vh - 120px);
+  max-width: 720px;
 
-  overflow-y: auto;
+  margin: 0 auto;
 
 }
 
 
 
-.info-panel h2 {
+.info-content h2 {
 
-  font-size: 1.25rem;
+  margin-top: 0;
 
   margin-bottom: 10px;
 
-}
-
-
-
-.info-section {
-
-  margin-top: 14px;
+  font-size: 20px;
 
 }
 
 
 
-.info-section h3 {
+.info-content h3 {
 
-  font-size: 0.98rem;
+  margin-top: 18px;
 
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+
+  font-size: 16px;
 
 }
 
 
 
-.info-section p {
+.info-content p {
 
-  font-size: 0.9rem;
+  margin-top: 0;
+
+  margin-bottom: 6px;
+
+  font-size: 14px;
 
   line-height: 1.5;
 
-  color: rgba(245, 245, 245, 0.85);
+  color: var(--text-soft);
 
 }
 
 
 
-/* خلفية داكنة خلف المنيو */
-
-.overlay {
-
-  position: fixed;
-
-  inset: 0;
-
-  background: rgba(0, 0, 0, 0.6);
-
-  opacity: 0;
-
-  pointer-events: none;
-
-  transition: opacity 0.2s ease;
-
-  z-index: 50;
-
-}
+/* ====== Desktop tweaks ====== */
 
 
 
-.overlay.is-visible {
+@media (min-width: 768px) {
 
-  opacity: 1;
+  .site-header {
 
-  pointer-events: auto;
-
-}
-
-
-
-/* ===== Responsive adjustments ===== */
-
-@media (min-width: 600px) {
-
-  .lens-wrapper {
-
-    width: 300px;
-
-    height: 300px;
+    padding: 18px 32px 8px;
 
   }
 
 
 
-  .lens-card {
+  .main {
 
-    margin-top: 8px;
+    padding: 8px 32px 32px;
+
+  }
+
+
+
+  .lens-section {
+
+    align-items: center;
+
+  }
+
+
+
+  .lens-image {
+
+    width: min(320px, 40vw);
+
+  }
+
+
+
+  .chat-form {
+
+    max-width: 520px;
+
+  }
+
+
+
+  .info-drawer {
+
+    left: auto;
+
+    right: 24px;
+
+    bottom: 24px;
+
+    width: 420px;
+
+    max-height: 70vh;
+
+    border-radius: 20px;
+
+    border: 1px solid #1f1f1f;
 
   }
 
