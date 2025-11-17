@@ -1,985 +1,503 @@
-/* =========
+<!DOCTYPE html>
 
-   Base
+<html lang="en">
 
-   ========= */
+<head>
 
-*,
+  <meta charset="UTF-8" />
 
-*::before,
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-*::after {
+  <title>FixLens – AI Diagnosis for Real-World Problems</title>
 
-  box-sizing: border-box;
+  <link rel="stylesheet" href="style.css" />
 
-}
+</head>
 
+<body>
 
+  <div class="page">
 
-:root {
+    <!-- Header -->
 
-  --bg: #05060a;
+    <header class="header">
 
-  --bg-soft: #0b1018;
+      <div class="logo-row">
 
-  --card-bg: #101727;
+        <div class="logo-mark">◎</div>
 
-  --accent: #47b5ff;
+        <span class="logo-text">FixLens</span>
 
-  --accent-soft: rgba(71, 181, 255, 0.2);
+      </div>
 
-  --accent-strong: #7cd3ff;
+      <nav class="nav">
 
-  --text-main: #f9fbff;
+        <a href="#panel-how">How it works</a>
 
-  --text-soft: #a6b0c5;
+        <a href="#panel-use-cases">What it can help with</a>
 
-  --border-subtle: rgba(255, 255, 255, 0.08);
+        <a href="#panel-policy">Safety & policy</a>
 
-  --radius-lg: 18px;
+      </nav>
 
-  --radius-md: 12px;
+    </header>
 
-  --shadow-soft: 0 26px 60px rgba(0, 0, 0, 0.8);
 
-}
 
+    <!-- Hero Section – فقط العدسة + عنوان + 3 أزرار -->
 
+    <main class="hero">
 
-html,
+      <div class="hero-text">
 
-body {
+        <h1>AI diagnosis for real-world problems.</h1>
 
-  margin: 0;
+        <p class="hero-subtitle">
 
-  padding: 0;
+          FixLens looks at your photo, listens to your description, and gives a clear explanation
 
-  background: radial-gradient(circle at top, #101728 0, #05060a 52%, #020308 100%);
+          of what might be wrong — before you call a professional.
 
-  color: var(--text-main);
+        </p>
 
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
 
-    "Segoe UI", sans-serif;
 
-}
+        <!-- ثلاث أزرار فقط في الواجهة -->
 
+        <div class="hero-actions hero-actions-stack">
 
+          <button class="btn primary-btn" type="button" data-panel="panel-how">
 
-/* =========
+            How FixLens works
 
-   Layout
+          </button>
 
-   ========= */
+          <button class="btn ghost-btn" type="button" data-panel="panel-use-cases">
 
+            What FixLens can help with
 
+          </button>
 
-.page {
+          <button class="btn ghost-btn" type="button" data-panel="panel-policy">
 
-  min-height: 100vh;
+            Safety & legal policy
 
-  max-width: 1120px;
+          </button>
 
-  margin: 0 auto;
+        </div>
 
-  padding: 20px 16px 40px;
 
-  display: flex;
 
-  flex-direction: column;
+        <p class="hero-note">
 
-  gap: 32px;
+          FixLens gives guidance and explanations only. You stay in control of what to do next.
 
-}
+        </p>
 
+      </div>
 
 
-/* =========
 
-   Header
+      <!-- Lens Logo with inner text ring + outer ring -->
 
-   ========= */
+      <div class="hero-lens">
 
+        <div class="lens-wrapper">
 
+          <!-- Outer ring (now thicker, like pro lenses) -->
 
-.header {
+          <div class="lens-outer-ring"></div>
 
-  display: flex;
 
-  align-items: center;
 
-  justify-content: space-between;
+          <!-- Inner ring (SVG text 360°, rotates opposite) -->
 
-  gap: 24px;
+          <div class="lens-inner-ring">
 
-}
+            <svg viewBox="0 0 220 220" class="lens-svg" aria-hidden="true">
 
+              <defs>
 
+                <!-- Circle path for text -->
 
-.logo-row {
+                <path id="lensCirclePath"
 
-  display: inline-flex;
+                  d="M 110,110
 
-  align-items: center;
+                     m -80,0
 
-  gap: 10px;
+                     a 80,80 0 1,1 160,0
 
-}
+                     a 80,80 0 1,1 -160,0" />
 
+                <!-- Gradient for the center glow -->
 
+                <radialGradient id="lensCenterGradient" cx="50%" cy="50%" r="60%">
 
-.logo-mark {
+                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
 
-  width: 32px;
+                  <stop offset="40%" stop-color="#d4f1ff" stop-opacity="0.8" />
 
-  height: 32px;
+                  <stop offset="100%" stop-color="#111928" stop-opacity="0.1" />
 
-  border-radius: 999px;
+                </radialGradient>
 
-  border: 1px solid rgba(255, 255, 255, 0.25);
+              </defs>
 
-  display: flex;
 
-  align-items: center;
 
-  justify-content: center;
+              <!-- Center glowing circle -->
 
-  font-size: 17px;
+              <circle
 
-  color: var(--accent-strong);
+                cx="110"
 
-  box-shadow: 0 0 18px rgba(71, 181, 255, 0.4);
+                cy="110"
 
-}
+                r="52"
 
+                fill="url(#lensCenterGradient)"
 
+                class="lens-core"
 
-.logo-text {
+              />
 
-  font-weight: 650;
 
-  letter-spacing: 0.12em;
 
-  font-size: 15px;
+              <!-- Inner border circle to give “lens” feeling -->
 
-  text-transform: uppercase;
+              <circle
 
-  color: var(--text-main);
+                cx="110"
 
-}
+                cy="110"
 
+                r="80"
 
+                fill="none"
 
-.nav {
+                stroke="rgba(255,255,255,0.15)"
 
-  display: flex;
+                stroke-width="1.5"
 
-  align-items: center;
+              />
 
-  gap: 18px;
 
-}
 
+              <!-- Text on circle 360° -->
 
+              <text class="lens-text">
 
-.nav a {
+                <textPath href="#lensCirclePath" startOffset="0%">
 
-  font-size: 13px;
+                  FIXLENS • AI DIAGNOSIS • REAL-WORLD PROBLEMS • SMART VISUAL INSPECTION •
 
-  text-decoration: none;
+                  FIXLENS • AI DIAGNOSIS • REAL-WORLD PROBLEMS • SMART VISUAL INSPECTION •
 
-  color: var(--text-soft);
+                </textPath>
 
-  padding-bottom: 2px;
+              </text>
 
-  border-bottom: 1px solid transparent;
+            </svg>
 
-  transition: color 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+          </div>
 
-}
+        </div>
 
 
 
-.nav a:hover {
+        <p class="lens-caption">
 
-  color: var(--accent-strong);
+          Rotating AI lens that keeps your real-world problems in focus.
 
-  border-color: rgba(124, 211, 255, 0.7);
+        </p>
 
-}
+      </div>
 
+    </main>
 
 
-/* =========
 
-   Hero
+    <!-- PANELS (تظهر فقط عند الضغط على الأزرار أو من الـmenu) -->
 
-   ========= */
 
 
+    <!-- How it works -->
 
-.hero {
+    <section id="panel-how" class="section info-panel is-hidden">
 
-  display: grid;
+      <h2>How FixLens works</h2>
 
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      <div class="three-cols">
 
-  align-items: center;
+        <div class="card">
 
-  gap: 40px;
+          <h3>1. Capture</h3>
 
-  padding: 24px 20px;
+          <p>
 
-  border-radius: 26px;
+            Take a clear photo or short video of the problem—car engine, strange leak,
 
-  background: radial-gradient(circle at top left, #182335 0, #05060a 55%);
+            broken device, anything in the real world.
 
-  box-shadow: var(--shadow-soft);
+          </p>
 
-  border: 1px solid rgba(255, 255, 255, 0.07);
+        </div>
 
-}
+        <div class="card">
 
+          <h3>2. Describe</h3>
 
+          <p>
 
-.hero-text h1 {
+            Add a short description or voice note about what you see, hear, or smell.
 
-  font-size: clamp(28px, 3.1vw, 36px);
+            The more detail you share, the smarter the diagnosis.
 
-  line-height: 1.1;
+          </p>
 
-  margin: 0 0 14px;
+        </div>
 
-}
+        <div class="card">
 
+          <h3>3. Understand</h3>
 
+          <p>
 
-.hero-subtitle {
+            FixLens combines vision + language AI to give you a clear, human-friendly
 
-  margin: 0 0 18px;
+            explanation and possible next steps.
 
-  color: var(--text-soft);
+          </p>
 
-  font-size: 15px;
+        </div>
 
-  max-width: 32rem;
+      </div>
 
-}
+    </section>
 
 
 
-.hero-actions {
+    <!-- Use cases & demo -->
 
-  display: flex;
+    <section id="panel-use-cases" class="section info-panel is-hidden">
 
-  flex-wrap: wrap;
+      <h2>What FixLens can help with</h2>
 
-  gap: 10px;
+      <div class="three-cols">
 
-  margin-bottom: 14px;
+        <div class="card">
 
-}
+          <h3>Car diagnostics</h3>
 
+          <p>
 
+            From warning lights to strange noises — get a first explanation before you go to
 
-/* تكديس الأزرار رأسياً على الموبايل / الواجهة */
+            the shop, so you know what to ask.
 
-.hero-actions-stack {
+          </p>
 
-  flex-direction: column;
+        </div>
 
-  align-items: flex-start;
+        <div class="card">
 
-}
+          <h3>Home & utilities</h3>
 
+          <p>
 
+            Water leaks, boiler issues, stains, broken parts, or suspicious damage —
 
-.hero-note {
+            see what might be going on behind the scenes.
 
-  margin: 0;
+          </p>
 
-  font-size: 13px;
+        </div>
 
-  color: var(--text-soft);
+        <div class="card">
 
-}
+          <h3>Workshop & tools</h3>
 
+          <p>
 
+            Identify worn parts, wrong setups, and dangerous conditions around your
 
-/* =========
+            tools and machines.
 
-   Buttons
+          </p>
 
-   ========= */
+        </div>
 
+      </div>
 
 
-.btn {
 
-  display: inline-flex;
+      <div class="demo-block">
 
-  align-items: center;
+        <h3>Live demo (coming soon)</h3>
 
-  justify-content: center;
+        <p class="demo-text">
 
-  padding: 9px 18px;
+          Soon you’ll be able to upload a photo, add your voice, and watch FixLens build
 
-  border-radius: 999px;
+          a real diagnosis in front of you. This is the brain of real-world problem solving.
 
-  border: 1px solid transparent;
+        </p>
 
-  font-size: 13px;
+        <button class="btn primary-btn" type="button">
 
-  font-weight: 500;
+          Notify me at launch
 
-  letter-spacing: 0.02em;
+        </button>
 
-  cursor: pointer;
+      </div>
 
-  text-decoration: none;
+    </section>
 
-  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease,
 
-    border-color 0.12s ease, color 0.12s ease;
 
-}
+    <!-- Safety & policy -->
 
+    <section id="panel-policy" class="section info-panel is-hidden">
 
+      <h2>Safety & legal policy</h2>
 
-.primary-btn {
+      <div class="card card-policy">
 
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+        <p>
 
-  color: #02040a;
+          <strong>FixLens does not repair or replace anything.</strong>
 
-  box-shadow: 0 12px 30px rgba(55, 162, 240, 0.6);
+          It provides information only — like a smart “second opinion” based on your photo
 
-}
+          and description.
 
+        </p>
 
+        <p>
 
-.primary-btn:hover {
+          FixLens can:
 
-  transform: translateY(-1px);
+        </p>
 
-  box-shadow: 0 16px 38px rgba(55, 162, 240, 0.8);
+        <ul>
 
-}
+          <li>Help you understand what might be wrong.</li>
 
+          <li>Suggest what to check or ask a professional about.</li>
 
+          <li>Explain risks in simple, human language.</li>
 
-.ghost-btn {
+        </ul>
 
-  background: rgba(4, 9, 18, 0.85);
+        <p>
 
-  color: var(--text-main);
+          FixLens cannot:
 
-  border-color: rgba(255, 255, 255, 0.12);
+        </p>
 
-}
+        <ul>
 
+          <li>Guarantee that the diagnosis is 100% correct in every case.</li>
 
+          <li>Replace certified mechanics, electricians, plumbers, or any licensed expert.</li>
 
-.ghost-btn:hover {
+          <li>Take responsibility for any damage caused by ignoring professional advice.</li>
 
-  background: rgba(10, 16, 28, 0.9);
+        </ul>
 
-  border-color: rgba(124, 211, 255, 0.55);
+        <p class="policy-note">
 
-}
+          Important: Always use FixLens as guidance only. If something is dangerous, expensive,
 
+          or safety-critical, talk to a qualified professional before taking action.
 
+        </p>
 
-/* =========
+      </div>
 
-   Lens Area
+    </section>
 
-   ========= */
 
 
+    <!-- Footer -->
 
-.hero-lens {
+    <footer class="footer">
 
-  display: flex;
+      <p>FixLens – Real-world AI diagnosis • Built with care</p>
 
-  flex-direction: column;
+    </footer>
 
-  align-items: center;
+  </div>
 
-  gap: 10px;
 
-}
 
+  <!-- Script بسيط لفتح البانلز عند الضغط على الأزرار أو الـmenu -->
 
+  <script>
 
-.lens-wrapper {
+    document.addEventListener('DOMContentLoaded', function () {
 
-  position: relative;
+      const triggers = document.querySelectorAll('[data-panel], .nav a[href^="#panel-"]');
 
-  width: min(260px, 65vw);
+      const panels = document.querySelectorAll('.info-panel');
 
-  height: min(260px, 65vw);
 
-  display: flex;
 
-  align-items: center;
+      function openPanel(id) {
 
-  justify-content: center;
+        panels.forEach(panel => {
 
-}
+          if (panel.id === id) {
 
+            panel.classList.remove('is-hidden');
 
+          } else {
 
-/* هالة خارجية تتنفس حول العدسة */
+            panel.classList.add('is-hidden');
 
-.lens-wrapper::before {
+          }
 
-  content: "";
+        });
 
-  position: absolute;
+        const target = document.getElementById(id);
 
-  inset: -18px;
+        if (target) {
 
-  border-radius: 50%;
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-  background: radial-gradient(
+        }
 
-    circle,
+      }
 
-    rgba(124, 211, 255, 0.45) 0%,
 
-    rgba(124, 211, 255, 0.18) 35%,
 
-    transparent 70%
+      triggers.forEach(el => {
 
-  );
+        el.addEventListener('click', (e) => {
 
-  opacity: 0.18;
+          e.preventDefault();
 
-  mix-blend-mode: screen;
+          const href = el.getAttribute('href');
 
-  animation: lens-glow 5.5s ease-in-out infinite;
+          const fromData = el.getAttribute('data-panel');
 
-  pointer-events: none;
+          const id = fromData || (href ? href.replace('#', '') : null);
 
-  z-index: -1;
+          if (id) {
 
-}
+            openPanel(id);
 
+          }
 
+        });
 
-/* Lens flare صغير على الطرف */
+      });
 
-.lens-wrapper::after {
+    });
 
-  content: "";
+  </script>
 
-  position: absolute;
+</body>
 
-  width: 34%;
-
-  height: 34%;
-
-  border-radius: 999px;
-
-  background: radial-gradient(
-
-    circle at 30% 30%,
-
-    rgba(255, 255, 255, 0.95) 0%,
-
-    rgba(124, 211, 255, 0.0) 60%
-
-  );
-
-  transform: translate(26%, -30%) rotate(-18deg);
-
-  opacity: 0.55;
-
-  mix-blend-mode: screen;
-
-  filter: blur(0.5px);
-
-  pointer-events: none;
-
-}
-
-
-
-/* Outer ring (ثخين مثل عدسة احترافية، يدور باتجاه واحد) */
-
-.lens-outer-ring {
-
-  position: absolute;
-
-  inset: 0;
-
-  border-radius: 50%;
-
-  border: 3px solid rgba(124, 211, 255, 0.55);
-
-  box-shadow:
-
-    0 0 25px rgba(71, 181, 255, 0.6),
-
-    0 0 70px rgba(0, 0, 0, 0.95);
-
-  animation: spin-outer 8s linear infinite;
-
-}
-
-
-
-/* حلقات إضافية لإحساس عدسة عالمية */
-
-.lens-outer-ring::before,
-
-.lens-outer-ring::after {
-
-  content: "";
-
-  position: absolute;
-
-  border-radius: 50%;
-
-  pointer-events: none;
-
-}
-
-
-
-.lens-outer-ring::before {
-
-  inset: 8px;
-
-  border: 7px solid rgba(8, 13, 24, 0.96);
-
-  box-shadow:
-
-    0 0 10px rgba(0, 0, 0, 0.9) inset,
-
-    0 0 14px rgba(0, 0, 0, 0.8);
-
-}
-
-
-
-.lens-outer-ring::after {
-
-  inset: 20px;
-
-  border: 1px solid rgba(255, 255, 255, 0.18);
-
-  box-shadow: 0 0 10px rgba(124, 211, 255, 0.35);
-
-}
-
-
-
-/* Inner ring (SVG text, opposite direction) */
-
-.lens-inner-ring {
-
-  position: absolute;
-
-  inset: 18px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  animation: spin-inner 10s linear infinite reverse;
-
-}
-
-
-
-.lens-svg {
-
-  width: 100%;
-
-  height: 100%;
-
-}
-
-
-
-.lens-core {
-
-  filter: drop-shadow(0 0 18px rgba(124, 211, 255, 0.55));
-
-}
-
-
-
-/* Circular text */
-
-.lens-text {
-
-  font-size: 11px;
-
-  letter-spacing: 0.22em;
-
-  text-transform: uppercase;
-
-  fill: rgba(232, 240, 255, 0.92);
-
-}
-
-
-
-/* Caption */
-
-.lens-caption {
-
-  font-size: 12px;
-
-  color: var(--text-soft);
-
-  margin: 0;
-
-  text-align: center;
-
-}
-
-
-
-/* =========
-
-   Sections / Panels
-
-   ========= */
-
-
-
-.section {
-
-  padding: 18px 2px 10px;
-
-}
-
-
-
-/* هذه البانلز مخفية في البداية */
-
-.info-panel.is-hidden {
-
-  display: none;
-
-}
-
-
-
-.section h2 {
-
-  font-size: 19px;
-
-  margin-bottom: 10px;
-
-}
-
-
-
-.three-cols {
-
-  display: grid;
-
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-
-  gap: 14px;
-
-}
-
-
-
-.card {
-
-  background: var(--card-bg);
-
-  border-radius: var(--radius-md);
-
-  border: 1px solid var(--border-subtle);
-
-  padding: 12px 12px 14px;
-
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.65);
-
-}
-
-
-
-.card h3 {
-
-  font-size: 15px;
-
-  margin: 0 0 6px;
-
-}
-
-
-
-.card p {
-
-  margin: 0;
-
-  font-size: 13px;
-
-  color: var(--text-soft);
-
-}
-
-
-
-.demo-block {
-
-  margin-top: 18px;
-
-}
-
-
-
-.demo-text {
-
-  max-width: 40rem;
-
-  font-size: 14px;
-
-  color: var(--text-soft);
-
-  margin-bottom: 12px;
-
-}
-
-
-
-/* policy card */
-
-.card-policy ul {
-
-  margin: 6px 0 10px 18px;
-
-  padding: 0;
-
-  font-size: 13px;
-
-  color: var(--text-soft);
-
-}
-
-
-
-.card-policy li {
-
-  margin-bottom: 2px;
-
-}
-
-
-
-.policy-note {
-
-  margin-top: 6px;
-
-  font-size: 12px;
-
-  color: var(--text-soft);
-
-}
-
-
-
-/* =========
-
-   Footer
-
-   ========= */
-
-
-
-.footer {
-
-  padding-top: 10px;
-
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-
-  font-size: 12px;
-
-  color: var(--text-soft);
-
-  text-align: center;
-
-}
-
-
-
-/* =========
-
-   Animations
-
-   ========= */
-
-
-
-@keyframes spin-outer {
-
-  0% {
-
-    transform: rotate(0deg);
-
-  }
-
-  100% {
-
-    transform: rotate(360deg);
-
-  }
-
-}
-
-
-
-@keyframes spin-inner {
-
-  0% {
-
-    transform: rotate(0deg);
-
-  }
-
-  100% {
-
-    transform: rotate(360deg);
-
-  }
-
-}
-
-
-
-/* تنفّس الهالة حول العدسة */
-
-@keyframes lens-glow {
-
-  0% {
-
-    opacity: 0.16;
-
-    transform: scale(0.98);
-
-  }
-
-  50% {
-
-    opacity: 0.38;
-
-    transform: scale(1.03);
-
-  }
-
-  100% {
-
-    opacity: 0.16;
-
-    transform: scale(0.98);
-
-  }
-
-}
-
-
-
-/* =========
-
-   Responsive
-
-   ========= */
-
-
-
-@media (max-width: 768px) {
-
-  .header {
-
-    flex-direction: column;
-
-    align-items: flex-start;
-
-  }
-
-
-
-  .nav {
-
-    width: 100%;
-
-    justify-content: flex-start;
-
-    flex-wrap: wrap;
-
-  }
-
-
-
-  .hero {
-
-    grid-template-columns: 1fr;
-
-    padding: 18px 14px 20px;
-
-    gap: 24px;
-
-  }
-
-
-
-  .hero-text {
-
-    order: 2;
-
-  }
-
-
-
-  .hero-lens {
-
-    order: 1;
-
-  }
-
-
-
-  .three-cols {
-
-    grid-template-columns: 1fr;
-
-  }
-
-
-
-  .page {
-
-    padding-inline: 14px;
-
-  }
-
-
-
-  .hero-actions-stack {
-
-    width: 100%;
-
-  }
-
-
-
-  .hero-actions-stack .btn {
-
-    width: 100%;
-
-    justify-content: center;
-
-  }
-
-}
+</html>
