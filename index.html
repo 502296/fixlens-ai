@@ -20,7 +20,7 @@
 
 
 
-    <!-- ===== Header ===== -->
+    <!-- Top bar -->
 
     <header class="header">
 
@@ -28,81 +28,83 @@
 
         <div class="logo-mark">◎</div>
 
-        <div class="logo-text">FixLens</div>
+        <span class="logo-text">FixLens</span>
 
       </div>
 
 
 
-      <!-- زر المنيو (ثلاث خطوط ناعمة) -->
-
-      <button class="menu-toggle" aria-label="Open menu">
+      <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">
 
         <span></span><span></span><span></span>
 
       </button>
 
-
-
-      <!-- محتوى المنيو -->
-
-      <nav class="menu-drawer" aria-label="Main menu">
-
-        <a href="#how">How FixLens works</a>
-
-        <a href="#help">What FixLens can help with</a>
-
-        <a href="#safety">Safety & legal policy</a>
-
-      </nav>
-
     </header>
 
 
 
-    <!-- ===== Main ===== -->
-
     <main class="main">
+
+
+
+      <!-- HERO / LENS CARD -->
 
       <section class="hero">
 
-
-
         <div class="hero-card">
-
-          <!-- ✅ العدسة – لا نلمسها في التصميم -->
 
           <div class="lens-wrapper">
 
-            <div class="lens-glow"></div>
 
 
+            <!-- Outer glow frame -->
 
-            <div class="lens">
+            <div class="lens-frame">
 
-              <div class="lens-core"></div>
+              <!-- Rotating ring -->
 
+              <div class="lens">
 
+                <div class="lens-ring">
 
-              <div class="lens-ring lens-ring-outer"></div>
+                  <svg class="lens-ring-svg" viewBox="0 0 200 200">
 
+                    <defs>
 
+                      <path id="lens-circle-path"
 
-              <div class="lens-ring lens-ring-text">
+                            d="M 100, 100 m -70, 0 a 70,70 0 1,1 140,0 a 70,70 0 1,1 -140,0" />
 
-                <div class="lens-ring-text-inner">
+                    </defs>
 
-                  <span>
+                    <text class="lens-ring-text">
 
-                    REAL-WORLD PROBLEMS • SMART VISUAL AI • AI DIAGNOSIS • FIXLENS •
+                      <textPath href="#lens-circle-path">
 
-                  </span>
+                        AI DIAGNOSIS • REAL-WORLD PROBLEMS • SMART VISUAL INFIXLENS •
+
+                      </textPath>
+
+                    </text>
+
+                  </svg>
 
                 </div>
+
+
+
+                <!-- Inner glass -->
+
+                <div class="lens-inner-ring"></div>
+
+                <div class="lens-core"></div>
 
               </div>
 
             </div>
+
+
 
           </div>
 
@@ -114,195 +116,167 @@
 
           </p>
 
-
-
-          <!-- ===== شريط الشات مثل ChatGPT ===== -->
-
-          <form class="chat-input-row" id="chat-form">
-
-            <!-- زر صورة -->
-
-            <button
-
-              type="button"
-
-              class="icon-button"
-
-              id="attach-photo"
-
-              title="Upload a photo"
-
-            >
-
-              📷
-
-            </button>
-
-            <input type="file" id="hidden-image-input" accept="image/*" hidden />
-
-
-
-            <!-- حقل النص -->
-
-            <input
-
-              type="text"
-
-              class="chat-input"
-
-              id="chat-text"
-
-              placeholder="Describe what’s going on..."
-
-            />
-
-
-
-            <!-- زر مايك -->
-
-            <button
-
-              type="button"
-
-              class="icon-button"
-
-              id="record-voice"
-
-              title="Record voice"
-
-            >
-
-              🎙️
-
-            </button>
-
-
-
-            <!-- زر إرسال -->
-
-            <button type="submit" class="send-button" title="Send">
-
-              ➤
-
-            </button>
-
-          </form>
-
-
-
-          <!-- زر خاص لكشف الوايرات والأنابيب وعواميد الخشب -->
-
-          <button class="quick-mode-button" id="pipes-mode">
-
-            🛠️ Pipes, wires & studs in walls and under floors
-
-          </button>
-
         </div>
 
       </section>
 
+
+
     </main>
-
-
-
-    <footer class="footer">
-
-      FixLens – Real-world AI diagnosis • Built with care
-
-    </footer>
 
   </div>
 
 
 
-  <script>
+  <!-- CHAT BAR FIXED TO BOTTOM -->
 
-    // فتح/غلق المنيو
+  <section class="chat-shell">
 
-    const menuToggle = document.querySelector('.menu-toggle');
-
-    const menuDrawer = document.querySelector('.menu-drawer');
-
-    menuToggle.addEventListener('click', () => {
-
-      menuDrawer.classList.toggle('is-open');
-
-    });
+    <div class="chat-inner">
 
 
 
-    // صورة من الشريط أو من الزر
+      <div class="chat-row">
 
-    const hiddenFile = document.getElementById('hidden-image-input');
+        <button class="icon-button" id="image-button" aria-label="Upload a photo">
 
-    const attachPhotoBtn = document.getElementById('attach-photo');
+          📷
 
-
-
-    attachPhotoBtn.addEventListener('click', () => {
-
-      hiddenFile.click();
-
-    });
+        </button>
 
 
 
-    // مايك (حاليًا فقط placeholder – لاحقًا نربطه بالـ API)
+        <textarea
 
-    const recordBtn = document.getElementById('record-voice');
+          id="chat-input"
 
-    recordBtn.addEventListener('click', () => {
+          class="chat-input"
 
-      alert('Voice recording will be added here soon.');
+          rows="1"
 
-    });
+          placeholder="Describe what's going on..."
 
-
-
-    // زر الـ Pipes & wires mode
-
-    const pipesBtn = document.getElementById('pipes-mode');
-
-    pipesBtn.addEventListener('click', () => {
-
-      const chatInput = document.getElementById('chat-text');
-
-      chatInput.value =
-
-        'Scan walls or floors for hidden pipes, electrical wires, or wooden studs.';
-
-      chatInput.focus();
-
-    });
+        ></textarea>
 
 
 
-    // إرسال الشات (حاليًا فقط placeholder – لاحقًا نربطه بـ /api/fixlens)
+        <button class="icon-button" id="mic-button" aria-label="Record voice">
 
-    const chatForm = document.getElementById('chat-form');
+          🎤
 
-    chatForm.addEventListener('submit', (e) => {
+        </button>
 
-      e.preventDefault();
 
-      const text = document.getElementById('chat-text').value.trim();
 
-      if (!text) return;
+        <button class="send-button" id="send-button" aria-label="Send to FixLens">
 
-      alert(
+          ➜
 
-        'Later this will send your text/photo/voice to the FixLens AI backend.\n\nMessage: ' +
+        </button>
 
-          text
 
-      );
 
-      document.getElementById('chat-text').value = '';
+        <input type="file" id="image-input" accept="image/*" hidden />
 
-    });
+      </div>
 
-  </script>
+
+
+      <button class="mode-button" id="pipes-mode">
+
+        🛠 Pipes, wires & studs in walls and under floors
+
+      </button>
+
+
+
+      <p class="legal-line">
+
+        FixLens gives guidance and explanations only. You stay in control of what to do next.
+
+      </p>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- SLIDE-DOWN MENU -->
+
+  <div class="menu-overlay" id="menu-overlay" aria-hidden="true">
+
+    <div class="menu-panel">
+
+      <button class="menu-close" id="menu-close" aria-label="Close menu">✕</button>
+
+
+
+      <h2 class="menu-title">FixLens menu</h2>
+
+
+
+      <div class="menu-section">
+
+        <h3>How FixLens works</h3>
+
+        <p>
+
+          Upload a photo, describe what's going on, or add a short voice note. FixLens sends
+
+          everything securely to the AI brain and returns a clear explanation before you call
+
+          a professional.
+
+        </p>
+
+      </div>
+
+
+
+      <div class="menu-section">
+
+        <h3>What it can help with</h3>
+
+        <ul>
+
+          <li>Car and engine issues</li>
+
+          <li>Home appliances and utilities</li>
+
+          <li>Workshop tools and everyday problems</li>
+
+          <li>Pipes, wires, and wall studs (with compatible sensors or clear photos)</li>
+
+        </ul>
+
+      </div>
+
+
+
+      <div class="menu-section">
+
+        <h3>Safety & policy</h3>
+
+        <p>
+
+          FixLens gives guidance and explanations only. It does not repair or perform any
+
+          physical work. Always follow local safety codes and consult a licensed
+
+          professional for critical issues.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <script src="script.js"></script>
 
 </body>
 
