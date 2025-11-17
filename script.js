@@ -1,4 +1,4 @@
-// script.js – Frontend logic for FixLens
+// script.js – FixLens frontend logic
 
 
 
@@ -21,6 +21,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const resultPanel = document.getElementById("result-panel");
 
   const resultContent = document.getElementById("result-content");
+
+
+
+  const menuToggle = document.getElementById("menu-toggle");
+
+  const menuOverlay = document.getElementById("menu-overlay");
+
+  const menuClose = document.getElementById("menu-close");
+
+
+
+  // ========= Result handling =========
 
 
 
@@ -96,7 +108,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  // 1) Describe with text
+  // ========= Buttons: Text / Photo / Voice =========
+
+
 
   if (btnText) {
 
@@ -117,8 +131,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-
-  // 2) Upload a photo
 
   if (btnPhoto && photoInput) {
 
@@ -158,8 +170,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  // 3) Speak – placeholder
-
   if (btnSpeak) {
 
     btnSpeak.addEventListener("click", () => {
@@ -169,5 +179,79 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   }
+
+
+
+  // ========= Menu overlay =========
+
+
+
+  function openMenu() {
+
+    if (!menuOverlay) return;
+
+    menuOverlay.classList.add("is-open");
+
+    menuOverlay.setAttribute("aria-hidden", "false");
+
+  }
+
+
+
+  function closeMenu() {
+
+    if (!menuOverlay) return;
+
+    menuOverlay.classList.remove("is-open");
+
+    menuOverlay.setAttribute("aria-hidden", "true");
+
+  }
+
+
+
+  if (menuToggle) {
+
+    menuToggle.addEventListener("click", openMenu);
+
+  }
+
+
+
+  if (menuClose) {
+
+    menuClose.addEventListener("click", closeMenu);
+
+  }
+
+
+
+  if (menuOverlay) {
+
+    menuOverlay.addEventListener("click", (e) => {
+
+      if (e.target.classList.contains("menu-backdrop")) {
+
+        closeMenu();
+
+      }
+
+    });
+
+  }
+
+
+
+  // Optional: ESC to close menu
+
+  document.addEventListener("keydown", (e) => {
+
+    if (e.key === "Escape") {
+
+      closeMenu();
+
+    }
+
+  });
 
 });
