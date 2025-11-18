@@ -20,7 +20,7 @@
 
 
 
-    <!-- Slide-out menu (سنملأه لاحقاً بالنصوص القانونية) -->
+    <!-- Slide-out menu -->
 
     <aside id="menu-panel" class="menu-panel" aria-hidden="true">
 
@@ -56,6 +56,24 @@
 
         </section>
 
+
+
+        <section class="menu-section">
+
+          <h3>What FixLens can help with</h3>
+
+          <ul>
+
+            <li>Strange engine sounds, smoke, or warning lights.</li>
+
+            <li>Home appliances that rattle, leak, or stop working.</li>
+
+            <li>Basic questions about electrical systems and safety.</li>
+
+          </ul>
+
+        </section>
+
       </div>
 
     </aside>
@@ -68,11 +86,13 @@
 
     <div class="app-card">
 
+
+
+      <!-- Header: logo + menu -->
+
       <header class="card-header">
 
         <div class="logo-row">
-
-          <!-- شعار من الصورة التي رفعتها: images/fixlens-logo-white.png -->
 
           <img src="images/fixlens-logo-white.png" alt="FixLens" class="logo-img" />
 
@@ -94,37 +114,57 @@
 
 
 
+      <!-- Main content -->
+
       <main class="card-main">
 
-        <!-- العدسة مع الكتابة الدائرية -->
+
+
+        <!-- Lens -->
 
         <div class="lens-container">
 
-          <svg class="lens-svg" viewBox="0 0 400 400" aria-hidden="true">
+          <svg class="lens-svg" viewBox="0 0 420 420" aria-hidden="true">
 
             <defs>
 
-              <!-- مسار الكتابة الدائرية -->
+              <!-- path for circular text -->
 
               <path id="outerCircle"
 
-                    d="M200,40
-
-                       a160,160 0 1,1 -0.1,0" />
+                    d="M210,40 a170,170 0 1,1 -0.1,0" />
 
 
 
-              <!-- تدرّج الزجاج -->
+              <!-- metal ring gradient -->
 
-              <radialGradient id="lensGlassGradient" cx="50%" cy="30%" r="70%">
+              <radialGradient id="metalGradient" cx="50%" cy="50%" r="70%">
 
-                <stop offset="0%" stop-color="#fdfdff" stop-opacity="0.9" />
+                <stop offset="0%" stop-color="#51535a" stop-opacity="1" />
 
-                <stop offset="22%" stop-color="#d4d8e6" stop-opacity="0.95" />
+                <stop offset="35%" stop-color="#2a2c33" />
 
-                <stop offset="60%" stop-color="#181b26" stop-opacity="1" />
+                <stop offset="70%" stop-color="#111219" />
 
-                <stop offset="100%" stop-color="#020308" stop-opacity="1" />
+                <stop offset="100%" stop-color="#050509" />
+
+              </radialGradient>
+
+
+
+              <!-- glass gradient -->
+
+              <radialGradient id="glassGradient" cx="40%" cy="28%" r="65%">
+
+                <stop offset="0%" stop-color="#fdfdff" stop-opacity="0.95" />
+
+                <stop offset="18%" stop-color="#e3e7ff" stop-opacity="0.9" />
+
+                <stop offset="45%" stop-color="#182033" stop-opacity="0.95" />
+
+                <stop offset="75%" stop-color="#050915" stop-opacity="1" />
+
+                <stop offset="100%" stop-color="#020309" stop-opacity="1" />
 
               </radialGradient>
 
@@ -132,15 +172,15 @@
 
 
 
-            <!-- الكتابة التي تدور حول العدسة -->
+            <!-- rotating text ring -->
 
             <g class="outer-ring">
 
-              <circle cx="200" cy="200" r="170"
+              <circle cx="210" cy="210" r="190"
 
                       fill="none"
 
-                      stroke="rgba(255,255,255,0.25)"
+                      stroke="rgba(255,255,255,0.18)"
 
                       stroke-width="2" />
 
@@ -158,35 +198,33 @@
 
 
 
-            <!-- العدسة الكلاسيك -->
+            <!-- DSLR-style lens -->
 
             <g class="core-lens">
 
-              <!-- إطار خارجي غامق -->
+              <!-- outer bezel -->
 
-              <circle cx="200" cy="200" r="118"
+              <circle cx="210" cy="210" r="135"
 
-                      fill="#050608"
+                      fill="url(#metalGradient)"
 
-                      stroke="rgba(255,255,255,0.22)"
+                      stroke="rgba(255,255,255,0.28)"
 
-                      stroke-width="2.4" />
+                      stroke-width="3" />
 
-              <!-- حلقة معدنية -->
 
-              <circle cx="200" cy="200" r="102"
 
-                      fill="#11131b"
+              <!-- thin rings -->
 
-                      stroke="rgba(255,255,255,0.3)"
+              <circle cx="210" cy="210" r="124"
 
-                      stroke-width="2" />
+                      fill="none"
 
-              <!-- حلقات رفيعة تشبه الريّش -->
+                      stroke="rgba(0,0,0,0.85)"
 
-              <circle cx="200" cy="200" r="94" fill="#050608" />
+                      stroke-width="5" />
 
-              <circle cx="200" cy="200" r="88"
+              <circle cx="210" cy="210" r="116"
 
                       fill="none"
 
@@ -194,53 +232,59 @@
 
                       stroke-width="2" />
 
-              <circle cx="200" cy="200" r="80"
+              <circle cx="210" cy="210" r="108"
 
                       fill="none"
 
-                      stroke="rgba(255,255,255,0.12)"
+                      stroke="rgba(0,0,0,0.75)"
+
+                      stroke-width="4" />
+
+
+
+              <!-- inner black ring -->
+
+              <circle cx="210" cy="210" r="96"
+
+                      fill="#05060b"
+
+                      stroke="rgba(255,255,255,0.2)"
 
                       stroke-width="2" />
 
-              <circle cx="200" cy="200" r="72"
 
-                      fill="none"
 
-                      stroke="rgba(0,0,0,0.7)"
+              <!-- glass -->
+
+              <circle cx="210" cy="210" r="78"
+
+                      fill="url(#glassGradient)"
+
+                      stroke="rgba(255,255,255,0.35)"
+
+                      stroke-width="2" />
+
+
+
+              <!-- inner core -->
+
+              <circle cx="210" cy="210" r="40"
+
+                      fill="#020306"
+
+                      stroke="rgba(0,0,0,0.9)"
 
                       stroke-width="3" />
 
 
 
-              <!-- الزجاج -->
+              <!-- top highlight -->
 
-              <circle cx="200" cy="200" r="64"
-
-                      fill="url(#lensGlassGradient)"
-
-                      stroke="rgba(255,255,255,0.28)"
-
-                      stroke-width="2" />
-
-
-
-              <!-- قلب العدسة الداكن -->
-
-              <circle cx="200" cy="200" r="40"
-
-                      fill="#020307" />
-
-
-
-              <!-- لمعان علوي -->
-
-              <path d="M168 178
-
-                       A32 32 0 0 1 232 178"
+              <path d="M178 188 A32 26 0 0 1 242 188"
 
                     fill="none"
 
-                    stroke="rgba(255,255,255,0.6)"
+                    stroke="rgba(255,255,255,0.7)"
 
                     stroke-width="3"
 
@@ -248,15 +292,13 @@
 
 
 
-              <!-- ظل سفلي -->
+              <!-- bottom shadow -->
 
-              <path d="M176 224
-
-                       A30 20 0 0 0 224 224"
+              <path d="M182 234 A30 20 0 0 0 238 234"
 
                     fill="none"
 
-                    stroke="rgba(0,0,0,0.7)"
+                    stroke="rgba(0,0,0,0.85)"
 
                     stroke-width="4"
 
@@ -264,33 +306,33 @@
 
 
 
-              <!-- نقطة لمعان صغيرة -->
+              <!-- small specular spot -->
 
-              <circle cx="186" cy="182" r="9"
+              <circle cx="192" cy="186" r="9"
 
                       fill="rgba(255,255,255,0.98)" />
 
 
 
-              <!-- خطوط فتحة العدسة -->
+              <!-- aperture lines -->
 
               <g class="aperture">
 
-                <line x1="200" y1="156" x2="200" y2="184" />
+                <line x1="210" y1="170" x2="210" y2="196" />
 
-                <line x1="236" y1="170" x2="214" y2="188" />
+                <line x1="244" y1="182" x2="222" y2="198" />
 
-                <line x1="242" y1="200" x2="214" y2="204" />
+                <line x1="252" y1="210" x2="224" y2="212" />
 
-                <line x1="234" y1="230" x2="214" y2="216" />
+                <line x1="244" y1="238" x2="224" y2="224" />
 
-                <line x1="200" y1="244" x2="200" y2="220" />
+                <line x1="210" y1="250" x2="210" y2="224" />
 
-                <line x1="166" y1="230" x2="186" y2="216" />
+                <line x1="176" y1="238" x2="198" y2="224" />
 
-                <line x1="158" y1="200" x2="186" y2="204" />
+                <line x1="168" y1="210" x2="196" y2="212" />
 
-                <line x1="166" y1="170" x2="186" y2="188" />
+                <line x1="176" y1="182" x2="198" y2="198" />
 
               </g>
 
@@ -302,37 +344,53 @@
 
 
 
-        <!-- الأزرار -->
-
-        <button class="secondary-btn">Upload photo</button>
-
-
-
-        <div class="input-row">
-
-          <input
-
-            type="text"
-
-            class="text-input"
-
-            placeholder="Describe what’s going on…" />
-
-          <button class="icon-btn" aria-label="Add a short voice note">🎙️</button>
-
-        </div>
-
-
-
-        <button class="primary-btn">Run diagnosis</button>
-
-
+        <!-- One smart line of text -->
 
         <p class="hint-text">
 
           Describe your car, home equipment, or electrical issue — FixLens replies with clear, practical steps.
 
         </p>
+
+
+
+        <!-- Upload button -->
+
+        <button class="secondary-btn">Upload photo</button>
+
+
+
+        <!-- Large text area + mic -->
+
+        <div class="input-column">
+
+          <div class="input-label">Describe what’s going on</div>
+
+          <div class="input-row">
+
+            <textarea
+
+              class="text-input"
+
+              rows="6"
+
+              placeholder="Example: Strange knocking sound when I start the car, mostly when the engine is cold."></textarea>
+
+            <button class="icon-btn" aria-label="Add a short voice note">🎙️</button>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- Main Call-to-action -->
+
+        <button class="primary-btn">Run diagnosis</button>
+
+
+
+        <p class="status-text">Waiting for your input.</p>
 
       </main>
 
@@ -352,13 +410,13 @@
 
   <script>
 
-    // السنة
+    // سنة ديناميكية
 
     document.getElementById('year').textContent = new Date().getFullYear();
 
 
 
-    // منيو جانبية بسيطة
+    // menu logic
 
     const menuBtn = document.querySelector('.menu-toggle');
 
