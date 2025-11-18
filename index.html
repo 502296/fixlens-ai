@@ -20,7 +20,7 @@
 
 
 
-    <!-- Header: big logo only -->
+    <!-- Header: logo on the left, menu on the right -->
 
     <header class="header">
 
@@ -29,6 +29,16 @@
         <img src="images/fixlens-logo-white.png" alt="FixLens" class="logo-header-img" />
 
       </div>
+
+      <button class="menu-toggle" aria-expanded="false" aria-controls="menu-panel">
+
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+
+      </button>
 
     </header>
 
@@ -64,15 +74,15 @@
 
 
 
-              <!-- Classic dark lens gradient -->
+              <!-- Glass gradient -->
 
-              <radialGradient id="lensCoreGradient" cx="50%" cy="30%" r="70%">
+              <radialGradient id="lensGlassGradient" cx="50%" cy="30%" r="70%">
 
-                <stop offset="0%" stop-color="#f7f7f7" stop-opacity="0.95" />
+                <stop offset="0%" stop-color="#f9fafc" stop-opacity="0.95" />
 
-                <stop offset="25%" stop-color="#d4d6dd" stop-opacity="0.95" />
+                <stop offset="20%" stop-color="#d4d7e0" stop-opacity="0.95" />
 
-                <stop offset="65%" stop-color="#181924" stop-opacity="1" />
+                <stop offset="60%" stop-color="#181924" stop-opacity="1" />
 
                 <stop offset="100%" stop-color="#050509" stop-opacity="1" />
 
@@ -122,45 +132,111 @@
 
 
 
-            <!-- Center classic lens (no external image) -->
+            <!-- Center realistic classic lens -->
 
             <g class="core-lens">
 
-              <!-- subtle glow -->
+              <!-- outer dark rim -->
 
-              <circle class="core-glow" cx="200" cy="200" r="86" />
+              <circle cx="200" cy="200" r="96" fill="#020203" opacity="0.9" />
 
-              <!-- main glass -->
+              <!-- metal ring -->
 
-              <circle class="core-main" cx="200" cy="200" r="72" />
+              <circle cx="200" cy="200" r="86"
 
-              <!-- inner glass -->
+                      fill="#14151e"
 
-              <circle class="core-inner" cx="200" cy="200" r="48" />
+                      stroke="rgba(255,255,255,0.18)"
 
-              <!-- small highlight -->
+                      stroke-width="2" />
 
-              <circle class="core-highlight" cx="182" cy="182" r="14" />
+              <!-- bevel ring -->
 
-              <!-- simple aperture blades -->
+              <circle cx="200" cy="200" r="76"
+
+                      fill="#050509"
+
+                      stroke="rgba(255,255,255,0.22)"
+
+                      stroke-width="2" />
+
+              <!-- glass -->
+
+              <circle cx="200" cy="200" r="62"
+
+                      fill="url(#lensGlassGradient)"
+
+                      stroke="rgba(255,255,255,0.2)"
+
+                      stroke-width="1.6" />
+
+              <!-- inner dark core -->
+
+              <circle cx="200" cy="200" r="40"
+
+                      fill="#05060c" />
+
+
+
+              <!-- highlight arc -->
+
+              <path d="M168 174
+
+                       A40 40 0 0 1 232 174"
+
+                    fill="none"
+
+                    stroke="rgba(255,255,255,0.4)"
+
+                    stroke-width="3"
+
+                    stroke-linecap="round" />
+
+
+
+              <!-- soft bottom reflection -->
+
+              <path d="M170 226
+
+                       A38 30 0 0 0 230 226"
+
+                    fill="none"
+
+                    stroke="rgba(0,0,0,0.55)"
+
+                    stroke-width="4"
+
+                    stroke-linecap="round" />
+
+
+
+              <!-- small specular highlight -->
+
+              <circle cx="184" cy="178" r="9"
+
+                      fill="rgba(255,255,255,0.96)" />
+
+
+
+              <!-- simple aperture lines -->
 
               <g class="aperture">
 
-                <line x1="200" y1="136" x2="200" y2="168" />
+                <line x1="200" y1="150" x2="200" y2="176" />
 
-                <line x1="240" y1="152" x2="220" y2="176" />
+                <line x1="234" y1="162" x2="216" y2="182" />
 
-                <line x1="252" y1="194" x2="224" y2="200" />
+                <line x1="244" y1="196" x2="218" y2="200" />
 
-                <line x1="240" y1="236" x2="220" y2="224" />
+                <line x1="234" y1="232" x2="216" y2="218" />
 
-                <line x1="200" y1="252" x2="200" y2="232" />
+                <line x1="200" y1="246" x2="200" y2="222" />
 
-                <line x1="160" y1="236" x2="180" y2="224" />
+                <line x1="166" y1="232" x2="184" y2="218" />
 
-                <line x1="148" y1="194" x2="176" y2="200" />
+                <line x1="156" y1="196" x2="182" y2="200" />
 
-                <line x1="160" y1="152" x2="180" y2="176" />
+                <line x1="166" y1="162" x2="184" y2="182" />
 
               </g>
 
@@ -188,9 +264,7 @@
 
         <p class="hero-subtitle">
 
-          Type what’s going on, add a photo, or record a short voice note.
-
-          FixLens analyzes engines, appliances, electronics, structures, and more — then guides you step by step.
+          Describe the issue, add a photo or voice note, and FixLens helps you reason through what to check next.
 
         </p>
 
@@ -232,14 +306,6 @@
 
 
 
-          <button class="chip main-chip">
-
-            🔧 Detect pipes, wires & studs behind walls / floors
-
-          </button>
-
-
-
           <p class="status-text">Waiting for your input.</p>
 
         </div>
@@ -247,6 +313,94 @@
       </section>
 
     </main>
+
+
+
+    <!-- Slide-out menu -->
+
+    <aside id="menu-panel" class="menu-panel" aria-hidden="true">
+
+      <div class="menu-inner">
+
+        <h2>FixLens guide & safety</h2>
+
+
+
+        <section class="menu-section">
+
+          <h3>What FixLens does</h3>
+
+          <p>
+
+            FixLens uses AI to analyze what you describe (and later your photos / audio)
+
+            to suggest likely causes and step-by-step checks.
+
+          </p>
+
+        </section>
+
+
+
+        <section class="menu-section">
+
+          <h3>What FixLens does NOT do</h3>
+
+          <ul>
+
+            <li>Does not see through walls, floors, or hidden spaces.</li>
+
+            <li>No guarantee of being correct or complete.</li>
+
+            <li>Does not replace licensed professionals or safety rules.</li>
+
+          </ul>
+
+        </section>
+
+
+
+        <section class="menu-section">
+
+          <h3>How to use FixLens</h3>
+
+          <ul>
+
+            <li>Describe the issue with clear details: when, where, and how it happens.</li>
+
+            <li>Follow safety first: power off, avoid dangerous areas, call a pro if unsure.</li>
+
+            <li>Use FixLens to understand possibilities and talk smarter with experts.</li>
+
+          </ul>
+
+        </section>
+
+
+
+        <section class="menu-section">
+
+          <h3>Privacy & data</h3>
+
+          <p>
+
+            FixLens is an experimental assistant. Don’t share personal IDs, passwords, or anything sensitive.
+
+            Always follow local laws and building codes.
+
+          </p>
+
+        </section>
+
+      </div>
+
+    </aside>
+
+
+
+    <!-- Backdrop for menu -->
+
+    <div id="menu-backdrop" class="menu-backdrop"></div>
 
 
 
@@ -264,7 +418,39 @@
 
   <script>
 
+    // year
+
     document.getElementById('year').textContent = new Date().getFullYear();
+
+
+
+    // menu toggle
+
+    const menuBtn = document.querySelector('.menu-toggle');
+
+    const menuPanel = document.getElementById('menu-panel');
+
+    const backdrop = document.getElementById('menu-backdrop');
+
+
+
+    function toggleMenu() {
+
+      const isOpen = menuPanel.classList.toggle('open');
+
+      backdrop.classList.toggle('open', isOpen);
+
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+
+      menuPanel.setAttribute('aria-hidden', String(!isOpen));
+
+    }
+
+
+
+    menuBtn.addEventListener('click', toggleMenu);
+
+    backdrop.addEventListener('click', toggleMenu);
 
   </script>
 
