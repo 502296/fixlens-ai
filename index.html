@@ -20,7 +20,7 @@
 
 
 
-    <!-- Header: logo on the left, menu on the right -->
+    <!-- Header: big logo + menu -->
 
     <header class="header">
 
@@ -44,205 +44,223 @@
 
 
 
-    <!-- Main hero (lens + prompt like ChatGPT) -->
+    <main class="main">
 
-    <main class="hero">
 
-      <!-- Left: animated lens -->
 
-      <section class="hero-left">
+      <!-- Top: lens + short line -->
 
-        <div class="lens-wrapper">
+      <section class="hero-top">
 
-          <svg class="lens-svg" viewBox="0 0 400 400" aria-hidden="true">
+        <div class="hero-left">
 
-            <defs>
+          <div class="lens-wrapper">
 
-              <!-- Paths for full circles -->
+            <svg class="lens-svg" viewBox="0 0 400 400" aria-hidden="true">
 
-              <path id="innerCircle"
+              <defs>
 
-                    d="M200,80
+                <!-- circle paths -->
 
-                       a120,120 0 1,1 -0.1,0" />
+                <path id="innerCircle"
 
-              <path id="outerCircle"
+                      d="M200,80
 
-                    d="M200,40
+                         a120,120 0 1,1 -0.1,0" />
 
-                       a160,160 0 1,1 -0.1,0" />
+                <path id="outerCircle"
 
+                      d="M200,40
 
+                         a160,160 0 1,1 -0.1,0" />
 
-              <!-- Glass gradient -->
 
-              <radialGradient id="lensGlassGradient" cx="50%" cy="30%" r="70%">
 
-                <stop offset="0%" stop-color="#f9fafc" stop-opacity="0.95" />
+                <!-- glass gradient -->
 
-                <stop offset="20%" stop-color="#d4d7e0" stop-opacity="0.95" />
+                <radialGradient id="lensGlassGradient" cx="50%" cy="28%" r="70%">
 
-                <stop offset="60%" stop-color="#181924" stop-opacity="1" />
+                  <stop offset="0%" stop-color="#fdfdff" stop-opacity="0.98" />
 
-                <stop offset="100%" stop-color="#050509" stop-opacity="1" />
+                  <stop offset="22%" stop-color="#d5d8e2" stop-opacity="0.98" />
 
-              </radialGradient>
+                  <stop offset="60%" stop-color="#181924" stop-opacity="1" />
 
-            </defs>
+                  <stop offset="100%" stop-color="#04050a" stop-opacity="1" />
 
+                </radialGradient>
 
+              </defs>
 
-            <!-- Outer ring: frame + text (rotates one way) -->
 
-            <g class="outer-ring">
 
-              <circle class="outer-frame" cx="200" cy="200" r="170" />
+              <!-- outer ring -->
 
-              <text class="ring-text">
+              <g class="outer-ring">
 
-                <textPath href="#outerCircle" startOffset="0%">
+                <circle class="outer-frame" cx="200" cy="200" r="170" />
 
-                  4K • 8K • AI DIAGNOSIS • FIXLENS • ROTATING LENS • REAL-WORLD PROBLEMS • PIXEL PRECISION •
+                <text class="ring-text">
 
-                </textPath>
+                  <textPath href="#outerCircle" startOffset="0%">
 
-              </text>
+                    4K • 8K • AI DIAGNOSIS • FIXLENS • ROTATING LENS • REAL-WORLD PROBLEMS • PIXEL PRECISION •
 
-            </g>
+                  </textPath>
 
-
-
-            <!-- Inner ring: frame + text (rotates opposite) -->
-
-            <g class="inner-ring">
-
-              <circle class="inner-frame" cx="200" cy="200" r="130" />
-
-              <text class="ring-text inner">
-
-                <textPath href="#innerCircle" startOffset="0%">
-
-                  FIXLENS • VISUAL ENGINE • SENSORS • STRUCTURES • ENGINES • APPLIANCES • ELECTRONICS •
-
-                </textPath>
-
-              </text>
-
-            </g>
-
-
-
-            <!-- Center realistic classic lens -->
-
-            <g class="core-lens">
-
-              <!-- outer dark rim -->
-
-              <circle cx="200" cy="200" r="96" fill="#020203" opacity="0.9" />
-
-              <!-- metal ring -->
-
-              <circle cx="200" cy="200" r="86"
-
-                      fill="#14151e"
-
-                      stroke="rgba(255,255,255,0.18)"
-
-                      stroke-width="2" />
-
-              <!-- bevel ring -->
-
-              <circle cx="200" cy="200" r="76"
-
-                      fill="#050509"
-
-                      stroke="rgba(255,255,255,0.22)"
-
-                      stroke-width="2" />
-
-              <!-- glass -->
-
-              <circle cx="200" cy="200" r="62"
-
-                      fill="url(#lensGlassGradient)"
-
-                      stroke="rgba(255,255,255,0.2)"
-
-                      stroke-width="1.6" />
-
-              <!-- inner dark core -->
-
-              <circle cx="200" cy="200" r="40"
-
-                      fill="#05060c" />
-
-
-
-              <!-- highlight arc -->
-
-              <path d="M168 174
-
-                       A40 40 0 0 1 232 174"
-
-                    fill="none"
-
-                    stroke="rgba(255,255,255,0.4)"
-
-                    stroke-width="3"
-
-                    stroke-linecap="round" />
-
-
-
-              <!-- soft bottom reflection -->
-
-              <path d="M170 226
-
-                       A38 30 0 0 0 230 226"
-
-                    fill="none"
-
-                    stroke="rgba(0,0,0,0.55)"
-
-                    stroke-width="4"
-
-                    stroke-linecap="round" />
-
-
-
-              <!-- small specular highlight -->
-
-              <circle cx="184" cy="178" r="9"
-
-                      fill="rgba(255,255,255,0.96)" />
-
-
-
-              <!-- simple aperture lines -->
-
-              <g class="aperture">
-
-                <line x1="200" y1="150" x2="200" y2="176" />
-
-                <line x1="234" y1="162" x2="216" y2="182" />
-
-                <line x1="244" y1="196" x2="218" y2="200" />
-
-                <line x1="234" y1="232" x2="216" y2="218" />
-
-                <line x1="200" y1="246" x2="200" y2="222" />
-
-                <line x1="166" y1="232" x2="184" y2="218" />
-
-                <line x1="156" y1="196" x2="182" y2="200" />
-
-                <line x1="166" y1="162" x2="184" y2="182" />
+                </text>
 
               </g>
 
-            </g>
 
-          </svg>
+
+              <!-- inner ring -->
+
+              <g class="inner-ring">
+
+                <circle class="inner-frame" cx="200" cy="200" r="130" />
+
+                <text class="ring-text inner">
+
+                  <textPath href="#innerCircle" startOffset="0%">
+
+                    FIXLENS • VISUAL ENGINE • SENSORS • STRUCTURES • ENGINES • APPLIANCES • ELECTRONICS •
+
+                  </textPath>
+
+                </text>
+
+              </g>
+
+
+
+              <!-- realistic classic lens -->
+
+              <g class="core-lens">
+
+                <!-- outer dark rim -->
+
+                <circle cx="200" cy="200" r="100" fill="#020203" opacity="0.9" />
+
+                <!-- brushed metal ring -->
+
+                <circle cx="200" cy="200" r="90"
+
+                        fill="#151620"
+
+                        stroke="rgba(255,255,255,0.24)"
+
+                        stroke-width="2.2" />
+
+                <!-- bevel ring -->
+
+                <circle cx="200" cy="200" r="78"
+
+                        fill="#050509"
+
+                        stroke="rgba(255,255,255,0.22)"
+
+                        stroke-width="2.2" />
+
+                <!-- glass -->
+
+                <circle cx="200" cy="200" r="64"
+
+                        fill="url(#lensGlassGradient)"
+
+                        stroke="rgba(255,255,255,0.2)"
+
+                        stroke-width="1.8" />
+
+                <!-- inner dark core -->
+
+                <circle cx="200" cy="200" r="42"
+
+                        fill="#05060c" />
+
+
+
+                <!-- top highlight arc -->
+
+                <path d="M168 176
+
+                         A42 42 0 0 1 232 176"
+
+                      fill="none"
+
+                      stroke="rgba(255,255,255,0.42)"
+
+                      stroke-width="3"
+
+                      stroke-linecap="round" />
+
+
+
+                <!-- bottom soft shadow -->
+
+                <path d="M172 226
+
+                         A38 28 0 0 0 228 226"
+
+                      fill="none"
+
+                      stroke="rgba(0,0,0,0.6)"
+
+                      stroke-width="4"
+
+                      stroke-linecap="round" />
+
+
+
+                <!-- specular highlight -->
+
+                <circle cx="184" cy="178" r="9"
+
+                        fill="rgba(255,255,255,0.97)" />
+
+
+
+                <!-- aperture lines -->
+
+                <g class="aperture">
+
+                  <line x1="200" y1="150" x2="200" y2="178" />
+
+                  <line x1="236" y1="164" x2="216" y2="184" />
+
+                  <line x1="246" y1="198" x2="218" y2="202" />
+
+                  <line x1="236" y1="234" x2="216" y2="220" />
+
+                  <line x1="200" y1="248" x2="200" y2="224" />
+
+                  <line x1="164" y1="234" x2="184" y2="220" />
+
+                  <line x1="154" y1="198" x2="182" y2="202" />
+
+                  <line x1="164" y1="164" x2="184" y2="184" />
+
+                </g>
+
+              </g>
+
+            </svg>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="hero-text">
+
+          <p class="hero-caption">
+
+            Describe what’s wrong with your car, home equipment, or electrical system —
+
+            FixLens replies with clear, practical steps.
+
+          </p>
 
         </div>
 
@@ -250,27 +268,9 @@
 
 
 
-      <!-- Right: simple prompt area -->
+      <!-- Bottom: large prompt area -->
 
-      <section class="hero-right">
-
-        <h1 class="hero-title">
-
-          Rotating AI lens that keeps your real-world problems in focus.
-
-        </h1>
-
-
-
-        <p class="hero-subtitle">
-
-          Describe the issue, add a photo or voice note, and FixLens helps you reason through what to check next.
-
-        </p>
-
-
-
-        <!-- Prompt card like ChatGPT -->
+      <section class="prompt-section">
 
         <div class="prompt-card">
 
@@ -280,7 +280,7 @@
 
               class="prompt-input"
 
-              rows="3"
+              rows="10"
 
               placeholder="Example: Strange knocking sound when I start the car, mostly when the engine is cold."></textarea>
 
@@ -404,7 +404,7 @@
 
 
 
-    <!-- Minimal footer only -->
+    <!-- Footer -->
 
     <footer class="footer">
 
