@@ -8,7 +8,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>FixLens – AI Diagnosis for Real-World Problems</title>
+  <title>FixLens – AI Diagnosis</title>
 
   <link rel="stylesheet" href="style.css" />
 
@@ -20,375 +20,39 @@
 
 
 
-    <!-- Header: big logo + menu -->
-
-    <header class="header">
-
-      <div class="logo-header">
-
-        <img src="images/fixlens-logo-white.png" alt="FixLens" class="logo-header-img" />
-
-      </div>
-
-      <button class="menu-toggle" aria-expanded="false" aria-controls="menu-panel">
-
-        <span></span>
-
-        <span></span>
-
-        <span></span>
-
-      </button>
-
-    </header>
-
-
-
-    <main class="main">
-
-
-
-      <!-- Top: lens + short line -->
-
-      <section class="hero-top">
-
-        <div class="hero-left">
-
-          <div class="lens-wrapper">
-
-            <svg class="lens-svg" viewBox="0 0 400 400" aria-hidden="true">
-
-              <defs>
-
-                <!-- circle paths -->
-
-                <path id="innerCircle"
-
-                      d="M200,80
-
-                         a120,120 0 1,1 -0.1,0" />
-
-                <path id="outerCircle"
-
-                      d="M200,40
-
-                         a160,160 0 1,1 -0.1,0" />
-
-
-
-                <!-- glass gradient -->
-
-                <radialGradient id="lensGlassGradient" cx="50%" cy="28%" r="70%">
-
-                  <stop offset="0%" stop-color="#fdfdff" stop-opacity="0.98" />
-
-                  <stop offset="22%" stop-color="#d5d8e2" stop-opacity="0.98" />
-
-                  <stop offset="60%" stop-color="#181924" stop-opacity="1" />
-
-                  <stop offset="100%" stop-color="#04050a" stop-opacity="1" />
-
-                </radialGradient>
-
-              </defs>
-
-
-
-              <!-- outer ring -->
-
-              <g class="outer-ring">
-
-                <circle class="outer-frame" cx="200" cy="200" r="170" />
-
-                <text class="ring-text">
-
-                  <textPath href="#outerCircle" startOffset="0%">
-
-                    4K • 8K • AI DIAGNOSIS • FIXLENS • ROTATING LENS • REAL-WORLD PROBLEMS • PIXEL PRECISION •
-
-                  </textPath>
-
-                </text>
-
-              </g>
-
-
-
-              <!-- inner ring -->
-
-              <g class="inner-ring">
-
-                <circle class="inner-frame" cx="200" cy="200" r="130" />
-
-                <text class="ring-text inner">
-
-                  <textPath href="#innerCircle" startOffset="0%">
-
-                    FIXLENS • VISUAL ENGINE • SENSORS • STRUCTURES • ENGINES • APPLIANCES • ELECTRONICS •
-
-                  </textPath>
-
-                </text>
-
-              </g>
-
-
-
-              <!-- realistic classic lens -->
-
-              <g class="core-lens">
-
-                <!-- outer dark rim -->
-
-                <circle cx="200" cy="200" r="100" fill="#020203" opacity="0.9" />
-
-                <!-- brushed metal ring -->
-
-                <circle cx="200" cy="200" r="90"
-
-                        fill="#151620"
-
-                        stroke="rgba(255,255,255,0.24)"
-
-                        stroke-width="2.2" />
-
-                <!-- bevel ring -->
-
-                <circle cx="200" cy="200" r="78"
-
-                        fill="#050509"
-
-                        stroke="rgba(255,255,255,0.22)"
-
-                        stroke-width="2.2" />
-
-                <!-- glass -->
-
-                <circle cx="200" cy="200" r="64"
-
-                        fill="url(#lensGlassGradient)"
-
-                        stroke="rgba(255,255,255,0.2)"
-
-                        stroke-width="1.8" />
-
-                <!-- inner dark core -->
-
-                <circle cx="200" cy="200" r="42"
-
-                        fill="#05060c" />
-
-
-
-                <!-- top highlight arc -->
-
-                <path d="M168 176
-
-                         A42 42 0 0 1 232 176"
-
-                      fill="none"
-
-                      stroke="rgba(255,255,255,0.42)"
-
-                      stroke-width="3"
-
-                      stroke-linecap="round" />
-
-
-
-                <!-- bottom soft shadow -->
-
-                <path d="M172 226
-
-                         A38 28 0 0 0 228 226"
-
-                      fill="none"
-
-                      stroke="rgba(0,0,0,0.6)"
-
-                      stroke-width="4"
-
-                      stroke-linecap="round" />
-
-
-
-                <!-- specular highlight -->
-
-                <circle cx="184" cy="178" r="9"
-
-                        fill="rgba(255,255,255,0.97)" />
-
-
-
-                <!-- aperture lines -->
-
-                <g class="aperture">
-
-                  <line x1="200" y1="150" x2="200" y2="178" />
-
-                  <line x1="236" y1="164" x2="216" y2="184" />
-
-                  <line x1="246" y1="198" x2="218" y2="202" />
-
-                  <line x1="236" y1="234" x2="216" y2="220" />
-
-                  <line x1="200" y1="248" x2="200" y2="224" />
-
-                  <line x1="164" y1="234" x2="184" y2="220" />
-
-                  <line x1="154" y1="198" x2="182" y2="202" />
-
-                  <line x1="164" y1="164" x2="184" y2="184" />
-
-                </g>
-
-              </g>
-
-            </svg>
-
-          </div>
-
-        </div>
-
-
-
-        <div class="hero-text">
-
-          <p class="hero-caption">
-
-            Describe what’s wrong with your car, home equipment, or electrical system —
-
-            FixLens replies with clear, practical steps.
-
-          </p>
-
-        </div>
-
-      </section>
-
-
-
-      <!-- Bottom: large prompt area -->
-
-      <section class="prompt-section">
-
-        <div class="prompt-card">
-
-          <div class="prompt-row">
-
-            <textarea
-
-              class="prompt-input"
-
-              rows="10"
-
-              placeholder="Example: Strange knocking sound when I start the car, mostly when the engine is cold."></textarea>
-
-
-
-            <div class="prompt-icons">
-
-              <button class="icon-btn" aria-label="Upload a photo">📷</button>
-
-              <button class="icon-btn" aria-label="Add a short voice note">🎙️</button>
-
-            </div>
-
-          </div>
-
-
-
-          <button class="primary-btn">
-
-            Run AI diagnosis
-
-          </button>
-
-
-
-          <p class="status-text">Waiting for your input.</p>
-
-        </div>
-
-      </section>
-
-    </main>
-
-
-
-    <!-- Slide-out menu -->
+    <!-- Slide-out menu (سنملأه لاحقاً بالنصوص القانونية) -->
 
     <aside id="menu-panel" class="menu-panel" aria-hidden="true">
 
       <div class="menu-inner">
 
-        <h2>FixLens guide & safety</h2>
+        <h2>About FixLens</h2>
+
+        <p>
+
+          FixLens is an experimental AI assistant. It helps you reason about
+
+          issues with cars, home equipment, and electrical systems – but it
+
+          doesn’t replace licensed professionals or safety rules.
+
+        </p>
 
 
 
         <section class="menu-section">
 
-          <h3>What FixLens does</h3>
-
-          <p>
-
-            FixLens uses AI to analyze what you describe (and later your photos / audio)
-
-            to suggest likely causes and step-by-step checks.
-
-          </p>
-
-        </section>
-
-
-
-        <section class="menu-section">
-
-          <h3>What FixLens does NOT do</h3>
+          <h3>Safety & responsibility</h3>
 
           <ul>
 
-            <li>Does not see through walls, floors, or hidden spaces.</li>
+            <li>FixLens cannot see through walls, floors, or hidden spaces.</li>
 
-            <li>No guarantee of being correct or complete.</li>
+            <li>Always follow local codes and safety procedures.</li>
 
-            <li>Does not replace licensed professionals or safety rules.</li>
-
-          </ul>
-
-        </section>
-
-
-
-        <section class="menu-section">
-
-          <h3>How to use FixLens</h3>
-
-          <ul>
-
-            <li>Describe the issue with clear details: when, where, and how it happens.</li>
-
-            <li>Follow safety first: power off, avoid dangerous areas, call a pro if unsure.</li>
-
-            <li>Use FixLens to understand possibilities and talk smarter with experts.</li>
+            <li>Use FixLens to get ideas and better questions for real experts.</li>
 
           </ul>
-
-        </section>
-
-
-
-        <section class="menu-section">
-
-          <h3>Privacy & data</h3>
-
-          <p>
-
-            FixLens is an experimental assistant. Don’t share personal IDs, passwords, or anything sensitive.
-
-            Always follow local laws and building codes.
-
-          </p>
 
         </section>
 
@@ -396,21 +60,291 @@
 
     </aside>
 
-
-
-    <!-- Backdrop for menu -->
-
     <div id="menu-backdrop" class="menu-backdrop"></div>
 
 
 
-    <!-- Footer -->
+    <!-- Main card -->
 
-    <footer class="footer">
+    <div class="app-card">
 
-      <span>© <span id="year"></span> FixLens.ai – Built with care.</span>
+      <header class="card-header">
 
-    </footer>
+        <div class="logo-row">
+
+          <!-- شعار من الصورة التي رفعتها: images/fixlens-logo-white.png -->
+
+          <img src="images/fixlens-logo-white.png" alt="FixLens" class="logo-img" />
+
+        </div>
+
+
+
+        <button class="menu-toggle" aria-expanded="false" aria-controls="menu-panel">
+
+          <span></span>
+
+          <span></span>
+
+          <span></span>
+
+        </button>
+
+      </header>
+
+
+
+      <main class="card-main">
+
+        <!-- العدسة مع الكتابة الدائرية -->
+
+        <div class="lens-container">
+
+          <svg class="lens-svg" viewBox="0 0 400 400" aria-hidden="true">
+
+            <defs>
+
+              <!-- مسار الكتابة الدائرية -->
+
+              <path id="outerCircle"
+
+                    d="M200,40
+
+                       a160,160 0 1,1 -0.1,0" />
+
+
+
+              <!-- تدرّج الزجاج -->
+
+              <radialGradient id="lensGlassGradient" cx="50%" cy="30%" r="70%">
+
+                <stop offset="0%" stop-color="#fdfdff" stop-opacity="0.9" />
+
+                <stop offset="22%" stop-color="#d4d8e6" stop-opacity="0.95" />
+
+                <stop offset="60%" stop-color="#181b26" stop-opacity="1" />
+
+                <stop offset="100%" stop-color="#020308" stop-opacity="1" />
+
+              </radialGradient>
+
+            </defs>
+
+
+
+            <!-- الكتابة التي تدور حول العدسة -->
+
+            <g class="outer-ring">
+
+              <circle cx="200" cy="200" r="170"
+
+                      fill="none"
+
+                      stroke="rgba(255,255,255,0.25)"
+
+                      stroke-width="2" />
+
+              <text class="ring-text">
+
+                <textPath href="#outerCircle" startOffset="0%">
+
+                  REAL-WORLD PROBLEMS • ENGINES • STRUCTURES • APPLIANCES • ELECTRONICS • FIXLENS • AI DIAGNOSIS •
+
+                </textPath>
+
+              </text>
+
+            </g>
+
+
+
+            <!-- العدسة الكلاسيك -->
+
+            <g class="core-lens">
+
+              <!-- إطار خارجي غامق -->
+
+              <circle cx="200" cy="200" r="118"
+
+                      fill="#050608"
+
+                      stroke="rgba(255,255,255,0.22)"
+
+                      stroke-width="2.4" />
+
+              <!-- حلقة معدنية -->
+
+              <circle cx="200" cy="200" r="102"
+
+                      fill="#11131b"
+
+                      stroke="rgba(255,255,255,0.3)"
+
+                      stroke-width="2" />
+
+              <!-- حلقات رفيعة تشبه الريّش -->
+
+              <circle cx="200" cy="200" r="94" fill="#050608" />
+
+              <circle cx="200" cy="200" r="88"
+
+                      fill="none"
+
+                      stroke="rgba(255,255,255,0.18)"
+
+                      stroke-width="2" />
+
+              <circle cx="200" cy="200" r="80"
+
+                      fill="none"
+
+                      stroke="rgba(255,255,255,0.12)"
+
+                      stroke-width="2" />
+
+              <circle cx="200" cy="200" r="72"
+
+                      fill="none"
+
+                      stroke="rgba(0,0,0,0.7)"
+
+                      stroke-width="3" />
+
+
+
+              <!-- الزجاج -->
+
+              <circle cx="200" cy="200" r="64"
+
+                      fill="url(#lensGlassGradient)"
+
+                      stroke="rgba(255,255,255,0.28)"
+
+                      stroke-width="2" />
+
+
+
+              <!-- قلب العدسة الداكن -->
+
+              <circle cx="200" cy="200" r="40"
+
+                      fill="#020307" />
+
+
+
+              <!-- لمعان علوي -->
+
+              <path d="M168 178
+
+                       A32 32 0 0 1 232 178"
+
+                    fill="none"
+
+                    stroke="rgba(255,255,255,0.6)"
+
+                    stroke-width="3"
+
+                    stroke-linecap="round" />
+
+
+
+              <!-- ظل سفلي -->
+
+              <path d="M176 224
+
+                       A30 20 0 0 0 224 224"
+
+                    fill="none"
+
+                    stroke="rgba(0,0,0,0.7)"
+
+                    stroke-width="4"
+
+                    stroke-linecap="round" />
+
+
+
+              <!-- نقطة لمعان صغيرة -->
+
+              <circle cx="186" cy="182" r="9"
+
+                      fill="rgba(255,255,255,0.98)" />
+
+
+
+              <!-- خطوط فتحة العدسة -->
+
+              <g class="aperture">
+
+                <line x1="200" y1="156" x2="200" y2="184" />
+
+                <line x1="236" y1="170" x2="214" y2="188" />
+
+                <line x1="242" y1="200" x2="214" y2="204" />
+
+                <line x1="234" y1="230" x2="214" y2="216" />
+
+                <line x1="200" y1="244" x2="200" y2="220" />
+
+                <line x1="166" y1="230" x2="186" y2="216" />
+
+                <line x1="158" y1="200" x2="186" y2="204" />
+
+                <line x1="166" y1="170" x2="186" y2="188" />
+
+              </g>
+
+            </g>
+
+          </svg>
+
+        </div>
+
+
+
+        <!-- الأزرار -->
+
+        <button class="secondary-btn">Upload photo</button>
+
+
+
+        <div class="input-row">
+
+          <input
+
+            type="text"
+
+            class="text-input"
+
+            placeholder="Describe what’s going on…" />
+
+          <button class="icon-btn" aria-label="Add a short voice note">🎙️</button>
+
+        </div>
+
+
+
+        <button class="primary-btn">Run diagnosis</button>
+
+
+
+        <p class="hint-text">
+
+          Describe your car, home equipment, or electrical issue — FixLens replies with clear, practical steps.
+
+        </p>
+
+      </main>
+
+
+
+      <footer class="card-footer">
+
+        © <span id="year"></span> FixLens.ai – Built with care.
+
+      </footer>
+
+    </div>
 
   </div>
 
@@ -418,13 +352,13 @@
 
   <script>
 
-    // year
+    // السنة
 
     document.getElementById('year').textContent = new Date().getFullYear();
 
 
 
-    // menu toggle
+    // منيو جانبية بسيطة
 
     const menuBtn = document.querySelector('.menu-toggle');
 
@@ -436,13 +370,13 @@
 
     function toggleMenu() {
 
-      const isOpen = menuPanel.classList.toggle('open');
+      const open = menuPanel.classList.toggle('open');
 
-      backdrop.classList.toggle('open', isOpen);
+      backdrop.classList.toggle('open', open);
 
-      menuBtn.setAttribute('aria-expanded', String(isOpen));
+      menuBtn.setAttribute('aria-expanded', String(open));
 
-      menuPanel.setAttribute('aria-hidden', String(!isOpen));
+      menuPanel.setAttribute('aria-hidden', String(!open));
 
     }
 
