@@ -34,7 +34,7 @@
 
 
 
-    <!-- Main hero (like ChatGPT: lens + prompt) -->
+    <!-- Main hero (lens + prompt like ChatGPT) -->
 
     <main class="hero">
 
@@ -61,6 +61,22 @@
                     d="M200,40
 
                        a160,160 0 1,1 -0.1,0" />
+
+
+
+              <!-- Classic dark lens gradient -->
+
+              <radialGradient id="lensCoreGradient" cx="50%" cy="30%" r="70%">
+
+                <stop offset="0%" stop-color="#f7f7f7" stop-opacity="0.95" />
+
+                <stop offset="25%" stop-color="#d4d6dd" stop-opacity="0.95" />
+
+                <stop offset="65%" stop-color="#181924" stop-opacity="1" />
+
+                <stop offset="100%" stop-color="#050509" stop-opacity="1" />
+
+              </radialGradient>
 
             </defs>
 
@@ -106,11 +122,49 @@
 
 
 
-            <!-- Center lens icon -->
+            <!-- Center classic lens (no external image) -->
 
-            <image href="images/fixlens-lens-bw.png"
+            <g class="core-lens">
 
-                   x="140" y="140" width="120" height="120" />
+              <!-- subtle glow -->
+
+              <circle class="core-glow" cx="200" cy="200" r="86" />
+
+              <!-- main glass -->
+
+              <circle class="core-main" cx="200" cy="200" r="72" />
+
+              <!-- inner glass -->
+
+              <circle class="core-inner" cx="200" cy="200" r="48" />
+
+              <!-- small highlight -->
+
+              <circle class="core-highlight" cx="182" cy="182" r="14" />
+
+              <!-- simple aperture blades -->
+
+              <g class="aperture">
+
+                <line x1="200" y1="136" x2="200" y2="168" />
+
+                <line x1="240" y1="152" x2="220" y2="176" />
+
+                <line x1="252" y1="194" x2="224" y2="200" />
+
+                <line x1="240" y1="236" x2="220" y2="224" />
+
+                <line x1="200" y1="252" x2="200" y2="232" />
+
+                <line x1="160" y1="236" x2="180" y2="224" />
+
+                <line x1="148" y1="194" x2="176" y2="200" />
+
+                <line x1="160" y1="152" x2="180" y2="176" />
+
+              </g>
+
+            </g>
 
           </svg>
 
@@ -120,7 +174,7 @@
 
 
 
-      <!-- Right: prompt area -->
+      <!-- Right: simple prompt area -->
 
       <section class="hero-right">
 
@@ -134,7 +188,7 @@
 
         <p class="hero-subtitle">
 
-          Describe what’s going on, upload a clear photo, or add a short voice note.
+          Type what’s going on, add a photo, or record a short voice note.
 
           FixLens analyzes engines, appliances, electronics, structures, and more — then guides you step by step.
 
@@ -142,29 +196,29 @@
 
 
 
-        <div class="input-card">
+        <!-- Prompt card like ChatGPT -->
 
-          <label class="field-label" for="issue-text">Describe what’s going on</label>
+        <div class="prompt-card">
 
-          <textarea id="issue-text" class="text-input" rows="3"
+          <div class="prompt-row">
 
-            placeholder="Example: Strange knocking sound when I start the car, mostly when the engine is cold."></textarea>
+            <textarea
+
+              class="prompt-input"
+
+              rows="3"
+
+              placeholder="Example: Strange knocking sound when I start the car, mostly when the engine is cold."></textarea>
 
 
 
-          <div class="input-row">
+            <div class="prompt-icons">
 
-            <button class="pill-btn">
+              <button class="icon-btn" aria-label="Upload a photo">📷</button>
 
-              📷 Upload a photo
+              <button class="icon-btn" aria-label="Add a short voice note">🎙️</button>
 
-            </button>
-
-            <button class="pill-btn">
-
-              🎙️ Add a short voice note
-
-            </button>
+            </div>
 
           </div>
 
@@ -178,15 +232,11 @@
 
 
 
-          <div class="examples-row">
+          <button class="chip main-chip">
 
-            <button class="chip">🔧 Detect pipes, wires & studs behind walls / floors</button>
+            🔧 Detect pipes, wires & studs behind walls / floors
 
-            <button class="chip">🚗 Diagnose strange engine noises</button>
-
-            <button class="chip">🏠 Check cracks, leaks & structural issues</button>
-
-          </div>
+          </button>
 
 
 
