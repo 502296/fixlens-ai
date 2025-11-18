@@ -20,55 +20,41 @@
 
 
 
-    <!-- Header -->
+    <!-- Header: big logo only -->
 
     <header class="header">
 
-      <div class="logo-group">
+      <div class="logo-header">
 
-        <img src="images/fixlens-logo-white.png" alt="FixLens logo" class="logo-mark" />
-
-        <span class="logo-text">FixLens</span>
+        <img src="images/fixlens-logo-white.png" alt="FixLens" class="logo-header-img" />
 
       </div>
-
-
-
-      <button class="nav-toggle" aria-label="Open menu">
-
-        <span></span>
-
-        <span></span>
-
-      </button>
 
     </header>
 
 
 
-    <!-- Hero -->
+    <!-- Main hero (like ChatGPT: lens + prompt) -->
 
     <main class="hero">
+
+      <!-- Left: animated lens -->
 
       <section class="hero-left">
 
         <div class="lens-wrapper">
 
-          <!-- Rotating SVG lens with inner + outer text -->
-
           <svg class="lens-svg" viewBox="0 0 400 400" aria-hidden="true">
 
             <defs>
 
-              <!-- inner full circle path -->
+              <!-- Paths for full circles -->
 
               <path id="innerCircle"
 
                     d="M200,80
 
                        a120,120 0 1,1 -0.1,0" />
-
-              <!-- outer full circle path -->
 
               <path id="outerCircle"
 
@@ -80,9 +66,11 @@
 
 
 
-            <!-- outer text ring -->
+            <!-- Outer ring: frame + text (rotates one way) -->
 
-            <g class="outer-text-ring">
+            <g class="outer-ring">
+
+              <circle class="outer-frame" cx="200" cy="200" r="170" />
 
               <text class="ring-text">
 
@@ -98,9 +86,11 @@
 
 
 
-            <!-- inner text ring -->
+            <!-- Inner ring: frame + text (rotates opposite) -->
 
-            <g class="inner-text-ring">
+            <g class="inner-ring">
+
+              <circle class="inner-frame" cx="200" cy="200" r="130" />
 
               <text class="ring-text inner">
 
@@ -116,11 +106,11 @@
 
 
 
-            <!-- lens image in the center -->
+            <!-- Center lens icon -->
 
-            <image href="images/fixlens-logo-white.png"
+            <image href="images/fixlens-lens-bw.png"
 
-                   x="115" y="115" width="170" height="170" />
+                   x="140" y="140" width="120" height="120" />
 
           </svg>
 
@@ -129,6 +119,8 @@
       </section>
 
 
+
+      <!-- Right: prompt area -->
 
       <section class="hero-right">
 
@@ -142,15 +134,13 @@
 
         <p class="hero-subtitle">
 
-          Describe what’s going on, upload a clear photo, or add a short voice note.  
+          Describe what’s going on, upload a clear photo, or add a short voice note.
 
           FixLens analyzes engines, appliances, electronics, structures, and more — then guides you step by step.
 
         </p>
 
 
-
-        <!-- Input area -->
 
         <div class="input-card">
 
@@ -210,107 +200,7 @@
 
 
 
-    <!-- How it works -->
-
-    <section class="section" id="how">
-
-      <h2>How FixLens works</h2>
-
-      <p class="section-intro">
-
-        FixLens combines computer vision, language understanding, and physics-aware reasoning to analyze what it sees and what you describe, then returns a clear explanation of what might be wrong and what to check next.
-
-      </p>
-
-
-
-      <ol class="steps">
-
-        <li>
-
-          <h3>1. Capture</h3>
-
-          <p>Take a clear photo or short video of the problem — car engine, strange leak, broken device, anything in the real world.</p>
-
-        </li>
-
-        <li>
-
-          <h3>2. Describe</h3>
-
-          <p>Add a few sentences in your own words so FixLens understands symptoms, sounds, timing, and context.</p>
-
-        </li>
-
-        <li>
-
-          <h3>3. Analyze</h3>
-
-          <p>The AI lens compares your issue with physics, mechanics, and past patterns to narrow down likely causes.</p>
-
-        </li>
-
-        <li>
-
-          <h3>4. Guide</h3>
-
-          <p>FixLens gives you step-by-step guidance: what to check, what’s safe to try yourself, and what to tell a professional.</p>
-
-        </li>
-
-      </ol>
-
-    </section>
-
-
-
-    <!-- Use cases -->
-
-    <section class="section" id="use-cases">
-
-      <h2>What FixLens can help with</h2>
-
-      <div class="grid">
-
-        <div class="card">
-
-          <h3>Engines & vehicles</h3>
-
-          <p>Strange sounds, smoke, warning lights, vibration, leaks, and more.</p>
-
-        </div>
-
-        <div class="card">
-
-          <h3>Home & structure</h3>
-
-          <p>Cracks, moisture, ceiling stains, doors that don’t close right, or uneven floors.</p>
-
-        </div>
-
-        <div class="card">
-
-          <h3>Appliances & devices</h3>
-
-          <p>Washing machines, fridges, ovens, TVs, laptops, and other electronics.</p>
-
-        </div>
-
-        <div class="card">
-
-          <h3>Hidden problems</h3>
-
-          <p>Detect patterns that suggest issues behind walls, under floors, or inside equipment.</p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- Footer -->
+    <!-- Minimal footer only -->
 
     <footer class="footer">
 
@@ -318,15 +208,11 @@
 
     </footer>
 
-
-
   </div>
 
 
 
   <script>
-
-    // simple dynamic year
 
     document.getElementById('year').textContent = new Date().getFullYear();
 
