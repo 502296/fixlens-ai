@@ -112,7 +112,7 @@ body {
 
 .logo-header-img {
 
-  height: 40px;
+  height: 70px;
 
   width: auto;
 
@@ -122,13 +122,11 @@ body {
 
 
 
-/* allow it to feel big on desktop */
-
 @media (min-width: 900px) {
 
   .logo-header-img {
 
-    height: 52px;
+    height: 90px;
 
   }
 
@@ -198,7 +196,11 @@ body {
 
 
 
-/* rings + frames */
+/* =========
+
+   Rings & frames
+
+   ========= */
 
 
 
@@ -206,7 +208,7 @@ body {
 
   fill: none;
 
-  stroke: rgba(255, 255, 255, 0.22); /* الرمادي */
+  stroke: rgba(255, 255, 255, 0.22); /* رمادي أغمق */
 
   stroke-width: 2;
 
@@ -218,7 +220,7 @@ body {
 
   fill: none;
 
-  stroke: rgba(255, 255, 255, 0.6); /* الأبيض/الرمادي الفاتح */
+  stroke: rgba(255, 255, 255, 0.6);  /* رمادي فاتح / أبيض */
 
   stroke-width: 2.4;
 
@@ -312,6 +314,78 @@ body {
 
 /* =========
 
+   Core classic lens
+
+   ========= */
+
+
+
+.core-lens {
+
+  transform-origin: 50% 50%;
+
+}
+
+
+
+.core-glow {
+
+  fill: rgba(255, 255, 255, 0.06);
+
+}
+
+
+
+.core-main {
+
+  fill: url(#lensCoreGradient);
+
+  stroke: rgba(255, 255, 255, 0.28);
+
+  stroke-width: 2;
+
+}
+
+
+
+.core-inner {
+
+  fill: radial-gradient(circle at 30% 30%, #fdfdfd 0%, #181924 70%, #050509 100%);
+
+  fill: rgba(8, 9, 14, 0.98);
+
+  stroke: rgba(255, 255, 255, 0.18);
+
+  stroke-width: 1.4;
+
+}
+
+
+
+.core-highlight {
+
+  fill: rgba(255, 255, 255, 0.9);
+
+}
+
+
+
+/* simple aperture lines */
+
+.aperture line {
+
+  stroke: rgba(0, 0, 0, 0.45);
+
+  stroke-width: 2.2;
+
+  stroke-linecap: round;
+
+}
+
+
+
+/* =========
+
    Right side – prompt area
 
    ========= */
@@ -356,15 +430,15 @@ body {
 
 
 
-/* card */
+/* prompt card */
 
 
 
-.input-card {
+.prompt-card {
 
   margin-top: 10px;
 
-  padding: 16px 16px 18px;
+  padding: 14px 14px 18px;
 
   background: radial-gradient(circle at top left, #1a1b25 0%, #0a0b11 52%, #050506 100%);
 
@@ -378,23 +452,21 @@ body {
 
 
 
-.field-label {
+.prompt-row {
 
-  font-size: 0.9rem;
+  display: flex;
 
-  color: var(--text-muted);
+  align-items: stretch;
 
-  display: inline-block;
-
-  margin-bottom: 6px;
+  gap: 8px;
 
 }
 
 
 
-.text-input {
+.prompt-input {
 
-  width: 100%;
+  flex: 1;
 
   min-height: 72px;
 
@@ -418,7 +490,7 @@ body {
 
 
 
-.text-input:focus {
+.prompt-input:focus {
 
   border-color: rgba(255, 255, 255, 0.45);
 
@@ -428,25 +500,25 @@ body {
 
 
 
-.input-row {
+.prompt-icons {
 
   display: flex;
 
-  flex-wrap: wrap;
+  flex-direction: column;
 
-  gap: 8px;
-
-  margin-top: 10px;
+  gap: 6px;
 
 }
 
 
 
-.pill-btn {
+.icon-btn {
 
-  flex: 1 1 140px;
+  width: 40px;
 
-  border-radius: var(--radius-pill);
+  height: 34px;
+
+  border-radius: 999px;
 
   border: 1px solid var(--accent-soft);
 
@@ -454,19 +526,15 @@ body {
 
   color: var(--text-main);
 
-  padding: 8px 12px;
-
-  font-size: 0.9rem;
-
   display: inline-flex;
 
   align-items: center;
 
   justify-content: center;
 
-  gap: 6px;
-
   cursor: pointer;
+
+  font-size: 1rem;
 
   transition: background var(--transition-med), transform var(--transition-fast), border-color var(--transition-med);
 
@@ -474,7 +542,7 @@ body {
 
 
 
-.pill-btn:hover {
+.icon-btn:hover {
 
   background: rgba(30, 32, 44, 0.98);
 
@@ -488,7 +556,7 @@ body {
 
 .primary-btn {
 
-  margin-top: 12px;
+  margin-top: 10px;
 
   width: 100%;
 
@@ -538,21 +606,9 @@ body {
 
 
 
-.examples-row {
-
-  display: flex;
-
-  flex-wrap: wrap;
-
-  gap: 6px;
+.chip.main-chip {
 
   margin-top: 12px;
-
-}
-
-
-
-.chip {
 
   border-radius: var(--radius-pill);
 
@@ -562,17 +618,15 @@ body {
 
   color: var(--text-main);
 
-  font-size: 0.78rem;
+  font-size: 0.82rem;
 
-  padding: 6px 10px;
+  padding: 7px 11px;
 
-  white-space: nowrap;
+  display: inline-flex;
 
-  max-width: 100%;
+  align-items: center;
 
-  overflow: hidden;
-
-  text-overflow: ellipsis;
+  justify-content: center;
 
 }
 
@@ -585,6 +639,8 @@ body {
   font-size: 0.86rem;
 
   color: var(--text-muted);
+
+  text-align: left;
 
 }
 
@@ -648,6 +704,30 @@ body {
 
   }
 
+
+
+  .prompt-row {
+
+    flex-direction: column;
+
+  }
+
+
+
+  .prompt-icons {
+
+    flex-direction: row;
+
+  }
+
+
+
+  .icon-btn {
+
+    width: 44px;
+
+  }
+
 }
 
 
@@ -662,7 +742,7 @@ body {
 
 
 
-  .input-card {
+  .prompt-card {
 
     padding-inline: 12px;
 
@@ -670,17 +750,9 @@ body {
 
 
 
-  .pill-btn {
+  .chip.main-chip {
 
-    font-size: 0.84rem;
-
-  }
-
-
-
-  .chip {
-
-    font-size: 0.74rem;
+    font-size: 0.78rem;
 
   }
 
