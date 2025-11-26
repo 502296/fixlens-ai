@@ -1,8 +1,4 @@
-// api/brain.js
-
-// Serverless function for FixLens Brain
-
-
+// api/fixlens-brain.js
 
 import OpenAI from "openai";
 
@@ -10,71 +6,21 @@ import OpenAI from "openai";
 
 const client = new OpenAI({
 
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.OPENAI_API_KEY, // ضع الـ API key في Vercel (Environment Variables)
 
 });
 
 
 
-// شخصية FixLens Brain
-
-const SYSTEM_PROMPT = `
-
-You are **FixLens Brain**, an AI technician for car and home problems.
-
-
-
-Goals:
-
-1. Understand the problem from the user's description.
-
-2. Classify it into one of these categories:
-
-   - Auto Electric
-
-   - Auto Mechanic
-
-   - Home Appliance / Home Fix
-
-3. Before giving any solution, you MUST ask 2–4 short, clear questions to clarify the situation.
-
-4. After each user answer, decide:
-
-   - Either ask 1–2 follow-up questions if information is still not enough.
-
-   - Or give a clear, step-by-step plan.
-
-
-
-Style:
-
-- Use simple language.
-
-- Prefer short questions with (Yes/No) or simple options.
-
-- Always mention safety. Never suggest dangerous repairs.
-
-- If the user writes in Arabic, answer in friendly Arabic (Iraqi/standard mix).
-
-- Always be calm, kind, and practical.
-
-
-
-When information is enough, clearly mark the red line:
-
-- Explain what the user can safely do at home.
-
-- Explain when they MUST go to a professional technician.
-
-`;
-
-
-
 export default async function handler(req, res) {
+
+  // السماح فقط بالـ POST
 
   if (req.method !== "POST") {
 
-    return res.status(405).json({ ok: false, error: "Method not allowed" });
+    res.setHeader("Allow", ["POST"]);
+
+    return res.status(405).json({ error: "Method Not Allowed" });
 
   }
 
@@ -82,57 +28,93 @@ export default async function handler(req, res) {
 
   try {
 
-    const body = req.body || {};
+    const { message, language } = req.body || {};
 
-    const messages = body.messages || [];
 
-    const category = body.category || "general";
+
+    if (!message || typeof message !== "string") {
+
+      return res.status(400).json({ error: "message is required" });
+
+    }
+
+
+
+    const lang = language || "en";
+
+
+
+    const systemPrompt = `
+
+You are FixLens Brain – an AI diagnosis assistant for real-world problems:
+
+cars, home, appliances, devices, plumbing, electricity, etc.
+
+
+
+Rules:
+
+- Ask 1–3 short clarifying questions if the problem is unclear.
+
+- Explain in simple, practical steps.
+
+- Be very clear about SAFETY (electricity, gas, fire, tools, traffic).
+
+- If something is dangerous or requires a certified professional, say it clearly.
+
+- You can answer in the user's language (Arabic or English).
+
+If language = "ar", answer in Arabic. If "en", answer in English.
+
+`;
+
+
+
+    const userContent =
+
+      lang === "ar"
+
+        ? `اللغة: عربي.\nالمشكلة:\n${message}`
+
+        : `Language: English.\nIssue:\n${message}`;
 
 
 
     const completion = await client.chat.completions.create({
 
-      model: "gpt-4.1-mini",
+      model: "gpt-4.1-mini", // يمكنك تغييره إلى gpt-4.1 أو gpt-4o حسب ما تحب
 
       messages: [
 
-        {
+        { role: "system", content: systemPrompt },
 
-          role: "system",
-
-          content: SYSTEM_PROMPT + `\n\nCategory: ${category}`,
-
-        },
-
-        ...messages,
+        { role: "user", content: userContent },
 
       ],
 
-    });
+      temperature: 0.3,
+
+    }); //  [oai_citation:0‡OpenAI Platform](https://platform.openai.com/docs/api-reference/chat?utm_source=chatgpt.com)
 
 
 
-    const reply = completion.choices?.[0]?.message?.content || "";
+    const reply =
+
+      completion.choices?.[0]?.message?.content ||
+
+      "Sorry, FixLens Brain couldn't generate a response.";
 
 
 
-    res.status(200).json({
+    return res.status(200).json({ reply });
 
-      ok: true,
+  } catch (err) {
 
-      reply,
+    console.error("FixLens Brain error:", err);
 
-    });
+    return res.status(500).json({
 
-  } catch (error) {
-
-    console.error("FixLens Brain error:", error);
-
-    res.status(500).json({
-
-      ok: false,
-
-      error: "Server error",
+      error: "FixLens Brain internal error",
 
     });
 
