@@ -4,78 +4,104 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FixLens AI — Terms of Service</title>
-  <link rel="stylesheet" href="legal.css" />
+
+  <link rel="stylesheet" href="./style.css" />
+  <meta name="color-scheme" content="dark" />
 </head>
 
-<body>
-  <div class="container">
-
-    <div class="topbar">
-      <div class="brand">
-        <div>
-          <div class="title">FixLens AI</div>
-          <div class="subtitle">Terms</div>
-        </div>
-      </div>
-
-      <div class="pills">
-        <a class="pill" href="privacy.html">Privacy</a>
-        <a class="pill" href="support.html">Support</a>
-        <a class="pill active" href="terms.html">Terms</a>
-        <a class="pill" href="safety.html">Safety</a>
-      </div>
+<body class="doc-page">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-title">FixLens<br/>AI</div>
     </div>
 
-    <div class="heroCard">
+    <nav class="pill-nav" aria-label="Primary">
+      <a class="pill" href="./privacy.html">Privacy</a>
+      <a class="pill" href="./support.html">Support</a>
+      <a class="pill active" href="./terms.html" aria-current="page">Terms</a>
+      <a class="pill" href="./safety.html">Safety</a>
+    </nav>
+  </header>
+
+  <main class="doc-wrap">
+    <section class="card hero-card">
       <h1>Terms of Service</h1>
-      <p class="lead">
+      <p class="muted">
         These Terms explain the rules for using FixLens. By accessing or using the FixLens application and related services,
         you agree to these Terms. If you do not agree, please do not use the service.
       </p>
-      <div class="updated">Last updated: December 30, 2025</div>
-    </div>
+      <p class="muted"><strong>Last updated:</strong> December 30, 2025</p>
+    </section>
 
-    <div class="section">
+    <section class="card">
       <h2>1) What FixLens provides</h2>
-      <p>
-        FixLens provides AI-assisted informational guidance related to automotive diagnostics. The service may analyze user-provided
-        text, images, and/or audio to generate possible explanations and recommended next steps.
+      <p class="muted">
+        FixLens provides AI-assisted informational guidance related to automotive diagnostics. The service may analyze
+        user-provided text, images, and/or audio to generate possible explanations and recommended next steps.
       </p>
-      <div class="note">FixLens does not replace a professional mechanic.</div>
-    </div>
+      <div class="callout">
+        FixLens is designed to help you understand what may be happening and communicate more effectively —
+        it does not replace a professional mechanic.
+      </div>
+    </section>
 
-    <div class="section">
+    <section class="card">
       <h2>2) What FixLens does not provide</h2>
-      <ul>
+      <ul class="muted">
         <li>No physical inspections, repairs, or mechanical certification</li>
         <li>No guarantee of accuracy, completeness, or suitability for a specific vehicle</li>
         <li>No authorization for driving decisions, safety-critical actions, or repairs</li>
       </ul>
-    </div>
+    </section>
 
-    <div class="section">
+    <section class="card">
       <h2>3) Your responsibilities</h2>
-      <ul>
-        <li>Use FixLens as guidance, not as final authority</li>
-        <li>Follow vehicle safety precautions and the manufacturer’s instructions</li>
-        <li>Seek professional help for urgent or dangerous conditions</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <h2>4) Safety-critical situations</h2>
-      <p>
-        If you notice smoke, strong fuel smell, overheating, loss of brakes/steering, or any condition that feels unsafe,
-        stop driving when safe and seek professional help immediately.
+      <p class="muted">
+        You are responsible for how you use FixLens guidance. Always use good judgment and follow vehicle safety precautions.
+        If the vehicle shows urgent or dangerous conditions, seek professional help immediately.
       </p>
-    </div>
+      <ul class="muted">
+        <li>Use FixLens as a support tool, not as final authority</li>
+        <li>Confirm repairs with qualified professionals when appropriate</li>
+        <li>Do not rely on FixLens for emergency or safety-critical decisions</li>
+      </ul>
+    </section>
 
-    <div class="section">
-      <h2>5) Contact</h2>
-      <p>Questions? Contact: <a href="mailto:support@fixlens.ai">support@fixlens.ai</a></p>
-    </div>
+    <section class="card">
+      <h2>4) User content</h2>
+      <p class="muted">
+        You may submit text, images, or audio for analysis. You confirm you have the right to provide that content and that it
+        does not violate any laws. FixLens may process that content to deliver the service.
+      </p>
+      <p class="muted">
+        For privacy and data handling, see the <a href="./privacy.html">Privacy Policy</a>.
+      </p>
+    </section>
 
-    <div class="footer">© 2025 FixLens.ai — Built with care.</div>
-  </div>
+    <section class="card">
+      <h2>5) Limitation of liability</h2>
+      <p class="muted">
+        FixLens provides informational guidance only. To the extent permitted by law, FixLens AI is not responsible for damages,
+        losses, or claims resulting from repair decisions, driving decisions, or reliance on the guidance provided.
+      </p>
+      <div class="callout">
+        Best practice: use FixLens to organize symptoms and questions — then confirm with a qualified mechanic.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>6) Contact</h2>
+      <p class="muted">Questions? Contact: <strong>support@fixlens.ai</strong></p>
+
+      <div class="btn-row">
+        <a class="btn primary" href="mailto:support@fixlens.ai">Email Support</a>
+        <a class="btn" href="./support.html">Support Page</a>
+      </div>
+    </section>
+
+    <footer class="footer muted">
+      © 2025 FixLens AI — Terms
+    </footer>
+  </main>
 </body>
 </html>
