@@ -787,3 +787,112 @@ body {
   }
 
 }
+
+/* ===============================
+   DOC PAGES (Terms / Safety)
+   Apple-style dark glass + subtle light lines
+   (Add this at the VERY END of style.css)
+================================= */
+
+/* Background for doc pages only */
+body.doc-page {
+  background:
+    radial-gradient(900px 650px at 20% 10%, rgba(120,190,255,0.12), transparent 55%),
+    radial-gradient(850px 650px at 85% 0%, rgba(255,255,255,0.07), transparent 55%),
+    linear-gradient(180deg, #0b0f14 0%, #070a0f 100%);
+  color: rgba(255,255,255,0.92);
+}
+
+/* Subtle diagonal light lines */
+body.doc-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      115deg,
+      rgba(255,255,255,0.05) 0px,
+      rgba(255,255,255,0.05) 1px,
+      transparent 1px,
+      transparent 52px
+    );
+  opacity: 0.12;
+  mix-blend-mode: screen;
+}
+
+/* If your Terms/Safety content is inside .page, we keep it centered and readable */
+body.doc-page .page {
+  align-items: flex-start;
+  padding-top: 26px;
+  padding-bottom: 26px;
+}
+
+/* Glass card container inside terms/safety */
+body.doc-page .doc-card {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  background: rgba(12, 16, 22, 0.55);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 22px;
+  box-shadow: 0 28px 70px rgba(0,0,0,0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 18px 18px 20px;
+}
+
+/* Titles */
+body.doc-page h1 {
+  font-size: 2.2rem;
+  margin: 6px 0 10px;
+  letter-spacing: -0.02em;
+}
+body.doc-page h2 {
+  margin: 18px 0 10px;
+  font-size: 1.25rem;
+}
+body.doc-page p,
+body.doc-page li {
+  color: rgba(255,255,255,0.85);
+  line-height: 1.6;
+}
+
+/* Section cards inside the doc card */
+body.doc-page .section {
+  margin-top: 14px;
+  padding: 14px 14px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+/* Links */
+body.doc-page a {
+  color: rgba(140, 190, 255, 0.95);
+  text-decoration: none;
+}
+body.doc-page a:hover {
+  text-decoration: underline;
+}
+
+/* Top nav links if present */
+body.doc-page .toplinks {
+  margin: 0 0 12px;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+body.doc-page .toplinks a {
+  margin-right: 10px;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  body.doc-page .doc-card {
+    border-radius: 18px;
+    padding: 14px 14px 16px;
+  }
+  body.doc-page h1 {
+    font-size: 1.8rem;
+  }
+}
