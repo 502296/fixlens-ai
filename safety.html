@@ -4,84 +4,93 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FixLens AI — Safety & Scope</title>
-  <link rel="stylesheet" href="legal.css" />
+
+  <link rel="stylesheet" href="./style.css" />
+  <meta name="color-scheme" content="dark" />
 </head>
 
-<body>
-  <div class="container">
-
-    <div class="topbar">
-      <div class="brand">
-        <div>
-          <div class="title">FixLens AI</div>
-          <div class="subtitle">Safety</div>
-        </div>
-      </div>
-
-      <div class="pills">
-        <a class="pill" href="privacy.html">Privacy</a>
-        <a class="pill" href="support.html">Support</a>
-        <a class="pill" href="terms.html">Terms</a>
-        <a class="pill active" href="safety.html">Safety</a>
-      </div>
+<body class="doc-page">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-title">FixLens<br/>AI</div>
     </div>
 
-    <div class="heroCard">
+    <nav class="pill-nav" aria-label="Primary">
+      <a class="pill" href="./privacy.html">Privacy</a>
+      <a class="pill" href="./support.html">Support</a>
+      <a class="pill" href="./terms.html">Terms</a>
+      <a class="pill active" href="./safety.html" aria-current="page">Safety</a>
+    </nav>
+  </header>
+
+  <main class="doc-wrap">
+    <section class="card hero-card">
       <h1>Safety &amp; Scope</h1>
-      <p class="lead">
-        FixLens is built to support drivers with calm, practical, professional guidance. This page explains what FixLens can do,
-        what it cannot do, and how to use it responsibly.
+      <p class="muted">
+        FixLens is built to support drivers with calm, practical, professional guidance.
+        This page explains what FixLens can do, what it cannot do, and how to use it responsibly.
       </p>
-    </div>
+      <p class="muted"><strong>Last updated:</strong> December 30, 2025</p>
+    </section>
 
-    <div class="section">
+    <section class="card">
       <h2>What FixLens is</h2>
-      <p>
-        FixLens is an AI-assisted automotive guidance tool. It helps interpret user-provided information such as symptoms described in text,
-        visible clues in photos, and sound patterns in audio recordings.
+      <p class="muted">
+        FixLens is an AI-assisted automotive guidance tool that helps interpret text, photos, and audio you provide.
       </p>
-      <div class="note">The goal is clarity — helping you understand possibilities and next steps, not replacing professional inspection.</div>
-    </div>
+      <div class="callout">
+        The goal is clarity — not replacing professional inspection.
+      </div>
+    </section>
 
-    <div class="section">
+    <section class="card">
       <h2>What FixLens is not</h2>
-      <p>
+      <p class="muted">
         FixLens does not perform physical inspection, does not confirm a diagnosis with certainty, and does not guarantee safety outcomes.
         Vehicles can present similar symptoms for different reasons, and some issues require hands-on testing.
       </p>
-      <ul>
+      <ul class="muted">
         <li>No physical inspection or repair</li>
         <li>No guarantee of accuracy or final diagnosis</li>
         <li>No replacement for a qualified mechanic</li>
       </ul>
-    </div>
+    </section>
 
-    <div class="section">
+    <section class="card">
       <h2>When to seek professional help immediately</h2>
-      <ul>
+      <ul class="muted">
         <li>Smoke, burning smell, or signs of fire</li>
         <li>Strong fuel odor or visible leaks</li>
         <li>Overheating or temperature warnings</li>
         <li>Loss of brakes/steering control</li>
         <li>Sudden power loss that makes driving unsafe</li>
       </ul>
-    </div>
+      <div class="callout">
+        If you suspect a safety-critical issue: stop driving when safe and seek professional help.
+      </div>
+    </section>
 
-    <div class="section">
+    <section class="card">
       <h2>How to use FixLens effectively</h2>
-      <ul>
-        <li><b>Text:</b> describe when it happens (idle, acceleration, turning, braking)</li>
-        <li><b>Photo:</b> dashboard lights, warnings, visible leaks (if safe)</li>
-        <li><b>Audio:</b> engine noises, rattles, squeals, idle behavior</li>
+      <ul class="muted">
+        <li><strong>Text:</strong> when it happens (idle, acceleration, turning, braking)</li>
+        <li><strong>Photo:</strong> dashboard lights, warnings, visible leaks (if safe)</li>
+        <li><strong>Audio:</strong> short clips of unusual engine/idle sounds (if safe)</li>
       </ul>
-    </div>
+    </section>
 
-    <div class="section">
+    <section class="card">
       <h2>Contact</h2>
-      <p>Need help? Email: <a href="mailto:support@fixlens.ai">support@fixlens.ai</a></p>
-    </div>
+      <p class="muted">Support: <strong>support@fixlens.ai</strong></p>
+      <div class="btn-row">
+        <a class="btn primary" href="mailto:support@fixlens.ai">Email Support</a>
+        <a class="btn" href="./support.html">Support Page</a>
+      </div>
+    </section>
 
-    <div class="footer">© 2025 FixLens.ai — Built with care.</div>
-  </div>
+    <footer class="footer muted">
+      © 2025 FixLens AI — Safety
+    </footer>
+  </main>
 </body>
 </html>
