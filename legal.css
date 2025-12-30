@@ -1,0 +1,191 @@
+/* legal.css — Apple-like dark glass style */
+
+:root{
+  --bg0:#070a0f;
+  --bg1:#0a0f16;
+  --card: rgba(255,255,255,.06);
+  --card2: rgba(255,255,255,.04);
+  --stroke: rgba(255,255,255,.10);
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.68);
+  --muted2: rgba(255,255,255,.55);
+  --accent: #6fe3ff; /* subtle aqua */
+}
+
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display","SF Pro Text",
+               "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(900px 600px at 15% 10%, rgba(120,210,255,.14), transparent 60%),
+    radial-gradient(900px 600px at 85% 25%, rgba(160,120,255,.10), transparent 65%),
+    linear-gradient(180deg, var(--bg0), var(--bg1));
+  overflow-x:hidden;
+}
+
+/* subtle light streaks */
+body::before{
+  content:"";
+  position:fixed;
+  inset:-40%;
+  pointer-events:none;
+  background:
+    linear-gradient(115deg, transparent 40%, rgba(255,255,255,.06) 48%, transparent 56%),
+    linear-gradient(115deg, transparent 10%, rgba(111,227,255,.07) 18%, transparent 26%),
+    linear-gradient(115deg, transparent 70%, rgba(255,255,255,.04) 78%, transparent 86%);
+  filter: blur(8px);
+  opacity:.65;
+  transform: rotate(-8deg);
+}
+
+a{ color: var(--accent); text-decoration:none; }
+a:hover{ text-decoration: underline; }
+
+.container{
+  width: min(980px, calc(100% - 32px));
+  margin: 28px auto 64px;
+}
+
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:14px 16px;
+  border-radius:18px;
+  background: rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width: 180px;
+}
+.brand .title{
+  font-weight:700;
+  letter-spacing:.2px;
+}
+.brand .subtitle{
+  margin-top:2px;
+  font-size:12px;
+  color: var(--muted2);
+}
+
+.pills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:flex-end;
+}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 14px;
+  border-radius:999px;
+  background: rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.10);
+  color: rgba(255,255,255,.88);
+  font-weight:600;
+  font-size:14px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.pill:hover{
+  background: rgba(255,255,255,.08);
+}
+.pill.active{
+  background: rgba(111,227,255,.14);
+  border-color: rgba(111,227,255,.30);
+  color: rgba(255,255,255,.95);
+}
+
+.heroCard{
+  margin-top:16px;
+  padding:22px 22px;
+  border-radius:22px;
+  background: rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.10);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+h1{
+  margin: 0 0 10px 0;
+  font-size: 44px;
+  letter-spacing:-.5px;
+}
+.lead{
+  margin:0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height:1.6;
+}
+.updated{
+  margin-top:12px;
+  color: var(--muted2);
+  font-weight:600;
+}
+
+.section{
+  margin-top:16px;
+  padding:18px 18px;
+  border-radius:20px;
+  background: rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.09);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.section h2{
+  margin:0 0 10px;
+  font-size:20px;
+}
+.section p{
+  margin: 0 0 12px;
+  color: var(--muted);
+  line-height:1.7;
+}
+.section ul{
+  margin: 8px 0 0 20px;
+  color: var(--muted);
+  line-height:1.8;
+}
+
+hr{
+  border:0;
+  height:1px;
+  background: rgba(255,255,255,.10);
+  margin: 16px 0;
+}
+
+.note{
+  margin-top: 12px;
+  padding: 14px 14px;
+  border-radius:16px;
+  background: rgba(0,0,0,.25);
+  border: 1px solid rgba(255,255,255,.08);
+  color: rgba(255,255,255,.74);
+}
+
+.footer{
+  margin-top: 18px;
+  color: rgba(255,255,255,.45);
+  font-size: 12px;
+  text-align:center;
+}
+
+/* mobile tweaks */
+@media (max-width: 560px){
+  h1{ font-size: 34px; }
+  .topbar{ align-items:flex-start; }
+  .brand{ min-width:auto; }
+  .pills{ justify-content:flex-start; }
+}
